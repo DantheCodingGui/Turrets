@@ -5,10 +5,9 @@ class Psydb3PlayerTank :
 	public Psydb3Tank
 {
 public:
-	Psydb3PlayerTank(BaseEngine* pEngine);
+	Psydb3PlayerTank(BaseEngine* pEngine, double x, double y,
+					double maxDx, double maxDy);
 	~Psydb3PlayerTank();
-	void Draw();
-private: 
-	ImageData anim1;
+	void DoUpdate();
 };
 
