@@ -9,8 +9,10 @@ public:
 	~Psydb3Engine();
 	void SetupBackgroundBuffer();
 	int InitialiseObjects();
+	void GameAction();
 private: 
 	Psydb3TileManager m_oTiles;
 	int m_noOfDisplayObjects;
+	int m_levelNo;
 };
 

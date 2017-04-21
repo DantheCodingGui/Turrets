@@ -8,6 +8,8 @@ public:
 	Psydb3PlayerTank(BaseEngine* pEngine, double x, double y,
 					double maxDx, double maxDy);
 	~Psydb3PlayerTank();
-	void DoUpdate();
+	void DoUpdate(int iCurrentTime);
+private:
+	
 };
 

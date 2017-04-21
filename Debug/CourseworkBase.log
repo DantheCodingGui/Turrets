@@ -1,4 +1,4 @@
-﻿Build started 21/04/2017 17:50:05.
+﻿Build started 21/04/2017 20:42:02.
      1>Project "C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\src\CourseworkBase.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\SDL\include /ZI /nologo /W1 /WX- /Od /Oy- /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\\" /Fd"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\vc120.pdb" /FR"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\\" /Gd /TP /analyze- /errorReport:prompt Psydb3PlayerTank.cpp
@@ -28,12 +28,9 @@
          C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4Main.obj
          C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4Object.obj
          C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4TileManager.obj
-     1>mainfunction.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
          CourseworkBase.vcxproj -> C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\CourseworkBase.exe
-       BscMake:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\CourseworkBase.bsc" C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\mainfunction.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BaseEngine.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\DisplayableObject.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\FontManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\JPGImage.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Engine.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3PlayerTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Tank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\SimpleDemo.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BouncingBall.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BouncingBallMain.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo1Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2Object.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3Object.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3ObjectFinished.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4Object.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4TileManager.sbr
      1>Done Building Project "C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\src\CourseworkBase.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.19
+Time Elapsed 00:00:00.90
