@@ -10,7 +10,9 @@ public:
 	~Psydb3Tank();
     void Draw(); //abstract methods
 	virtual void DoUpdate(int iCurrentTime) = 0;
+	virtual void InitialiseSpriteImages() = 0;
 	void animate();
+	void checkCorrectImage(bool left, bool right, bool up, bool down);
 protected:
 	double m_x;
 	double m_y;
@@ -18,9 +20,9 @@ protected:
 	double m_dy;
 	double m_maxDx; //maximum speeds of tank
 	double m_maxDy;
-	char m_direction;
+	int m_direction;
 
-	ImageData m_spriteImage; //single sprite image object all images loaded into
+	ImageData* m_spriteImages[8]; //single sprite image object all images loaded into
 
 	BaseEngine* m_pEngine; //stores base engine pointer for code clarity going forward
 

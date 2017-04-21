@@ -9,7 +9,8 @@ public:
 					double maxDx, double maxDy);
 	~Psydb3PlayerTank();
 	void DoUpdate(int iCurrentTime);
+	void InitialiseSpriteImages();
 private:
-	
+
 };
 
