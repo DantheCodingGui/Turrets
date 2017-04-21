@@ -1,7 +1,10 @@
 #include "Psydb3Engine.h"
 #include "header.h"
 
-Psydb3Engine::Psydb3Engine() {
+#include "Psydb3PlayerTank.h"
+
+Psydb3Engine::Psydb3Engine() 
+	: m_noOfDisplayObjects(1) {
 }
 
 
@@ -10,7 +13,7 @@ Psydb3Engine::~Psydb3Engine() {
 
 void Psydb3Engine::SetupBackgroundBuffer() {
 
-	char* data[] = {
+#if 0	char* data[] = {
 		"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 		"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 		"abbbbbbccbbbbbbbbcbbbbbbbbca",
@@ -29,6 +32,26 @@ void Psydb3Engine::SetupBackgroundBuffer() {
 		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
 		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
 		"abbbbbccbbbbbbbbbbbbbbcccbba" };
+#endif
+	char* data[] = { //for testing tank motion
+		"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+		"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+		"abbbbbbccbbbbbbbbcbbbbbbbbca",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"acaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
+		"abbbbbccbbbbbbbbbbbbbbcccbba" };
 
 	m_oTiles.SetSize(28, 18);
 
@@ -41,4 +64,17 @@ void Psydb3Engine::SetupBackgroundBuffer() {
 	m_oTiles.DrawAllTiles(this,
 		this->GetBackground(),
 		0, 0, 27, 17);
+}
+
+int Psydb3Engine::InitialiseObjects() {
+	DrawableObjectsChanged();
+
+	DestroyOldObjects();
+
+	CreateObjectArray(m_noOfDisplayObjects + 1);
+
+	StoreObjectInArray(0, new Psydb3PlayerTank(this));
+	StoreObjectInArray(m_noOfDisplayObjects, NULL);
+
+	return 0;
 }

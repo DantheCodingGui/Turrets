@@ -8,7 +8,9 @@ public:
 	Psydb3Engine();
 	~Psydb3Engine();
 	void SetupBackgroundBuffer();
+	int InitialiseObjects();
 private: 
 	Psydb3TileManager m_oTiles;
+	int m_noOfDisplayObjects;
 };
 

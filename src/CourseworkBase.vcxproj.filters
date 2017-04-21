@@ -99,6 +99,12 @@
     <ClInclude Include="Psydb3TileManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Psydb3Tank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3PlayerTank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mainfunction.cpp">
@@ -165,6 +171,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Psydb3TileManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3Tank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3PlayerTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
