@@ -82,7 +82,7 @@ void Psydb3Engine::GameAction() {
 	if (!IsTimeToAct())
 		return;
 
-	SetTimeToAct(1);
+	SetTimeToAct(5);
 
 	UpdateAllObjects(GetModifiedTime());
 }

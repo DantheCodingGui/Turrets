@@ -8,6 +8,7 @@ Psydb3PlayerTank::Psydb3PlayerTank(BaseEngine* pEngine, double x, double y,
 								double maxDx, double maxDy)
 	: Psydb3Tank(pEngine, x, y, maxDx, maxDy) {
 	InitialiseSpriteImages();
+	InitialiseTankVelocities();
 }
 
 void Psydb3PlayerTank::InitialiseSpriteImages() {
@@ -74,48 +75,63 @@ void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
 	GetDirection();
 
 	if (m_moving) {
+#if 0
 		switch (m_direction) {
 			case (0) :
-				m_x -= 0.2;
+				m_x -= 0.4;
 				break;
 			case (1) :
-				m_x -= 0.1;
-				m_y -= 0.1;
-				break;
-			case (2) :
+				m_x -= 0.3;
 				m_y -= 0.2;
 				break;
+			case (2) :
+				m_y -= 0.4;
+				break;
 			case (3) :
-				m_x += 0.1;
-				m_y -= 0.1;
+				m_x += 0.3;
+				m_y -= 0.2;
 				break;
 			case (4) :
-				m_x += 0.2;
+				m_x += 0.4;
 				break;
 			case (5) :
-				m_x += 0.1;
-				m_y += 0.1;
-				break;
-			case (6) :
+				m_x += 0.3;
 				m_y += 0.2;
 				break;
+			case (6) :
+				m_y += 0.4;
+				break;
 			case (7) :
-				m_x -= 0.1;
-				m_y += 0.1;
+				m_x -= 0.3;
+				m_y += 0.2;
 				break;
 		}
+#endif
+		m_x += m_tankVelocities[m_direction][0];
+		m_y += m_tankVelocities[m_direction][1];
+#if 0
+		if (m_direction == 4) {
+			++m_animationCount;
+			if (m_animationCount > 40)
+				m_animationCount = 0;
+			if (m_animationCount <= 20)
+				m_animated = true;
+			else
+				m_animated = false;
+		}
+#endif
+		UpdateAnimation();
 	}
+	else
+		m_animationCount = 0;
 
-	//++m_animationCount;
-	//animate();
+	//UpdateAnimation();
 	//m_x += m_dx;
 	//m_y += m_dy;
 
 	m_iCurrentScreenX = (int)m_x;
 	m_iCurrentScreenY = (int)m_y;
 	printf("%d, %d\n", m_iCurrentScreenX, m_iCurrentScreenY);
-
-	GetDirection();
 
 	RedrawObjects();
 }
