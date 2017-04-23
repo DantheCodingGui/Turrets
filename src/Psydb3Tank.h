@@ -13,6 +13,7 @@ public:
 	virtual void DoUpdate(int iCurrentTime) = 0;
 	virtual void InitialiseSpriteImages() = 0;
 	virtual void InitialiseTankVelocities();
+	void InitialiseTransparencyPixels();
 	void UpdateAnimation();
 	inline bool ShouldStartRotating(int currentDirection, int newDirection) {
 		int backCheck = currentDirection - 2;
@@ -22,7 +23,8 @@ public:
 		if (forwardCheck > 7)
 			forwardCheck = forwardCheck - 8;
 		return (newDirection == backCheck || newDirection == forwardCheck);
-	}
+	};
+	void ImageSizeCompensation(int oldDirection, int newDirection);
 protected:
 	double m_x;
 	double m_y;
@@ -37,6 +39,7 @@ protected:
 	bool m_rotating; //the tank base not turret
 
 	ImageData* m_spriteImages[8]; //single sprite image object all images loaded into
+	int m_transparencyPixels[4][2];
 
 	Psydb3RotationPosition* rotator;
 

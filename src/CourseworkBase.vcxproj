@@ -88,12 +88,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="header.h" />
     <ClInclude Include="BaseEngine.h" />
     <ClInclude Include="DisplayableObject.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="JPGImage.h" />
     <ClInclude Include="MovementPosition.h" />
+    <ClInclude Include="Psydb3Cursor.h" />
     <ClInclude Include="Psydb3Engine.h" />
     <ClInclude Include="Psydb3PlayerTank.h" />
     <ClInclude Include="Psydb3RotationPosition.h" />
@@ -122,6 +122,7 @@
     <ClCompile Include="DisplayableObject.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="JPGImage.cpp" />
+    <ClCompile Include="Psydb3Cursor.cpp" />
     <ClCompile Include="Psydb3Engine.cpp" />
     <ClCompile Include="Psydb3PlayerTank.cpp" />
     <ClCompile Include="Psydb3Tank.cpp" />

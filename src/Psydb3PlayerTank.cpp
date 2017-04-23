@@ -87,8 +87,9 @@ void Psydb3PlayerTank::GetDirection() {
 		}
 		m_animationCount = 0;
 	}
-#endif	else
-		m_direction = tempDirection;
+#endif
+	ImageSizeCompensation(previousDirection, tempDirection);
+	m_direction = tempDirection;
 }
 
 void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {

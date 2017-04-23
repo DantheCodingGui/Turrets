@@ -2,9 +2,10 @@
 #include "header.h"
 
 #include "Psydb3PlayerTank.h"
+#include "Psydb3Cursor.h"
 
 Psydb3Engine::Psydb3Engine() 
-	: m_noOfDisplayObjects(1)
+	: m_noOfDisplayObjects(2)
 	, m_levelNo(1) {
 }
 
@@ -72,7 +73,8 @@ int Psydb3Engine::InitialiseObjects() {
 	DestroyOldObjects();
 
 	CreateObjectArray(m_noOfDisplayObjects + 1);
-	StoreObjectInArray(0, new Psydb3PlayerTank(this, 500.0, 500.0, 0.5, 0.5));
+	StoreObjectInArray(0, new Psydb3Cursor(this));
+	StoreObjectInArray(1, new Psydb3PlayerTank(this, 500.0, 500.0, 0.5, 0.5));
 	StoreObjectInArray(m_noOfDisplayObjects, NULL);
 
 	return 0;

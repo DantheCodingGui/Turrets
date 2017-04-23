@@ -27,6 +27,7 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y,
 	m_iStartDrawPosY = 0;
 
 	rotator = new Psydb3RotationPosition();
+	InitialiseTransparencyPixels();
 	SetVisible(true);
 }
 
@@ -48,9 +49,21 @@ void Psydb3Tank::InitialiseTankVelocities() {
 		m_tankVelocities[i][0] = -m_tankVelocities[i - 4][0];
 		m_tankVelocities[i][1] = -m_tankVelocities[i - 4][1];
 	}
-	//for (int i = 0; i < 8; ++i) {
-	//	printf("%f, %f\n", m_tankVelocities[i][0], m_tankVelocities[i][1]);
-	//}
+}
+
+//enables each image to be transparent in different places
+void Psydb3Tank::InitialiseTransparencyPixels() {
+	m_transparencyPixels[0][0] = 0;
+	m_transparencyPixels[0][1] = 0;
+
+	m_transparencyPixels[1][0] = 0;
+	m_transparencyPixels[1][1] = 0;
+
+	m_transparencyPixels[2][0] = 30;
+	m_transparencyPixels[2][1] = 0;
+
+	m_transparencyPixels[3][0] = 0;
+	m_transparencyPixels[3][1] = 0;
 }
 
 Psydb3Tank::~Psydb3Tank() {
@@ -60,9 +73,10 @@ Psydb3Tank::~Psydb3Tank() {
 void Psydb3Tank::Draw() { 
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
 	
-	m_spriteImages[drawImageIndex]->RenderImageWithMask(m_pEngine->GetForeground(),
+	m_spriteImages[drawImageIndex]->FlexibleRenderImageWithMask(m_pEngine->GetForeground(),
 		0, 0, m_iCurrentScreenX, m_iCurrentScreenY, 
-		m_spriteImages[drawImageIndex]->GetWidth(), m_spriteImages[drawImageIndex]->GetHeight());
+		m_spriteImages[drawImageIndex]->GetWidth(), m_spriteImages[drawImageIndex]->GetHeight(),
+		0, m_transparencyPixels[m_direction % 4][0], m_transparencyPixels[m_direction % 4][1]);
 	//FIND A BETTER PLACE FOR THIS
 	m_iDrawWidth = m_spriteImages[drawImageIndex]->GetWidth();
 	m_iDrawHeight = m_spriteImages[drawImageIndex]->GetHeight();
@@ -92,4 +106,20 @@ void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
 		m_animated = true;
 	else
 		m_animated = false;
+}
+
+//since diagonal image is larger than the others, must edit 
+//player position slightly when swapping to/from it
+void Psydb3Tank::ImageSizeCompensation(int oldDirection, int newDirection) {
+	bool oldDirSmall = (oldDirection % 2 == 0) ? true : false;
+	bool newDirSmall = (newDirection % 2 == 0) ? true : false;
+	printf("image size adjusted\n");
+	if (oldDirSmall && !newDirSmall) {
+		m_x -= 7.5;
+		m_y -= 4;
+	}
+	else if (!oldDirSmall && newDirSmall) {
+		m_x += 7.5;
+		m_y += 4;
+	}
 }

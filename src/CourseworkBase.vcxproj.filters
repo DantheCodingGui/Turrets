@@ -27,9 +27,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BaseEngine.h">
       <Filter>Header Files\Shared</Filter>
     </ClInclude>
@@ -108,6 +105,9 @@
     <ClInclude Include="Psydb3RotationPosition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Psydb3Cursor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mainfunction.cpp">
@@ -180,6 +180,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Psydb3PlayerTank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3Cursor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
