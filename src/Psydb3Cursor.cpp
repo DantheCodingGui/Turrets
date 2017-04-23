@@ -13,8 +13,11 @@ Psydb3Cursor::Psydb3Cursor(BaseEngine* pEngine)
 	m_iStartDrawPosX = 0;
 	m_iStartDrawPosY = 0;
 
-	m_iDrawWidth = 8;
-	m_iDrawHeight = 8;
+	m_iDrawWidth = 26;
+	m_iDrawHeight = 26;
+
+	SDL_ShowCursor(SDL_DISABLE); //disable the mouse icon while in window
+
 	SetVisible(true);
 }
 
@@ -35,11 +38,39 @@ void Psydb3Cursor::BoundaryDetection() {
 }
 
 void Psydb3Cursor::Draw() {
-	GetEngine()->DrawScreenOval( //values changed from lab notes due to changed center location
-		m_iCurrentScreenX,
+	GetEngine()->DrawScreenOval( //middle circle
+		m_iCurrentScreenX + 11,
+		m_iCurrentScreenY + 11,
+		m_iCurrentScreenX + m_iDrawWidth - 1 - 11,
+		m_iCurrentScreenY + m_iDrawHeight - 1 - 11,
+		0xE40000);
+
+	GetEngine()->DrawScreenRectangle( //top rectangle
+		m_iCurrentScreenX + 12,
 		m_iCurrentScreenY,
-		m_iCurrentScreenX + m_iDrawWidth - 1,
+		m_iCurrentScreenX + m_iDrawWidth - 1 - 12,
+		m_iCurrentScreenY + m_iDrawHeight - 1 - 16,
+		0x000000);
+
+	GetEngine()->DrawScreenRectangle( //bottom rectangle
+		m_iCurrentScreenX + 12,
+		m_iCurrentScreenY + 16,
+		m_iCurrentScreenX + m_iDrawWidth - 1 - 12,
 		m_iCurrentScreenY + m_iDrawHeight - 1,
+		0x000000);
+
+	GetEngine()->DrawScreenRectangle( //left rectangle
+		m_iCurrentScreenX,
+		m_iCurrentScreenY + 12,
+		m_iCurrentScreenX + m_iDrawWidth - 1 - 16,
+		m_iCurrentScreenY + m_iDrawHeight - 1 - 12,
+		0x000000);
+
+	GetEngine()->DrawScreenRectangle( //right rectangle
+		m_iCurrentScreenX + 16,
+		m_iCurrentScreenY + 12,
+		m_iCurrentScreenX + m_iDrawWidth - 1,
+		m_iCurrentScreenY + m_iDrawHeight - 1 - 12,
 		0x000000);
 
 		StoreLastScreenPositionForUndraw();
