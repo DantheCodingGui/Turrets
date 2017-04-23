@@ -12,7 +12,6 @@ public:
 	virtual void DoUpdate(int iCurrentTime) = 0;
 	virtual void InitialiseSpriteImages() = 0;
 	void animate();
-	void checkCorrectImage(bool left, bool right, bool up, bool down);
 protected:
 	double m_x;
 	double m_y;
@@ -21,6 +20,9 @@ protected:
 	double m_maxDx; //maximum speeds of tank
 	double m_maxDy;
 	int m_direction;
+	int m_prevDirection; //previous direction used to fix drawing bug
+	bool m_animated; //is image loaded default or animated version
+	bool m_moving;
 
 	ImageData* m_spriteImages[8]; //single sprite image object all images loaded into
 

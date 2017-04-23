@@ -34,45 +34,88 @@ Psydb3PlayerTank::~Psydb3PlayerTank() {
 		delete m_spriteImages[i];
 }
 
-void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
+void Psydb3PlayerTank::GetDirection() {
 	bool left, right, up, down;
 	left = right = up = down = false;
 
-	if (m_pEngine->IsKeyPressed(SDLK_a)) { //acceleration/deceleration in all directions
-		//if (m_dx >= -m_maxDx)
-		//	m_dx -= 0.1;
-		m_x -= 0.2;
+	m_moving = true;
+
+	if (m_pEngine->IsKeyPressed(SDLK_a)) 
 		left = true;
-	}
-	if (m_pEngine->IsKeyPressed(SDLK_d)) {
-		//if (m_dx <= m_maxDx)
-		//	m_dx += 0.1;
-		m_x += 0.2;
+	if (m_pEngine->IsKeyPressed(SDLK_d)) 
 		right = true;
-	}
-	if (m_pEngine->IsKeyPressed(SDLK_w)) {
-		//if (m_dy >= -m_maxDy)
-		//	m_dy -= 0.1;
-		m_y -= 0.2;
+	if (m_pEngine->IsKeyPressed(SDLK_w)) 
 		up = true;
-	}
-	if (m_pEngine->IsKeyPressed(SDLK_s)) {
-		//if (m_dy <= m_maxDy)
-		//	m_dy += 0.1;
-		m_y += 0.2;
+	if (m_pEngine->IsKeyPressed(SDLK_s)) 
 		down = true;
+
+	if (left && up)
+		m_direction = 1;
+	else if (right && up)
+		m_direction = 3;
+	else if (right && down)
+		m_direction = 5;
+	else if (left && down)
+		m_direction = 7;
+	else if (left)
+		m_direction = 0;
+	else if (up)
+		m_direction = 2;
+	else if (right)
+		m_direction = 4;
+	else if (down)
+		m_direction = 6;
+	else
+		m_moving = false;
+}
+
+void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
+	
+	GetDirection();
+
+	if (m_moving) {
+		switch (m_direction) {
+			case (0) :
+				m_x -= 0.2;
+				break;
+			case (1) :
+				m_x -= 0.1;
+				m_y -= 0.1;
+				break;
+			case (2) :
+				m_y -= 0.2;
+				break;
+			case (3) :
+				m_x += 0.1;
+				m_y -= 0.1;
+				break;
+			case (4) :
+				m_x += 0.2;
+				break;
+			case (5) :
+				m_x += 0.1;
+				m_y += 0.1;
+				break;
+			case (6) :
+				m_y += 0.2;
+				break;
+			case (7) :
+				m_x -= 0.1;
+				m_y += 0.1;
+				break;
+		}
 	}
 
-	++m_animationCount;
+	//++m_animationCount;
 	//animate();
-	m_x += m_dx;
-	m_y += m_dy;
+	//m_x += m_dx;
+	//m_y += m_dy;
 
 	m_iCurrentScreenX = (int)m_x;
 	m_iCurrentScreenY = (int)m_y;
 	printf("%d, %d\n", m_iCurrentScreenX, m_iCurrentScreenY);
 
-	checkCorrectImage(left, right, up, down);
+	GetDirection();
 
 	RedrawObjects();
 }

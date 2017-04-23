@@ -10,6 +10,7 @@ public:
 	~Psydb3PlayerTank();
 	void DoUpdate(int iCurrentTime);
 	void InitialiseSpriteImages();
+	void GetDirection();
 private:
 
 };

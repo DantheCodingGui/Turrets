@@ -15,6 +15,8 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y,
 	, m_maxDy(maxDy)
 	, m_animationCount(0)
 	, m_direction(0)
+	, m_animated(false)
+	, m_moving(false)
 	, m_pEngine(pEngine) {
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)x;
 	m_iCurrentScreenY = m_iPreviousScreenY = (int)y;
@@ -28,11 +30,15 @@ Psydb3Tank::~Psydb3Tank() {
 }
 
 void Psydb3Tank::Draw() { //constant draw function between all tanks
+	int drawImageIndex = m_direction % 4;
 
-	m_spriteImages[m_direction]->RenderImageWithMask(m_pEngine->GetForeground(),
+	m_spriteImages[drawImageIndex]->RenderImageWithMask(m_pEngine->GetForeground(),
 		0, 0, m_iCurrentScreenX, m_iCurrentScreenY, 
-		m_spriteImages[m_direction]->GetWidth(), m_spriteImages[m_direction]->GetHeight());
-
+		m_spriteImages[drawImageIndex]->GetWidth(), m_spriteImages[drawImageIndex]->GetHeight());
+	//FIND A BETTER PLACE FOR THIS
+	m_iDrawWidth = m_spriteImages[drawImageIndex]->GetWidth();
+	m_iDrawHeight = m_spriteImages[drawImageIndex]->GetHeight();
+	
 	StoreLastScreenPositionForUndraw();
 }
 
@@ -50,17 +56,4 @@ void Psydb3Tank::animate() { //switch tank images for animation
 			m_direction -= 4;
 			animated = false;
 		}
-}
-
-void Psydb3Tank::checkCorrectImage(bool left, bool right, bool up, bool down) {
-	if ((left && up) || (right && down)) 
-		m_direction = 1;
-	else if ((left && down) || (right && up))
-		m_direction = 3;
-	else if (left || right)
-		m_direction = 0;
-	else if (up || down)
-		m_direction = 2;
-	m_iDrawWidth = m_spriteImages[m_direction]->GetWidth();
-	m_iDrawHeight = m_spriteImages[m_direction]->GetHeight();
 }
