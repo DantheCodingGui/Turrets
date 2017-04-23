@@ -1,6 +1,7 @@
 #pragma once
 #include "DisplayableObject.h"
 #include "JPGImage.h"
+#include "Psydb3RotationPosition.h"
 class Psydb3Tank :
 	public DisplayableObject
 {
@@ -13,6 +14,15 @@ public:
 	virtual void InitialiseSpriteImages() = 0;
 	virtual void InitialiseTankVelocities();
 	void UpdateAnimation();
+	inline bool ShouldStartRotating(int currentDirection, int newDirection) {
+		int backCheck = currentDirection - 2;
+		if (backCheck < 0)
+			backCheck = backCheck + 8;
+		int forwardCheck = currentDirection + 2;
+		if (forwardCheck > 7)
+			forwardCheck = forwardCheck - 8;
+		return (newDirection == backCheck || newDirection == forwardCheck);
+	}
 protected:
 	double m_x;
 	double m_y;
@@ -24,8 +34,11 @@ protected:
 	//int m_prevDirection; //previous direction used to fix drawing bug
 	bool m_animated; //is image loaded default or animated version
 	bool m_moving;
+	bool m_rotating; //the tank base not turret
 
 	ImageData* m_spriteImages[8]; //single sprite image object all images loaded into
+
+	Psydb3RotationPosition* rotator;
 
 	double m_tankVelocities[8][2];
 

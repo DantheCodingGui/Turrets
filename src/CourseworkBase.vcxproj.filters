@@ -105,6 +105,9 @@
     <ClInclude Include="Psydb3PlayerTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Psydb3RotationPosition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mainfunction.cpp">

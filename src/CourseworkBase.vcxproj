@@ -96,6 +96,7 @@
     <ClInclude Include="MovementPosition.h" />
     <ClInclude Include="Psydb3Engine.h" />
     <ClInclude Include="Psydb3PlayerTank.h" />
+    <ClInclude Include="Psydb3RotationPosition.h" />
     <ClInclude Include="Psydb3Tank.h" />
     <ClInclude Include="Psydb3TileManager.h" />
     <ClInclude Include="templates.h" />

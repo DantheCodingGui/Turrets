@@ -25,6 +25,8 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y,
 	
 	m_iStartDrawPosX = 0;
 	m_iStartDrawPosY = 0;
+
+	rotator = new Psydb3RotationPosition();
 	SetVisible(true);
 }
 
@@ -52,6 +54,7 @@ void Psydb3Tank::InitialiseTankVelocities() {
 }
 
 Psydb3Tank::~Psydb3Tank() {
+	delete rotator;
 }
 
 void Psydb3Tank::Draw() { 

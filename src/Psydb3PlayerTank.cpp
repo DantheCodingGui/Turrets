@@ -40,6 +40,8 @@ void Psydb3PlayerTank::GetDirection() {
 	left = right = up = down = false;
 
 	m_moving = true;
+	int previousDirection = m_direction;
+	int tempDirection = 0;
 
 	if (m_pEngine->IsKeyPressed(SDLK_a)) 
 		left = true;
@@ -51,23 +53,42 @@ void Psydb3PlayerTank::GetDirection() {
 		down = true;
 
 	if (left && up)
-		m_direction = 1;
+		tempDirection = 1;
 	else if (right && up)
-		m_direction = 3;
+		tempDirection = 3;
 	else if (right && down)
-		m_direction = 5;
+		tempDirection = 5;
 	else if (left && down)
-		m_direction = 7;
+		tempDirection = 7;
 	else if (left)
-		m_direction = 0;
+		tempDirection = 0;
 	else if (up)
-		m_direction = 2;
+		tempDirection = 2;
 	else if (right)
-		m_direction = 4;
+		tempDirection = 4;
 	else if (down)
-		m_direction = 6;
-	else
+		tempDirection = 6;
+	else {
+		tempDirection = m_direction;
 		m_moving = false;
+	}
+#if 0
+	if (tempDirection != previousDirection) {
+		if (!ShouldStartRotating(previousDirection, tempDirection) && !m_rotating) {
+			rotator->SetupRotation(m_pEngine->GetTime(), m_pEngine->GetTime() + 750, previousDirection, tempDirection);
+			m_rotating = true;
+		}
+		else if (m_rotating) {
+			m_direction = rotator->Update(m_pEngine->GetTime(), m_direction);
+			if (tempDirection == m_direction) {
+				rotator->Reset();
+				m_rotating = false;
+			}
+		}
+		m_animationCount = 0;
+	}
+#endif	else
+		m_direction = tempDirection;
 }
 
 void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
@@ -109,29 +130,17 @@ void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
 #endif
 		m_x += m_tankVelocities[m_direction][0];
 		m_y += m_tankVelocities[m_direction][1];
-#if 0
-		if (m_direction == 4) {
-			++m_animationCount;
-			if (m_animationCount > 40)
-				m_animationCount = 0;
-			if (m_animationCount <= 20)
-				m_animated = true;
-			else
-				m_animated = false;
-		}
-#endif
+
 		UpdateAnimation();
 	}
 	else
 		m_animationCount = 0;
 
-	//UpdateAnimation();
 	//m_x += m_dx;
 	//m_y += m_dy;
 
 	m_iCurrentScreenX = (int)m_x;
 	m_iCurrentScreenY = (int)m_y;
-	printf("%d, %d\n", m_iCurrentScreenX, m_iCurrentScreenY);
 
 	RedrawObjects();
 }
