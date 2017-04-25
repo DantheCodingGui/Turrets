@@ -20,92 +20,130 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y,
 	, m_animated(false)
 	, m_moving(false)
 	, m_pEngine(pEngine) {
+
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)x;
 	m_iCurrentScreenY = m_iPreviousScreenY = (int)y;
 	
 	m_iStartDrawPosX = 0;
 	m_iStartDrawPosY = 0;
 
-	rotator = new Psydb3RotationPosition();
-	InitialiseTransparencyPixels();
+	//rotator = new Psydb3RotationPosition();
+
 	SetVisible(true);
 }
 
 //default tank speeds (if change needed can redefine for individual tank type)
-void Psydb3Tank::InitialiseTankVelocities() {
-	m_tankVelocities[0][0] = -0.4;
-	m_tankVelocities[0][1] = 0;
+void Psydb3Tank::InitialiseTankVelocities(double tankVelocities[4][2]) {
+	tankVelocities[0][0] = -0.4;
+	tankVelocities[0][1] = 0;
 
-	m_tankVelocities[1][0] = -0.3;
-	m_tankVelocities[1][1] = -0.2;
+	tankVelocities[1][0] = -0.3;
+	tankVelocities[1][1] = -0.2;
 
-	m_tankVelocities[2][0] = 0;
-	m_tankVelocities[2][1] = -0.4;
+	tankVelocities[2][0] = 0;
+	tankVelocities[2][1] = -0.4;
 
-	m_tankVelocities[3][0] = 0.3;
-	m_tankVelocities[3][1] = -0.2;
+	tankVelocities[3][0] = 0.3;
+	tankVelocities[3][1] = -0.2;
+}
 
-	for (int i = 4; i < 8; ++i) {
-		m_tankVelocities[i][0] = -m_tankVelocities[i - 4][0];
-		m_tankVelocities[i][1] = -m_tankVelocities[i - 4][1];
+void Psydb3Tank::InitialiseTankStates() {
+	InitialiseSpriteImages();
+
+	double tankVelocities[4][2];
+	InitialiseTankVelocities(tankVelocities);
+
+	m_tankStates[0] = new Psydb3TankDirectionState(0, 0, tankVelocities[0][0], tankVelocities[0][1], 13, 1);
+	m_tankStates[1] = new Psydb3TankDirectionState(0, 0, tankVelocities[1][0], tankVelocities[1][1], 13, 0);
+	m_tankStates[2] = new Psydb3TankDirectionState(30, 0, tankVelocities[2][0], tankVelocities[2][1], 13, 1);
+	m_tankStates[3] = new Psydb3TankDirectionState(0, 0, tankVelocities[3][0], tankVelocities[3][1], 13, 1);
+
+	for (int i = 0; i < 4; ++i) {
+		m_tankStates[i + 4] = new Psydb3TankDirectionState(m_tankStates[i]->GetTransparencyX(), m_tankStates[i]->GetTransparencyY(),
+			-m_tankStates[i]->GetTankVelocityX(), -m_tankStates[i]->GetTankVelocityY(),
+			m_tankStates[i]->GetTurretDrawOffsetX(), m_tankStates[i]->GetTurretDrawOffsetY());
 	}
 }
 
-//enables each image to be transparent in different places
-void Psydb3Tank::InitialiseTransparencyPixels() {
-	m_transparencyPixels[0][0] = 0;
-	m_transparencyPixels[0][1] = 0;
-
-	m_transparencyPixels[1][0] = 0;
-	m_transparencyPixels[1][1] = 0;
-
-	m_transparencyPixels[2][0] = 30;
-	m_transparencyPixels[2][1] = 0;
-
-	m_transparencyPixels[3][0] = 0;
-	m_transparencyPixels[3][1] = 0;
-}
-
 Psydb3Tank::~Psydb3Tank() {
-	delete rotator;
+	//delete rotator;
+	for (int i = 0; i < 8; ++i)
+		delete m_tankStates[i];
 }
 
 void Psydb3Tank::Draw() { 
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
 	
-	m_spriteImages[drawImageIndex]->FlexibleRenderImageWithMask(m_pEngine->GetForeground(),
-		0, 0, m_iCurrentScreenX, m_iCurrentScreenY, 
-		m_spriteImages[drawImageIndex]->GetWidth(), m_spriteImages[drawImageIndex]->GetHeight(),
-		0, m_transparencyPixels[m_direction % 4][0], m_transparencyPixels[m_direction % 4][1]);
 	//FIND A BETTER PLACE FOR THIS
 	m_iDrawWidth = m_spriteImages[drawImageIndex]->GetWidth();
 	m_iDrawHeight = m_spriteImages[drawImageIndex]->GetHeight();
+
+	m_spriteImages[drawImageIndex]->FlexibleRenderImageWithMask(m_pEngine->GetForeground(),
+		0, 0, m_iCurrentScreenX, m_iCurrentScreenY, 
+		m_iDrawWidth, 
+		m_iDrawHeight,
+		0, m_tankStates[drawImageIndex]->GetTransparencyX(),
+		m_tankStates[drawImageIndex]->GetTransparencyY());
+
+	//draw turret 
+	m_pEngine->DrawScreenOval(
+		m_iCurrentScreenX + 13,
+		m_iCurrentScreenY + 10,
+		m_iCurrentScreenX + m_iDrawWidth - 1 - 13,
+		m_iCurrentScreenY + m_iDrawHeight - 1 - 28,
+		0x144912);
+	m_pEngine->DrawScreenRectangle(
+		m_iCurrentScreenX + 14,
+		m_iCurrentScreenY + 15,
+		m_iCurrentScreenX + m_iDrawWidth - 1 - 14,
+		m_iCurrentScreenY + m_iDrawHeight - 1 - 35,
+		0x144912);
+	m_pEngine->DrawScreenOval(
+		m_iCurrentScreenX + 13,
+		m_iCurrentScreenY + 1,
+		m_iCurrentScreenX + m_iDrawWidth - 1 - 13,
+		m_iCurrentScreenY + m_iDrawHeight - 1 - 37,
+		0x20791E);
+	m_pEngine->DrawHollowOval(
+		m_iCurrentScreenX + 13,
+		m_iCurrentScreenY + 1,
+		m_iCurrentScreenX + m_iDrawWidth - 1 - 13,
+		m_iCurrentScreenY + m_iDrawHeight - 1 - 37,
+		m_iCurrentScreenX + 16,
+		m_iCurrentScreenY + 4,
+		m_iCurrentScreenX + m_iDrawWidth - 1 - 16,
+		m_iCurrentScreenY + m_iDrawHeight - 1 - 40,
+		0x113d0f,
+		m_pEngine->GetForeground());
 	
 	StoreLastScreenPositionForUndraw();
 }
 
 void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
+
 	++m_animationCount;
 	int animation = m_direction % 4;
-	int cycleLength; 
+	int cycleLength;
+
 	//deciding how far tank has to move until image is swapped
 	//simple for horizontal/vertical but more complex with diagonals (pythogoras used)
 	if (animation == 0) {
-		if (m_animationCount > (cycleLength = abs((int)(m_tankVelocities[m_direction][0] * 100))))
+		if (m_animationCount > (cycleLength = abs((int)(m_tankStates[m_direction]->GetTankVelocityX() * 100))))
 			m_animationCount = 0;
 	}
 	else if (animation == 2) {
-		if (m_animationCount > (cycleLength = abs((int)(m_tankVelocities[m_direction][1] * 100))))
+		if (m_animationCount > (cycleLength = abs((int)(m_tankStates[m_direction]->GetTankVelocityY() * 100))))
 			m_animationCount = 0;
 	}
 	else if (animation == 1 || animation == 3) {
-		if (m_animationCount > (cycleLength = abs((int)( sqrt(2 * pow(m_tankVelocities[m_direction][1] * 100, 2) )))))
+		if (m_animationCount > (cycleLength = abs((int)(sqrt(2 * pow(m_tankStates[m_direction]->GetTankVelocityY() * 100, 2))))))
 			m_animationCount = 0;
 	}
 	if (m_animationCount <= cycleLength / 2)
 		m_animated = true;
 	else
 		m_animated = false;
+
 }
 
 //since diagonal image is larger than the others, must edit 

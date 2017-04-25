@@ -2,13 +2,10 @@
 #include "header.h"
 #include "templates.h"
 
-
-
 Psydb3PlayerTank::Psydb3PlayerTank(BaseEngine* pEngine, double x, double y,
 								double maxDx, double maxDy)
 	: Psydb3Tank(pEngine, x, y, maxDx, maxDy) {
-	InitialiseSpriteImages();
-	InitialiseTankVelocities();
+	InitialiseTankStates();
 }
 
 void Psydb3PlayerTank::InitialiseSpriteImages() {
@@ -88,7 +85,8 @@ void Psydb3PlayerTank::GetDirection() {
 		m_animationCount = 0;
 	}
 #endif
-	ImageSizeCompensation(previousDirection, tempDirection);
+	if (tempDirection != previousDirection)
+		ImageSizeCompensation(previousDirection, tempDirection);
 	m_direction = tempDirection;
 }
 
@@ -129,8 +127,8 @@ void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
 				break;
 		}
 #endif
-		m_x += m_tankVelocities[m_direction][0];
-		m_y += m_tankVelocities[m_direction][1];
+		m_x += m_tankStates[m_direction]->GetTankVelocityX();
+		m_y += m_tankStates[m_direction]->GetTankVelocityY();
 
 		UpdateAnimation();
 	}

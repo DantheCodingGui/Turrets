@@ -6,15 +6,15 @@
 Psydb3Cursor::Psydb3Cursor(BaseEngine* pEngine)
 	: DisplayableObject(pEngine)
 	, m_x(500)
-	, m_y(500) {
+	, m_y(500)
+	, m_width(26){
 	m_iCurrentScreenX = m_iPreviousScreenX = m_x;
 	m_iCurrentScreenY = m_iPreviousScreenY = m_y;
 
 	m_iStartDrawPosX = 0;
 	m_iStartDrawPosY = 0;
 
-	m_iDrawWidth = 26;
-	m_iDrawHeight = 26;
+	m_iDrawWidth = m_iDrawHeight = m_width;
 
 	SDL_ShowCursor(SDL_DISABLE); //disable the mouse icon while in window
 
@@ -72,6 +72,8 @@ void Psydb3Cursor::Draw() {
 		m_iCurrentScreenX + m_iDrawWidth - 1,
 		m_iCurrentScreenY + m_iDrawHeight - 1 - 12,
 		0x000000);
+
+	//FOR LOOP HERE DRAWING DOTS BETWEEN TURRET END AND CURSOR POSITION
 
 		StoreLastScreenPositionForUndraw();
 }

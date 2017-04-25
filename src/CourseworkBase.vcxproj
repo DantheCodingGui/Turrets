@@ -98,7 +98,9 @@
     <ClInclude Include="Psydb3PlayerTank.h" />
     <ClInclude Include="Psydb3RotationPosition.h" />
     <ClInclude Include="Psydb3Tank.h" />
+    <ClInclude Include="Psydb3TankDirectionState.h" />
     <ClInclude Include="Psydb3TileManager.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="templates.h" />
     <ClInclude Include="TileManager.h" />
     <ClInclude Include="BouncingBall.h" />
@@ -126,6 +128,7 @@
     <ClCompile Include="Psydb3Engine.cpp" />
     <ClCompile Include="Psydb3PlayerTank.cpp" />
     <ClCompile Include="Psydb3Tank.cpp" />
+    <ClCompile Include="Psydb3TankDirectionState.cpp" />
     <ClCompile Include="Psydb3TileManager.cpp" />
     <ClCompile Include="SimpleDemo.cpp" />
     <ClCompile Include="TileManager.cpp" />
@@ -142,6 +145,9 @@
     <ClCompile Include="Demo4Main.cpp" />
     <ClCompile Include="Demo4Object.cpp" />
     <ClCompile Include="Demo4TileManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CourseworkBase.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

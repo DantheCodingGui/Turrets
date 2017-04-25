@@ -2,6 +2,7 @@
 #include "DisplayableObject.h"
 #include "JPGImage.h"
 #include "Psydb3RotationPosition.h"
+#include "Psydb3TankDirectionState.h"
 class Psydb3Tank :
 	public DisplayableObject
 {
@@ -12,8 +13,10 @@ public:
     void Draw(); //abstract methods
 	virtual void DoUpdate(int iCurrentTime) = 0;
 	virtual void InitialiseSpriteImages() = 0;
-	virtual void InitialiseTankVelocities();
+	virtual void InitialiseTankStates();
+	virtual void InitialiseTankVelocities(double tankVelocities[4][2]);
 	void InitialiseTransparencyPixels();
+
 	void UpdateAnimation();
 	inline bool ShouldStartRotating(int currentDirection, int newDirection) {
 		int backCheck = currentDirection - 2;
@@ -38,12 +41,11 @@ protected:
 	bool m_moving;
 	bool m_rotating; //the tank base not turret
 
+	Psydb3TankDirectionState* m_tankStates[8];
+
 	ImageData* m_spriteImages[8]; //single sprite image object all images loaded into
-	int m_transparencyPixels[4][2];
 
-	Psydb3RotationPosition* rotator;
-
-	double m_tankVelocities[8][2];
+	//Psydb3RotationPosition* rotator;
 
 	BaseEngine* m_pEngine; //stores base engine pointer for code clarity going forward
 

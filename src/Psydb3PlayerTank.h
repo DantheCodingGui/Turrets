@@ -1,6 +1,5 @@
 #pragma once
 #include "Psydb3Tank.h"
-#include "JPGImage.h"
 class Psydb3PlayerTank :
 	public Psydb3Tank
 {
@@ -12,6 +11,6 @@ public:
 	void InitialiseSpriteImages();
 	void GetDirection();
 private:
-
+	//int iTimeUntilPoll;
 };
 

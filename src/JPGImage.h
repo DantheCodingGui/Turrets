@@ -13,7 +13,7 @@ public:
 	~ImageData()
 	{
 		if ( m_aiPixels != NULL )
-			delete[] m_aiPixels;
+ 			delete[] m_aiPixels;
 	}
 
 	// Ask for the wisth of the image
@@ -23,7 +23,7 @@ public:
 	int GetHeight() const { return m_iHeight; }
 
 	// Load the image with the specified filename
-	bool LoadImage( const char* szFileName );
+	bool LoadImage(const char* szFileName);
 
 	// Has an image been loaded correctly
 	bool IsLoaded() const { return m_aiPixels != NULL; }
