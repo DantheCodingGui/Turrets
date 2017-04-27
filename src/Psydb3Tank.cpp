@@ -6,15 +6,10 @@
 
 #include <cmath>
 
-Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y,
-	double maxDx, double maxDy)
+Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y)
 	: DisplayableObject(pEngine)
 	, m_x(x)
 	, m_y(y)
-	, m_dx(0)
-	, m_dy(0)
-	, m_maxDx(maxDx)
-	, m_maxDy(maxDy)
 	, m_animationCount(0)
 	, m_direction(0)
 	, m_animated(false)
@@ -141,6 +136,75 @@ void Psydb3Tank::Draw() {
 
 	StoreLastScreenPositionForUndraw();
 }
+
+void Psydb3Tank::DrawBarrel() {
+	double xpoints[8], ypoints[8];
+
+	int targetX = GetTargetX();
+	int targetY = GetTargetY();
+
+	int centreX = m_x + m_tankStates[m_direction]->GetTankCentreOffsetX();
+	int centreY = m_y + m_tankStates[m_direction]->GetTankCentreOffsetY();
+
+	double angle = atan2(m_pEngine->GetCurrentMouseY() - centreY, m_pEngine->GetCurrentMouseX() - centreX); 
+
+	double vectorX = cos(angle);
+	double vectorY = sin(angle);
+
+	double angleCompensation;
+
+	double newAngle = angle + M_PI;
+	if (fmod(newAngle, M_PI) <= M_PI / 2) 
+		angleCompensation = (2.0 / 3.0 + (fmod(M_PI / 2 - angle + M_PI, M_PI / 2) / M_PI / 2) / 3);
+	else if (fmod(newAngle, M_PI) > M_PI / 2) 
+		angleCompensation = (2.0 / 3.0 + (fmod(angle + M_PI, M_PI / 2) / M_PI / 2) / 3);
+
+	vectorY *= angleCompensation;
+
+	int mouseX = m_pEngine->GetCurrentMouseX();
+	int mouseY = m_pEngine->GetCurrentMouseY();
+
+	double perpendicularVectorX = (vectorY / angleCompensation);
+	double perpendicularVectorY = -(vectorX * angleCompensation);
+
+	double xPerpendicular = 3 * perpendicularVectorX;
+	double yPerpendicular = 3 * perpendicularVectorY;
+
+	double xThinBarrel = 20 * vectorX;
+	double yThinBarrel = 20 * vectorY;
+
+	xpoints[0] = centreX + xPerpendicular + xThinBarrel / 2;
+	ypoints[0] = centreY + yPerpendicular + yThinBarrel / 2;
+	xpoints[7] = centreX - xPerpendicular + xThinBarrel / 2;
+	ypoints[7] = centreY - yPerpendicular + yThinBarrel / 2;
+
+	xpoints[1] = xpoints[0] + xThinBarrel;
+	ypoints[1] = ypoints[0] + yThinBarrel;
+	xpoints[6] = xpoints[7] + xThinBarrel;
+	ypoints[6] = ypoints[7] + yThinBarrel;
+
+	xpoints[2] = xpoints[1] + xPerpendicular / 3 * 2;
+	ypoints[2] = ypoints[1] + yPerpendicular / 3 * 2;
+	xpoints[5] = xpoints[6] - xPerpendicular / 3 * 2;
+	ypoints[5] = ypoints[6] - yPerpendicular / 3 * 2;
+
+	double xThickBarrel = 5 * vectorX;
+	double yThickBarrel = 5 * vectorY;
+
+	xpoints[3] = xpoints[2] + xThickBarrel;
+	ypoints[3] = ypoints[2] + yThickBarrel;
+	xpoints[4] = xpoints[5] + xThickBarrel;
+	ypoints[4] = ypoints[5] + yThickBarrel;
+
+	m_pEngine->DrawPolygon(
+		8,
+		xpoints,
+		ypoints,
+		0X0B290A,
+		m_pEngine->GetForeground());
+}
+
+
 
 void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
 

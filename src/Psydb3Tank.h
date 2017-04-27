@@ -7,15 +7,17 @@ class Psydb3Tank :
 	public DisplayableObject
 {
 public:
-	Psydb3Tank(BaseEngine* pEngine, double x, double y,
-				double maxDx, double maxDy);
+	Psydb3Tank(BaseEngine* pEngine, double x, double y);
 	~Psydb3Tank();
     void Draw(); //abstract methods
+	void DrawBarrel();
+	void GetBarrelCoords(double* points, int targetX, int targetY);
 	virtual void DoUpdate(int iCurrentTime) = 0;
+	virtual int GetTargetX() = 0;
+	virtual int GetTargetY() = 0;
 	virtual void InitialiseSpriteImages() = 0;
 	virtual void InitialiseTankStates();
 	virtual void InitialiseTankVelocities(double tankVelocities[4][2]);
-	virtual void DrawBarrel() = 0;
 	void InitialiseTransparencyPixels();
 
 	void UpdateAnimation();
@@ -32,17 +34,13 @@ public:
 protected:
 	double m_x;
 	double m_y;
-	double m_dx;
-	double m_dy;
-	double m_maxDx; //maximum speeds of tank
-	double m_maxDy;
 	int m_direction;
 	//int m_prevDirection; //previous direction used to fix drawing bug
 	bool m_animated; //is image loaded default or animated version
 	bool m_moving;
-	bool m_rotating; //the tank base not turret
+	bool m_rotating; //is the tank BASE rotating
 
-	Psydb3TankDirectionState* m_tankStates[8];
+	Psydb3TankDirectionState* m_tankStates[8]; //stores data specific to the direction the tank is facing
 
 	ImageData* m_spriteImages[8]; //single sprite image object all images loaded into
 
@@ -52,7 +50,7 @@ protected:
 
 	int m_animationCount; //used to change the sprite image upon count progress
 
-	int m_iDrawTankBaseWidth;
+	int m_iDrawTankBaseWidth; //second set of values needed for tank barrel undraw
 	int m_iDrawTankBaseHeight;
 };
 

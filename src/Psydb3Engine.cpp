@@ -73,7 +73,7 @@ int Psydb3Engine::InitialiseObjects() {
 	DestroyOldObjects();
 
 	CreateObjectArray(m_noOfDisplayObjects + 1);
-	StoreObjectInArray(0, new Psydb3PlayerTank(this, 500.0, 500.0, 0.5, 0.5));
+	StoreObjectInArray(0, new Psydb3PlayerTank(this, 500.0, 500.0));
 	StoreObjectInArray(1, new Psydb3Cursor(this));
 	StoreObjectInArray(m_noOfDisplayObjects, NULL);
 

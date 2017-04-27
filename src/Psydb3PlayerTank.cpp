@@ -2,9 +2,8 @@
 #include "header.h"
 #include "templates.h"
 
-Psydb3PlayerTank::Psydb3PlayerTank(BaseEngine* pEngine, double x, double y,
-								double maxDx, double maxDy)
-	: Psydb3Tank(pEngine, x, y, maxDx, maxDy) {
+Psydb3PlayerTank::Psydb3PlayerTank(BaseEngine* pEngine, double x, double y)
+	: Psydb3Tank(pEngine, x, y) {
 	InitialiseTankStates();
 }
 
@@ -90,127 +89,11 @@ void Psydb3PlayerTank::GetDirection() {
 	m_direction = tempDirection;
 }
 
-void Psydb3PlayerTank::DrawBarrel() {
-	double points[16];
-	double xpoints[8], ypoints[8];
-
-	GetBarrelCoords(points);
-
-	for (int i = 0; i < 8; ++i) {
-		xpoints[i] = points[i];
-		ypoints[i] = points[i + 8];
-		//printf("x: %f, y: %f\n", xpoints[i], ypoints[i]);
-	}
-
-	m_pEngine->DrawPolygon(
-		8, 
-		xpoints,//XARRAY
-		ypoints,//YARRAY
-		0X0B290A,
-		m_pEngine->GetForeground());
-
-}
-
-void Psydb3PlayerTank::GetBarrelCoords(double points[]) {
-	int centreX = m_x + m_tankStates[m_direction]->GetTankCentreOffsetX();
-	int centreY = m_y + m_tankStates[m_direction]->GetTankCentreOffsetY();
-
-	double angle = atan2(m_pEngine->GetCurrentMouseY() - centreY, m_pEngine->GetCurrentMouseX() - centreX); //in degrees
-	printf("angle: %f\n", angle);
-	
-	double vectorX = cos(angle);
-	double vectorY = sin(angle);
-
-	double angleCompensation;
-
-	double newAngle = angle + M_PI;
-	if (fmod(newAngle, M_PI) <= M_PI/2) {
-		angleCompensation = (2.0 / 3.0 + (fmod(M_PI / 2 - angle + M_PI, M_PI / 2) / M_PI / 2) / 3);
-		printf("under\n");
-	}
-	else if (fmod(newAngle, M_PI) > M_PI / 2) {
-		angleCompensation = (2.0 / 3.0 + (fmod(angle + M_PI, M_PI / 2) / M_PI / 2) / 3);
-		printf("over\n");
-	}
-
-	
-	vectorY *= angleCompensation;
-
-	//printf("vecX: %f, vecY: %f\n", vectorX, vectorY);
-
-	int mouseX = m_pEngine->GetCurrentMouseX();
-	int mouseY = m_pEngine->GetCurrentMouseY();
-
-	double perpendicularVectorX = (vectorY / angleCompensation);
-	double perpendicularVectorY = -(vectorX * angleCompensation);
-
-	double xPerpendicular = 3 * perpendicularVectorX;
-	double yPerpendicular = 3 * perpendicularVectorY;
-
-	double xThinBarrel = 20 * vectorX;
-	double yThinBarrel = 20 * vectorY;
-
-	points[0] = centreX + xPerpendicular + xThinBarrel / 2;
-	points[8] = centreY + yPerpendicular + yThinBarrel / 2;
-	points[7] = centreX - xPerpendicular + xThinBarrel / 2;
-	points[15] = centreY - yPerpendicular + yThinBarrel / 2;
-
-	points[1] = points[0] + xThinBarrel;
-	points[9] = points[8] + yThinBarrel;
-	points[6] = points[7] + xThinBarrel;
-	points[14] = points[15] + yThinBarrel;
-
-	points[2] = points[1] + xPerpendicular / 3 * 2;
-	points[10] = points[9] + yPerpendicular / 3 * 2;
-	points[5] = points[6] - xPerpendicular / 3 * 2;
-	points[13] = points[14] - yPerpendicular / 3 * 2;
-
-	double xThickBarrel = 5 * vectorX;
-	double yThickBarrel = 5 * vectorY;
-
-	points[3] = points[2] + xThickBarrel;
-	points[11] = points[10] + yThickBarrel;
-	points[4] = points[5] + xThickBarrel;
-	points[12] = points[13] + yThickBarrel;
-}
-
 void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
 	
 	GetDirection();
 
 	if (m_moving) {
-#if 0
-		switch (m_direction) {
-			case (0) :
-				m_x -= 0.4;
-				break;
-			case (1) :
-				m_x -= 0.3;
-				m_y -= 0.2;
-				break;
-			case (2) :
-				m_y -= 0.4;
-				break;
-			case (3) :
-				m_x += 0.3;
-				m_y -= 0.2;
-				break;
-			case (4) :
-				m_x += 0.4;
-				break;
-			case (5) :
-				m_x += 0.3;
-				m_y += 0.2;
-				break;
-			case (6) :
-				m_y += 0.4;
-				break;
-			case (7) :
-				m_x -= 0.3;
-				m_y += 0.2;
-				break;
-		}
-#endif
 		m_x += m_tankStates[m_direction]->GetTankVelocityX();
 		m_y += m_tankStates[m_direction]->GetTankVelocityY();
 
@@ -218,9 +101,6 @@ void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
 	}
 	else
 		m_animationCount = 0;
-
-	//m_x += m_dx;
-	//m_y += m_dy;
 
 	m_iCurrentScreenX = (int)m_x - 20;
 	m_iCurrentScreenY = (int)m_y - 20;
