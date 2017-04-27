@@ -124,13 +124,16 @@ void Psydb3PlayerTank::GetBarrelCoords(double points[]) {
 	double angleCompensation;
 
 	double newAngle = angle + M_PI;
-	if (fmod(newAngle, M_PI) < 1.5708) 
-		angleCompensation = (2.0 / 3.0 + (fmod(1.5708 - angle + M_PI, 1.5708) / 1.5708) / 3);
-	else if (fmod(newAngle, M_PI) > 1.5708)
-		angleCompensation = (2.0 / 3.0 + (fmod(angle + M_PI, 1.5708) / 1.5708) / 3);
-	else
-		angleCompensation = 2.0 / 3.0;
+	if (fmod(newAngle, M_PI) <= M_PI/2) {
+		angleCompensation = (2.0 / 3.0 + (fmod(M_PI / 2 - angle + M_PI, M_PI / 2) / M_PI / 2) / 3);
+		printf("under\n");
+	}
+	else if (fmod(newAngle, M_PI) > M_PI / 2) {
+		angleCompensation = (2.0 / 3.0 + (fmod(angle + M_PI, M_PI / 2) / M_PI / 2) / 3);
+		printf("over\n");
+	}
 
+	
 	vectorY *= angleCompensation;
 
 	//printf("vecX: %f, vecY: %f\n", vectorX, vectorY);

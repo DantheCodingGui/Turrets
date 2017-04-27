@@ -1,6 +1,6 @@
  CourseworkBase
 
- Timestamp is 59023191 (Thu Apr 27 18:59:45 2017)
+ Timestamp is 5902343a (Thu Apr 27 19:11:06 2017)
 
  Preferred load address is 00400000
 
@@ -39,13 +39,13 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
- 0000:00000000       ___guard_fids_table        00000000     <absolute>
- 0000:00000000       ___guard_flags             00000000     <absolute>
- 0000:00000000       __except_list              00000000     <absolute>
  0000:00000000       ___guard_fids_count        00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       __except_list              00000000     <absolute>
+ 0000:00000000       ___guard_flags             00000000     <absolute>
  0000:00000020       ___safe_se_handler_count   00000020     <absolute>
- 0000:00009876       __ldused                   00009876     <absolute>
  0000:00009876       __fltused                  00009876     <absolute>
+ 0000:00009876       __ldused                   00009876     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00000c70       _main                      00401c70 f   SDL2main:SDL_windows_main.obj
  0001:00000ca0       _WinMain@16                00401ca0 f   SDL2main:SDL_windows_main.obj
@@ -117,8 +117,8 @@
  0001:00006500       ?UpdateAllObjects@BaseEngine@@UAEXH@Z 00407500 f   BaseEngine.obj
  0001:000065a0       ??0DisplayableObject@@QAE@PAVBaseEngine@@@Z 004075a0 f   DisplayableObject.obj
  0001:00006640       ??1DisplayableObject@@UAE@XZ 00407640 f   DisplayableObject.obj
- 0001:00006670       ??_GDisplayableObject@@UAEPAXI@Z 00407670 f i DisplayableObject.obj
  0001:00006670       ??_EDisplayableObject@@UAEPAXI@Z 00407670 f i DisplayableObject.obj
+ 0001:00006670       ??_GDisplayableObject@@UAEPAXI@Z 00407670 f i DisplayableObject.obj
  0001:000066c0       ?DoUpdate@DisplayableObject@@UAEXH@Z 004076c0 f   DisplayableObject.obj
  0001:000066e0       ?Draw@DisplayableObject@@UAEXXZ 004076e0 f   DisplayableObject.obj
  0001:000067a0       ?Notify@DisplayableObject@@UAEJH@Z 004077a0 f i DisplayableObject.obj
@@ -147,8 +147,8 @@
  0001:000081d0       ?ShrinkFrom@ImageData@@QAEXPBV1@H@Z 004091d0 f   JPGImage.obj
  0001:00008440       ??0Psydb3Cursor@@QAE@PAVBaseEngine@@@Z 00409440 f   Psydb3Cursor.obj
  0001:00008570       ??1Psydb3Cursor@@UAE@XZ    00409570 f   Psydb3Cursor.obj
- 0001:000085a0       ??_EPsydb3Cursor@@UAEPAXI@Z 004095a0 f i Psydb3Cursor.obj
  0001:000085a0       ??_GPsydb3Cursor@@UAEPAXI@Z 004095a0 f i Psydb3Cursor.obj
+ 0001:000085a0       ??_EPsydb3Cursor@@UAEPAXI@Z 004095a0 f i Psydb3Cursor.obj
  0001:000085f0       ?BoundaryDetection@Psydb3Cursor@@QAEXXZ 004095f0 f   Psydb3Cursor.obj
  0001:000086c0       ?DoUpdate@Psydb3Cursor@@UAEXH@Z 004096c0 f   Psydb3Cursor.obj
  0001:00008770       ?Draw@Psydb3Cursor@@UAEXXZ 00409770 f   Psydb3Cursor.obj
@@ -164,8 +164,8 @@
  0001:00008b00       ?SetVisible@DisplayableObject@@QAEX_N@Z 00409b00 f i Psydb3Cursor.obj
  0001:00008b30       ??0Psydb3Engine@@QAE@XZ    00409b30 f   Psydb3Engine.obj
  0001:00008be0       ??1Psydb3Engine@@UAE@XZ    00409be0 f   Psydb3Engine.obj
- 0001:00008c60       ??_GPsydb3Engine@@UAEPAXI@Z 00409c60 f i Psydb3Engine.obj
  0001:00008c60       ??_EPsydb3Engine@@UAEPAXI@Z 00409c60 f i Psydb3Engine.obj
+ 0001:00008c60       ??_GPsydb3Engine@@UAEPAXI@Z 00409c60 f i Psydb3Engine.obj
  0001:00008cb0       ?DrawAllTiles@TileManager@@QBEXPAVBaseEngine@@PAUSDL_Surface@@HHHH@Z 00409cb0 f i Psydb3Engine.obj
  0001:00008d10       ?DrawableObjectsChanged@BaseEngine@@QAEXXZ 00409d10 f i Psydb3Engine.obj
  0001:00008d40       ?GameAction@Psydb3Engine@@UAEXXZ 00409d40 f   Psydb3Engine.obj
@@ -252,12 +252,12 @@
  0001:0000d310       ??1BouncingBall1@@UAE@XZ   0040e310 f i BouncingBall.obj
  0001:0000d340       ??1BouncingBall2@@UAE@XZ   0040e340 f i BouncingBall.obj
  0001:0000d370       ??1BouncingBall@@UAE@XZ    0040e370 f   BouncingBall.obj
- 0001:0000d3a0       ??_GBouncingBall1@@UAEPAXI@Z 0040e3a0 f i BouncingBall.obj
  0001:0000d3a0       ??_EBouncingBall1@@UAEPAXI@Z 0040e3a0 f i BouncingBall.obj
- 0001:0000d3f0       ??_GBouncingBall2@@UAEPAXI@Z 0040e3f0 f i BouncingBall.obj
+ 0001:0000d3a0       ??_GBouncingBall1@@UAEPAXI@Z 0040e3a0 f i BouncingBall.obj
  0001:0000d3f0       ??_EBouncingBall2@@UAEPAXI@Z 0040e3f0 f i BouncingBall.obj
- 0001:0000d440       ??_GBouncingBall@@UAEPAXI@Z 0040e440 f i BouncingBall.obj
+ 0001:0000d3f0       ??_GBouncingBall2@@UAEPAXI@Z 0040e3f0 f i BouncingBall.obj
  0001:0000d440       ??_EBouncingBall@@UAEPAXI@Z 0040e440 f i BouncingBall.obj
+ 0001:0000d440       ??_GBouncingBall@@UAEPAXI@Z 0040e440 f i BouncingBall.obj
  0001:0000d490       ?Calculate@MovementPosition@@QAEXH@Z 0040e490 f i BouncingBall.obj
  0001:0000d590       ?DoUpdate@BouncingBall1@@UAEXH@Z 0040e590 f   BouncingBall.obj
  0001:0000d700       ?DoUpdate@BouncingBall2@@UAEXH@Z 0040e700 f   BouncingBall.obj
@@ -288,13 +288,13 @@
  0001:0000eb30       ?SetupBackgroundBuffer@BouncingBallMain@@UAEXXZ 0040fb30 f   BouncingBallMain.obj
  0001:0000f420       ??0Demo1Main@@QAE@XZ       00410420 f   Demo1Main.obj
  0001:0000f460       ??1Demo1Main@@UAE@XZ       00410460 f   Demo1Main.obj
- 0001:0000f490       ??_GDemo1Main@@UAEPAXI@Z   00410490 f i Demo1Main.obj
  0001:0000f490       ??_EDemo1Main@@UAEPAXI@Z   00410490 f i Demo1Main.obj
+ 0001:0000f490       ??_GDemo1Main@@UAEPAXI@Z   00410490 f i Demo1Main.obj
  0001:0000f4e0       ?SetupBackgroundBuffer@Demo1Main@@UAEXXZ 004104e0 f   Demo1Main.obj
  0001:0000f510       ??0Demo2Main@@QAE@XZ       00410510 f   Demo2Main.obj
  0001:0000f5a0       ??1Demo2Main@@UAE@XZ       004105a0 f   Demo2Main.obj
- 0001:0000f620       ??_EDemo2Main@@UAEPAXI@Z   00410620 f i Demo2Main.obj
  0001:0000f620       ??_GDemo2Main@@UAEPAXI@Z   00410620 f i Demo2Main.obj
+ 0001:0000f620       ??_EDemo2Main@@UAEPAXI@Z   00410620 f i Demo2Main.obj
  0001:0000f670       ?DrawStrings@Demo2Main@@UAEXXZ 00410670 f   Demo2Main.obj
  0001:0000f6d0       ?GameAction@Demo2Main@@UAEXXZ 004106d0 f   Demo2Main.obj
  0001:0000f730       ?InitialiseObjects@Demo2Main@@UAEHXZ 00410730 f   Demo2Main.obj
@@ -303,8 +303,8 @@
  0001:0000f890       ?SetupBackgroundBuffer@Demo2Main@@UAEXXZ 00410890 f   Demo2Main.obj
  0001:0000f980       ??0Demo2Object@@QAE@PAVDemo2Main@@@Z 00410980 f   Demo2Object.obj
  0001:0000fae0       ??1Demo2Object@@UAE@XZ     00410ae0 f   Demo2Object.obj
- 0001:0000fb10       ??_GDemo2Object@@UAEPAXI@Z 00410b10 f i Demo2Object.obj
  0001:0000fb10       ??_EDemo2Object@@UAEPAXI@Z 00410b10 f i Demo2Object.obj
+ 0001:0000fb10       ??_GDemo2Object@@UAEPAXI@Z 00410b10 f i Demo2Object.obj
  0001:0000fb60       ?DoUpdate@Demo2Object@@UAEXH@Z 00410b60 f   Demo2Object.obj
  0001:0000fc70       ?Draw@Demo2Object@@UAEXXZ  00410c70 f   Demo2Object.obj
  0001:0000fcf0       ??0Demo2TileManager@@QAE@XZ 00410cf0 f   Demo2TileManager.obj
@@ -312,8 +312,8 @@
  0001:0000fd60       ?DrawTileAt@Demo2TileManager@@UAEXPAVBaseEngine@@PAUSDL_Surface@@HHHH@Z 00410d60 f   Demo2TileManager.obj
  0001:0000fde0       ??0Demo3Main@@QAE@XZ       00410de0 f   Demo3Main.obj
  0001:0000fe70       ??1Demo3Main@@UAE@XZ       00410e70 f   Demo3Main.obj
- 0001:0000fef0       ??_EDemo3Main@@UAEPAXI@Z   00410ef0 f i Demo3Main.obj
  0001:0000fef0       ??_GDemo3Main@@UAEPAXI@Z   00410ef0 f i Demo3Main.obj
+ 0001:0000fef0       ??_EDemo3Main@@UAEPAXI@Z   00410ef0 f i Demo3Main.obj
  0001:0000ff40       ?DrawStrings@Demo3Main@@UAEXXZ 00410f40 f   Demo3Main.obj
  0001:0000ffa0       ?GameAction@Demo3Main@@UAEXXZ 00410fa0 f   Demo3Main.obj
  0001:00010000       ?InitialiseObjects@Demo3Main@@UAEHXZ 00411000 f   Demo3Main.obj
@@ -498,15 +498,14 @@
  0002:0000030c       ___xi_a                    0041830c     MSVCRT:cinitexe.obj
  0002:00000724       ___xi_z                    00418724     MSVCRT:cinitexe.obj
  0002:00000868       ??_C@_0CI@ODDNEOI@My?5Demonstration?5Program?5?3?5Size?5@ 00418868     mainfunction.obj
- 0002:00000890       __real@3ff921ff2e48e8a7    00418890     Psydb3PlayerTank.obj
+ 0002:00000890       __real@4014000000000000    00418890     Psydb3PlayerTank.obj
  0002:00000898       ??_C@_0BI@NHFDFHOB@Cornerstone?5Regular?4ttf?$AA@ 00418898     mainfunction.obj
  0002:000008b8       ??_7BaseEngine@@6B@        004188b8     BaseEngine.obj
- 0002:00000910       __real@4014000000000000    00418910     Psydb3PlayerTank.obj
- 0002:00000918       ??_C@_0L@OJLNACCI@angle?3?5?$CFf?6?$AA@ 00418918     Psydb3PlayerTank.obj
+ 0002:00000910       __real@4034000000000000    00418910     Psydb3PlayerTank.obj
+ 0002:00000918       ??_C@_05GAGPKFDJ@over?6?$AA@ 00418918     Psydb3PlayerTank.obj
  0002:00000924       ??_C@_0BI@FBLGJKMC@Unable?5to?5init?5SDL?3?5?$CFs?6?$AA@ 00418924     BaseEngine.obj
  0002:0000093c       ??_C@_0CM@IHOJMAHM@Draw?5for?5points?5?$CFd?0?5?$CFd?0?5?$CFd?5of?5?$CFd@ 0041893c     BaseEngine.obj
  0002:00000968       ??_C@_0BG@KPFFDCIH@?7Copy?5point?5?$CFd?5to?5?$CFd?6?$AA@ 00418968     BaseEngine.obj
- 0002:00000980       __real@4034000000000000    00418980     Psydb3PlayerTank.obj
  0002:00000990       ??_C@_0EG@PFCKNAL@Draw?5shortened?5line?5?$CFd?0?$CFd?5to?5?$CFd?0@ 00418990     BaseEngine.obj
  0002:000009e8       __real@0000000000000000    004189e8     BaseEngine.obj
  0002:000009f8       __real@3fe0000000000000    004189f8     BaseEngine.obj
@@ -547,6 +546,8 @@
  0002:00000d8c       ??_C@_0BM@BPFGFPDF@TankSprites?1Player?1DL_2?4png?$AA@ 00418d8c     Psydb3PlayerTank.obj
  0002:00000db0       ??_C@_0BL@MKHADEII@TankSprites?1Player?1V_2?4png?$AA@ 00418db0     Psydb3PlayerTank.obj
  0002:00000dd0       ??_C@_0BM@HGGHHMCM@TankSprites?1Player?1DR_2?4png?$AA@ 00418dd0     Psydb3PlayerTank.obj
+ 0002:00000dec       ??_C@_0L@OJLNACCI@angle?3?5?$CFf?6?$AA@ 00418dec     Psydb3PlayerTank.obj
+ 0002:00000df8       ??_C@_06CDONDDCP@under?6?$AA@ 00418df8     Psydb3PlayerTank.obj
  0002:00000e48       __real@3fe5555555555555    00418e48     Psydb3PlayerTank.obj
  0002:00000e70       __xmm@80000000000000008000000000000000 00418e70     Psydb3PlayerTank.obj
  0002:00000e88       ??_7Psydb3Tank@@6B@        00418e88     Psydb3Tank.obj
