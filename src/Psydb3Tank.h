@@ -15,6 +15,7 @@ public:
 	virtual void InitialiseSpriteImages() = 0;
 	virtual void InitialiseTankStates();
 	virtual void InitialiseTankVelocities(double tankVelocities[4][2]);
+	virtual void DrawBarrel() = 0;
 	void InitialiseTransparencyPixels();
 
 	void UpdateAnimation();

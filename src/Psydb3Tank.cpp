@@ -53,15 +53,16 @@ void Psydb3Tank::InitialiseTankStates() {
 	double tankVelocities[4][2];
 	InitialiseTankVelocities(tankVelocities);
 
-	m_tankStates[0] = new Psydb3TankDirectionState(0, 0, tankVelocities[0][0], tankVelocities[0][1], 13, 1);
-	m_tankStates[1] = new Psydb3TankDirectionState(0, 0, tankVelocities[1][0], tankVelocities[1][1], 24, 2);
-	m_tankStates[2] = new Psydb3TankDirectionState(30, 0, tankVelocities[2][0], tankVelocities[2][1], 14, 2);
-	m_tankStates[3] = new Psydb3TankDirectionState(0, 0, tankVelocities[3][0], tankVelocities[3][1], 24, 2);
+	m_tankStates[0] = new Psydb3TankDirectionState(0, 0, tankVelocities[0][0], tankVelocities[0][1], 13, 1, 29, 15);
+	m_tankStates[1] = new Psydb3TankDirectionState(0, 0, tankVelocities[1][0], tankVelocities[1][1], 24, 2, 37, 16);
+	m_tankStates[2] = new Psydb3TankDirectionState(30, 0, tankVelocities[2][0], tankVelocities[2][1], 14, 2, 27, 16);
+	m_tankStates[3] = new Psydb3TankDirectionState(0, 0, tankVelocities[3][0], tankVelocities[3][1], 24, 2, 37, 16);
 
 	for (int i = 0; i < 4; ++i) {
 		m_tankStates[i + 4] = new Psydb3TankDirectionState(m_tankStates[i]->GetTransparencyX(), m_tankStates[i]->GetTransparencyY(),
 			-m_tankStates[i]->GetTankVelocityX(), -m_tankStates[i]->GetTankVelocityY(),
-			m_tankStates[i]->GetTurretDrawOffsetX(), m_tankStates[i]->GetTurretDrawOffsetY());
+			m_tankStates[i]->GetTurretDrawOffsetX(), m_tankStates[i]->GetTurretDrawOffsetY(),
+			m_tankStates[i]->GetTankCentreOffsetX(), m_tankStates[i]->GetTankCentreOffsetY());
 	}
 }
 
@@ -72,6 +73,7 @@ Psydb3Tank::~Psydb3Tank() {
 }
 
 void Psydb3Tank::Draw() { 
+
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
 	
 	//FIND A BETTER PLACE FOR THIS
@@ -85,9 +87,22 @@ void Psydb3Tank::Draw() {
 		0, m_tankStates[m_direction]->GetTransparencyX(),
 		m_tankStates[m_direction]->GetTransparencyY());
 
+	m_iDrawWidth += 40;
+	m_iDrawHeight += 40;
+
 	int turretDrawBaseX = m_tankStates[m_direction]->GetTurretDrawOffsetX();
 	int turretDrawBaseY = m_tankStates[m_direction]->GetTurretDrawOffsetY();
 
+	//draw barrel
+	bool drawBelow;
+	if (m_pEngine->GetCurrentMouseY() < (m_y + m_iDrawHeight / 2))
+		drawBelow = true;
+	else
+		drawBelow = false;
+	
+	if (drawBelow)
+		DrawBarrel();
+#
 	//draw turret 
 	m_pEngine->DrawScreenOval(
 		m_iCurrentScreenX + turretDrawBaseX,
@@ -118,8 +133,15 @@ void Psydb3Tank::Draw() {
 		m_iCurrentScreenY + turretDrawBaseY + 19 - 1,
 		0x113d0f,
 		m_pEngine->GetForeground());
-	
+
+	if (!drawBelow)
+		DrawBarrel();
+
+	m_iCurrentScreenX -= 20;
+	m_iCurrentScreenY -= 20;
 	StoreLastScreenPositionForUndraw();
+	m_iCurrentScreenX += 20;
+	m_iCurrentScreenY += 20;
 }
 
 void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
@@ -154,7 +176,6 @@ void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
 void Psydb3Tank::ImageSizeCompensation(int oldDirection, int newDirection) {
 	bool oldDirSmall = (oldDirection % 2 == 0) ? true : false;
 	bool newDirSmall = (newDirection % 2 == 0) ? true : false;
-	printf("image size adjusted\n");
 	if (oldDirSmall && !newDirSmall) {
 		m_x -= 7.5;
 		m_y -= 4;
