@@ -51,5 +51,8 @@ protected:
 	BaseEngine* m_pEngine; //stores base engine pointer for code clarity going forward
 
 	int m_animationCount; //used to change the sprite image upon count progress
+
+	int m_iDrawTankBaseWidth;
+	int m_iDrawTankBaseHeight;
 };
 

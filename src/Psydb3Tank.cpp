@@ -19,6 +19,8 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y,
 	, m_direction(0)
 	, m_animated(false)
 	, m_moving(false)
+	, m_iDrawTankBaseWidth(0)
+	, m_iDrawTankBaseHeight(0)
 	, m_pEngine(pEngine) {
 
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)x;
@@ -53,10 +55,10 @@ void Psydb3Tank::InitialiseTankStates() {
 	double tankVelocities[4][2];
 	InitialiseTankVelocities(tankVelocities);
 
-	m_tankStates[0] = new Psydb3TankDirectionState(0, 0, tankVelocities[0][0], tankVelocities[0][1], 13, 1, 29, 15);
-	m_tankStates[1] = new Psydb3TankDirectionState(0, 0, tankVelocities[1][0], tankVelocities[1][1], 24, 2, 37, 16);
-	m_tankStates[2] = new Psydb3TankDirectionState(30, 0, tankVelocities[2][0], tankVelocities[2][1], 14, 2, 27, 16);
-	m_tankStates[3] = new Psydb3TankDirectionState(0, 0, tankVelocities[3][0], tankVelocities[3][1], 24, 2, 37, 16);
+	m_tankStates[0] = new Psydb3TankDirectionState(0, 0, tankVelocities[0][0], tankVelocities[0][1], 13, 1, 28, 17);
+	m_tankStates[1] = new Psydb3TankDirectionState(0, 0, tankVelocities[1][0], tankVelocities[1][1], 24, 2, 39, 18);
+	m_tankStates[2] = new Psydb3TankDirectionState(30, 0, tankVelocities[2][0], tankVelocities[2][1], 14, 2, 29, 18);
+	m_tankStates[3] = new Psydb3TankDirectionState(0, 0, tankVelocities[3][0], tankVelocities[3][1], 24, 2, 39, 18);
 
 	for (int i = 0; i < 4; ++i) {
 		m_tankStates[i + 4] = new Psydb3TankDirectionState(m_tankStates[i]->GetTransparencyX(), m_tankStates[i]->GetTransparencyY(),
@@ -77,25 +79,25 @@ void Psydb3Tank::Draw() {
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
 	
 	//FIND A BETTER PLACE FOR THIS
-	m_iDrawWidth = m_spriteImages[drawImageIndex]->GetWidth();
-	m_iDrawHeight = m_spriteImages[drawImageIndex]->GetHeight();
+	m_iDrawTankBaseWidth = m_iDrawWidth = m_spriteImages[drawImageIndex]->GetWidth();
+	m_iDrawTankBaseHeight = m_iDrawHeight = m_spriteImages[drawImageIndex]->GetHeight();
+
+	m_iDrawWidth = m_iDrawTankBaseWidth + 40;
+	m_iDrawHeight = m_iDrawTankBaseHeight + 40;
 
 	m_spriteImages[drawImageIndex]->FlexibleRenderImageWithMask(m_pEngine->GetForeground(),
-		0, 0, m_iCurrentScreenX, m_iCurrentScreenY, 
-		m_iDrawWidth, 
-		m_iDrawHeight,
+		0, 0, (int)m_x, (int)m_y, 
+		m_iDrawTankBaseWidth,
+		m_iDrawTankBaseHeight,
 		0, m_tankStates[m_direction]->GetTransparencyX(),
 		m_tankStates[m_direction]->GetTransparencyY());
-
-	m_iDrawWidth += 40;
-	m_iDrawHeight += 40;
 
 	int turretDrawBaseX = m_tankStates[m_direction]->GetTurretDrawOffsetX();
 	int turretDrawBaseY = m_tankStates[m_direction]->GetTurretDrawOffsetY();
 
 	//draw barrel
 	bool drawBelow;
-	if (m_pEngine->GetCurrentMouseY() < (m_y + m_iDrawHeight / 2))
+	if (m_pEngine->GetCurrentMouseY() < m_y + m_tankStates[m_direction]->GetTankCentreOffsetY())
 		drawBelow = true;
 	else
 		drawBelow = false;
@@ -105,43 +107,39 @@ void Psydb3Tank::Draw() {
 #
 	//draw turret 
 	m_pEngine->DrawScreenOval(
-		m_iCurrentScreenX + turretDrawBaseX,
-		m_iCurrentScreenY + turretDrawBaseY + 9,
-		m_iCurrentScreenX + turretDrawBaseX + 31 - 1,
-		m_iCurrentScreenY + turretDrawBaseY + 31 - 1,
+		(int)m_x + turretDrawBaseX,
+		(int)m_y + turretDrawBaseY + 9,
+		(int)m_x + turretDrawBaseX + 31 - 1,
+		(int)m_y + turretDrawBaseY + 31 - 1,
 		0x144912);
 	m_pEngine->DrawScreenRectangle(
-		m_iCurrentScreenX + turretDrawBaseX + 1,
-		m_iCurrentScreenY + turretDrawBaseY + 14,
-		m_iCurrentScreenX + turretDrawBaseX + 30 - 1,
-		m_iCurrentScreenY + turretDrawBaseY + 24 - 1,
+		(int)m_x + turretDrawBaseX + 1,
+		(int)m_y + turretDrawBaseY + 14,
+		(int)m_x + turretDrawBaseX + 30 - 1,
+		(int)m_y + turretDrawBaseY + 24 - 1,
 		0x144912);
 	m_pEngine->DrawScreenOval(
-		m_iCurrentScreenX + turretDrawBaseX,
-		m_iCurrentScreenY + turretDrawBaseY,
-		m_iCurrentScreenX + turretDrawBaseX + 31 - 1,
-		m_iCurrentScreenY + turretDrawBaseY + 22 - 1,
+		(int)m_x + turretDrawBaseX,
+		(int)m_y + turretDrawBaseY,
+		(int)m_x + turretDrawBaseX + 31 - 1,
+		(int)m_y + turretDrawBaseY + 22 - 1,
 		0x20791E);
 	m_pEngine->DrawHollowOval(
-		m_iCurrentScreenX + turretDrawBaseX,
-		m_iCurrentScreenY + turretDrawBaseY,
-		m_iCurrentScreenX + turretDrawBaseX + 31 - 1,
-		m_iCurrentScreenY + turretDrawBaseY + 22 - 1,
-		m_iCurrentScreenX + turretDrawBaseX + 3,
-		m_iCurrentScreenY + turretDrawBaseY + 3,
-		m_iCurrentScreenX + turretDrawBaseX + 28 - 1,
-		m_iCurrentScreenY + turretDrawBaseY + 19 - 1,
-		0x113d0f,
+		(int)m_x + turretDrawBaseX,
+		(int)m_y + turretDrawBaseY,
+		(int)m_x + turretDrawBaseX + 31 - 1,
+		(int)m_y + turretDrawBaseY + 22 - 1,
+		(int)m_x + turretDrawBaseX + 3,
+		(int)m_y + turretDrawBaseY + 3,
+		(int)m_x + turretDrawBaseX + 28 - 1,
+		(int)m_y + turretDrawBaseY + 19 - 1,
+		0X0B290A,
 		m_pEngine->GetForeground());
 
 	if (!drawBelow)
 		DrawBarrel();
 
-	m_iCurrentScreenX -= 20;
-	m_iCurrentScreenY -= 20;
 	StoreLastScreenPositionForUndraw();
-	m_iCurrentScreenX += 20;
-	m_iCurrentScreenY += 20;
 }
 
 void Psydb3Tank::UpdateAnimation() { //switch tank images for animation

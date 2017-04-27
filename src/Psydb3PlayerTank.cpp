@@ -106,7 +106,7 @@ void Psydb3PlayerTank::DrawBarrel() {
 		8, 
 		xpoints,//XARRAY
 		ypoints,//YARRAY
-		0X0b290a,
+		0X0B290A,
 		m_pEngine->GetForeground());
 
 }
@@ -150,20 +150,20 @@ void Psydb3PlayerTank::GetBarrelCoords(double points[]) {
 	double xThinBarrel = 20 * vectorX;
 	double yThinBarrel = 20 * vectorY;
 
-	points[0] = centreX + xPerpendicular + xThinBarrel / 2 + 2;
-	points[8] = centreY + yPerpendicular + yThinBarrel / 2 + 2;
-	points[7] = centreX - xPerpendicular + xThinBarrel / 2 + 2;
-	points[15] = centreY - yPerpendicular + yThinBarrel / 2 + 2;
+	points[0] = centreX + xPerpendicular + xThinBarrel / 2;
+	points[8] = centreY + yPerpendicular + yThinBarrel / 2;
+	points[7] = centreX - xPerpendicular + xThinBarrel / 2;
+	points[15] = centreY - yPerpendicular + yThinBarrel / 2;
 
 	points[1] = points[0] + xThinBarrel;
 	points[9] = points[8] + yThinBarrel;
 	points[6] = points[7] + xThinBarrel;
 	points[14] = points[15] + yThinBarrel;
 
-	points[2] = points[1] + xPerpendicular / 3;
-	points[10] = points[9] + yPerpendicular / 3;
-	points[5] = points[6] - xPerpendicular / 3;
-	points[13] = points[14] - yPerpendicular / 3;
+	points[2] = points[1] + xPerpendicular / 3 * 2;
+	points[10] = points[9] + yPerpendicular / 3 * 2;
+	points[5] = points[6] - xPerpendicular / 3 * 2;
+	points[13] = points[14] - yPerpendicular / 3 * 2;
 
 	double xThickBarrel = 5 * vectorX;
 	double yThickBarrel = 5 * vectorY;
@@ -222,8 +222,8 @@ void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
 	//m_x += m_dx;
 	//m_y += m_dy;
 
-	m_iCurrentScreenX = (int)m_x;
-	m_iCurrentScreenY = (int)m_y;
+	m_iCurrentScreenX = (int)m_x - 20;
+	m_iCurrentScreenY = (int)m_y - 20;
 
 	RedrawObjects();
 }
