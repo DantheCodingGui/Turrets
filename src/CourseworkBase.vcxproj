@@ -93,6 +93,7 @@
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="JPGImage.h" />
     <ClInclude Include="MovementPosition.h" />
+    <ClInclude Include="Psydb3Bomb.h" />
     <ClInclude Include="Psydb3Cursor.h" />
     <ClInclude Include="Psydb3Engine.h" />
     <ClInclude Include="Psydb3PlayerTank.h" />
@@ -124,6 +125,7 @@
     <ClCompile Include="DisplayableObject.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="JPGImage.cpp" />
+    <ClCompile Include="Psydb3Bomb.cpp" />
     <ClCompile Include="Psydb3Cursor.cpp" />
     <ClCompile Include="Psydb3Engine.cpp" />
     <ClCompile Include="Psydb3PlayerTank.cpp" />
