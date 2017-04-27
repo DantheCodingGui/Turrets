@@ -131,7 +131,6 @@ void Psydb3PlayerTank::GetBarrelCoords(double points[]) {
 	else
 		angleCompensation = 2.0 / 3.0;
 
-	//vectorX *= angleCompensation;
 	vectorY *= angleCompensation;
 
 	//printf("vecX: %f, vecY: %f\n", vectorX, vectorY);
@@ -139,9 +138,8 @@ void Psydb3PlayerTank::GetBarrelCoords(double points[]) {
 	int mouseX = m_pEngine->GetCurrentMouseX();
 	int mouseY = m_pEngine->GetCurrentMouseY();
 
-	double perpendicularVectorX = (vectorY /= angleCompensation);
-	double perpendicularVectorY = -(vectorX *= angleCompensation);
-	//printf("perpendicularvecX: %f, perpendicularvecY: %f\n", perpendicularVectorX, perpendicularVectorY);
+	double perpendicularVectorX = (vectorY / angleCompensation);
+	double perpendicularVectorY = -(vectorX * angleCompensation);
 
 	double xPerpendicular = 3 * perpendicularVectorX;
 	double yPerpendicular = 3 * perpendicularVectorY;
