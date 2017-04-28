@@ -140,61 +140,55 @@ void Psydb3Tank::Draw() {
 void Psydb3Tank::DrawBarrel() {
 	double xpoints[8], ypoints[8];
 
+	//co-ordinates of start and end vector calculations
 	int targetX = GetTargetX();
 	int targetY = GetTargetY();
-
-	int centreX = m_x + m_tankStates[m_direction]->GetTankCentreOffsetX();
+	int centreX = m_x + m_tankStates[m_direction]->GetTankCentreOffsetX(); 
 	int centreY = m_y + m_tankStates[m_direction]->GetTankCentreOffsetY();
 
-	double angle = atan2(m_pEngine->GetCurrentMouseY() - centreY, m_pEngine->GetCurrentMouseX() - centreX); 
+	//angle between tank and target (in radians)
+	double angle = atan2(targetY - centreY, targetX - centreX); 
 
-	double vectorX = cos(angle);
-	double vectorY = sin(angle);
+	double nonNegAngle = angle + M_PI;
 
+	//compensated for the approx 30 degree angle the camera is looking at, y values are always 2/3 the size
 	double angleCompensation;
-
-	double newAngle = angle + M_PI;
-	if (fmod(newAngle, M_PI) <= M_PI / 2) 
+	if (fmod(nonNegAngle, M_PI) <= M_PI / 2)
 		angleCompensation = (2.0 / 3.0 + (fmod(M_PI / 2 - angle + M_PI, M_PI / 2) / M_PI / 2) / 3);
-	else if (fmod(newAngle, M_PI) > M_PI / 2) 
+	else if (fmod(nonNegAngle, M_PI) > M_PI / 2)
 		angleCompensation = (2.0 / 3.0 + (fmod(angle + M_PI, M_PI / 2) / M_PI / 2) / 3);
 
-	vectorY *= angleCompensation;
+	//unit vectors facing the target
+	double unitVectorX = cos(angle); 
+	double unitVectorY = sin(angle);
 
-	int mouseX = m_pEngine->GetCurrentMouseX();
-	int mouseY = m_pEngine->GetCurrentMouseY();
+	unitVectorY *= angleCompensation;
 
-	double perpendicularVectorX = (vectorY / angleCompensation);
-	double perpendicularVectorY = -(vectorX * angleCompensation);
+	//unit vectors perpendicular to the target
+	double unitPerpenVectorX = (unitVectorY / angleCompensation); 
+	double unitPerpenVectorY = -(unitVectorX * angleCompensation);
 
-	double xPerpendicular = 3 * perpendicularVectorX;
-	double yPerpendicular = 3 * perpendicularVectorY;
+	//all points defined through quantities of these two vectors
 
-	double xThinBarrel = 20 * vectorX;
-	double yThinBarrel = 20 * vectorY;
+	xpoints[0] = (double)centreX + (3 * unitPerpenVectorX) + (10 * unitVectorX);
+	ypoints[0] = (double)centreY + (3 * unitPerpenVectorY) + (10 * unitVectorY);
+	xpoints[7] = (double)centreX - (3 * unitPerpenVectorX) + (10 * unitVectorX);
+	ypoints[7] = (double)centreY - (3 * unitPerpenVectorY) + (10 * unitVectorY);
 
-	xpoints[0] = centreX + xPerpendicular + xThinBarrel / 2;
-	ypoints[0] = centreY + yPerpendicular + yThinBarrel / 2;
-	xpoints[7] = centreX - xPerpendicular + xThinBarrel / 2;
-	ypoints[7] = centreY - yPerpendicular + yThinBarrel / 2;
+	xpoints[1] = xpoints[0] + (20 * unitVectorX);
+	ypoints[1] = ypoints[0] + (20 * unitVectorY);
+	xpoints[6] = xpoints[7] + (20 * unitVectorX);
+	ypoints[6] = ypoints[7] + (20 * unitVectorY);
 
-	xpoints[1] = xpoints[0] + xThinBarrel;
-	ypoints[1] = ypoints[0] + yThinBarrel;
-	xpoints[6] = xpoints[7] + xThinBarrel;
-	ypoints[6] = ypoints[7] + yThinBarrel;
+	xpoints[2] = xpoints[1] + (2 * unitPerpenVectorX);
+	ypoints[2] = ypoints[1] + (2 * unitPerpenVectorY);
+	xpoints[5] = xpoints[6] - (2 * unitPerpenVectorX);
+	ypoints[5] = ypoints[6] - (2 * unitPerpenVectorY);
 
-	xpoints[2] = xpoints[1] + xPerpendicular / 3 * 2;
-	ypoints[2] = ypoints[1] + yPerpendicular / 3 * 2;
-	xpoints[5] = xpoints[6] - xPerpendicular / 3 * 2;
-	ypoints[5] = ypoints[6] - yPerpendicular / 3 * 2;
-
-	double xThickBarrel = 5 * vectorX;
-	double yThickBarrel = 5 * vectorY;
-
-	xpoints[3] = xpoints[2] + xThickBarrel;
-	ypoints[3] = ypoints[2] + yThickBarrel;
-	xpoints[4] = xpoints[5] + xThickBarrel;
-	ypoints[4] = ypoints[5] + yThickBarrel;
+	xpoints[3] = xpoints[2] + (5 * unitVectorX);
+	ypoints[3] = ypoints[2] + (5 * unitVectorY);
+	xpoints[4] = xpoints[5] + (5 * unitVectorX);
+	ypoints[4] = ypoints[5] + (5 * unitVectorY);
 
 	m_pEngine->DrawPolygon(
 		8,

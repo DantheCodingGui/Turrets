@@ -6,6 +6,5 @@ public:
 	~Psydb3State();
 	virtual void SetupBackgroundBuffer() = 0;
 	virtual bool ShouldAct() = 0;
-
 };
 
