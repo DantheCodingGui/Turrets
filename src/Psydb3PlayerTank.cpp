@@ -84,8 +84,10 @@ void Psydb3PlayerTank::GetDirection() {
 		m_animationCount = 0;
 	}
 #endif
-	if (tempDirection != previousDirection) 
+	if (tempDirection % 4 != previousDirection % 4) {
 		ImageSizeCompensation(previousDirection, tempDirection);
+		m_animationCount = 0;
+	}
 
 	m_direction = tempDirection;
 }
@@ -100,8 +102,6 @@ void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
 
 		UpdateAnimation();
 	}
-	else
-		m_animationCount = 0;
 
 	m_iCurrentScreenX = (int)m_x - 20;
 	m_iCurrentScreenY = (int)m_y - 20;
