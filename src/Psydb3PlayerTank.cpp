@@ -84,8 +84,9 @@ void Psydb3PlayerTank::GetDirection() {
 		m_animationCount = 0;
 	}
 #endif
-	if (tempDirection != previousDirection)
+	if (tempDirection != previousDirection) 
 		ImageSizeCompensation(previousDirection, tempDirection);
+
 	m_direction = tempDirection;
 }
 

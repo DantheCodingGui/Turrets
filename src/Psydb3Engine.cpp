@@ -6,8 +6,9 @@
 #include "Psydb3Bomb.h"
 
 Psydb3Engine::Psydb3Engine() 
-	: m_noOfDisplayObjects(3)
-	, m_levelNo(1) {
+	: m_noOfDisplayObjects(3) {
+	//initialise state here
+	//m_gameState = new Psydb3PlayState;
 }
 
 Psydb3Engine::~Psydb3Engine() {
