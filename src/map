@@ -1,6 +1,6 @@
  CourseworkBase
 
- Timestamp is 590275b9 (Thu Apr 27 23:50:33 2017)
+ Timestamp is 5903afa4 (Fri Apr 28 22:09:56 2017)
 
  Preferred load address is 00400000
 
@@ -76,7 +76,6 @@
  0001:00003620       ?DrawShortenedArrow@BaseEngine@@QAEXHHHHHHIHHPAUSDL_Surface@@@Z 00404620 f   BaseEngine.obj
  0001:00003b40       ??0Psydb3Bomb@@QAE@PAVBaseEngine@@HHH@Z 00404b40 f   Psydb3Bomb.obj
  0001:00003c90       ?DrawShortenedLine@BaseEngine@@QAEXHHHHHHIHPAUSDL_Surface@@@Z 00404c90 f   BaseEngine.obj
- 0001:000040a0       ?Draw@Psydb3Bomb@@UAEXXZ   004050a0 f   Psydb3Bomb.obj
  0001:000041a0       ?DrawString@BaseEngine@@QAEXHHPBDIPAVFont@@PAUSDL_Surface@@@Z 004051a0 f   BaseEngine.obj
  0001:00004320       ?DrawStrings@BaseEngine@@UAEXXZ 00405320 f   BaseEngine.obj
  0001:00004340       ?DrawStringsOnTop@BaseEngine@@UAEXXZ 00405340 f   BaseEngine.obj
@@ -148,12 +147,12 @@
  0001:00007d00       ?ResizeFrom@ImageData@@QAEXPBV1@HH_N@Z 00408d00 f   JPGImage.obj
  0001:00008200       ?ShrinkFrom@ImageData@@QAEXPBV1@H@Z 00409200 f   JPGImage.obj
  0001:000084c0       ??1Psydb3Bomb@@UAE@XZ      004094c0 f   Psydb3Bomb.obj
- 0001:000084f0       ??_GPsydb3Bomb@@UAEPAXI@Z  004094f0 f i Psydb3Bomb.obj
  0001:000084f0       ??_EPsydb3Bomb@@UAEPAXI@Z  004094f0 f i Psydb3Bomb.obj
+ 0001:000084f0       ??_GPsydb3Bomb@@UAEPAXI@Z  004094f0 f i Psydb3Bomb.obj
  0001:00008580       ??0Psydb3Cursor@@QAE@PAVBaseEngine@@@Z 00409580 f   Psydb3Cursor.obj
  0001:000086b0       ??1Psydb3Cursor@@UAE@XZ    004096b0 f   Psydb3Cursor.obj
- 0001:000086e0       ??_EPsydb3Cursor@@UAEPAXI@Z 004096e0 f i Psydb3Cursor.obj
  0001:000086e0       ??_GPsydb3Cursor@@UAEPAXI@Z 004096e0 f i Psydb3Cursor.obj
+ 0001:000086e0       ??_EPsydb3Cursor@@UAEPAXI@Z 004096e0 f i Psydb3Cursor.obj
  0001:00008730       ?BoundaryDetection@Psydb3Cursor@@QAEXXZ 00409730 f   Psydb3Cursor.obj
  0001:00008800       ?DoUpdate@Psydb3Cursor@@UAEXH@Z 00409800 f   Psydb3Cursor.obj
  0001:000088b0       ?Draw@Psydb3Cursor@@UAEXXZ 004098b0 f   Psydb3Cursor.obj
@@ -169,12 +168,13 @@
  0001:00008c40       ?SetVisible@DisplayableObject@@QAEX_N@Z 00409c40 f i Psydb3Cursor.obj
  0001:00008c70       ??0Psydb3Engine@@QAE@XZ    00409c70 f   Psydb3Engine.obj
  0001:00008d20       ??1Psydb3Engine@@UAE@XZ    00409d20 f   Psydb3Engine.obj
- 0001:00008da0       ??_GPsydb3Engine@@UAEPAXI@Z 00409da0 f i Psydb3Engine.obj
  0001:00008da0       ??_EPsydb3Engine@@UAEPAXI@Z 00409da0 f i Psydb3Engine.obj
+ 0001:00008da0       ??_GPsydb3Engine@@UAEPAXI@Z 00409da0 f i Psydb3Engine.obj
  0001:00008df0       ?DrawAllTiles@TileManager@@QBEXPAVBaseEngine@@PAUSDL_Surface@@HHHH@Z 00409df0 f i Psydb3Engine.obj
  0001:00008e50       ?DrawableObjectsChanged@BaseEngine@@QAEXXZ 00409e50 f i Psydb3Engine.obj
  0001:00008e80       ?GameAction@Psydb3Engine@@UAEXXZ 00409e80 f   Psydb3Engine.obj
  0001:00008ee0       ?GetBackground@BaseEngine@@QAEPAUSDL_Surface@@XZ 00409ee0 f i Psydb3Engine.obj
+ 0001:00008f00       ?Draw@Psydb3Bomb@@UAEXXZ   00409f00 f   Psydb3Bomb.obj
  0001:00009090       ?IsTimeToAct@BaseEngine@@QBE_NXZ 0040a090 f i Psydb3Engine.obj
  0001:000090e0       ?SetBaseTilesPositionOnScreen@TileManager@@QAEXHH@Z 0040a0e0 f i Psydb3Engine.obj
  0001:00009110       ?SetSize@TileManager@@QAEXHH@Z 0040a110 f i Psydb3Engine.obj

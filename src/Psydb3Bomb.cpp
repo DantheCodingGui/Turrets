@@ -11,8 +11,8 @@ Psydb3Bomb::Psydb3Bomb(BaseEngine* pEngine, int timeCreated, int x, int y)
 	m_iCurrentScreenX = m_iPreviousScreenX = x;
 	m_iCurrentScreenY = m_iPreviousScreenY = y;
 
-	m_iDrawWidth = 30;
-	m_iDrawHeight = 23;
+	m_iDrawWidth = 27;
+	m_iDrawHeight = 20;
 
 	m_iStartDrawPosX = 0;
 	m_iStartDrawPosY = 0;
@@ -39,7 +39,7 @@ void Psydb3Bomb::Draw() {
 
 		GetEngine()->DrawOval(
 			m_iCurrentScreenX,
-			m_iCurrentScreenY + 3,
+			m_iCurrentScreenY,
 			m_iCurrentScreenX + m_iDrawWidth - 1,
 			m_iCurrentScreenY + m_iDrawHeight - 1,
 			0x777777);
@@ -47,7 +47,19 @@ void Psydb3Bomb::Draw() {
 			m_iCurrentScreenX,
 			m_iCurrentScreenY,
 			m_iCurrentScreenX + m_iDrawWidth - 1,
-			m_iCurrentScreenY + m_iDrawHeight - 1 - 3,
+			m_iCurrentScreenY + m_iDrawHeight - 1 - 2,
+			0xAAAAAA);
+		GetEngine()->DrawOval(
+			m_iCurrentScreenX + 6,
+			m_iCurrentScreenY + 6,
+			m_iCurrentScreenX + m_iDrawWidth - 1 - 6,
+			m_iCurrentScreenY + m_iDrawHeight - 1 - 8,
+			0x777777);
+		GetEngine()->DrawOval(
+			m_iCurrentScreenX + 6,
+			m_iCurrentScreenY,
+			m_iCurrentScreenX + m_iDrawWidth - 1 - 6,
+			m_iCurrentScreenY + m_iDrawHeight - 1 - 10,
 			bombColour);
 	}
 	StoreLastScreenPositionForUndraw();
