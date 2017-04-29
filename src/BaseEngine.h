@@ -8,6 +8,8 @@ class DisplayableObject;
 
 #include <assert.h>
 
+#include <vector>
+
 class BaseEngine
 {
 public:
@@ -765,7 +767,10 @@ private:
 	int m_iDrawableObjectsChanged;
 
 	/* Array of displayable objects - expect it to be modified by sub-class(es) */
-	DisplayableObject** m_ppDisplayableObjects;
+	//DisplayableObject** m_ppDisplayableObjects;
+	std::vector<DisplayableObject*>* m_ppDisplayableObjects;
+	
+	int m_iDrawableObjectInsertionOffset; //if attempt to insert NULL, will insert all other elements n positions back
 
 	/* Manager object for the fonts - maintains a cache of fonts to prevent multiple loading of fonts. */
 	FontManager m_oFontManager;

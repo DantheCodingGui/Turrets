@@ -7,6 +7,6 @@ public:
 	~Psydb3FileIO();
 
 	//template<typename T> 
-	//void ReadFile(vector<char>* dataDump, const char* fileName);
+	//void ReadFile(vector<char>* dataDump[], const char* fileName);
 };
 

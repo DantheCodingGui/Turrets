@@ -16,7 +16,9 @@ Psydb3Engine::~Psydb3Engine() {
 
 void Psydb3Engine::SetupBackgroundBuffer() {
 
-#if 0	char* data[] = {
+		//m_gameState->SetupBackgroundBuffer();
+	/*
+	char* data[] = {
 		"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 		"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 		"abbbbbbccbbbbbbbbcbbbbbbbbca",
@@ -35,7 +37,7 @@ void Psydb3Engine::SetupBackgroundBuffer() {
 		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
 		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
 		"abbbbbccbbbbbbbbbbbbbbcccbba" };
-#endif
+*/
 	char* data[] = { //for testing tank motion
 		"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 		"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -75,9 +77,9 @@ int Psydb3Engine::InitialiseObjects() {
 	DestroyOldObjects();
 
 	CreateObjectArray(m_noOfDisplayObjects + 1);
+	StoreObjectInArray(0, new Psydb3Bomb(this, GetTime(), 500, 500));
 	StoreObjectInArray(1, new Psydb3PlayerTank(this, 500.0, 500.0));
 	StoreObjectInArray(2, new Psydb3Cursor(this));
-	StoreObjectInArray(0, new Psydb3Bomb(this, GetTime(), 500, 500));
 	StoreObjectInArray(m_noOfDisplayObjects, NULL);
 
 	return 0;

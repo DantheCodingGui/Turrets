@@ -17,7 +17,7 @@ Psydb3FileIO::~Psydb3FileIO() {
 }
 
 #if 0
-void Psydb3FileIO::ReadFile(vector<char>* dataDump, const char* fileName) {
+void Psydb3FileIO::ReadFile(vector<char>* dataDump[], const char* fileName) {
 	ifstream file;
 	file.open(fileName);
 

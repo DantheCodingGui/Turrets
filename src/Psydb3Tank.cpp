@@ -198,8 +198,6 @@ void Psydb3Tank::DrawBarrel() {
 		m_pEngine->GetForeground());
 }
 
-
-
 void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
 
 	++m_animationCount;
