@@ -21,6 +21,7 @@ public:
 	void InitialiseTransparencyPixels();
 
 	void UpdateAnimation();
+	void DrawBackgroundTracks();
 	inline bool ShouldStartRotating(int currentDirection, int newDirection) {
 		int backCheck = currentDirection - 2;
 		if (backCheck < 0)

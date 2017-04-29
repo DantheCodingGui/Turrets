@@ -50,16 +50,26 @@ void Psydb3Tank::InitialiseTankStates() {
 	double tankVelocities[4][2];
 	InitialiseTankVelocities(tankVelocities);
 
-	m_tankStates[0] = new Psydb3TankDirectionState(0, 0, tankVelocities[0][0], tankVelocities[0][1], 13, 1, 28, 17);
-	m_tankStates[1] = new Psydb3TankDirectionState(0, 0, tankVelocities[1][0], tankVelocities[1][1], 24, 2, 39, 18);
-	m_tankStates[2] = new Psydb3TankDirectionState(30, 0, tankVelocities[2][0], tankVelocities[2][1], 14, 2, 29, 18);
-	m_tankStates[3] = new Psydb3TankDirectionState(0, 0, tankVelocities[3][0], tankVelocities[3][1], 24, 2, 39, 18);
+	m_tankStates[0] = new Psydb3TankDirectionState(0, 0, tankVelocities[0][0], tankVelocities[0][1], 13, 1, 28, 17,
+													5, 8, 8, 5, 20, 20, 27, 27, 0, 32);
+	m_tankStates[1] = new Psydb3TankDirectionState(0, 0, tankVelocities[1][0], tankVelocities[1][1], 24, 2, 39, 18,
+													33, 39, 42, 36, 64, 60, 62, 66, 32, -25);
+	m_tankStates[2] = new Psydb3TankDirectionState(30, 0, tankVelocities[2][0], tankVelocities[2][1], 14, 2, 29, 18,
+													0, 10, 10, 0, 50, 50, 52, 52, 49, 0);
+	m_tankStates[3] = new Psydb3TankDirectionState(0, 0, tankVelocities[3][0], tankVelocities[3][1], 24, 2, 39, 18,
+													43, 46, 52, 49, 62, 60, 64, 66, -32, -25);
 
 	for (int i = 0; i < 4; ++i) {
-		m_tankStates[i + 4] = new Psydb3TankDirectionState(m_tankStates[i]->GetTransparencyX(), m_tankStates[i]->GetTransparencyY(),
+		m_tankStates[i + 4] = new Psydb3TankDirectionState(
+			m_tankStates[i]->GetTransparencyX(), m_tankStates[i]->GetTransparencyY(),
 			-m_tankStates[i]->GetTankVelocityX(), -m_tankStates[i]->GetTankVelocityY(),
 			m_tankStates[i]->GetTurretDrawOffsetX(), m_tankStates[i]->GetTurretDrawOffsetY(),
-			m_tankStates[i]->GetTankCentreOffsetX(), m_tankStates[i]->GetTankCentreOffsetY());
+			m_tankStates[i]->GetTankCentreOffsetX(), m_tankStates[i]->GetTankCentreOffsetY(),
+			m_tankStates[i]->GetTracksShapeOffsetX(0), m_tankStates[i]->GetTracksShapeOffsetX(1),
+			m_tankStates[i]->GetTracksShapeOffsetX(2), m_tankStates[i]->GetTracksShapeOffsetX(3),
+			m_tankStates[i]->GetTracksShapeOffsetY(0), m_tankStates[i]->GetTracksShapeOffsetY(1),
+			m_tankStates[i]->GetTracksShapeOffsetY(2), m_tankStates[i]->GetTracksShapeOffsetY(3),
+			m_tankStates[i]->GetTracksOffsetX(), m_tankStates[i]->GetTracksOffsetY());
 	}
 }
 
@@ -204,6 +214,8 @@ void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
 	int animation = m_direction % 4;
 	int cycleLength;
 
+	bool oldAnim = m_animated;
+
 	//deciding how far tank has to move until image is swapped
 	//simple for horizontal/vertical but more complex with diagonals (pythogoras used)
 	if (animation == 0) {
@@ -215,14 +227,49 @@ void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
 			m_animationCount = 0;
 	}
 	else if (animation == 1 || animation == 3) {
-		if (m_animationCount > (cycleLength = abs((int)(sqrt(2 * pow(m_tankStates[m_direction]->GetTankVelocityY() * 100, 2))))))
+		if (m_animationCount > (cycleLength = 1.5*abs((int)(sqrt(2 * pow(m_tankStates[m_direction]->GetTankVelocityY() * 100, 2))))))
 			m_animationCount = 0;
 	}
-	if (m_animationCount <= cycleLength / 2)
+	if (m_animationCount <= cycleLength / 2) 
 		m_animated = true;
-	else
+	else 
 		m_animated = false;
 
+	if (m_animated != oldAnim)
+		DrawBackgroundTracks();
+
+}
+
+//draws the effect of the tanks marking the background over time
+void Psydb3Tank::DrawBackgroundTracks() {
+	double xPoints[4];
+	double yPoints[4];
+
+
+	for (int i = 0; i < 4; ++i) {
+		xPoints[i] = m_x + (int)m_tankStates[m_direction]->GetTracksShapeOffsetX(i);
+		yPoints[i] = m_y + (int)m_tankStates[m_direction]->GetTracksShapeOffsetY(i);
+		printf("x: %f, y: %f\n", xPoints[i], yPoints[i]);
+	}
+	printf("\n");
+
+	m_pEngine->DrawBackgroundPolygon(
+		4,
+		xPoints,
+		yPoints,
+		0xd3aa5f);
+
+
+	for (int i = 0; i < 4; ++i) {
+		xPoints[i] = m_x + (int)m_tankStates[m_direction]->GetTracksShapeOffsetX(i) + (int)m_tankStates[m_direction]->GetTracksOffsetX();
+		yPoints[i] = m_y + (int)m_tankStates[m_direction]->GetTracksShapeOffsetY(i) + (int)m_tankStates[m_direction]->GetTracksOffsetY();
+	}
+
+	m_pEngine->DrawBackgroundPolygon(
+		4,
+		xPoints,
+		yPoints,
+		0xd3aa5f);
 }
 
 //since diagonal image is larger than the others, must edit 

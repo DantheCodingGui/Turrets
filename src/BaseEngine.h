@@ -41,6 +41,9 @@ public:
 
 	/* Store an object into an array element */
 	void StoreObjectInArray(int iIndex, DisplayableObject* pObject);
+
+
+	void AddToEndOfArray(DisplayableObject* pObject);
 	
 
 public:
