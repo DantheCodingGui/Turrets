@@ -2,6 +2,7 @@
 #include "BaseEngine.h"
 #include "Psydb3TileManager.h"
 #include "Psydb3State.h"
+#include "Psydb3FileIO.h"
 
 class Psydb3Engine :
 	public BaseEngine {
@@ -17,5 +18,7 @@ private:
 	int m_noOfDisplayObjects;
 	
 	Psydb3State* m_gameState;
+
+	Psydb3FileIO m_fileHandler;
 };
 

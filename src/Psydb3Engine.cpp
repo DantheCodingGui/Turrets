@@ -38,7 +38,10 @@ void Psydb3Engine::SetupBackgroundBuffer() {
 		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
 		"abbbbbccbbbbbbbbbbbbbbcccbba" };
 */
-	char* data[] = { //for testing tank motion
+	std::vector<std::string> mapData;
+	m_fileHandler.ReadTextFile(&mapData, "MapData/1.txt");
+
+	/*char* data[] = { //for testing tank motion
 		"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 		"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 		"abbbbbbccbbbbbbbbcbbbbbbbbca",
@@ -57,12 +60,12 @@ void Psydb3Engine::SetupBackgroundBuffer() {
 		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
 		"abaaaaaaaaaaaaaaaaaaaaaaaaba",
 		"abbbbbccbbbbbbbbbbbbbbcccbba" };
-
+*/
 	m_oTiles.SetSize(28, 18);
 
 	for (int i = 0; i < 28; ++i) {
 		for (int j = 0; j < 18; ++j)
-			m_oTiles.SetValue(i, j, data[j][i] - 'a');
+			m_oTiles.SetValue(i, j,  mapData[j][i] - 'a');
 	}
 	m_oTiles.SetBaseTilesPositionOnScreen(0, 0);
 

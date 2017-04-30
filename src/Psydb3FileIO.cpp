@@ -6,6 +6,8 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -16,17 +18,19 @@ Psydb3FileIO::Psydb3FileIO() {
 Psydb3FileIO::~Psydb3FileIO() {
 }
 
-#if 0
-void Psydb3FileIO::ReadFile(vector<char>* dataDump[], const char* fileName) {
-	ifstream file;
-	file.open(fileName);
 
-	if (!file.is_open()) { //exception catching
-		exit(EXIT_FAILURE); 
+void Psydb3FileIO::ReadTextFile(vector<string>* dataDump, const char* fileName) {
+	ifstream readFile;
+	readFile.open(fileName);
+
+	if (!readFile.is_open()) { //exception catching
+		cout << "Error Opening Map Data File" << endl;
+		exit(1);
 	}
-
-	while (file.good) {
-
+	string line;
+	while (getline(readFile, line)) {
+		dataDump->push_back(line);
+		cout << line << endl;
 	}
+	readFile.close();
 }
-#endif

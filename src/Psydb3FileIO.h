@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include <string>
+using namespace std;
 class Psydb3FileIO
 {
 public:
@@ -7,6 +9,6 @@ public:
 	~Psydb3FileIO();
 
 	//template<typename T> 
-	//void ReadFile(vector<char>* dataDump[], const char* fileName);
+	void ReadTextFile(vector<string>* dataDump, const char* fileName);
 };
 
