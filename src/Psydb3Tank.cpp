@@ -249,9 +249,7 @@ void Psydb3Tank::DrawBackgroundTracks() {
 	for (int i = 0; i < 4; ++i) {
 		xPoints[i] = m_x + (int)m_tankStates[m_direction]->GetTracksShapeOffsetX(i);
 		yPoints[i] = m_y + (int)m_tankStates[m_direction]->GetTracksShapeOffsetY(i);
-		printf("x: %f, y: %f\n", xPoints[i], yPoints[i]);
 	}
-	printf("\n");
 
 	m_pEngine->DrawBackgroundPolygon(
 		4,
