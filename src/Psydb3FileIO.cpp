@@ -29,7 +29,7 @@ void Psydb3FileIO::ReadTextFile(vector<string>* dataDump, const char* fileName) 
 	string line;
 	while (getline(readFile, line)) {
 		dataDump->push_back(line);
-		cout << line << endl;
+		//cout << line << endl;
 	}
 	readFile.close();
 }
