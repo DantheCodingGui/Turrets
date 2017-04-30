@@ -4,21 +4,31 @@
 #include "Psydb3PlayerTank.h"
 #include "Psydb3Cursor.h"
 #include "Psydb3Bomb.h"
+
+#include "Psydb3StartState.h"
 #include "Psydb3PlayState.h"
+#include "Psydb3PauseState.h"
+
+#define START_STATE		0
+#define PLAY_STATE		1
+#define PAUSE_STATE		2
+#define END_WIN_STATE	3
+#define END_LOSE_STATE	4
 
 Psydb3Engine::Psydb3Engine() 
 	: m_noOfDisplayObjects(3) {
-	//initialise state here
-	m_gameState = new Psydb3PlayState(this);
+	InitialiseGameStates();
+	SetState(PLAY_STATE);
 }
 
 Psydb3Engine::~Psydb3Engine() {
-	delete m_gameState;
+	for (int i = 0; i < 5; ++i)
+		delete m_gameStates[i];
 }
 
 void Psydb3Engine::SetupBackgroundBuffer() {
 
-	m_gameState->SetupBackgroundBuffer();
+	m_activeGameState->SetupBackgroundBuffer();
 }
 
 int Psydb3Engine::InitialiseObjects() {
@@ -35,11 +45,18 @@ int Psydb3Engine::InitialiseObjects() {
 	return 0;
 }
 
+void Psydb3Engine::InitialiseGameStates() {
+	m_gameStates[0] = new Psydb3StartState(this);
+	m_gameStates[1] = new Psydb3PlayState(this); 
+	m_gameStates[2] = new Psydb3PauseState(this);
+}
+
 void Psydb3Engine::GameAction() {
 	if (!IsTimeToAct())
 		return;
 
 	SetTimeToAct(5);
 
-	UpdateAllObjects(GetModifiedTime());
+	if (m_activeGameState->ShouldAct())
+		UpdateAllObjects(GetModifiedTime());
 }

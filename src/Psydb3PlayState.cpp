@@ -3,8 +3,8 @@
 
 Psydb3PlayState::Psydb3PlayState(BaseEngine* pEngine)
 	: Psydb3State(pEngine)
-	, m_mapFilePath("MapData/1.txt")
-	, m_level(0) {
+	, m_mapFilePath("MapData/maps.txt")
+	, m_level(1) {
 	GetMaps();
 }
 
@@ -14,30 +14,7 @@ Psydb3PlayState::~Psydb3PlayState() {
 
 void Psydb3PlayState::SetupBackgroundBuffer() {
 	//also think about bombs with iCurrentTime, as if paused will continue to time towards explode
-		//m_gameState->SetupBackgroundBuffer();
-	vector<string> mapData;
-	m_fileHandler.ReadTextFile(&mapData, m_mapFilePath);
 
-	/*char* data[] = { //for testing tank motion
-	"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-	"aaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-	"abbbbbbccbbbbbbbbcbbbbbbbbca",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"acaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abaaaaaaaaaaaaaaaaaaaaaaaaba",
-	"abbbbbccbbbbbbbbbbbbbbcccbba" };
-	*/
 	m_oTiles.SetSize(28, 18);
 
 	for (int i = 0; i < 28; ++i) {

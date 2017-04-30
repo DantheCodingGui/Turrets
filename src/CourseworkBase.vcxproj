@@ -97,9 +97,11 @@
     <ClInclude Include="Psydb3Cursor.h" />
     <ClInclude Include="Psydb3Engine.h" />
     <ClInclude Include="Psydb3FileIO.h" />
+    <ClInclude Include="Psydb3PauseState.h" />
     <ClInclude Include="Psydb3PlayerTank.h" />
     <ClInclude Include="Psydb3PlayState.h" />
     <ClInclude Include="Psydb3RotationPosition.h" />
+    <ClInclude Include="Psydb3StartState.h" />
     <ClInclude Include="Psydb3State.h" />
     <ClInclude Include="Psydb3Tank.h" />
     <ClInclude Include="Psydb3TankDirectionState.h" />
@@ -132,8 +134,10 @@
     <ClCompile Include="Psydb3Cursor.cpp" />
     <ClCompile Include="Psydb3Engine.cpp" />
     <ClCompile Include="Psydb3FileIO.cpp" />
+    <ClCompile Include="Psydb3PauseState.cpp" />
     <ClCompile Include="Psydb3PlayerTank.cpp" />
     <ClCompile Include="Psydb3PlayState.cpp" />
+    <ClCompile Include="Psydb3StartState.cpp" />
     <ClCompile Include="Psydb3State.cpp" />
     <ClCompile Include="Psydb3Tank.cpp" />
     <ClCompile Include="Psydb3TankDirectionState.cpp" />

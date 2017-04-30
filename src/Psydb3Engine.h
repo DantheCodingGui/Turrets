@@ -10,12 +10,15 @@ public:
 	~Psydb3Engine();
 	void SetupBackgroundBuffer();
 	int InitialiseObjects();
+	void InitialiseGameStates();
 	void GameAction();
-	void SetState(Psydb3State* newState) { m_gameState = newState; };
+	void SetState(int newStateIndex) { m_activeGameState = m_gameStates[newStateIndex]; };
 private: 
-	//Psydb3TileManager m_oTiles;
+	
 	int m_noOfDisplayObjects;
 	
-	Psydb3State* m_gameState;
+	Psydb3State* m_gameStates[6];
+
+	Psydb3State* m_activeGameState;
 };
 
