@@ -4,16 +4,18 @@
 #include "Psydb3FileIO.h"
 #include <vector>
 #include <string>
+#include "Psydb3Engine.h"
 using namespace std;
 
 class Psydb3PlayState :
 	public Psydb3State
 {
 public:
-	Psydb3PlayState(BaseEngine* pEngine);
+	Psydb3PlayState(Psydb3Engine* pEngine);
 	~Psydb3PlayState();
 	virtual void SetupBackgroundBuffer();
-	virtual bool ShouldAct() { return true; };
+	virtual void Update();
+	virtual void HandleKeys(int iKeyCode);
 	void GetMaps();
 	void NextLevel() {
 		if (m_level != m_maps.size() - 1) 

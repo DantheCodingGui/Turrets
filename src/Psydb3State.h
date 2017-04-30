@@ -1,13 +1,21 @@
 #pragma once
-#include "BaseEngine.h"
+#include "Psydb3Engine.h"
+
+#define START_STATE		0
+#define PLAY_STATE		1
+#define PAUSE_STATE		2
+#define END_WIN_STATE	3
+#define END_LOSE_STATE	4
+
 class Psydb3State
 {
 public:
-	Psydb3State(BaseEngine* pEngine);
+	Psydb3State(Psydb3Engine* pEngine);
 	~Psydb3State();
 	virtual void SetupBackgroundBuffer() = 0;
-	virtual bool ShouldAct() = 0;
+	virtual void Update() = 0;
+	virtual void HandleKeys(int iKeyCode) = 0;
 protected:
-	BaseEngine* m_pEngine;
+	Psydb3Engine* m_pEngine;
 };
 

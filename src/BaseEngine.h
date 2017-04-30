@@ -42,8 +42,8 @@ public:
 	/* Store an object into an array element */
 	void StoreObjectInArray(int iIndex, DisplayableObject* pObject);
 
-
-	void AddToEndOfArray(DisplayableObject* pObject);
+	/* Set the visibility of every DisplayableObject in the vector*/
+	void SetAllVisibility(bool visible);
 	
 
 public:

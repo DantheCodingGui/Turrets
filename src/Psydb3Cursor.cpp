@@ -15,10 +15,6 @@ Psydb3Cursor::Psydb3Cursor(BaseEngine* pEngine)
 	m_iStartDrawPosY = 0;
 
 	m_iDrawWidth = m_iDrawHeight = m_width;
-
-	SDL_ShowCursor(SDL_DISABLE); //disable the mouse icon while in window
-
-	SetVisible(true);
 }
 
 Psydb3Cursor::~Psydb3Cursor() {
@@ -38,6 +34,10 @@ void Psydb3Cursor::BoundaryDetection() {
 }
 
 void Psydb3Cursor::Draw() {
+
+	if (!IsVisible())
+		return;
+
 	GetEngine()->DrawScreenOval( //middle circle
 		m_iCurrentScreenX + 11,
 		m_iCurrentScreenY + 11,

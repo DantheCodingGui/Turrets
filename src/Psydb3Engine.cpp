@@ -18,11 +18,11 @@
 Psydb3Engine::Psydb3Engine() 
 	: m_noOfDisplayObjects(3) {
 	InitialiseGameStates();
-	SetState(PLAY_STATE);
+	SetState(START_STATE);
 }
 
 Psydb3Engine::~Psydb3Engine() {
-	for (int i = 0; i < 5; ++i)
+	for (int i = 0; i < 3; ++i)
 		delete m_gameStates[i];
 }
 
@@ -42,13 +42,15 @@ int Psydb3Engine::InitialiseObjects() {
 	StoreObjectInArray(2, new Psydb3Cursor(this));
 	StoreObjectInArray(m_noOfDisplayObjects, NULL);
 
+	SetAllVisibility(false);
+
 	return 0;
 }
 
 void Psydb3Engine::InitialiseGameStates() {
-	m_gameStates[0] = new Psydb3StartState(this);
-	m_gameStates[1] = new Psydb3PlayState(this); 
-	m_gameStates[2] = new Psydb3PauseState(this);
+	m_gameStates[START_STATE] = new Psydb3StartState(this);
+	m_gameStates[PLAY_STATE] = new Psydb3PlayState(this);
+	m_gameStates[PAUSE_STATE] = new Psydb3PauseState(this);
 }
 
 void Psydb3Engine::GameAction() {
@@ -57,6 +59,13 @@ void Psydb3Engine::GameAction() {
 
 	SetTimeToAct(5);
 
-	if (m_activeGameState->ShouldAct())
-		UpdateAllObjects(GetModifiedTime());
+	m_activeGameState->Update();
+}
+
+void Psydb3Engine::KeyUp(int iKeyCode)
+{
+	if (iKeyCode == SDLK_ESCAPE)
+		SetExitWithCode(0);
+
+	m_activeGameState->HandleKeys(iKeyCode);
 }

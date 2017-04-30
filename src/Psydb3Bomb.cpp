@@ -16,8 +16,6 @@ Psydb3Bomb::Psydb3Bomb(BaseEngine* pEngine, int timeCreated, int x, int y)
 
 	m_iStartDrawPosX = 0;
 	m_iStartDrawPosY = 0;
-
-	SetVisible(true);
 }
 
 
@@ -30,6 +28,10 @@ void Psydb3Bomb::Explode() {
 }
 
 void Psydb3Bomb::Draw() {
+
+	if (!IsVisible())
+		return;
+
 	if (!m_destroyed) {
 		unsigned int bombColour;
 		if (m_isRed)

@@ -187,8 +187,12 @@ void BaseEngine::StoreObjectInArray(int iIndex, DisplayableObject* pObject)
 		m_ppDisplayableObjects->at(iIndex - m_iDrawableObjectInsertionOffset) = pObject;
 }
 
-void BaseEngine::AddToEndOfArray(DisplayableObject* pObject) {
-	m_ppDisplayableObjects->push_back(pObject);
+void BaseEngine::SetAllVisibility(bool visible) {
+	if (m_ppDisplayableObjects != NULL) {
+		for (std::vector< DisplayableObject* >::iterator it = m_ppDisplayableObjects->begin(); it != m_ppDisplayableObjects->end() && (*it) != NULL; ++it) {
+			(*it)->SetVisible(visible);
+		}
+	}
 }
 
 

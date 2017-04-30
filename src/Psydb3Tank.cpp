@@ -25,8 +25,6 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y)
 	m_iStartDrawPosY = 0;
 
 	//rotator = new Psydb3RotationPosition();
-
-	SetVisible(true);
 }
 
 //default tank speeds (if change needed can redefine for individual tank type)
@@ -80,6 +78,9 @@ Psydb3Tank::~Psydb3Tank() {
 }
 
 void Psydb3Tank::Draw() { 
+
+	if (!IsVisible())
+		return;
 
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
 	

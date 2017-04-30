@@ -1,11 +1,12 @@
 #include "Psydb3PlayState.h"
 #include <iostream>
 
-Psydb3PlayState::Psydb3PlayState(BaseEngine* pEngine)
+Psydb3PlayState::Psydb3PlayState(Psydb3Engine* pEngine)
 	: Psydb3State(pEngine)
 	, m_mapFilePath("MapData/maps.txt")
 	, m_level(1) {
 	GetMaps();
+	SDL_ShowCursor(SDL_DISABLE); //disable the mouse icon while playing
 }
 
 
@@ -41,5 +42,19 @@ void Psydb3PlayState::GetMaps() {
 		m_maps.push_back(map);
 		map.clear();
 		//cout << "\n" << endl;
+	}
+}
+
+void Psydb3PlayState::Update() {
+	m_pEngine->UpdateAllObjects(m_pEngine->GetModifiedTime());
+}
+
+void Psydb3PlayState::HandleKeys(int iKeyCode) {
+	
+	switch (iKeyCode) {
+		case SDLK_p:
+			m_pEngine->SetState(PAUSE_STATE);
+			m_pEngine->UndrawObjects();
+			break;
 	}
 }
