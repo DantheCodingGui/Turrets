@@ -12,7 +12,7 @@ class Psydb3State
 public:
 	Psydb3State(Psydb3Engine* pEngine);
 	~Psydb3State();
-	virtual void SetupBackgroundBuffer() = 0;
+	virtual void DrawBackground() = 0;
 	virtual void Update() = 0;
 	virtual void HandleKeys(int iKeyCode) = 0;
 protected:

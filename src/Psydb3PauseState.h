@@ -7,7 +7,7 @@ public:
 	Psydb3PauseState(Psydb3Engine* pEngine);
 	~Psydb3PauseState();
 	virtual void Update();
-	virtual void SetupBackgroundBuffer();
+	virtual void DrawBackground();
 	virtual void HandleKeys(int iKeyCode);
 };
 

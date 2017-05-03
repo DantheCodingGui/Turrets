@@ -13,9 +13,10 @@ class Psydb3PlayState :
 public:
 	Psydb3PlayState(Psydb3Engine* pEngine);
 	~Psydb3PlayState();
-	virtual void SetupBackgroundBuffer();
+	virtual void DrawBackground();
 	virtual void Update();
 	virtual void HandleKeys(int iKeyCode);
+	void SaveBackground();
 	void GetMaps();
 	void NextLevel() {
 		if (m_level != m_maps.size() - 1) 
@@ -30,5 +31,10 @@ private:
 	const char* m_mapFilePath;
 
 	int m_level;
+
+	//used to decide whether to redraw background or reload saved version
+	bool m_backgroundInitialised;
+	//holds the background while pausing, needed to preserve background tracks
+	vector<vector<unsigned int>> m_map;
 };
 

@@ -6,7 +6,7 @@ class Psydb3StartState :
 public:
 	Psydb3StartState(Psydb3Engine* pEngine);
 	~Psydb3StartState();
-	virtual void SetupBackgroundBuffer();
+	virtual void DrawBackground();
 	virtual void Update();
 	virtual void HandleKeys(int iKeyCode);
 };

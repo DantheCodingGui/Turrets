@@ -28,10 +28,11 @@ Psydb3Engine::~Psydb3Engine() {
 
 void Psydb3Engine::SetupBackgroundBuffer() {
 
-	m_activeGameState->SetupBackgroundBuffer();
+	m_activeGameState->DrawBackground();
 }
 
 int Psydb3Engine::InitialiseObjects() {
+	//NEED TO MOVE THIS TO PLAYSTATE AND CHANGE VIA LEVEL
 	DrawableObjectsChanged();
 
 	DestroyOldObjects();
@@ -64,8 +65,5 @@ void Psydb3Engine::GameAction() {
 
 void Psydb3Engine::KeyUp(int iKeyCode)
 {
-	if (iKeyCode == SDLK_ESCAPE)
-		SetExitWithCode(0);
-
 	m_activeGameState->HandleKeys(iKeyCode);
 }

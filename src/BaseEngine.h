@@ -305,14 +305,14 @@ public:
 	Added by JAA in response to request in labs 2013/2014 by someone doing collision detection against a background. */
 	inline unsigned int SafeGetScreenPixel(int iX, int iY) const
 	{
-		SafeGetPixel(iX, iY, m_pActualScreen);
+		 return SafeGetPixel(iX, iY, m_pActualScreen);
 	}
 
 	/* Method to set a pixel colour on the screen, in-lined, but checks the supplied parameters
 	Added by JAA in response to request in labs 2013 / 2014 by someone doing collision detection against a background. */
 	inline unsigned int SafeGetBackgroundPixel(int iX, int iY) const
 	{
-		SafeGetPixel(iX, iY, m_pBackgroundSurface);
+		 return SafeGetPixel(iX, iY, m_pBackgroundSurface);
 	}
 
 	/* Set a pixel on a specific surface

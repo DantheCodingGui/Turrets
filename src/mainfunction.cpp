@@ -35,7 +35,8 @@ int main(int argc, char *argv[])
 	Psydb3Engine oMain;
 
 	char buf[1024];
-	sprintf( buf, "Turrets : Size %d x %d", BASE_SCREEN_WIDTH, BASE_SCREEN_HEIGHT );
+	//sprintf( buf, "Turrets : Size %d x %d", BASE_SCREEN_WIDTH, BASE_SCREEN_HEIGHT );
+	sprintf(buf, "Turrets");
 	iResult = oMain.Initialise( buf, BASE_SCREEN_WIDTH, BASE_SCREEN_HEIGHT, "Cornerstone Regular.ttf", 24 );
 	iResult = oMain.MainLoop();
 	oMain.Deinitialise();
