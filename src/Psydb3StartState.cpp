@@ -21,9 +21,7 @@ void Psydb3StartState::DrawBackground() {
 	m_pEngine->DrawBackgroundString(50, 690, "Daniel Baxter 2017", 0x000000, m_pEngine->GetFont("Blockletter.otf", 20));
 }
 
-void Psydb3StartState::Update() {
-
-}
+void Psydb3StartState::Update() {}
 
 void Psydb3StartState::HandleKeys(int iKeyCode) {
 	

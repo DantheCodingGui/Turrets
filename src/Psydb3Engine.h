@@ -16,9 +16,6 @@ public:
 	virtual void KeyUp(int iKeyCode);
 	void SetState(int newStateIndex) { m_activeGameState = m_gameStates[newStateIndex]; };
 private: 
-	
-	int m_noOfDisplayObjects;
-	
 	Psydb3State* m_gameStates[6];
 
 	Psydb3State* m_activeGameState;

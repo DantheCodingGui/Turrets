@@ -1,10 +1,12 @@
 #pragma once
 #include "DisplayableObject.h"
+#include "Collideable.h"
 #include "JPGImage.h"
 #include "Psydb3RotationPosition.h"
 #include "Psydb3TankDirectionState.h"
 class Psydb3Tank :
-	public DisplayableObject
+	public DisplayableObject,
+	public Collideable
 {
 public:
 	Psydb3Tank(BaseEngine* pEngine, double x, double y);
@@ -32,6 +34,10 @@ public:
 		return (newDirection == backCheck || newDirection == forwardCheck);
 	};
 	void ImageSizeCompensation(int oldDirection, int newDirection);
+	double GetX() const { return m_x; };
+	double GetY() const { return m_y; };
+	int GetWidth() const { return m_iDrawTankBaseWidth; };
+	int GetHeight() const { return m_iDrawTankBaseHeight; };
 protected:
 	double m_x;
 	double m_y;

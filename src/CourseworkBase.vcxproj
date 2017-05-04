@@ -89,11 +89,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseEngine.h" />
+    <ClInclude Include="Collideable.h" />
     <ClInclude Include="DisplayableObject.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="JPGImage.h" />
     <ClInclude Include="MovementPosition.h" />
     <ClInclude Include="Psydb3Bomb.h" />
+    <ClInclude Include="Psydb3CollisionHandler.h" />
     <ClInclude Include="Psydb3Cursor.h" />
     <ClInclude Include="Psydb3Engine.h" />
     <ClInclude Include="Psydb3FileIO.h" />
@@ -125,12 +127,14 @@
     <ClInclude Include="SimpleDemo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Collideable.cpp" />
     <ClCompile Include="mainfunction.cpp" />
     <ClCompile Include="BaseEngine.cpp" />
     <ClCompile Include="DisplayableObject.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="JPGImage.cpp" />
     <ClCompile Include="Psydb3Bomb.cpp" />
+    <ClCompile Include="Psydb3CollisionHandler.cpp" />
     <ClCompile Include="Psydb3Cursor.cpp" />
     <ClCompile Include="Psydb3Engine.cpp" />
     <ClCompile Include="Psydb3FileIO.cpp" />

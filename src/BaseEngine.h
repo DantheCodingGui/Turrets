@@ -44,6 +44,13 @@ public:
 
 	/* Set the visibility of every DisplayableObject in the vector*/
 	void SetAllVisibility(bool visible);
+
+	int GetArraySize() const { 
+		if (m_ppDisplayableObjects != NULL)
+			return m_ppDisplayableObjects->size();
+		else
+			return -1;
+	};
 	
 
 public:

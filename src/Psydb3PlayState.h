@@ -1,10 +1,12 @@
 #pragma once
+#include "Psydb3Engine.h"
 #include "Psydb3State.h"
 #include "Psydb3TileManager.h"
 #include "Psydb3FileIO.h"
+#include "Psydb3CollisionHandler.h"
 #include <vector>
 #include <string>
-#include "Psydb3Engine.h"
+
 using namespace std;
 
 class Psydb3PlayState :
@@ -16,6 +18,7 @@ public:
 	virtual void DrawBackground();
 	virtual void Update();
 	virtual void HandleKeys(int iKeyCode);
+	void InitialiseObjects();
 	void SaveBackground();
 	void GetMaps();
 	void NextLevel() {
@@ -36,5 +39,7 @@ private:
 	bool m_backgroundInitialised;
 	//holds the background while pausing, needed to preserve background tracks
 	vector<vector<unsigned int>> m_map;
+
+	Psydb3CollisionHandler* m_collisionHandler;
 };
 

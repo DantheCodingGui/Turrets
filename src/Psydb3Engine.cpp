@@ -1,10 +1,6 @@
 #include "Psydb3Engine.h"
 #include "header.h"
 
-#include "Psydb3PlayerTank.h"
-#include "Psydb3Cursor.h"
-#include "Psydb3Bomb.h"
-
 #include "Psydb3StartState.h"
 #include "Psydb3PlayState.h"
 #include "Psydb3PauseState.h"
@@ -15,8 +11,7 @@
 #define END_WIN_STATE	3
 #define END_LOSE_STATE	4
 
-Psydb3Engine::Psydb3Engine() 
-	: m_noOfDisplayObjects(3) {
+Psydb3Engine::Psydb3Engine()  {
 	InitialiseGameStates();
 	SetState(START_STATE);
 }
@@ -32,18 +27,12 @@ void Psydb3Engine::SetupBackgroundBuffer() {
 }
 
 int Psydb3Engine::InitialiseObjects() {
-	//NEED TO MOVE THIS TO PLAYSTATE AND CHANGE VIA LEVEL
 	DrawableObjectsChanged();
 
 	DestroyOldObjects();
 
-	CreateObjectArray(m_noOfDisplayObjects + 1);
-	StoreObjectInArray(0, new Psydb3Bomb(this, GetTime(), 500, 500));
-	StoreObjectInArray(1, new Psydb3PlayerTank(this, 500.0, 500.0));
-	StoreObjectInArray(2, new Psydb3Cursor(this));
-	StoreObjectInArray(m_noOfDisplayObjects, NULL);
-
-	SetAllVisibility(false);
+	//since this only ever applies to playstate
+	dynamic_cast<Psydb3PlayState*>(m_gameStates[PLAY_STATE])->InitialiseObjects();
 
 	return 0;
 }
