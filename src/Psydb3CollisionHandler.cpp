@@ -52,21 +52,18 @@ char Psydb3CollisionHandler::BackgroundCollision() {
 		int tankTopEdge = (int)m_tanks[i]->GetY();
 		int tankBottomEdge = tankTopEdge + m_tanks[i]->GetHeight();
 
-		int tileMapLeft = tankLeftEdge / m_map->GetTileWidth();
-		int tileMapRight = tankRightEdge / m_map->GetTileWidth();
-		int tileMapTop = tankTopEdge / m_map->GetTileHeight();
-		int tileMapBottom = tankBottomEdge / m_map->GetTileHeight();
+		//4 tiles behind the player, ensures minimum checks per tank occur
+		int adjacentTilePosLeft = tankLeftEdge / m_map->GetTileWidth();
+		int adjacentTilePosRight = tankRightEdge / m_map->GetTileWidth();
+		int adjacentTilePosTop = tankTopEdge / m_map->GetTileHeight();
+		int adjacentTilePosBottom = tankBottomEdge / m_map->GetTileHeight();
 
-		for (int j = 0; j < tilesHorizontal; ++j) {
-			for (int k = 0; k < tilesVertical; ++k) {
+		for (int j = adjacentTilePosLeft; j <= adjacentTilePosRight; ++j) {
+			for (int k = adjacentTilePosTop; k <= adjacentTilePosBottom; ++k) {
 				if (m_map->IsTileCollideable(j, k)) {
-					bool xOverlap = (tankLeftEdge < (m_map->GetTileWidth() * (j + 1)) && (tankRightEdge >(m_map->GetTileWidth() * j)));
-					bool yOverlap = (tankTopEdge < (m_map->GetTileHeight() * (k + 1)) && (tankBottomEdge >(m_map->GetTileHeight() * k)));
-					if (xOverlap && yOverlap) {
-						collision = true;
-						printf("collision!!!\n");
-						return 'a';
-					}
+					collision = true;
+					printf("collision!!!\n");
+					return 'a';
 				}
 			}
 		}
