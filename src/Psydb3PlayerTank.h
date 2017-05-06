@@ -4,11 +4,11 @@ class Psydb3PlayerTank :
 	public Psydb3Tank
 {
 public:
-	Psydb3PlayerTank(BaseEngine* pEngine, double x, double y);
+	Psydb3PlayerTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler);
 	~Psydb3PlayerTank();
-	void DoUpdate(int iCurrentTime);
 	void InitialiseSpriteImages();
-	void GetDirection();
+	virtual void GetDirection();
+	virtual void DoUpdate(int iCurrentTime);
 	int GetTargetX() { return m_pEngine->GetCurrentMouseX(); };
 	int GetTargetY() { return m_pEngine->GetCurrentMouseY(); };
 };

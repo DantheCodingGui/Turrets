@@ -15,6 +15,7 @@ public:
 	virtual void DrawBackground() = 0;
 	virtual void Update() = 0;
 	virtual void HandleKeys(int iKeyCode) = 0;
+	virtual void HandleMouse() = 0;
 protected:
 	Psydb3Engine* m_pEngine;
 };

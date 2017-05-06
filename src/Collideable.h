@@ -1,12 +1,22 @@
 #pragma once
+
+class Psydb3CollisionHandler;
+
 class Collideable
 {
 public:
-	Collideable();
+	Collideable(Psydb3CollisionHandler* collisionHandler);
 	~Collideable();
-	virtual double GetX() const = 0;
-	virtual double GetY() const = 0;
-	virtual int GetWidth() const = 0;
-	virtual int GetHeight() const = 0;
+	virtual int GetCollisionCentreX() = 0;
+	virtual int GetCollisionCentreY() = 0;
+	virtual void GetEdges(int edges[4]) = 0;
+	virtual void BackgroundCollideBehaviour(char Direction, int tileEdge) = 0;
+	void SetCollidingX(bool isColliding) { m_collidingX = isColliding; };
+	void SetCollidingY(bool isColliding) { m_collidingY = isColliding; };
+protected:
+	Psydb3CollisionHandler* m_collisionHandler;
+
+	bool m_collidingX;
+	bool m_collidingY;
 };
 

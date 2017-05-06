@@ -16,7 +16,7 @@ public:
 		SDL_Surface* pSurface,
 		int iMapX, int iMapY,
 		int iStartPositionScreenX, int iStartPositionScreenY) const;
-	int GetCollisionOffset(int direction) const { return (direction == 2) ? m_collidableWallOffset : 0; };
+	int GetCollisionOffset() const { return m_collidableWallOffset; };
 	//true for anything not a floor tile
 	bool IsTileCollideable(int x, int y) { return (GetValue(x, y) != FLOOR_TILE) ? true : false; };
 private:

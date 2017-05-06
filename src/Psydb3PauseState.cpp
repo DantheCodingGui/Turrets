@@ -35,3 +35,7 @@ void Psydb3PauseState::HandleKeys(int iKeyCode) {
 			break;
 	}
 }
+
+void Psydb3PauseState::HandleMouse() {
+
+}

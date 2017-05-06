@@ -1,9 +1,10 @@
 #include "Psydb3PlayerTank.h"
 #include "header.h"
 #include "templates.h"
+#include "Psydb3CollisionHandler.h"
 
-Psydb3PlayerTank::Psydb3PlayerTank(BaseEngine* pEngine, double x, double y)
-	: Psydb3Tank(pEngine, x, y) {
+Psydb3PlayerTank::Psydb3PlayerTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler)
+	: Psydb3Tank(pEngine, x, y, collisionHandler) {
 	InitialiseTankStates();
 }
 
@@ -37,7 +38,6 @@ void Psydb3PlayerTank::GetDirection() {
 
 	m_moving = true;
 	int previousDirection = m_direction;
-	int tempDirection = 0;
 
 	if (m_pEngine->IsKeyPressed(SDLK_a)) 
 		left = true;
@@ -49,62 +49,32 @@ void Psydb3PlayerTank::GetDirection() {
 		down = true;
 
 	if (left && up)
-		tempDirection = 1;
+		m_direction = 1;
 	else if (right && up)
-		tempDirection = 3;
+		m_direction = 3;
 	else if (right && down)
-		tempDirection = 5;
+		m_direction = 5;
 	else if (left && down)
-		tempDirection = 7;
+		m_direction = 7;
 	else if (left)
-		tempDirection = 0;
+		m_direction = 0;
 	else if (up)
-		tempDirection = 2;
+		m_direction = 2;
 	else if (right)
-		tempDirection = 4;
+		m_direction = 4;
 	else if (down)
-		tempDirection = 6;
+		m_direction = 6;
 	else {
-		tempDirection = m_direction;
 		m_moving = false;
 	}
-#if 0
-	if (tempDirection != previousDirection) {
-		if (!ShouldStartRotating(previousDirection, tempDirection) && !m_rotating) {
-			rotator->SetupRotation(m_pEngine->GetTime(), m_pEngine->GetTime() + 750, previousDirection, tempDirection);
-			m_rotating = true;
-		}
-		else if (m_rotating) {
-			m_direction = rotator->Update(m_pEngine->GetTime(), m_direction);
-			if (tempDirection == m_direction) {
-				rotator->Reset();
-				m_rotating = false;
-			}
-		}
-		m_animationCount = 0;
-	}
-#endif
-	if (tempDirection % 4 != previousDirection % 4) {
-		ImageSizeCompensation(previousDirection, tempDirection);
-		m_animationCount = 0;
-	}
 
-	m_direction = tempDirection;
+	if (m_direction % 4 != previousDirection % 4) {
+		ImageSizeCompensation(previousDirection, m_direction);
+		m_animationCount = 0;
+	}
 }
 
 void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
-	
-	GetDirection();
+	Psydb3Tank::DoUpdate(iCurrentTime);
 
-	if (m_moving) {
-		m_x += m_tankStates[m_direction]->GetTankVelocityX();
-		m_y += m_tankStates[m_direction]->GetTankVelocityY();
-
-		UpdateAnimation();
-	}
-
-	m_iCurrentScreenX = (int)m_x - 20;
-	m_iCurrentScreenY = (int)m_y - 20;
-
-	RedrawObjects();
 }

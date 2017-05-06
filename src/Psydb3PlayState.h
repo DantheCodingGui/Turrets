@@ -18,6 +18,7 @@ public:
 	virtual void DrawBackground();
 	virtual void Update();
 	virtual void HandleKeys(int iKeyCode);
+	virtual void HandleMouse();
 	void InitialiseObjects();
 	void SaveBackground();
 	void GetMaps();
@@ -41,5 +42,7 @@ private:
 	vector<vector<unsigned int>> m_map;
 
 	Psydb3CollisionHandler* m_collisionHandler;
+
+	int m_playerArrayIndex;
 };
 

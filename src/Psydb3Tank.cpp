@@ -6,14 +6,19 @@
 
 #include <cmath>
 
-Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y)
+#include "Psydb3CollisionHandler.h"
+#include "Psydb3Bullet.h"
+
+Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler)
 	: DisplayableObject(pEngine)
+	, Collideable(collisionHandler)
 	, m_x(x)
 	, m_y(y)
 	, m_animationCount(0)
 	, m_direction(0)
 	, m_animated(false)
 	, m_moving(false)
+	, m_firing(false)
 	, m_iDrawTankBaseWidth(0)
 	, m_iDrawTankBaseHeight(0)
 	, m_pEngine(pEngine) {
@@ -23,8 +28,6 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y)
 	
 	m_iStartDrawPosX = 0;
 	m_iStartDrawPosY = 0;
-
-	//rotator = new Psydb3RotationPosition();
 }
 
 //default tank speeds (if change needed can redefine for individual tank type)
@@ -49,13 +52,13 @@ void Psydb3Tank::InitialiseTankStates() {
 	InitialiseTankVelocities(tankVelocities);
 
 	m_tankStates[0] = new Psydb3TankDirectionState(0, 0, tankVelocities[0][0], tankVelocities[0][1], 13, 1, 28, 17,
-													5, 8, 8, 5, 20, 20, 27, 27, 0, 32);
+													28, 31, 31, 28, 20, 20, 27, 27, 0, 32);
 	m_tankStates[1] = new Psydb3TankDirectionState(0, 0, tankVelocities[1][0], tankVelocities[1][1], 24, 2, 39, 18,
-													33, 39, 42, 36, 64, 60, 62, 66, 32, -25);
+													16, 22, 25, 19, 56, 52, 54, 57, 32, -25);
 	m_tankStates[2] = new Psydb3TankDirectionState(30, 0, tankVelocities[2][0], tankVelocities[2][1], 14, 2, 29, 18,
-													0, 10, 10, 0, 50, 50, 52, 52, 49, 0);
+													0, 10, 10, 0, 39, 39, 41, 41, 49, 0);
 	m_tankStates[3] = new Psydb3TankDirectionState(0, 0, tankVelocities[3][0], tankVelocities[3][1], 24, 2, 39, 18,
-													43, 46, 52, 49, 62, 60, 64, 66, -32, -25);
+													52, 55, 61, 58, 57, 55, 60, 61, -32, -25);
 
 	for (int i = 0; i < 4; ++i) {
 		m_tankStates[i + 4] = new Psydb3TankDirectionState(
@@ -72,7 +75,6 @@ void Psydb3Tank::InitialiseTankStates() {
 }
 
 Psydb3Tank::~Psydb3Tank() {
-	//delete rotator;
 	for (int i = 0; i < 8; ++i)
 		delete m_tankStates[i];
 }
@@ -90,7 +92,8 @@ void Psydb3Tank::Draw() {
 
 	m_iDrawWidth = m_iDrawTankBaseWidth + 40;
 	m_iDrawHeight = m_iDrawTankBaseHeight + 40;
-
+	//StoreLastScreenPositionForUndraw();
+	//return;
 	m_spriteImages[drawImageIndex]->FlexibleRenderImageWithMask(m_pEngine->GetForeground(),
 		0, 0, (int)m_x, (int)m_y, 
 		m_iDrawTankBaseWidth,
@@ -170,36 +173,36 @@ void Psydb3Tank::DrawBarrel() {
 		angleCompensation = (2.0 / 3.0 + (fmod(angle + M_PI, M_PI / 2) / M_PI / 2) / 3);
 
 	//unit vectors facing the target
-	double unitVectorX = cos(angle); 
-	double unitVectorY = sin(angle);
+	m_unitVectorX = cos(angle);
+	m_unitVectorY = sin(angle);
 
-	unitVectorY *= angleCompensation;
+	m_unitVectorY *= angleCompensation;
 
 	//unit vectors perpendicular to the target
-	double unitPerpenVectorX = (unitVectorY / angleCompensation); 
-	double unitPerpenVectorY = -(unitVectorX * angleCompensation);
+	double unitPerpenVectorX = (m_unitVectorY / angleCompensation);
+	double unitPerpenVectorY = -(m_unitVectorX * angleCompensation);
 
 	//all points defined through quantities of these two vectors
 
-	xpoints[0] = (double)centreX + (3 * unitPerpenVectorX) + (10 * unitVectorX);
-	ypoints[0] = (double)centreY + (3 * unitPerpenVectorY) + (10 * unitVectorY);
-	xpoints[7] = (double)centreX - (3 * unitPerpenVectorX) + (10 * unitVectorX);
-	ypoints[7] = (double)centreY - (3 * unitPerpenVectorY) + (10 * unitVectorY);
+	xpoints[0] = (double)centreX + (3 * unitPerpenVectorX) + (10 * m_unitVectorX);
+	ypoints[0] = (double)centreY + (3 * unitPerpenVectorY) + (10 * m_unitVectorY);
+	xpoints[7] = (double)centreX - (3 * unitPerpenVectorX) + (10 * m_unitVectorX);
+	ypoints[7] = (double)centreY - (3 * unitPerpenVectorY) + (10 * m_unitVectorY);
 
-	xpoints[1] = xpoints[0] + (20 * unitVectorX);
-	ypoints[1] = ypoints[0] + (20 * unitVectorY);
-	xpoints[6] = xpoints[7] + (20 * unitVectorX);
-	ypoints[6] = ypoints[7] + (20 * unitVectorY);
+	xpoints[1] = xpoints[0] + (20 * m_unitVectorX);
+	ypoints[1] = ypoints[0] + (20 * m_unitVectorY);
+	xpoints[6] = xpoints[7] + (20 * m_unitVectorX);
+	ypoints[6] = ypoints[7] + (20 * m_unitVectorY);
 
 	xpoints[2] = xpoints[1] + (2 * unitPerpenVectorX);
 	ypoints[2] = ypoints[1] + (2 * unitPerpenVectorY);
 	xpoints[5] = xpoints[6] - (2 * unitPerpenVectorX);
 	ypoints[5] = ypoints[6] - (2 * unitPerpenVectorY);
 
-	xpoints[3] = xpoints[2] + (5 * unitVectorX);
-	ypoints[3] = ypoints[2] + (5 * unitVectorY);
-	xpoints[4] = xpoints[5] + (5 * unitVectorX);
-	ypoints[4] = ypoints[5] + (5 * unitVectorY);
+	xpoints[3] = xpoints[2] + (5 * m_unitVectorX);
+	ypoints[3] = ypoints[2] + (5 * m_unitVectorY);
+	xpoints[4] = xpoints[5] + (5 * m_unitVectorX);
+	ypoints[4] = ypoints[5] + (5 * m_unitVectorY);
 
 	m_pEngine->DrawPolygon(
 		8,
@@ -207,6 +210,41 @@ void Psydb3Tank::DrawBarrel() {
 		ypoints,
 		0X0B290A,
 		m_pEngine->GetForeground());
+}
+
+void Psydb3Tank::FireBullet(double x, double y, double unitVectorX, double unitVectorY) {
+	dynamic_cast<Psydb3Bullet*>(m_pEngine->GetDisplayableObject(0))->StartMoving(x, y, unitVectorX, unitVectorY);
+}
+
+void Psydb3Tank::DoUpdate(int iCurrentTime) {
+
+	GetDirection();
+
+	if (m_firing) {
+		FireBullet(m_x + (int)m_tankStates[m_direction]->GetTankCentreOffsetX(), m_y + (int)m_tankStates[m_direction]->GetTankCentreOffsetY(),
+			m_unitVectorX, m_unitVectorY);
+		m_firing = false;
+	}
+
+	if (m_moving) {
+		int oldPosX = m_x;
+		int oldPosY = m_y;
+		m_x += m_tankStates[m_direction]->GetTankVelocityX();
+		if (m_collisionHandler->CheckBackgroundCollision(this))
+			m_x = oldPosX;
+		m_y += m_tankStates[m_direction]->GetTankVelocityY();
+		if (m_collisionHandler->CheckBackgroundCollision(this))
+			m_y = oldPosY;
+
+		m_collisionHandler->CheckBackgroundCollision(this);
+
+		UpdateAnimation();
+	}
+
+	m_iCurrentScreenX = (int)m_x - 20;
+	m_iCurrentScreenY = (int)m_y - 20;
+
+	RedrawObjects();
 }
 
 void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
@@ -271,17 +309,42 @@ void Psydb3Tank::DrawBackgroundTracks() {
 		0xd3aa5f);
 }
 
+void Psydb3Tank::BackgroundCollideBehaviour(char Direction, int tileEdge) {
+	switch (Direction){
+		case 0:
+			m_x = tileEdge - m_iDrawTankBaseWidth;
+			break;
+		case 1:
+			m_y = tileEdge - m_iDrawTankBaseHeight;
+			break;
+		case 2:
+			m_x = tileEdge;
+			break;
+		case 3:
+			m_y = tileEdge;
+			break;
+	}
+}
+
 //since diagonal image is larger than the others, must edit 
 //player position slightly when swapping to/from it
 void Psydb3Tank::ImageSizeCompensation(int oldDirection, int newDirection) {
 	bool oldDirSmall = (oldDirection % 2 == 0) ? true : false;
 	bool newDirSmall = (newDirection % 2 == 0) ? true : false;
+
+	int oldPosX = m_x;
+	int oldPosY = m_y;
+
 	if (oldDirSmall && !newDirSmall) {
 		m_x -= 7.5;
-		m_y -= 4;
+		m_y -= 3;
 	}
 	else if (!oldDirSmall && newDirSmall) {
 		m_x += 7.5;
-		m_y += 4;
+		m_y += 3;
 	}
+	if (m_collisionHandler->CheckBackgroundCollision(this))
+		m_x = oldPosX;
+	if (m_collisionHandler->CheckBackgroundCollision(this))
+		m_y = oldPosY;
 }

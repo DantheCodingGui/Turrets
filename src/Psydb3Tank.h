@@ -9,12 +9,14 @@ class Psydb3Tank :
 	public Collideable
 {
 public:
-	Psydb3Tank(BaseEngine* pEngine, double x, double y);
+	Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler);
 	~Psydb3Tank();
     void Draw(); //abstract methods
 	void DrawBarrel();
 	void GetBarrelCoords(double* points, int targetX, int targetY);
-	virtual void DoUpdate(int iCurrentTime) = 0;
+	void FireBullet(double x, double y, double unitVectorX, double unitVectorY);
+	virtual void DoUpdate(int iCurrentTime);
+	virtual void GetDirection() = 0;
 	virtual int GetTargetX() = 0;
 	virtual int GetTargetY() = 0;
 	virtual void InitialiseSpriteImages() = 0;
@@ -34,10 +36,18 @@ public:
 		return (newDirection == backCheck || newDirection == forwardCheck);
 	};
 	void ImageSizeCompensation(int oldDirection, int newDirection);
-	double GetX() const { return m_x; };
-	double GetY() const { return m_y; };
-	int GetWidth() const { return m_iDrawTankBaseWidth; };
-	int GetHeight() const { return m_iDrawTankBaseHeight; };
+	virtual void GetEdges(int edges[4]) {
+		edges[0] = m_x;
+		edges[1] = m_y + 20;
+		edges[2] = m_x + m_iDrawTankBaseWidth;
+		edges[3] = m_y + m_iDrawTankBaseWidth;
+	};
+	virtual int GetCollisionCentreX() { return (int)m_x + m_iDrawTankBaseWidth / 2; };
+	virtual int GetCollisionCentreY() { return (int)m_y + 10 + m_iDrawTankBaseHeight / 2; };
+	virtual void BackgroundCollideBehaviour(char Direction, int tileEdge);
+	void SetCollidingX(bool isColliding) { m_collidingX = isColliding; };
+	void SetCollidingY(bool isColliding) { m_collidingY = isColliding; };
+	void SetFiring(bool isFiring) { m_firing = isFiring; };
 protected:
 	double m_x;
 	double m_y;
@@ -46,6 +56,7 @@ protected:
 	bool m_animated; //is image loaded default or animated version
 	bool m_moving;
 	bool m_rotating; //is the tank BASE rotating
+	bool m_firing;
 
 	Psydb3TankDirectionState* m_tankStates[8]; //stores data specific to the direction the tank is facing
 
@@ -59,5 +70,8 @@ protected:
 
 	int m_iDrawTankBaseWidth; //second set of values needed for tank barrel undraw
 	int m_iDrawTankBaseHeight;
+
+	double m_unitVectorX;
+	double m_unitVectorY;
 };
 

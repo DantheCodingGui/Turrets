@@ -56,3 +56,7 @@ void Psydb3Engine::KeyUp(int iKeyCode)
 {
 	m_activeGameState->HandleKeys(iKeyCode);
 }
+
+void Psydb3Engine::MouseUp(int iButton, int iX, int iY) {
+	m_activeGameState->HandleMouse();
+}

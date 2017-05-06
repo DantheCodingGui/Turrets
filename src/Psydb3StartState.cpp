@@ -38,3 +38,7 @@ void Psydb3StartState::HandleKeys(int iKeyCode) {
 			break;
 	}
 }
+
+void Psydb3StartState::HandleMouse() {
+
+}
