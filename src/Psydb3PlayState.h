@@ -42,6 +42,7 @@ private:
 	vector<vector<unsigned int>> m_map;
 
 	Psydb3CollisionHandler* m_collisionHandler;
+	Psydb3BulletManager* m_bulletManager;
 
 	int m_playerArrayIndex;
 };

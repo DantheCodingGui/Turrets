@@ -9,6 +9,8 @@ public:
 	Psydb3CollisionHandler(Psydb3Engine* pEngine, Psydb3TileManager* tileManager);
 	~Psydb3CollisionHandler();
 	bool CheckBackgroundCollision(Collideable* object);
+	bool CheckObjectsCollision(Collideable* object);
+	bool PixelPerfectCollision(Collideable* object, Collideable* otherObject);
 	//unsigned char DoesCollide();
 	void GetTileEdges(int tileMapX, int tileMapY, int edges[4]);
 	bool IsInBounds(int x, int y, int edges[4]);
@@ -19,5 +21,7 @@ private:
 	Psydb3TileManager* m_map;
 
 	Psydb3Engine* m_pEngine;
+
+	unsigned int m_foregroundEmptyColour;
 };
 

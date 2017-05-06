@@ -14,7 +14,8 @@
 
 Psydb3CollisionHandler::Psydb3CollisionHandler(Psydb3Engine* pEngine, Psydb3TileManager* tileManager) 
 	: m_pEngine(pEngine)
-	, m_map(tileManager) {
+	, m_map(tileManager)
+	, m_foregroundEmptyColour(0xE9C977) {
 #if 0
 	std::vector<Collideable*> collideableObjects;
 	int i;
@@ -60,13 +61,62 @@ bool Psydb3CollisionHandler::CheckBackgroundCollision(Collideable* object) {
 	int adjacentTilePosTop = objectEdges[TOP] / tileHeight;
 	int adjacentTilePosBottom = objectEdges[BOTTOM] / tileHeight;
 
+	bool collision = false;
+
 	for (int j = adjacentTilePosLeft; j <= adjacentTilePosRight; ++j) {
 		for (int k = adjacentTilePosTop; k <= adjacentTilePosBottom; ++k) {
+
+			int objectBehindWall = -1;// m_map->IsTileBehindWall(j, k);
+			if (objectBehindWall == 1) {
+				m_map->m_tilesToRedrawX.push_back(j);
+				m_map->m_tilesToRedrawY.push_back(k + 1);
+			}
+			else if (objectBehindWall == 2) {
+				m_map->m_tilesToRedrawX.push_back(j);
+				m_map->m_tilesToRedrawY.push_back(k + 2);
+			}
+
 			if (m_map->IsTileCollideable(j, k)) {
-				return true;
+				collision = true;
 			}
 		}
 	}
+	return collision;
+	
+}
+
+bool Psydb3CollisionHandler::PixelPerfectCollision(Collideable* object, Collideable* otherObject) {
+	return true;
+
+}
+
+bool Psydb3CollisionHandler::CheckObjectsCollision(Collideable* object) {
+	int objectEdges[4];
+	int tempObjectEdges[4];
+	object->GetEdges(objectEdges);
+
+	std::vector<Collideable*> otherObjects;
+	Collideable* temp;
+
+	for (int i = 0; i < m_pEngine->GetArraySize(); ++i) {
+		if ((temp = dynamic_cast<Collideable*>(m_pEngine->GetDisplayableObject(i))) != NULL && temp != object) 
+			otherObjects.push_back(temp);
+	}
+
+	//std::vector<int> objectPixelsX;
+	//std::vector<int> objectPixelsY;
+	//std::vector<int> otherObjectPixelsX;
+	//std::vector<int> otherObjectPixelsY;
+
+	for (std::vector<Collideable*>::iterator it = otherObjects.begin(); it != otherObjects.end(); ++it) {
+		(*it)->GetEdges(tempObjectEdges);
+		if (IsInBounds(objectEdges[LEFT], objectEdges[TOP], tempObjectEdges) ||
+			IsInBounds(objectEdges[RIGHT], objectEdges[TOP], tempObjectEdges) ||
+			IsInBounds(objectEdges[LEFT], objectEdges[BOTTOM], tempObjectEdges) ||
+			IsInBounds(objectEdges[LEFT], objectEdges[BOTTOM], tempObjectEdges))
+			return true;
+	}
+
 	return false;
 }
 
@@ -76,6 +126,7 @@ void Psydb3CollisionHandler::GetTileEdges(int tileMapX, int tileMapY, int edges[
 	edges[RIGHT] = edges[LEFT] + m_map->GetTileWidth();
 	edges[BOTTOM] = edges[TOP] + m_map->GetTileHeight();
 }
+
 
 bool Psydb3CollisionHandler::IsInBounds(int x, int y, int edges[4]) {
 	return (x >= edges[LEFT]) && (x <= edges[RIGHT]) && (y >= edges[TOP]) && (y <= edges[BOTTOM]);

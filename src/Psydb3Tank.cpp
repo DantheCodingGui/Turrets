@@ -9,9 +9,10 @@
 #include "Psydb3CollisionHandler.h"
 #include "Psydb3Bullet.h"
 
-Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler)
+Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager)
 	: DisplayableObject(pEngine)
 	, Collideable(collisionHandler)
+	, m_bulletManager(bulletManager)
 	, m_x(x)
 	, m_y(y)
 	, m_animationCount(0)
@@ -19,6 +20,7 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionH
 	, m_animated(false)
 	, m_moving(false)
 	, m_firing(false)
+	, m_timeTillCanFire(0)
 	, m_iDrawTankBaseWidth(0)
 	, m_iDrawTankBaseHeight(0)
 	, m_pEngine(pEngine) {
@@ -86,14 +88,13 @@ void Psydb3Tank::Draw() {
 
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
 	
-	//FIND A BETTER PLACE FOR THIS
+	
 	m_iDrawTankBaseWidth = m_iDrawWidth = m_spriteImages[drawImageIndex]->GetWidth();
 	m_iDrawTankBaseHeight = m_iDrawHeight = m_spriteImages[drawImageIndex]->GetHeight();
 
 	m_iDrawWidth = m_iDrawTankBaseWidth + 40;
 	m_iDrawHeight = m_iDrawTankBaseHeight + 40;
-	//StoreLastScreenPositionForUndraw();
-	//return;
+	 
 	m_spriteImages[drawImageIndex]->FlexibleRenderImageWithMask(m_pEngine->GetForeground(),
 		0, 0, (int)m_x, (int)m_y, 
 		m_iDrawTankBaseWidth,
@@ -212,17 +213,25 @@ void Psydb3Tank::DrawBarrel() {
 		m_pEngine->GetForeground());
 }
 
-void Psydb3Tank::FireBullet(double x, double y, double unitVectorX, double unitVectorY) {
-	dynamic_cast<Psydb3Bullet*>(m_pEngine->GetDisplayableObject(0))->StartMoving(x, y, unitVectorX, unitVectorY);
+void Psydb3Tank::FireBullet(double x, double y, double unitVectorX, double unitVectorY, int bulletIndex) {
+	//dynamic_cast<Psydb3Bullet*>(m_pEngine->GetDisplayableObject(0))->StartMoving(x, y, unitVectorX, unitVectorY);
+		dynamic_cast<Psydb3Bullet*>(m_pEngine->GetDisplayableObject(bulletIndex))->StartMoving(x, y, unitVectorX, unitVectorY);
+
 }
 
 void Psydb3Tank::DoUpdate(int iCurrentTime) {
 
 	GetDirection();
+	int bulletIndex;
 
-	if (m_firing) {
+	if (m_firing && m_timeTillCanFire == 0 && (bulletIndex = m_bulletManager->RequestToFire()) != -1) {
 		FireBullet(m_x + (int)m_tankStates[m_direction]->GetTankCentreOffsetX(), m_y + (int)m_tankStates[m_direction]->GetTankCentreOffsetY(),
-			m_unitVectorX, m_unitVectorY);
+			m_unitVectorX, m_unitVectorY, bulletIndex);
+		m_firing = false;
+		m_timeTillCanFire = 200;
+	}
+	else if (m_timeTillCanFire > 0) {
+		--m_timeTillCanFire;
 		m_firing = false;
 	}
 

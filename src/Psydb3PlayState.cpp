@@ -17,10 +17,14 @@ Psydb3PlayState::Psydb3PlayState(Psydb3Engine* pEngine)
 }
 
 void Psydb3PlayState::InitialiseObjects() {
-	m_pEngine->CreateObjectArray(3);
-	m_pEngine->StoreObjectInArray(0, new Psydb3Bullet(m_pEngine, m_collisionHandler));
-	m_pEngine->StoreObjectInArray(1, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler));
-	m_pEngine->StoreObjectInArray(2, new Psydb3Cursor(m_pEngine));
+	int numberOfTanks = 1;
+	m_bulletManager = new Psydb3BulletManager(m_pEngine, numberOfTanks*3);
+	int i;
+	m_pEngine->CreateObjectArray(numberOfTanks*4 + 1);
+	for (i = 0; i < numberOfTanks*3; ++i) 
+		m_pEngine->StoreObjectInArray(i, new Psydb3Bullet(m_pEngine, m_collisionHandler));
+	m_pEngine->StoreObjectInArray(i, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager));
+	m_pEngine->StoreObjectInArray(i + 1, new Psydb3Cursor(m_pEngine));
 
 	m_playerArrayIndex = 1;
 
@@ -30,6 +34,7 @@ void Psydb3PlayState::InitialiseObjects() {
 
 Psydb3PlayState::~Psydb3PlayState() {
 	delete m_collisionHandler;
+	delete m_bulletManager;
 }
 
 void Psydb3PlayState::DrawBackground() {
@@ -101,5 +106,6 @@ void Psydb3PlayState::HandleKeys(int iKeyCode) {
 }
 
 void Psydb3PlayState::HandleMouse() {
-	dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(m_playerArrayIndex))->SetFiring(true);
+	printf("size is %d\n", m_pEngine->GetArraySize());
+	dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 2))->SetFiring(true);
 }

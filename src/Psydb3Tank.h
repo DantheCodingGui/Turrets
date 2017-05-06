@@ -4,17 +4,18 @@
 #include "JPGImage.h"
 #include "Psydb3RotationPosition.h"
 #include "Psydb3TankDirectionState.h"
+#include "Psydb3BulletManager.h"
 class Psydb3Tank :
 	public DisplayableObject,
 	public Collideable
 {
 public:
-	Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler);
+	Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletmanager);
 	~Psydb3Tank();
     void Draw(); //abstract methods
 	void DrawBarrel();
 	void GetBarrelCoords(double* points, int targetX, int targetY);
-	void FireBullet(double x, double y, double unitVectorX, double unitVectorY);
+	void FireBullet(double x, double y, double unitVectorX, double unitVectorY, int bulletIndex);
 	virtual void DoUpdate(int iCurrentTime);
 	virtual void GetDirection() = 0;
 	virtual int GetTargetX() = 0;
@@ -58,11 +59,14 @@ protected:
 	bool m_rotating; //is the tank BASE rotating
 	bool m_firing;
 
+	int m_timeTillCanFire;
+
 	Psydb3TankDirectionState* m_tankStates[8]; //stores data specific to the direction the tank is facing
 
 	ImageData* m_spriteImages[8]; //single sprite image object all images loaded into
 
 	//Psydb3RotationPosition* rotator;
+	Psydb3BulletManager* m_bulletManager;
 
 	BaseEngine* m_pEngine; //stores base engine pointer for code clarity going forward
 

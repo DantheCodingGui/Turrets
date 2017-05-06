@@ -20,6 +20,8 @@ public:
 	virtual int GetCollisionCentreY() { return (int)m_y + 10 + m_iDrawHeight / 2; };
 	virtual void BackgroundCollideBehaviour(char Direction, int tileEdge);
 	void StartMoving(double x, double y, double vectorX, double vectorY);
+	void Reset();
+	bool GetBeenFired() const { return m_hasBeenFired; };
 private:
 	double m_x;
 	double m_y;
@@ -31,5 +33,7 @@ private:
 	bool m_hasBeenFired;
 
 	int m_bouncesLeft;
+
+	int m_timeTillCollisionChecking;
 };
 
