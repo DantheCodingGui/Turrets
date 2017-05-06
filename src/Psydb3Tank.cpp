@@ -173,36 +173,36 @@ void Psydb3Tank::DrawBarrel() {
 		angleCompensation = (2.0 / 3.0 + (fmod(angle + M_PI, M_PI / 2) / M_PI / 2) / 3);
 
 	//unit vectors facing the target
-	m_unitVectorX = cos(angle);
-	m_unitVectorY = sin(angle);
+	double unitVectorX = m_unitVectorX = cos(angle);
+	double unitVectorY = m_unitVectorY = sin(angle);
 
-	m_unitVectorY *= angleCompensation;
+	unitVectorY *= angleCompensation;
 
 	//unit vectors perpendicular to the target
-	double unitPerpenVectorX = (m_unitVectorY / angleCompensation);
-	double unitPerpenVectorY = -(m_unitVectorX * angleCompensation);
+	double unitPerpenVectorX = (unitVectorY / angleCompensation);
+	double unitPerpenVectorY = -(unitVectorX * angleCompensation);
 
 	//all points defined through quantities of these two vectors
 
-	xpoints[0] = (double)centreX + (3 * unitPerpenVectorX) + (10 * m_unitVectorX);
-	ypoints[0] = (double)centreY + (3 * unitPerpenVectorY) + (10 * m_unitVectorY);
-	xpoints[7] = (double)centreX - (3 * unitPerpenVectorX) + (10 * m_unitVectorX);
-	ypoints[7] = (double)centreY - (3 * unitPerpenVectorY) + (10 * m_unitVectorY);
+	xpoints[0] = (double)centreX + (3 * unitPerpenVectorX) + (10 * unitVectorX);
+	ypoints[0] = (double)centreY + (3 * unitPerpenVectorY) + (10 * unitVectorY);
+	xpoints[7] = (double)centreX - (3 * unitPerpenVectorX) + (10 * unitVectorX);
+	ypoints[7] = (double)centreY - (3 * unitPerpenVectorY) + (10 * unitVectorY);
 
-	xpoints[1] = xpoints[0] + (20 * m_unitVectorX);
-	ypoints[1] = ypoints[0] + (20 * m_unitVectorY);
-	xpoints[6] = xpoints[7] + (20 * m_unitVectorX);
-	ypoints[6] = ypoints[7] + (20 * m_unitVectorY);
+	xpoints[1] = xpoints[0] + (20 * unitVectorX);
+	ypoints[1] = ypoints[0] + (20 * unitVectorY);
+	xpoints[6] = xpoints[7] + (20 * unitVectorX);
+	ypoints[6] = ypoints[7] + (20 * unitVectorY);
 
 	xpoints[2] = xpoints[1] + (2 * unitPerpenVectorX);
 	ypoints[2] = ypoints[1] + (2 * unitPerpenVectorY);
 	xpoints[5] = xpoints[6] - (2 * unitPerpenVectorX);
 	ypoints[5] = ypoints[6] - (2 * unitPerpenVectorY);
 
-	xpoints[3] = xpoints[2] + (5 * m_unitVectorX);
-	ypoints[3] = ypoints[2] + (5 * m_unitVectorY);
-	xpoints[4] = xpoints[5] + (5 * m_unitVectorX);
-	ypoints[4] = ypoints[5] + (5 * m_unitVectorY);
+	xpoints[3] = xpoints[2] + (5 * unitVectorX);
+	ypoints[3] = ypoints[2] + (5 * unitVectorY);
+	xpoints[4] = xpoints[5] + (5 * unitVectorX);
+	ypoints[4] = ypoints[5] + (5 * unitVectorY);
 
 	m_pEngine->DrawPolygon(
 		8,

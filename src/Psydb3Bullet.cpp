@@ -10,7 +10,7 @@ Psydb3Bullet::Psydb3Bullet(BaseEngine* pEngine, Psydb3CollisionHandler* collisio
 	, m_dx(0)
 	, m_dy(0)
 	, m_hasBeenFired(false)
-	, m_bouncesLeft(2)
+	, m_bouncesLeft(3)
 	, m_pEngine(pEngine) {
 
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)m_x;
@@ -27,6 +27,8 @@ Psydb3Bullet::~Psydb3Bullet() {
 }
 
 void Psydb3Bullet::StartMoving(double x, double y, double vectorX, double vectorY) {
+	if (m_hasBeenFired)
+		return;
 	printf("FIRE!!!\n");
 	m_x = m_iCurrentScreenX = x - m_iDrawWidth/2;
 	m_y = m_iCurrentScreenY = y - m_iDrawHeight/2;
@@ -40,7 +42,7 @@ void Psydb3Bullet::BackgroundCollideBehaviour(char Direction, int tileEdge) {}
 
 void Psydb3Bullet::Draw() {
 	
-	if (!IsVisible() || !m_hasBeenFired)
+	if (!m_hasBeenFired)
 		return;
 
 	//printf("x: %f, drawx: %d, y: %f, drawy: %d, velX: %f, velY: %f", m_x, m_iCurrentScreenX, m_y, m_iCurrentScreenY, m_dx, m_dy);
@@ -83,6 +85,7 @@ void Psydb3Bullet::DoUpdate(int iCurrentTime) {
 		m_y = 0;
 		m_dx = 0;
 		m_dy = 0;
+		m_bouncesLeft = 3;
 	}
 	//check collideable->collideable colision here, if so make has not been fired and "delete" it
   
