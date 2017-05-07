@@ -1,4 +1,4 @@
-3
+4
 18
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -56,5 +56,24 @@ afaaaaaaaaaaaaaaaaaaaaaaaafa
 afaaaaaaaaaaaaaaaaaaaaaaaafa
 afaaaaaaaaaaaaaaaaaaaaaaaafa
 afaaaaaaaaaaaaaaaaaaaaaaaafa
+abbbbbccbbbbbbbbbbbbbbcccbba
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+afbbbbbccbbbbbbbbcbbbbbbbbga
+afaaaaaaaaaaaaaaaaaaaaaaaafa
+afaaaaaaaaaaaaaaaaaaaaaaaafa
+afaaaaaaaaaaaahddaaaaaaaaafa
+afaaaaaaaaaaaahaaaaaaaaaaafa
+afaaaaaaaaaaaadaaaaaaaaaaafa
+afaaaaaaaaaaaaaaaaaaaaaaaafa
+afaaaaaaaaaaaaaaaaaaaaaaaafa
+agaaaaaaaaaaaahaaaaaaaaaaafa
+afaaaaaaaaaaaahaaaaaaaaaaafa
+afaaaaaaaaaaaahaaaaaaaaaaafa
+afaaaaaaaaaaaahaaaaaaaaaaafa
+afaaaaaaaaaaaahaaaaaaaaaaafa
+afaaaaaaaaaaaahaaaaaaaaaaafa
+afaaaaaaaaaaaahaaaaaaaaaaafa
 abbbbbccbbbbbbbbbbbbbbcccbba
 END

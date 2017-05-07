@@ -23,6 +23,7 @@ public:
 	void InitialiseObjects();
 	void SaveBackground();
 	void GetMaps();
+	void GetTankNames();
 	void NextLevel() {
 		if (m_level != m_maps.size() - 1) 
 			++m_level; 
@@ -45,6 +46,6 @@ private:
 	Psydb3CollisionHandler* m_collisionHandler;
 	Psydb3BulletManager* m_bulletManager;
 
-	int m_playerArrayIndex;
+	vector<string> m_tankNames;
 };
 

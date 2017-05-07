@@ -1,5 +1,6 @@
 #include "Psydb3PlayState.h"
 #include <iostream>
+#include <ctime>
 
 #include "Psydb3PlayerTank.h"
 #include "Psydb3Cursor.h"
@@ -9,24 +10,27 @@
 Psydb3PlayState::Psydb3PlayState(Psydb3Engine* pEngine)
 	: Psydb3State(pEngine)
 	, m_mapFilePath("MapData/maps.txt")
-	, m_level(1)
-	, m_playerArrayIndex(0)
+	, m_level(3)
 	, m_backgroundInitialised(false) {
 	GetMaps();
+	GetTankNames();
 	m_collisionHandler = new Psydb3CollisionHandler(m_pEngine, &m_oTiles);
 }
 
 void Psydb3PlayState::InitialiseObjects() {
+
+	srand(time(NULL));
+	
+
+
 	int numberOfTanks = 1;
 	m_bulletManager = new Psydb3BulletManager(m_pEngine, numberOfTanks*3);
 	int i;
 	m_pEngine->CreateObjectArray(numberOfTanks*4 + 1);
 	for (i = 0; i < numberOfTanks*3; ++i) 
 		m_pEngine->StoreObjectInArray(i, new Psydb3Bullet(m_pEngine, m_collisionHandler));
-	m_pEngine->StoreObjectInArray(i, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager));
+	m_pEngine->StoreObjectInArray(i, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "The Challenger"));
 	m_pEngine->StoreObjectInArray(i + 1, new Psydb3Cursor(m_pEngine));
-
-	m_playerArrayIndex = 1;
 
 	m_pEngine->SetAllVisibility(false);
 }
@@ -77,8 +81,13 @@ void Psydb3PlayState::GetMaps() {
 	}
 }
 
+void Psydb3PlayState::GetTankNames() {
+	m_fileHandler.ReadTextFile(&m_tankNames, "TankNames/names.txt");
+}
+
 void Psydb3PlayState::Update() {
 	m_pEngine->UpdateAllObjects(m_pEngine->GetModifiedTime());
+
 }
 
 void Psydb3PlayState::SaveBackground() {
@@ -113,7 +122,12 @@ void Psydb3PlayState::HandleMouse() {
 void Psydb3PlayState::DrawOntop() {
 
 	for (int i = 0; i < m_oTiles.m_tilesToRedrawX.size(); ++i) {
-		m_oTiles.DrawTileAt(m_pEngine, m_pEngine->GetBackground(), m_oTiles.m_tilesToRedrawX[i], m_oTiles.m_tilesToRedrawY[i], 0, 0);
+		m_oTiles.DrawTileAt(
+			m_pEngine, m_pEngine->GetBackground(), 
+			m_oTiles.m_tilesToRedrawX[i], 
+			m_oTiles.m_tilesToRedrawY[i], 
+			m_oTiles.m_tilesToRedrawX[i]*m_oTiles.GetTileWidth(),
+			m_oTiles.m_tilesToRedrawY[i]*m_oTiles.GetTileHeight());
 		m_oTiles.DrawForegroundTileAt(m_pEngine, m_oTiles.m_tilesToRedrawX[i], m_oTiles.m_tilesToRedrawY[i]);
 	}
 	m_oTiles.m_tilesToRedrawX.clear();
@@ -121,4 +135,5 @@ void Psydb3PlayState::DrawOntop() {
 
 	//update the cursor again so it redraws over any now foreground tile
 	m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 1)->Draw();
+
 }

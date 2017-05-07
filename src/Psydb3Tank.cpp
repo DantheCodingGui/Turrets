@@ -9,12 +9,13 @@
 #include "Psydb3CollisionHandler.h"
 #include "Psydb3Bullet.h"
 
-Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager)
+Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name)
 	: DisplayableObject(pEngine)
 	, Collideable(collisionHandler)
 	, m_bulletManager(bulletManager)
 	, m_x(x)
 	, m_y(y)
+	, m_name(name)
 	, m_animationCount(0)
 	, m_direction(0)
 	, m_animated(false)
@@ -24,6 +25,8 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionH
 	, m_iDrawTankBaseWidth(0)
 	, m_iDrawTankBaseHeight(0)
 	, m_pEngine(pEngine) {
+
+	printf("%s \n", name);
 
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)x;
 	m_iCurrentScreenY = m_iPreviousScreenY = (int)y;

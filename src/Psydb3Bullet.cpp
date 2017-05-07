@@ -30,7 +30,6 @@ Psydb3Bullet::~Psydb3Bullet() {
 void Psydb3Bullet::StartMoving(double x, double y, double vectorX, double vectorY) {
 	if (m_hasBeenFired)
 		return;
-	printf("FIRE!\n");
 	m_x = m_iCurrentScreenX = (x - m_iDrawWidth/2) + (vectorX * 50);
 	m_y = m_iCurrentScreenY = (y - m_iDrawHeight/2) + (vectorY * 50);
 	m_dx = vectorX * 3;
@@ -51,7 +50,7 @@ void Psydb3Bullet::BackgroundCollideBehaviour(char Direction, int tileEdge) {}
 
 void Psydb3Bullet::Draw() {
 	
-	if (!m_hasBeenFired)
+	if (!m_hasBeenFired || !IsVisible())
 		return;
 
 	if (m_behindTile) {

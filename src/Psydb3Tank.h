@@ -10,7 +10,7 @@ class Psydb3Tank :
 	public Collideable
 {
 public:
-	Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletmanager);
+	Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletmanager, const char* name);
 	~Psydb3Tank();
     void Draw(); //abstract methods
 	void DrawBarrel();
@@ -77,5 +77,7 @@ protected:
 
 	double m_unitVectorX;
 	double m_unitVectorY;
+
+	const char* m_name;
 };
 

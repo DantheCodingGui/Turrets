@@ -3,6 +3,8 @@
 #include "templates.h"
 #include <vector>
 
+#include "Psydb3Bullet.h"
+
 #define LEFT			0
 #define TOP				1
 #define RIGHT			2
@@ -11,6 +13,8 @@
 #define RIGHT_TOP		5
 #define LEFT_BOTTOM		6
 #define RIGHT_BOTTOM	7
+
+#define FLOOR_TILE		0
 
 Psydb3CollisionHandler::Psydb3CollisionHandler(Psydb3Engine* pEngine, Psydb3TileManager* tileManager) 
 	: m_pEngine(pEngine)
@@ -49,6 +53,8 @@ Psydb3CollisionHandler::~Psydb3CollisionHandler() {
 
 bool Psydb3CollisionHandler::CheckBackgroundCollision(Collideable* object) {
 
+	Psydb3Bullet* bullet;
+
 	int tileWidth = m_map->GetTileWidth();
 	int tileHeight = m_map->GetTileHeight();
 
@@ -74,6 +80,11 @@ bool Psydb3CollisionHandler::CheckBackgroundCollision(Collideable* object) {
 			else if (behindWall == 2) {
 				m_map->m_tilesToRedrawX.push_back(j);
 				m_map->m_tilesToRedrawY.push_back(k + 2);
+			}
+
+			if ((bullet = dynamic_cast<Psydb3Bullet*>(object)) != NULL && m_map->IsTileBreakable(j, k)) {
+				bullet->Reset();
+				m_map->RemoveTile(m_pEngine, j, k);
 			}
 
 			if (m_map->IsTileCollideable(j, k)) {

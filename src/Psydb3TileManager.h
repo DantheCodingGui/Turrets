@@ -27,6 +27,12 @@ public:
 	int GetCollisionOffset() const { return m_collidableWallOffset; };
 	//true for anything not a floor tile
 	bool IsTileCollideable(int x, int y) { return (GetValue(x, y) != FLOOR_TILE) ? true : false; };
+	bool IsTileBreakable(int x, int y) { 
+		int value = GetValue(x, y);
+		return (value == BREAKABLE_WALL_TILE || value == BREAKABLE_TALL_WALL_TILE
+			|| value == BREAKABLE_WALL_TILE_ONLY_TOP || value == BREAKABLE_TALL_WALL_TILE_ONLY_TOP) ? true : false;
+	};
+	void RemoveTile(BaseEngine* pEngine, int x, int y);
 	int IsTileBehindWall(int x, int y) {
 		if (GetValue(x, y + 1) != FLOOR_TILE)
 			return 1;
