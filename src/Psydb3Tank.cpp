@@ -88,7 +88,9 @@ void Psydb3Tank::Draw() {
 		return;
 
 	//undraws font
-	m_pEngine->CopyBackgroundPixels(m_x - 30, m_y - 40, 120, 20);
+	m_pEngine->CopyBackgroundPixels(
+		m_x + m_tankStates[m_direction]->GetTankCentreOffsetX() - 52, 
+		m_y + m_tankStates[m_direction]->GetTankCentreOffsetY() - 60, 120, 20);
 
 	if (m_behindTile) {
 		StoreLastScreenPositionForUndraw();
@@ -96,7 +98,6 @@ void Psydb3Tank::Draw() {
 	}
 
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
-	
 	
 	m_iDrawTankBaseWidth = m_iDrawWidth = m_spriteImages[drawImageIndex]->GetWidth();
 	m_iDrawTankBaseHeight = m_iDrawHeight = m_spriteImages[drawImageIndex]->GetHeight();
@@ -158,8 +159,10 @@ void Psydb3Tank::Draw() {
 	if (!drawBelow)
 		DrawBarrel();
 
-	//draws tank name
-	m_pEngine->DrawScreenString(m_x - 20, m_y - 40, m_name, 0x000000, m_pEngine->GetFont("Blockletter.otf", 15));
+	//draws tank name above image
+	m_pEngine->DrawScreenString(
+		m_x + m_tankStates[m_direction]->GetTankCentreOffsetX() - 47, 
+		m_y + m_tankStates[m_direction]->GetTankCentreOffsetY() - 60, m_name, 0x000000, m_pEngine->GetFont("Blockletter.otf", 15));
 
 	StoreLastScreenPositionForUndraw();
 }

@@ -42,7 +42,6 @@ Psydb3PlayState::~Psydb3PlayState() {
 }
 
 void Psydb3PlayState::DrawBackground() {
-
 	if (!m_backgroundInitialised) {
 		m_oTiles.SetSize(28, 18);
 
@@ -55,6 +54,10 @@ void Psydb3PlayState::DrawBackground() {
 		m_oTiles.DrawAllTiles(m_pEngine,
 			m_pEngine->GetBackground(),
 			0, 0, 27, 17);
+
+		char levelStringBuffer[10];
+		sprintf(levelStringBuffer, "Level %d", m_level + 1);
+		m_pEngine->DrawBackgroundString(100, 10, levelStringBuffer, 0x000000, m_pEngine->GetFont("Blockletter.otf", 30));
 
 		m_backgroundInitialised = true;
 	}
@@ -87,6 +90,8 @@ void Psydb3PlayState::GetTankNames() {
 
 void Psydb3PlayState::Update() {
 	m_pEngine->UpdateAllObjects(m_pEngine->GetModifiedTime());
+
+	
 
 }
 
