@@ -26,8 +26,6 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionH
 	, m_iDrawTankBaseHeight(0)
 	, m_pEngine(pEngine) {
 
-	printf("%s \n", name);
-
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)x;
 	m_iCurrentScreenY = m_iPreviousScreenY = (int)y;
 	
@@ -88,6 +86,9 @@ void Psydb3Tank::Draw() {
 
 	if (!IsVisible())
 		return;
+
+	//undraws font
+	m_pEngine->CopyBackgroundPixels(m_x - 30, m_y - 40, 120, 20);
 
 	if (m_behindTile) {
 		StoreLastScreenPositionForUndraw();
@@ -156,6 +157,9 @@ void Psydb3Tank::Draw() {
 
 	if (!drawBelow)
 		DrawBarrel();
+
+	//draws tank name
+	m_pEngine->DrawScreenString(m_x - 20, m_y - 40, m_name, 0x000000, m_pEngine->GetFont("Blockletter.otf", 15));
 
 	StoreLastScreenPositionForUndraw();
 }
