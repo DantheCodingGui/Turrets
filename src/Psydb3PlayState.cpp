@@ -29,7 +29,7 @@ void Psydb3PlayState::InitialiseObjects() {
 	m_pEngine->CreateObjectArray(numberOfTanks*4 + 1);
 	for (i = 0; i < numberOfTanks*3; ++i) 
 		m_pEngine->StoreObjectInArray(i, new Psydb3Bullet(m_pEngine, m_collisionHandler));
-	m_pEngine->StoreObjectInArray(i, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "The Challenger"));
+	m_pEngine->StoreObjectInArray(i, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "Challenger"));
 	m_pEngine->StoreObjectInArray(i + 1, new Psydb3Cursor(m_pEngine));
 
 	m_pEngine->SetAllVisibility(false);

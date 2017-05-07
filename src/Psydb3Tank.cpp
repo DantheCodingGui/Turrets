@@ -89,7 +89,7 @@ void Psydb3Tank::Draw() {
 
 	//undraws font
 	m_pEngine->CopyBackgroundPixels(
-		m_x + m_tankStates[m_direction]->GetTankCentreOffsetX() - 52, 
+		m_x + m_tankStates[m_direction]->GetTankCentreOffsetX() - 37, 
 		m_y + m_tankStates[m_direction]->GetTankCentreOffsetY() - 60, 120, 20);
 
 	if (m_behindTile) {
@@ -161,7 +161,7 @@ void Psydb3Tank::Draw() {
 
 	//draws tank name above image
 	m_pEngine->DrawScreenString(
-		m_x + m_tankStates[m_direction]->GetTankCentreOffsetX() - 47, 
+		m_x + m_tankStates[m_direction]->GetTankCentreOffsetX() - 32, 
 		m_y + m_tankStates[m_direction]->GetTankCentreOffsetY() - 60, m_name, 0x000000, m_pEngine->GetFont("Blockletter.otf", 15));
 
 	StoreLastScreenPositionForUndraw();
