@@ -86,6 +86,11 @@ void Psydb3Tank::Draw() {
 	if (!IsVisible())
 		return;
 
+	if (m_behindTile) {
+		StoreLastScreenPositionForUndraw();
+		return;
+	}
+
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
 	
 	
@@ -249,6 +254,8 @@ void Psydb3Tank::DoUpdate(int iCurrentTime) {
 
 		UpdateAnimation();
 	}
+	else
+		m_collisionHandler->CheckBackgroundCollision(this);
 
 	m_iCurrentScreenX = (int)m_x - 20;
 	m_iCurrentScreenY = (int)m_y - 20;
@@ -284,7 +291,7 @@ void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
 		m_animated = false;
 
 	if (m_animated != oldAnim)
-		DrawBackgroundTracks();
+		 DrawBackgroundTracks();
 
 }
 

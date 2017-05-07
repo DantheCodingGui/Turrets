@@ -10,5 +10,6 @@ public:
 	virtual void DrawBackground();
 	virtual void HandleKeys(int iKeyCode);
 	virtual void HandleMouse();
+	virtual void DrawOntop();
 };
 

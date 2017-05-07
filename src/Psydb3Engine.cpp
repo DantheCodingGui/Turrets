@@ -60,3 +60,7 @@ void Psydb3Engine::KeyUp(int iKeyCode)
 void Psydb3Engine::MouseUp(int iButton, int iX, int iY) {
 	m_activeGameState->HandleMouse();
 }
+
+void Psydb3Engine::DrawStringsOnTop() {
+	m_activeGameState->DrawOntop();
+}

@@ -39,3 +39,7 @@ void Psydb3PauseState::HandleKeys(int iKeyCode) {
 void Psydb3PauseState::HandleMouse() {
 
 }
+
+void Psydb3PauseState::DrawOntop() {
+
+}

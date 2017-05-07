@@ -42,3 +42,7 @@ void Psydb3StartState::HandleKeys(int iKeyCode) {
 void Psydb3StartState::HandleMouse() {
 
 }
+
+void Psydb3StartState::DrawOntop() {
+
+}

@@ -96,6 +96,7 @@ void Psydb3PlayState::HandleKeys(int iKeyCode) {
 	
 	switch (iKeyCode) {
 		case SDLK_ESCAPE:
+			m_map.clear();
 			SaveBackground();
 			m_pEngine->SetState(PAUSE_STATE);
 			m_pEngine->SetupBackgroundBuffer();
@@ -106,6 +107,18 @@ void Psydb3PlayState::HandleKeys(int iKeyCode) {
 }
 
 void Psydb3PlayState::HandleMouse() {
-	printf("size is %d\n", m_pEngine->GetArraySize());
 	dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 2))->SetFiring(true);
+}
+
+void Psydb3PlayState::DrawOntop() {
+
+	for (int i = 0; i < m_oTiles.m_tilesToRedrawX.size(); ++i) {
+		m_oTiles.DrawTileAt(m_pEngine, m_pEngine->GetBackground(), m_oTiles.m_tilesToRedrawX[i], m_oTiles.m_tilesToRedrawY[i], 0, 0);
+		m_oTiles.DrawForegroundTileAt(m_pEngine, m_oTiles.m_tilesToRedrawX[i], m_oTiles.m_tilesToRedrawY[i]);
+	}
+	m_oTiles.m_tilesToRedrawX.clear();
+	m_oTiles.m_tilesToRedrawY.clear();
+
+	//update the cursor again so it redraws over any now foreground tile
+	m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 1)->Draw();
 }

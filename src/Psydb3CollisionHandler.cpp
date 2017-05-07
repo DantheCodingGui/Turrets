@@ -3,10 +3,10 @@
 #include "templates.h"
 #include <vector>
 
-#define LEFT	0
-#define TOP		1
-#define RIGHT	2
-#define BOTTOM	3
+#define LEFT			0
+#define TOP				1
+#define RIGHT			2
+#define BOTTOM			3
 #define LEFT_TOP		4
 #define RIGHT_TOP		5
 #define LEFT_BOTTOM		6
@@ -66,12 +66,12 @@ bool Psydb3CollisionHandler::CheckBackgroundCollision(Collideable* object) {
 	for (int j = adjacentTilePosLeft; j <= adjacentTilePosRight; ++j) {
 		for (int k = adjacentTilePosTop; k <= adjacentTilePosBottom; ++k) {
 
-			int objectBehindWall = -1;// m_map->IsTileBehindWall(j, k);
-			if (objectBehindWall == 1) {
+			int behindWall = m_map->IsTileBehindWall(j, k);
+			if (behindWall == 1) {
 				m_map->m_tilesToRedrawX.push_back(j);
 				m_map->m_tilesToRedrawY.push_back(k + 1);
 			}
-			else if (objectBehindWall == 2) {
+			else if (behindWall == 2) {
 				m_map->m_tilesToRedrawX.push_back(j);
 				m_map->m_tilesToRedrawY.push_back(k + 2);
 			}
@@ -82,7 +82,6 @@ bool Psydb3CollisionHandler::CheckBackgroundCollision(Collideable* object) {
 		}
 	}
 	return collision;
-	
 }
 
 bool Psydb3CollisionHandler::PixelPerfectCollision(Collideable* object, Collideable* otherObject) {

@@ -13,10 +13,13 @@ public:
 	virtual void BackgroundCollideBehaviour(char Direction, int tileEdge) = 0;
 	void SetCollidingX(bool isColliding) { m_collidingX = isColliding; };
 	void SetCollidingY(bool isColliding) { m_collidingY = isColliding; };
+	void SetBehindTile(bool isBehindTile) { m_behindTile = isBehindTile; };
 protected:
 	Psydb3CollisionHandler* m_collisionHandler;
 
 	bool m_collidingX;
 	bool m_collidingY;
+
+	bool m_behindTile;
 };
 
