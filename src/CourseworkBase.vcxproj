@@ -94,6 +94,7 @@
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="JPGImage.h" />
     <ClInclude Include="MovementPosition.h" />
+    <ClInclude Include="Psydb3AdvancedEnemyTank.h" />
     <ClInclude Include="Psydb3BasicEnemyTank.h" />
     <ClInclude Include="Psydb3Bomb.h" />
     <ClInclude Include="Psydb3Bullet.h" />
@@ -103,10 +104,12 @@
     <ClInclude Include="Psydb3EnemyTank.h" />
     <ClInclude Include="Psydb3Engine.h" />
     <ClInclude Include="Psydb3FileIO.h" />
+    <ClInclude Include="Psydb3InvisibleEnemyTank.h" />
     <ClInclude Include="Psydb3PauseState.h" />
     <ClInclude Include="Psydb3PlayerTank.h" />
     <ClInclude Include="Psydb3PlayState.h" />
     <ClInclude Include="Psydb3RotationPosition.h" />
+    <ClInclude Include="Psydb3StandardEnemyTank.h" />
     <ClInclude Include="Psydb3StartState.h" />
     <ClInclude Include="Psydb3State.h" />
     <ClInclude Include="Psydb3Tank.h" />
@@ -137,6 +140,7 @@
     <ClCompile Include="DisplayableObject.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="JPGImage.cpp" />
+    <ClCompile Include="Psydb3AdvancedEnemyTank.cpp" />
     <ClCompile Include="Psydb3BasicEnemyTank.cpp" />
     <ClCompile Include="Psydb3Bomb.cpp" />
     <ClCompile Include="Psydb3Bullet.cpp" />
@@ -146,9 +150,11 @@
     <ClCompile Include="Psydb3EnemyTank.cpp" />
     <ClCompile Include="Psydb3Engine.cpp" />
     <ClCompile Include="Psydb3FileIO.cpp" />
+    <ClCompile Include="Psydb3InvisibleEnemyTank.cpp" />
     <ClCompile Include="Psydb3PauseState.cpp" />
     <ClCompile Include="Psydb3PlayerTank.cpp" />
     <ClCompile Include="Psydb3PlayState.cpp" />
+    <ClCompile Include="Psydb3StandardEnemyTank.cpp" />
     <ClCompile Include="Psydb3StartState.cpp" />
     <ClCompile Include="Psydb3State.cpp" />
     <ClCompile Include="Psydb3Tank.cpp" />

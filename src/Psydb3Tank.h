@@ -10,7 +10,7 @@ class Psydb3Tank :
 	public Collideable
 {
 public:
-	Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name, unsigned int colours[3]);
+	Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name);
 	~Psydb3Tank();
     void Draw(); //abstract methods
 	void DrawBarrel();

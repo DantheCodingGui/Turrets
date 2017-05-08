@@ -150,6 +150,15 @@
     <ClInclude Include="Psydb3BasicEnemyTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Psydb3StandardEnemyTank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3AdvancedEnemyTank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3InvisibleEnemyTank.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mainfunction.cpp">
@@ -264,6 +273,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Psydb3BasicEnemyTank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3StandardEnemyTank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3AdvancedEnemyTank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3InvisibleEnemyTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

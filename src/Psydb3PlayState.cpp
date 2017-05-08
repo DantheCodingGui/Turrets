@@ -4,6 +4,9 @@
 
 #include "Psydb3PlayerTank.h"
 #include "Psydb3BasicEnemyTank.h"
+#include "Psydb3StandardEnemyTank.h"
+#include "Psydb3AdvancedEnemyTank.h"
+#include "Psydb3InvisibleEnemyTank.h"
 #include "Psydb3Cursor.h"
 #include "Psydb3Bomb.h"
 #include "Psydb3Bullet.h"
@@ -11,7 +14,7 @@
 Psydb3PlayState::Psydb3PlayState(Psydb3Engine* pEngine)
 	: Psydb3State(pEngine)
 	, m_mapFilePath("MapData/maps.txt")
-	, m_level(1)
+	, m_level(0)
 	, m_backgroundInitialised(false) {
 	GetMaps();
 	GetTankNames();
@@ -21,18 +24,19 @@ Psydb3PlayState::Psydb3PlayState(Psydb3Engine* pEngine)
 void Psydb3PlayState::InitialiseObjects() {
 
 	srand(time(NULL));
-	unsigned int playerColours[] = { 0x20791E, 0x144912, 0X0B290A };
-	unsigned int basicEnemyColours[] = { 0xB98700, 0x765601, 0X342600 };
 
-	int numberOfTanks = 2;
+	int numberOfTanks = 5;
 	m_bulletManager = new Psydb3BulletManager(m_pEngine, numberOfTanks*3);
 	int i;
 	m_pEngine->CreateObjectArray(numberOfTanks*4 + 1);
-	for (i = 0; i < numberOfTanks*3; ++i) 
+	for (i = 0; i < numberOfTanks * 3; ++i)
 		m_pEngine->StoreObjectInArray(i, new Psydb3Bullet(m_pEngine, m_collisionHandler));
-	m_pEngine->StoreObjectInArray(i, new Psydb3BasicEnemyTank(m_pEngine, 1200.0, 500.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str(), basicEnemyColours));
-	m_pEngine->StoreObjectInArray(i + 1, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "Challenger", playerColours));
-	m_pEngine->StoreObjectInArray(i + 2, new Psydb3Cursor(m_pEngine));
+	m_pEngine->StoreObjectInArray(i, new Psydb3InvisibleEnemyTank(m_pEngine, 1350.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(i + 1, new Psydb3AdvancedEnemyTank(m_pEngine, 900.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(i + 2, new Psydb3StandardEnemyTank(m_pEngine, 1200.0, 300.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(i + 3, new Psydb3BasicEnemyTank(m_pEngine, 1200.0, 500.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(i + 4, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "Challenger"));
+	m_pEngine->StoreObjectInArray(i + 5, new Psydb3Cursor(m_pEngine));
 
 	m_pEngine->SetAllVisibility(false);
 }

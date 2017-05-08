@@ -4,7 +4,7 @@ class Psydb3PlayerTank :
 	public Psydb3Tank
 {
 public:
-	Psydb3PlayerTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name, unsigned int colours[3]);
+	Psydb3PlayerTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name);
 	~Psydb3PlayerTank();
 	void InitialiseSpriteImages();
 	virtual void GetDirection();

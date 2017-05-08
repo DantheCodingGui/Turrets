@@ -9,7 +9,7 @@
 #include "Psydb3CollisionHandler.h"
 #include "Psydb3Bullet.h"
 
-Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name, unsigned int colours[3])
+Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name)
 	: DisplayableObject(pEngine)
 	, Collideable(collisionHandler)
 	, m_bulletManager(bulletManager)
@@ -25,9 +25,6 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionH
 	, m_iDrawTankBaseWidth(0)
 	, m_iDrawTankBaseHeight(0)
 	, m_pEngine(pEngine) {
-
-	for (int i = 0; i < 3; ++i) 
-		m_tankColours[i] = colours[i];
 
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)x;
 	m_iCurrentScreenY = m_iPreviousScreenY = (int)y;
@@ -94,11 +91,6 @@ void Psydb3Tank::Draw() {
 	m_pEngine->CopyBackgroundPixels(
 		m_x + m_tankStates[m_direction]->GetTankCentreOffsetX() - 37, 
 		m_y + m_tankStates[m_direction]->GetTankCentreOffsetY() - 60, 120, 20);
-
-	if (m_behindTile) {
-		StoreLastScreenPositionForUndraw();
-		return;
-	}
 
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
 	
