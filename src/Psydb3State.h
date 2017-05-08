@@ -17,6 +17,7 @@ public:
 	virtual void HandleKeys(int iKeyCode) = 0;
 	virtual void HandleMouse() = 0;
 	virtual void DrawOntop() = 0;
+	virtual void UnDrawStrings() = 0;
 protected:
 	Psydb3Engine* m_pEngine;
 };

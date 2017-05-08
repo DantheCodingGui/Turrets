@@ -10,5 +10,6 @@ public:
 	virtual int GetTargetX() const { return dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 2))->GetXCentre(); };
 	virtual int GetTargetY() const { return dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 2))->GetYCentre(); };
 	virtual void InitialiseSpriteImages() = 0;
+	virtual void DoUpdate(int iCurrentTime);
 };
 

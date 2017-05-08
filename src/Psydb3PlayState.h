@@ -20,23 +20,30 @@ public:
 	virtual void HandleKeys(int iKeyCode);
 	virtual void HandleMouse();
 	virtual void DrawOntop();
+	virtual void UnDrawStrings();
 	void InitialiseObjects();
 	void SaveBackground();
 	void GetMaps();
+	void GetTankSpawns();
+	void LoadLevel();
 	void GetTankNames();
 	void NextLevel() {
 		if (m_level != m_maps.size() - 1) 
 			++m_level; 
 	};
+	bool HasLevelStarted() { return ((m_pEngine->GetTime() >= m_startTime + 4800)) ? true : false; };
 private:
 	Psydb3TileManager m_oTiles;
 
 	Psydb3FileIO m_fileHandler;
 
 	vector<vector<string>> m_maps;
-	const char* m_mapFilePath;
+	vector<vector<string>> m_tankSpawns;
+
+	int m_startTime;
 
 	int m_level;
+	int m_numberOfTanks;
 
 	//used to decide whether to redraw background or reload saved version
 	bool m_backgroundInitialised;

@@ -10,7 +10,7 @@ Psydb3Bullet::Psydb3Bullet(BaseEngine* pEngine, Psydb3CollisionHandler* collisio
 	, m_dx(0)
 	, m_dy(0)
 	, m_hasBeenFired(false)
-	, m_bouncesLeft(3)
+	, m_bouncesLeft(2)
 	, m_timeTillCollisionChecking(1000)
 	, m_pEngine(pEngine) {
 
@@ -20,7 +20,7 @@ Psydb3Bullet::Psydb3Bullet(BaseEngine* pEngine, Psydb3CollisionHandler* collisio
 	m_iStartDrawPosX = 0;
 	m_iStartDrawPosY = 0;
 
-	m_iDrawWidth = m_iDrawHeight = 10;
+	m_iDrawWidth = m_iDrawHeight = 15;
 }
 
 
@@ -32,8 +32,8 @@ void Psydb3Bullet::StartMoving(double x, double y, double vectorX, double vector
 		return;
 	m_x = m_iCurrentScreenX = (x - m_iDrawWidth/2) + (vectorX * 50);
 	m_y = m_iCurrentScreenY = (y - m_iDrawHeight/2) + (vectorY * 50);
-	m_dx = vectorX * 3;
-	m_dy = vectorY * 3;
+	m_dx = vectorX * 2;
+	m_dy = vectorY * 2;
 	m_hasBeenFired = true;
 
 }
@@ -103,7 +103,7 @@ void Psydb3Bullet::DoUpdate(int iCurrentTime) {
 
 	if (m_bouncesLeft <= 0) {
 		Reset();
-		m_bouncesLeft = 3;
+		m_bouncesLeft = 2;
 	}
 	//check collideable->collideable colision here, if so make has not been fired and "delete" it
   

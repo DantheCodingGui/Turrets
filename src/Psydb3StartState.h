@@ -11,5 +11,6 @@ public:
 	virtual void HandleKeys(int iKeyCode);
 	virtual void HandleMouse();
 	virtual void DrawOntop();
+	virtual void UnDrawStrings() {};
 };
 

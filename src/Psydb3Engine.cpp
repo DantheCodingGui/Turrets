@@ -64,3 +64,7 @@ void Psydb3Engine::MouseUp(int iButton, int iX, int iY) {
 void Psydb3Engine::DrawStringsOnTop() {
 	m_activeGameState->DrawOntop();
 }
+
+void Psydb3Engine::UnDrawStrings() {
+	m_activeGameState->UnDrawStrings();
+}

@@ -22,6 +22,7 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionH
 	, m_moving(false)
 	, m_firing(false)
 	, m_timeTillCanFire(0)
+	, m_fireRate(200)
 	, m_iDrawTankBaseWidth(0)
 	, m_iDrawTankBaseHeight(0)
 	, m_pEngine(pEngine) {
@@ -86,11 +87,6 @@ void Psydb3Tank::Draw() {
 
 	if (!IsVisible())
 		return;
-
-	//undraws font
-	m_pEngine->CopyBackgroundPixels(
-		m_x + m_tankStates[m_direction]->GetTankCentreOffsetX() - 37, 
-		m_y + m_tankStates[m_direction]->GetTankCentreOffsetY() - 60, 120, 20);
 
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
 	
@@ -238,7 +234,7 @@ void Psydb3Tank::DoUpdate(int iCurrentTime) {
 		FireBullet(m_x + (int)m_tankStates[m_direction]->GetTankCentreOffsetX(), m_y + (int)m_tankStates[m_direction]->GetTankCentreOffsetY(),
 			m_unitVectorX, m_unitVectorY, bulletIndex);
 		m_firing = false;
-		m_timeTillCanFire = 200;
+		m_timeTillCanFire = m_fireRate;
 	}
 	else if (m_timeTillCanFire > 0) {
 		--m_timeTillCanFire;

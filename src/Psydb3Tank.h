@@ -60,6 +60,7 @@ protected:
 	bool m_firing;
 
 	int m_timeTillCanFire;
+	int m_fireRate; //how often a tank can fire
 
 	Psydb3TankDirectionState* m_tankStates[8]; //stores data specific to the direction the tank is facing
 
