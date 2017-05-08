@@ -23,22 +23,7 @@ Psydb3PlayState::Psydb3PlayState(Psydb3Engine* pEngine)
 }
 
 void Psydb3PlayState::InitialiseObjects() {
-
-	srand(time(NULL));
-
-	m_numberOfTanks = 5;
-	m_bulletManager = new Psydb3BulletManager(m_pEngine, m_numberOfTanks * 3);
-	int i;
-	m_pEngine->CreateObjectArray(m_numberOfTanks * 4 + 1);
-	for (i = 0; i < m_numberOfTanks * 3; ++i)
-		m_pEngine->StoreObjectInArray(i, new Psydb3Bullet(m_pEngine, m_collisionHandler));
-	m_pEngine->StoreObjectInArray(i, new Psydb3InvisibleEnemyTank(m_pEngine, 1350.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
-	m_pEngine->StoreObjectInArray(i + 1, new Psydb3AdvancedEnemyTank(m_pEngine, 900.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
-	m_pEngine->StoreObjectInArray(i + 2, new Psydb3StandardEnemyTank(m_pEngine, 1200.0, 300.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
-	m_pEngine->StoreObjectInArray(i + 3, new Psydb3BasicEnemyTank(m_pEngine, 1200.0, 500.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
-	m_pEngine->StoreObjectInArray(i + 4, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "Challenger"));
-	m_pEngine->StoreObjectInArray(i + 5, new Psydb3Cursor(m_pEngine));
-
+	LoadLevel();
 	m_pEngine->SetAllVisibility(false);
 }
 
@@ -106,8 +91,21 @@ void Psydb3PlayState::GetTankSpawns() {
 }
 
 void Psydb3PlayState::LoadLevel() {
-	m_backgroundInitialised = false;
-	//m_pEngine->DestroyOldObjects();
+	srand(time(NULL));
+
+	m_numberOfTanks = 5;
+	m_bulletManager = new Psydb3BulletManager(m_pEngine, m_numberOfTanks * 3);
+	int i;
+	m_pEngine->CreateObjectArray(m_numberOfTanks * 4 + 1);
+	for (i = 0; i < m_numberOfTanks * 3; ++i)
+		m_pEngine->StoreObjectInArray(i, new Psydb3Bullet(m_pEngine, m_collisionHandler));
+	m_pEngine->StoreObjectInArray(i, new Psydb3InvisibleEnemyTank(m_pEngine, 1350.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(i + 1, new Psydb3AdvancedEnemyTank(m_pEngine, 900.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(i + 2, new Psydb3StandardEnemyTank(m_pEngine, 1200.0, 300.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(i + 3, new Psydb3BasicEnemyTank(m_pEngine, 1200.0, 500.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(i + 4, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "Challenger"));
+	m_pEngine->StoreObjectInArray(i + 5, new Psydb3Cursor(m_pEngine));
+
 
 	//get length of spawns for level number, plug into function below
 
@@ -116,7 +114,8 @@ void Psydb3PlayState::LoadLevel() {
 	//for loop for tanks, switch statement to decide what object to display there
 	//at index i, player tank
 	//at index i + 1, cursor
-	DrawBackground();
+	//m_backgroundInitialised = false;
+	//DrawBackground();
 }
 
 void Psydb3PlayState::GetTankNames() {
@@ -126,6 +125,10 @@ void Psydb3PlayState::GetTankNames() {
 void Psydb3PlayState::Update() {
 	if (HasLevelStarted())
 		m_pEngine->UpdateAllObjects(m_pEngine->GetModifiedTime());
+	else {
+		m_pEngine->UnDrawStrings();
+		m_pEngine->DrawStringsOnTop();
+	}
 }
 
 void Psydb3PlayState::SaveBackground() {
@@ -144,6 +147,7 @@ void Psydb3PlayState::HandleKeys(int iKeyCode) {
 	switch (iKeyCode) {
 		case SDLK_ESCAPE:
 			m_map.clear();
+			m_backgroundInitialised = false;
 			SaveBackground();
 			m_pEngine->SetState(PAUSE_STATE);
 			m_pEngine->SetupBackgroundBuffer();
@@ -174,12 +178,12 @@ void Psydb3PlayState::HandleMouse() {
 }
 
 void Psydb3PlayState::DrawOntop() {
-
+	
 	if (!HasLevelStarted()) {
-		char buffer[20];
+		char buffer[30];
 		m_pEngine->DrawScreenString(600, 350, "Are You Ready??", 0xffffff, m_pEngine->GetFont("Blockletter.otf", 70));
-		sprintf(buffer, "Are You Ready?? in");
-		m_pEngine->DrawScreenString(600, 350, buffer, 0xffffff, m_pEngine->GetFont("Blockletter.otf", 70));
+		sprintf(buffer, "in %d", 4 - (m_pEngine->GetTime() - m_startTime)/1200);
+		m_pEngine->DrawScreenString(700, 420, buffer, 0xffffff, m_pEngine->GetFont("Blockletter.otf", 70));
 		return;
 	}
 
@@ -207,6 +211,6 @@ void Psydb3PlayState::UnDrawStrings() {
 		if ((temp = dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(i))) != NULL)
 			m_pEngine->CopyBackgroundPixels(
 				temp->GetXCentre() - 40,
-				temp->GetYCentre() - 70, 80, 20);
+				temp->GetYCentre() - 70, 120, 20);
 	}
 }

@@ -380,7 +380,6 @@ void Psydb3TileManager::RemoveTile(BaseEngine* pEngine, int x, int y) {
 	pEngine->DrawBackgroundRectangle(x*m_iTileWidth, y*m_iTileHeight + 10 - m_iTileHeight, x*m_iTileWidth + m_iTileWidth, y*m_iTileHeight + 10, 0xdcbc7f);
 	int tileBehindValue = GetValue(x, y - 1);
 	if (tileBehindValue > BREAKABLE_TALL_WALL_TILE) {
-		printf("old value: %d, new value: %d\n", tileBehindValue, tileBehindValue );
 		SetValue(x, y - 1, tileBehindValue - 4);
 		DrawTileAt(pEngine, pEngine->GetBackground(), x, y - 1, x*m_iTileWidth, (y - 1)*m_iTileHeight);
 		DrawForegroundTileAt(pEngine, x, y - 1);

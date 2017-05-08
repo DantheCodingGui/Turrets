@@ -85,6 +85,7 @@ bool Psydb3CollisionHandler::CheckBackgroundCollision(Collideable* object) {
 			if ((bullet = dynamic_cast<Psydb3Bullet*>(object)) != NULL && m_map->IsTileBreakable(j, k)) {
 				bullet->Reset();
 				m_map->RemoveTile(m_pEngine, j, k);
+				return true;
 			}
 
 			if (m_map->IsTileCollideable(j, k)) {
@@ -112,11 +113,6 @@ bool Psydb3CollisionHandler::CheckObjectsCollision(Collideable* object) {
 		if ((temp = dynamic_cast<Collideable*>(m_pEngine->GetDisplayableObject(i))) != NULL && temp != object) 
 			otherObjects.push_back(temp);
 	}
-
-	//std::vector<int> objectPixelsX;
-	//std::vector<int> objectPixelsY;
-	//std::vector<int> otherObjectPixelsX;
-	//std::vector<int> otherObjectPixelsY;
 
 	for (std::vector<Collideable*>::iterator it = otherObjects.begin(); it != otherObjects.end(); ++it) {
 		(*it)->GetEdges(tempObjectEdges);
