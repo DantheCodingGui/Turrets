@@ -6,3 +6,6 @@ Chieftain
 Avenger
 Zeus
 Beowulf
+Thunder
+Titan
+Warlord

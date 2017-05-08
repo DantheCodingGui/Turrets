@@ -10,7 +10,7 @@ class Psydb3Tank :
 	public Collideable
 {
 public:
-	Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name);
+	Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name, unsigned int colours[3]);
 	~Psydb3Tank();
     void Draw(); //abstract methods
 	void DrawBarrel();
@@ -18,8 +18,8 @@ public:
 	void FireBullet(double x, double y, double unitVectorX, double unitVectorY, int bulletIndex);
 	virtual void DoUpdate(int iCurrentTime);
 	virtual void GetDirection() = 0;
-	virtual int GetTargetX() = 0;
-	virtual int GetTargetY() = 0;
+	virtual int GetTargetX() const = 0;
+	virtual int GetTargetY() const = 0;
 	virtual void InitialiseSpriteImages() = 0;
 	virtual void InitialiseTankStates();
 	virtual void InitialiseTankVelocities(double tankVelocities[4][2]);
@@ -70,7 +70,8 @@ protected:
 
 	BaseEngine* m_pEngine; //stores base engine pointer for code clarity going forward
 
-	int m_animationCount; //used to change the sprite image upon count progress
+	int m_animationCount; //used to change the sprite image upon count 
+	unsigned int m_tankColours[3];
 
 	int m_iDrawTankBaseWidth; //second set of values needed for tank barrel undraw
 	int m_iDrawTankBaseHeight;

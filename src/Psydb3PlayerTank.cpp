@@ -3,8 +3,8 @@
 #include "templates.h"
 #include "Psydb3CollisionHandler.h"
 
-Psydb3PlayerTank::Psydb3PlayerTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name)
-	: Psydb3Tank(pEngine, x, y, collisionHandler, bulletManager, name) {
+Psydb3PlayerTank::Psydb3PlayerTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name, unsigned int colours[3])
+	: Psydb3Tank(pEngine, x, y, collisionHandler, bulletManager, name, colours) {
 	InitialiseTankStates();
 }
 

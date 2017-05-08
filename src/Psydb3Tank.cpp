@@ -9,7 +9,7 @@
 #include "Psydb3CollisionHandler.h"
 #include "Psydb3Bullet.h"
 
-Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name)
+Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name, unsigned int colours[3])
 	: DisplayableObject(pEngine)
 	, Collideable(collisionHandler)
 	, m_bulletManager(bulletManager)
@@ -25,6 +25,9 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionH
 	, m_iDrawTankBaseWidth(0)
 	, m_iDrawTankBaseHeight(0)
 	, m_pEngine(pEngine) {
+
+	for (int i = 0; i < 3; ++i) 
+		m_tankColours[i] = colours[i];
 
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)x;
 	m_iCurrentScreenY = m_iPreviousScreenY = (int)y;
@@ -117,7 +120,7 @@ void Psydb3Tank::Draw() {
 
 	//draw barrel
 	bool drawBelow;
-	if (m_pEngine->GetCurrentMouseY() < m_y + m_tankStates[m_direction]->GetTankCentreOffsetY())
+	if (GetTargetY() < m_y + m_tankStates[m_direction]->GetTankCentreOffsetY())
 		drawBelow = true;
 	else
 		drawBelow = false;
@@ -131,19 +134,19 @@ void Psydb3Tank::Draw() {
 		(int)m_y + turretDrawBaseY + 9,
 		(int)m_x + turretDrawBaseX + 31 - 1,
 		(int)m_y + turretDrawBaseY + 31 - 1,
-		0x144912);
+		m_tankColours[1]);
 	m_pEngine->DrawScreenRectangle(
 		(int)m_x + turretDrawBaseX + 1,
 		(int)m_y + turretDrawBaseY + 14,
 		(int)m_x + turretDrawBaseX + 30 - 1,
 		(int)m_y + turretDrawBaseY + 24 - 1,
-		0x144912);
+		m_tankColours[1]);
 	m_pEngine->DrawScreenOval(
 		(int)m_x + turretDrawBaseX,
 		(int)m_y + turretDrawBaseY,
 		(int)m_x + turretDrawBaseX + 31 - 1,
 		(int)m_y + turretDrawBaseY + 22 - 1,
-		0x20791E);
+		m_tankColours[0]);
 	m_pEngine->DrawHollowOval(
 		(int)m_x + turretDrawBaseX,
 		(int)m_y + turretDrawBaseY,
@@ -153,7 +156,7 @@ void Psydb3Tank::Draw() {
 		(int)m_y + turretDrawBaseY + 3,
 		(int)m_x + turretDrawBaseX + 28 - 1,
 		(int)m_y + turretDrawBaseY + 19 - 1,
-		0X0B290A,
+		m_tankColours[2],
 		m_pEngine->GetForeground());
 
 	if (!drawBelow)
@@ -224,7 +227,7 @@ void Psydb3Tank::DrawBarrel() {
 		8,
 		xpoints,
 		ypoints,
-		0X0B290A,
+		m_tankColours[2],
 		m_pEngine->GetForeground());
 }
 
