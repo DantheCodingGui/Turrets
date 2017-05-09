@@ -14,6 +14,7 @@ public:
 	void SetCollidingX(bool isColliding) { m_collidingX = isColliding; };
 	void SetCollidingY(bool isColliding) { m_collidingY = isColliding; };
 	void SetBehindTile(bool isBehindTile) { m_behindTile = isBehindTile; };
+	int GetIsCollideable() const { return m_isCurrentlyCollideable; };
 protected:
 	Psydb3CollisionHandler* m_collisionHandler;
 
@@ -21,5 +22,6 @@ protected:
 	bool m_collidingY;
 
 	bool m_behindTile;
+	bool m_isCurrentlyCollideable;
 };
 

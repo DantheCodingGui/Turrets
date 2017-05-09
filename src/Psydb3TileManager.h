@@ -21,10 +21,6 @@ public:
 		SDL_Surface* pSurface,
 		int iMapX, int iMapY,
 		int iStartPositionScreenX, int iStartPositionScreenY) const;
-	void DrawForegroundTileAt(
-		BaseEngine* pEngine,
-		int iMapX, int iMapY) const;
-	int GetCollisionOffset() const { return m_collidableWallOffset; };
 	//true for anything not a floor tile
 	bool IsTileCollideable(int x, int y) { return (GetValue(x, y) != FLOOR_TILE) ? true : false; };
 	bool IsTileBreakable(int x, int y) { 
@@ -36,7 +32,9 @@ public:
 	int IsTileBehindWall(int x, int y) {
 		if (GetValue(x, y + 1) != FLOOR_TILE)
 			return 1;
-		else if (GetValue(x, y + 2) != FLOOR_TILE)
+		if (y + 1 == m_iMapHeight)
+			return 1;
+		if (GetValue(x, y + 2) != FLOOR_TILE)
 			return 2;
 		return -1;
 	};

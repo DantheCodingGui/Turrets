@@ -31,9 +31,10 @@ private:
 	BaseEngine* m_pEngine;
 
 	bool m_hasBeenFired;
+	bool m_awayFromSourceTank;
+	bool m_removeNextFrame;
 
 	int m_bouncesLeft;
 
-	int m_timeTillCollisionChecking;
 };
 

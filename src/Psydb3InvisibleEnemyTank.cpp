@@ -12,7 +12,7 @@ Psydb3InvisibleEnemyTank::~Psydb3InvisibleEnemyTank() {
 
 void Psydb3InvisibleEnemyTank::Draw() {
 
-	if (!IsVisible())
+	if (!IsVisible() || !m_alive)
 		return;
 
 	int targetX = GetTargetX();
@@ -22,10 +22,6 @@ void Psydb3InvisibleEnemyTank::Draw() {
 	double angle = atan2(targetY - centreY, targetX - centreX);
 	m_unitVectorX = cos(angle);
 	m_unitVectorY = sin(angle);
-
-	m_pEngine->CopyBackgroundPixels(
-		m_x + m_tankStates[m_direction]->GetTankCentreOffsetX() - 37,
-		m_y + m_tankStates[m_direction]->GetTankCentreOffsetY() - 60, 120, 20);
 
 	m_pEngine->DrawScreenString(
 		m_x + m_tankStates[m_direction]->GetTankCentreOffsetX() - 32,

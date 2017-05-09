@@ -16,6 +16,7 @@ public:
 	void DrawBarrel();
 	void GetBarrelCoords(double* points, int targetX, int targetY);
 	void FireBullet(double x, double y, double unitVectorX, double unitVectorY, int bulletIndex);
+	void Die();
 	virtual void DoUpdate(int iCurrentTime);
 	virtual void GetDirection() = 0;
 	virtual int GetTargetX() const = 0;
@@ -58,6 +59,7 @@ protected:
 	bool m_moving;
 	bool m_rotating; //is the tank BASE rotating
 	bool m_firing;
+	bool m_alive;
 
 	int m_timeTillCanFire;
 	int m_fireRate; //how often a tank can fire

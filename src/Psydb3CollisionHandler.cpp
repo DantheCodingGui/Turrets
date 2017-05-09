@@ -110,8 +110,10 @@ bool Psydb3CollisionHandler::CheckObjectsCollision(Collideable* object) {
 	Collideable* temp;
 
 	for (int i = 0; i < m_pEngine->GetArraySize(); ++i) {
-		if ((temp = dynamic_cast<Collideable*>(m_pEngine->GetDisplayableObject(i))) != NULL && temp != object) 
+		if ((temp = dynamic_cast<Collideable*>(m_pEngine->GetDisplayableObject(i))) != NULL && temp != object) {
+			//if (temp->GetIsCollideable())
 			otherObjects.push_back(temp);
+		}
 	}
 
 	for (std::vector<Collideable*>::iterator it = otherObjects.begin(); it != otherObjects.end(); ++it) {

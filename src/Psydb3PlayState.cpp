@@ -13,8 +13,8 @@
 
 Psydb3PlayState::Psydb3PlayState(Psydb3Engine* pEngine)
 	: Psydb3State(pEngine)
-	, m_level(3)
-	, m_numberOfTanks(0)
+	, m_level(0)
+	, m_numberOfTanks(3)
 	, m_backgroundInitialised(false) {
 	m_startTime = pEngine->GetTime();
 	GetMaps();
@@ -100,7 +100,7 @@ void Psydb3PlayState::LoadLevel() {
 	for (i = 0; i < m_numberOfTanks * 3; ++i)
 		m_pEngine->StoreObjectInArray(i, new Psydb3Bullet(m_pEngine, m_collisionHandler));
 	m_pEngine->StoreObjectInArray(i, new Psydb3InvisibleEnemyTank(m_pEngine, 1350.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
-	m_pEngine->StoreObjectInArray(i + 1, new Psydb3AdvancedEnemyTank(m_pEngine, 900.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(i + 1, new Psydb3AdvancedEnemyTank(m_pEngine, 1100.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
 	m_pEngine->StoreObjectInArray(i + 2, new Psydb3StandardEnemyTank(m_pEngine, 1200.0, 300.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
 	m_pEngine->StoreObjectInArray(i + 3, new Psydb3BasicEnemyTank(m_pEngine, 1200.0, 500.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
 	m_pEngine->StoreObjectInArray(i + 4, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "Challenger"));
@@ -125,10 +125,6 @@ void Psydb3PlayState::GetTankNames() {
 void Psydb3PlayState::Update() {
 	if (HasLevelStarted())
 		m_pEngine->UpdateAllObjects(m_pEngine->GetModifiedTime());
-	else {
-		m_pEngine->UnDrawStrings();
-		m_pEngine->DrawStringsOnTop();
-	}
 }
 
 void Psydb3PlayState::SaveBackground() {
@@ -180,21 +176,23 @@ void Psydb3PlayState::HandleMouse() {
 void Psydb3PlayState::DrawOntop() {
 	
 	if (!HasLevelStarted()) {
-		char buffer[30];
 		m_pEngine->DrawScreenString(600, 350, "Are You Ready??", 0xffffff, m_pEngine->GetFont("Blockletter.otf", 70));
-		sprintf(buffer, "in %d", 4 - (m_pEngine->GetTime() - m_startTime)/1200);
-		m_pEngine->DrawScreenString(700, 420, buffer, 0xffffff, m_pEngine->GetFont("Blockletter.otf", 70));
 		return;
 	}
 
 	for (int i = 0; i < m_oTiles.m_tilesToRedrawX.size(); ++i) {
 		m_oTiles.DrawTileAt(
-			m_pEngine, m_pEngine->GetBackground(), 
-			m_oTiles.m_tilesToRedrawX[i], 
-			m_oTiles.m_tilesToRedrawY[i], 
-			m_oTiles.m_tilesToRedrawX[i]*m_oTiles.GetTileWidth(),
-			m_oTiles.m_tilesToRedrawY[i]*m_oTiles.GetTileHeight());
-		m_oTiles.DrawForegroundTileAt(m_pEngine, m_oTiles.m_tilesToRedrawX[i], m_oTiles.m_tilesToRedrawY[i]);
+			m_pEngine, m_pEngine->GetForeground(),
+			m_oTiles.m_tilesToRedrawX[i],
+			m_oTiles.m_tilesToRedrawY[i],
+			m_oTiles.m_tilesToRedrawX[i] * m_oTiles.GetTileWidth(),
+			m_oTiles.m_tilesToRedrawY[i] * m_oTiles.GetTileHeight());
+		m_oTiles.DrawTileAt(
+			m_pEngine, m_pEngine->GetBackground(),
+			m_oTiles.m_tilesToRedrawX[i],
+			m_oTiles.m_tilesToRedrawY[i],
+			m_oTiles.m_tilesToRedrawX[i] * m_oTiles.GetTileWidth(),
+			m_oTiles.m_tilesToRedrawY[i] * m_oTiles.GetTileHeight());
 	}
 	m_oTiles.m_tilesToRedrawX.clear();
 	m_oTiles.m_tilesToRedrawY.clear();

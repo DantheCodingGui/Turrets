@@ -47,7 +47,7 @@ void Psydb3Engine::GameAction() {
 	if (!IsTimeToAct())
 		return;
 
-	SetTimeToAct(5);
+	SetTimeToAct(10);
 
 	m_activeGameState->Update();
 }

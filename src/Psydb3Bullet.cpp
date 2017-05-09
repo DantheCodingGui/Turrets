@@ -10,8 +10,9 @@ Psydb3Bullet::Psydb3Bullet(BaseEngine* pEngine, Psydb3CollisionHandler* collisio
 	, m_dx(0)
 	, m_dy(0)
 	, m_hasBeenFired(false)
-	, m_bouncesLeft(2)
-	, m_timeTillCollisionChecking(1000)
+	, m_bouncesLeft(6)
+	, m_awayFromSourceTank(false)
+	, m_removeNextFrame(false)
 	, m_pEngine(pEngine) {
 
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)m_x;
@@ -32,14 +33,16 @@ void Psydb3Bullet::StartMoving(double x, double y, double vectorX, double vector
 		return;
 	m_x = m_iCurrentScreenX = (x - m_iDrawWidth/2) + (vectorX * 50);
 	m_y = m_iCurrentScreenY = (y - m_iDrawHeight/2) + (vectorY * 50);
-	m_dx = vectorX * 2;
-	m_dy = vectorY * 2;
+	m_dx = vectorX * 4;
+	m_dy = vectorY * 4;
 	m_hasBeenFired = true;
+	m_bouncesLeft = 6;
 
 }
 
 void Psydb3Bullet::Reset() {
 	m_hasBeenFired = false;
+	m_awayFromSourceTank = false;
 	m_x = 0;
 	m_y = 0;
 	m_dx = 0;
@@ -80,31 +83,36 @@ void Psydb3Bullet::DoUpdate(int iCurrentTime) {
 	if (!m_hasBeenFired)
 		return;
 
+	bool xBackgroundCollision = false;
+
 	m_x += m_dx;
 	if (m_collisionHandler->CheckBackgroundCollision(this)) {
 		--m_bouncesLeft;
+		xBackgroundCollision = true;
 		m_x -= m_dx;
 		m_dx = -m_dx;
 	}
 
 	m_y += m_dy;
 	if (m_collisionHandler->CheckBackgroundCollision(this)) {
-		--m_bouncesLeft;
+		if (!xBackgroundCollision)
+			--m_bouncesLeft;
 		m_y -= m_dy;
 		m_dy = -m_dy;
 	}
-
-	//if (m_timeTillCollisionChecking == 0 && m_collisionHandler->CheckObjectsCollision(this)) {
-	//	Reset();
-	//	printf("BULLET HIT SOMETHING\n");
-	//}
-	//else if (m_timeTillCollisionChecking > 0)
-	//	--m_timeTillCollisionChecking;
-
-	if (m_bouncesLeft <= 0) {
-		Reset();
-		m_bouncesLeft = 2;
+	if (!m_awayFromSourceTank && !m_collisionHandler->CheckObjectsCollision(this)) {
+		m_awayFromSourceTank = true;
 	}
+
+	if (m_awayFromSourceTank && !m_removeNextFrame && m_collisionHandler->CheckObjectsCollision(this))
+		printf("bullet collision\n");
+	else if (m_removeNextFrame) {
+		Reset();
+		m_removeNextFrame = false;
+	}
+
+	if (m_bouncesLeft <= 0) 
+		Reset();
 	//check collideable->collideable colision here, if so make has not been fired and "delete" it
   
 	m_iCurrentScreenX = (int)m_x;

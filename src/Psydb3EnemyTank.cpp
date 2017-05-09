@@ -10,7 +10,11 @@ Psydb3EnemyTank::Psydb3EnemyTank(BaseEngine* pEngine, double x, double y, Psydb3
 Psydb3EnemyTank::~Psydb3EnemyTank() {
 }
 
+void Psydb3EnemyTank::GetDirection() {
+	
+}
+
 void Psydb3EnemyTank::DoUpdate(int iCurrentTime) {
-	m_firing = true;
+	//m_firing = true;
 	Psydb3Tank::DoUpdate(iCurrentTime);
 }

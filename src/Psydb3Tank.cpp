@@ -21,8 +21,9 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionH
 	, m_animated(false)
 	, m_moving(false)
 	, m_firing(false)
+	, m_alive(true)
 	, m_timeTillCanFire(0)
-	, m_fireRate(200)
+	, m_fireRate(100)
 	, m_iDrawTankBaseWidth(0)
 	, m_iDrawTankBaseHeight(0)
 	, m_pEngine(pEngine) {
@@ -36,17 +37,17 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionH
 
 //default tank speeds (if change needed can redefine for individual tank type)
 void Psydb3Tank::InitialiseTankVelocities(double tankVelocities[4][2]) {
-	tankVelocities[0][0] = -0.4;
+	tankVelocities[0][0] = -0.9;
 	tankVelocities[0][1] = 0;
 
-	tankVelocities[1][0] = -0.3;
-	tankVelocities[1][1] = -0.2;
+	tankVelocities[1][0] = -0.7;
+	tankVelocities[1][1] = -0.5;
 
 	tankVelocities[2][0] = 0;
-	tankVelocities[2][1] = -0.4;
+	tankVelocities[2][1] = -0.9;
 
-	tankVelocities[3][0] = 0.3;
-	tankVelocities[3][1] = -0.2;
+	tankVelocities[3][0] = 0.7;
+	tankVelocities[3][1] = -0.5;
 }
 
 void Psydb3Tank::InitialiseTankStates() {
@@ -85,7 +86,7 @@ Psydb3Tank::~Psydb3Tank() {
 
 void Psydb3Tank::Draw() { 
 
-	if (!IsVisible())
+	if (!IsVisible() || !m_alive)
 		return;
 
 	int drawImageIndex = ((m_animated) ? (m_direction % 4) + 4 : m_direction % 4);
@@ -220,12 +221,20 @@ void Psydb3Tank::DrawBarrel() {
 }
 
 void Psydb3Tank::FireBullet(double x, double y, double unitVectorX, double unitVectorY, int bulletIndex) {
-	//dynamic_cast<Psydb3Bullet*>(m_pEngine->GetDisplayableObject(0))->StartMoving(x, y, unitVectorX, unitVectorY);
-		dynamic_cast<Psydb3Bullet*>(m_pEngine->GetDisplayableObject(bulletIndex))->StartMoving(x, y, unitVectorX, unitVectorY);
+	dynamic_cast<Psydb3Bullet*>(m_pEngine->GetDisplayableObject(bulletIndex))->StartMoving(x, y, unitVectorX, unitVectorY);
+}
 
+void Psydb3Tank::Die() {
+	m_alive = false;
+	m_isCurrentlyCollideable = false;
+	m_pEngine->DrawBackgroundString(m_x, m_y, "RIP.", 0x000000, m_pEngine->GetFont("BLockletter.otf", 30));
+	printf("Tank Has Died\n");
 }
 
 void Psydb3Tank::DoUpdate(int iCurrentTime) {
+
+	if (!m_alive)
+		return;
 
 	GetDirection();
 	int bulletIndex;
@@ -258,6 +267,9 @@ void Psydb3Tank::DoUpdate(int iCurrentTime) {
 	else
 		m_collisionHandler->CheckBackgroundCollision(this);
 
+	if (m_collisionHandler->CheckObjectsCollision(this))
+		Die();
+
 	m_iCurrentScreenX = (int)m_x - 20;
 	m_iCurrentScreenY = (int)m_y - 20;
 
@@ -275,15 +287,15 @@ void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
 	//deciding how far tank has to move until image is swapped
 	//simple for horizontal/vertical but more complex with diagonals (pythogoras used)
 	if (animation == 0) {
-		if (m_animationCount > (cycleLength = abs((int)(m_tankStates[m_direction]->GetTankVelocityX() * 100))))
+		if (m_animationCount > (cycleLength = abs((int)(m_tankStates[m_direction]->GetTankVelocityX() * 20))))
 			m_animationCount = 0;
 	}
 	else if (animation == 2) {
-		if (m_animationCount > (cycleLength = abs((int)(m_tankStates[m_direction]->GetTankVelocityY() * 100))))
+		if (m_animationCount > (cycleLength = abs((int)(m_tankStates[m_direction]->GetTankVelocityY() * 20))))
 			m_animationCount = 0;
 	}
 	else if (animation == 1 || animation == 3) {
-		if (m_animationCount > (cycleLength = 1.5*abs((int)(sqrt(2 * pow(m_tankStates[m_direction]->GetTankVelocityY() * 100, 2))))))
+		if (m_animationCount > (cycleLength = 1.5*abs((int)(sqrt(2 * pow(m_tankStates[m_direction]->GetTankVelocityY() * 20, 2))))))
 			m_animationCount = 0;
 	}
 	if (m_animationCount <= cycleLength / 2) 
