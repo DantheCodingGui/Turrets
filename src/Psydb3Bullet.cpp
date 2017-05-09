@@ -10,7 +10,7 @@ Psydb3Bullet::Psydb3Bullet(BaseEngine* pEngine, Psydb3CollisionHandler* collisio
 	, m_dx(0)
 	, m_dy(0)
 	, m_hasBeenFired(false)
-	, m_bouncesLeft(6)
+	, m_bouncesLeft(1)
 	, m_awayFromSourceTank(false)
 	, m_removeNextFrame(false)
 	, m_pEngine(pEngine) {
@@ -36,8 +36,7 @@ void Psydb3Bullet::StartMoving(double x, double y, double vectorX, double vector
 	m_dx = vectorX * 4;
 	m_dy = vectorY * 4;
 	m_hasBeenFired = true;
-	m_bouncesLeft = 6;
-
+	m_bouncesLeft = 1;
 }
 
 void Psydb3Bullet::Reset() {
@@ -100,12 +99,17 @@ void Psydb3Bullet::DoUpdate(int iCurrentTime) {
 		m_y -= m_dy;
 		m_dy = -m_dy;
 	}
+
 	if (!m_awayFromSourceTank && !m_collisionHandler->CheckObjectsCollision(this)) {
 		m_awayFromSourceTank = true;
+		//printf("bullet now collideable\n");
 	}
 
+	if (m_collisionHandler->CheckObjectsCollision(this))
+		printf("detected a collision\n");
+
 	if (m_awayFromSourceTank && !m_removeNextFrame && m_collisionHandler->CheckObjectsCollision(this))
-		printf("bullet collision\n");
+		;// printf("bullet collision\n");
 	else if (m_removeNextFrame) {
 		Reset();
 		m_removeNextFrame = false;
@@ -113,7 +117,6 @@ void Psydb3Bullet::DoUpdate(int iCurrentTime) {
 
 	if (m_bouncesLeft <= 0) 
 		Reset();
-	//check collideable->collideable colision here, if so make has not been fired and "delete" it
   
 	m_iCurrentScreenX = (int)m_x;
 	m_iCurrentScreenY = (int)m_y;

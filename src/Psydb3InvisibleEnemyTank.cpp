@@ -4,6 +4,7 @@
 Psydb3InvisibleEnemyTank::Psydb3InvisibleEnemyTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name)
 	: Psydb3EnemyTank(pEngine, x, y, collisionHandler, bulletManager, name) {
 	InitialiseTankStates();
+	m_iDrawWidth = m_iDrawHeight = 100;
 }
 
 
@@ -14,6 +15,8 @@ void Psydb3InvisibleEnemyTank::Draw() {
 
 	if (!IsVisible() || !m_alive)
 		return;
+
+	printf("visible\n");
 
 	int targetX = GetTargetX();
 	int targetY = GetTargetY();

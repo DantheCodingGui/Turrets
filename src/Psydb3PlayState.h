@@ -31,7 +31,7 @@ public:
 		if (m_level != m_maps.size() - 1) 
 			++m_level; 
 	};
-	bool HasLevelStarted() { return ((m_pEngine->GetTime() >= m_startTime + 4800)) ? true : false; };
+	bool HasLevelStarted() { return ((m_pEngine->GetTime() >= m_startTime + 4500)) ? true : false; };
 private:
 	Psydb3TileManager m_oTiles;
 
