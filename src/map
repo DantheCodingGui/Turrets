@@ -1,6 +1,6 @@
  CourseworkBase
 
- Timestamp is 59135176 (Wed May 10 18:44:22 2017)
+ Timestamp is 59135ba5 (Wed May 10 19:27:49 2017)
 
  Preferred load address is 00400000
 
@@ -359,9 +359,9 @@
  0001:0000f680       ??1Psydb3CollisionHandler@@QAE@XZ 00410680 f   Psydb3CollisionHandler.obj
  0001:0000f6a0       ?CheckBackgroundCollision@Psydb3CollisionHandler@@QAE_NPAVCollideable@@@Z 004106a0 f   Psydb3CollisionHandler.obj
  0001:0000f890       ?CheckObjectsCollision@Psydb3CollisionHandler@@QAE_NPAVCollideable@@@Z 00410890 f   Psydb3CollisionHandler.obj
- 0001:0000fac0       ?PixelPerfectCollision@Psydb3CollisionHandler@@QAE_NPAVCollideable@@0@Z 00410ac0 f   Psydb3CollisionHandler.obj
- 0001:0000fad0       ?GetTileEdges@Psydb3CollisionHandler@@QAEXHHQAH@Z 00410ad0 f   Psydb3CollisionHandler.obj
- 0001:0000fb70       ?IsInBounds@Psydb3CollisionHandler@@QAE_NHHQAH@Z 00410b70 f   Psydb3CollisionHandler.obj
+ 0001:0000fa60       ?PixelPerfectCollision@Psydb3CollisionHandler@@QAE_NPAVCollideable@@0@Z 00410a60 f   Psydb3CollisionHandler.obj
+ 0001:0000fa70       ?GetTileEdges@Psydb3CollisionHandler@@QAEXHHQAH@Z 00410a70 f   Psydb3CollisionHandler.obj
+ 0001:0000fb10       ?IsInBounds@Psydb3CollisionHandler@@QAE_NHHQAH@Z 00410b10 f   Psydb3CollisionHandler.obj
  0001:0000fd50       ??$_Allocate@H@std@@YAPAHIPAH@Z 00410d50 f i Psydb3CollisionHandler.obj
  0001:0000fdb0       ??$_Allocate@PAVCollideable@@@std@@YAPAPAVCollideable@@IPAPAV1@@Z 00410db0 f i Psydb3CollisionHandler.obj
  0001:0000fe10       ??$_Destroy_range@U?$_Wrap_alloc@V?$allocator@H@std@@@std@@@std@@YAXPAH0AAU?$_Wrap_alloc@V?$allocator@H@std@@@0@@Z 00410e10 f i Psydb3CollisionHandler.obj

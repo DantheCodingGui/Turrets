@@ -17,7 +17,7 @@ public:
 		edges[3] = m_y + m_iDrawHeight;
 	};
 	virtual int GetCollisionCentreX() { return (int)m_x + m_iDrawWidth / 2; };
-	virtual int GetCollisionCentreY() { return (int)m_y + 10 + m_iDrawHeight / 2; };
+	virtual int GetCollisionCentreY() { return (int)m_y + m_iDrawHeight / 2; };
 	virtual void BackgroundCollideBehaviour(char Direction, int tileEdge);
 	void StartMoving(double x, double y, double vectorX, double vectorY);
 	void Reset();

@@ -62,7 +62,6 @@ void Psydb3Bullet::Draw() {
 		return;
 	}
 
-	//printf("x: %f, drawx: %d, y: %f, drawy: %d, velX: %f, velY: %f", m_x, m_iCurrentScreenX, m_y, m_iCurrentScreenY, m_dx, m_dy);
 	m_pEngine->DrawScreenOval(
 		m_iCurrentScreenX,
 		m_iCurrentScreenY,

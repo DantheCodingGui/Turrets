@@ -20,32 +20,6 @@ Psydb3CollisionHandler::Psydb3CollisionHandler(Psydb3Engine* pEngine, Psydb3Tile
 	: m_pEngine(pEngine)
 	, m_map(tileManager)
 	, m_foregroundEmptyColour(0xE9C977) {
-#if 0
-	std::vector<Collideable*> collideableObjects;
-	int i;
-	int endOfArray = m_pEngine->GetArraySize();
-	for (i = 0; i < endOfArray; ++i) {
-		Collideable* temp;
-		if ((temp = dynamic_cast<Collideable*>(m_pEngine->GetDisplayableObject(i))) != NULL) {
-			collideableObjects.push_back(temp);
-			temp->SetCollisionHandler(this);
-		}
-	}
-
-	//next divide into tanks and bullets
-	endOfArray = collideableObjects.size();
-	for (i = 0; i < endOfArray; ++i) {
-		Psydb3Tank* temp;
-		if ((temp = dynamic_cast<Psydb3Tank*>(collideableObjects[i])) != NULL)
-			m_tanks.push_back(temp);
-	}
-	/*
-	for (i = 0; i < endOfArray; ++i) {
-	Psydb3Bullet* temp;
-	if ((temp = dynamic_cast<Psydb3Bullet*>(collideableObjects[i])) != NULL)
-	m_bullets.push_back(temp);
-	}*/
-#endif
 }
 
 Psydb3CollisionHandler::~Psydb3CollisionHandler() {
@@ -118,13 +92,11 @@ bool Psydb3CollisionHandler::CheckObjectsCollision(Collideable* object) {
 
 	for (std::vector<Collideable*>::iterator it = otherObjects.begin(); it != otherObjects.end(); ++it) {
 		(*it)->GetEdges(tempObjectEdges);
-		if (IsInBounds(objectEdges[LEFT], objectEdges[TOP], tempObjectEdges) ||
-			IsInBounds(objectEdges[RIGHT], objectEdges[TOP], tempObjectEdges) ||
-			IsInBounds(objectEdges[LEFT], objectEdges[BOTTOM], tempObjectEdges) ||
-			IsInBounds(objectEdges[RIGHT], objectEdges[BOTTOM], tempObjectEdges)) {
-			printf("COLLIDEABLE OBJECT HAS COLLIDED\n");
+		if (objectEdges[LEFT] <= tempObjectEdges[RIGHT] &&
+			objectEdges[RIGHT] >= tempObjectEdges[LEFT] &&
+			objectEdges[TOP] <= tempObjectEdges[BOTTOM] &&
+			objectEdges[BOTTOM] >= tempObjectEdges[TOP])
 			return true;
-		}
 	}
 
 	return false;
