@@ -1,6 +1,6 @@
  CourseworkBase
 
- Timestamp is 591368b3 (Wed May 10 20:23:31 2017)
+ Timestamp is 59138a0f (Wed May 10 22:45:51 2017)
 
  Preferred load address is 00400000
 
@@ -43,9 +43,9 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
  0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_flags             00000000     <absolute>
- 0000:00000000       ___guard_fids_table        00000000     <absolute>
  0000:00000000       __except_list              00000000     <absolute>
  0000:0000005f       ___safe_se_handler_count   0000005f     <absolute>
  0000:00009876       __ldused                   00009876     <absolute>
@@ -138,6 +138,8 @@
  0001:00008bf0       ?push_back@?$vector@HV?$allocator@H@std@@@std@@QAEX$$QAH@Z 00409bf0 f i Psydb3CollisionHandler.obj
  0001:00008d10       ?push_back@?$vector@HV?$allocator@H@std@@@std@@QAEXABH@Z 00409d10 f i Psydb3CollisionHandler.obj
  0001:00008e20       ?push_back@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAEXABQAVCollideable@@@Z 00409e20 f i Psydb3CollisionHandler.obj
+ 0001:00008f30       ?GetTankCentreOffsetX@Psydb3TankDirectionState@@QBEHXZ 00409f30 f i Psydb3EnemyTank.obj
+ 0001:00008f50       ?GetTankCentreOffsetY@Psydb3TankDirectionState@@QBEHXZ 00409f50 f i Psydb3EnemyTank.obj
  0001:00008fa0       ??$GetAngle@H@@YANHHHH@Z   00409fa0 f i BaseEngine.obj
  0001:00009050       ??$GetAngle@N@@YANNNNN@Z   0040a050 f i BaseEngine.obj
  0001:00009110       ??$Swap@H@@YAXAAH0@Z       0040a110 f i BaseEngine.obj
@@ -184,8 +186,8 @@
  0001:000099f0       ??E?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVDisplayableObject@@@std@@@std@@@std@@QAEAAV01@XZ 0040a9f0 f i BaseEngine.obj
  0001:00009a20       ??E?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVDisplayableObject@@@std@@@std@@@std@@QAEAAV01@XZ 0040aa20 f i BaseEngine.obj
  0001:00009a40       ??_G?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@QAEPAXI@Z 0040aa40 f i BaseEngine.obj
- 0001:00009a80       ??_GBaseEngine@@UAEPAXI@Z  0040aa80 f i BaseEngine.obj
  0001:00009a80       ??_EBaseEngine@@UAEPAXI@Z  0040aa80 f i BaseEngine.obj
+ 0001:00009a80       ??_GBaseEngine@@UAEPAXI@Z  0040aa80 f i BaseEngine.obj
  0001:00009ac0       ?GetFont@Font@@QAEPAU_TTF_Font@@XZ 0040aac0 f i BaseEngine.obj
  0001:00009ae0       ?GetIntsPerScreenRow@BaseEngine@@IBEHPAUSDL_Surface@@@Z 0040aae0 f i BaseEngine.obj
  0001:00009b00       ?GetModifiedTime@BaseEngine@@UBEHXZ 0040ab00 f i BaseEngine.obj
@@ -255,6 +257,10 @@
  0001:0000bd10       ?FlexibleRenderImageWithMask@ImageData@@QBEXPAUSDL_Surface@@HHHHHHHHHHHHHH@Z 0040cd10 f   JPGImage.obj
  0001:0000c1d0       ?InitImage@@YAXXZ          0040d1d0 f   JPGImage.obj
  0001:0000c1e0       ?DeinitImage@@YAXXZ        0040d1e0 f   JPGImage.obj
+ 0001:0000c1f0       ??0Psydb3EnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBDPAVPsydb3TileManager@@@Z 0040d1f0 f   Psydb3EnemyTank.obj
+ 0001:0000c260       ??1Psydb3EnemyTank@@UAE@XZ 0040d260 f   Psydb3EnemyTank.obj
+ 0001:0000c290       ?GetDirection@Psydb3EnemyTank@@UAEXXZ 0040d290 f   Psydb3EnemyTank.obj
+ 0001:0000c2b0       ?DoUpdate@Psydb3EnemyTank@@UAEXH@Z 0040d2b0 f   Psydb3EnemyTank.obj
  0001:0000c5d0       ?GetXForRotationAndCrop@@YAHHHHHHH@Z 0040d5d0 f i JPGImage.obj
  0001:0000c640       ?GetYForRotationAndCrop@@YAHHHHHHH@Z 0040d640 f i JPGImage.obj
  0001:0000c6b0       ??0Psydb3AdvancedEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBDPAVPsydb3TileManager@@@Z 0040d6b0 f   Psydb3AdvancedEnemyTank.obj
@@ -291,10 +297,10 @@
  0001:0000d250       ??_GImageData@@QAEPAXI@Z   0040e250 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d290       ??_EPsydb3AdvancedEnemyTank@@UAEPAXI@Z 0040e290 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d290       ??_GPsydb3AdvancedEnemyTank@@UAEPAXI@Z 0040e290 f i Psydb3AdvancedEnemyTank.obj
- 0001:0000d2d0       ??_G_Generic_error_category@std@@UAEPAXI@Z 0040e2d0 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d2d0       ??_E_Generic_error_category@std@@UAEPAXI@Z 0040e2d0 f i Psydb3AdvancedEnemyTank.obj
- 0001:0000d310       ??_G_Iostream_error_category@std@@UAEPAXI@Z 0040e310 f i Psydb3AdvancedEnemyTank.obj
+ 0001:0000d2d0       ??_G_Generic_error_category@std@@UAEPAXI@Z 0040e2d0 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d310       ??_E_Iostream_error_category@std@@UAEPAXI@Z 0040e310 f i Psydb3AdvancedEnemyTank.obj
+ 0001:0000d310       ??_G_Iostream_error_category@std@@UAEPAXI@Z 0040e310 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d350       ??_E_System_error_category@std@@UAEPAXI@Z 0040e350 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d350       ??_G_System_error_category@std@@UAEPAXI@Z 0040e350 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d390       ??_Eerror_category@std@@UAEPAXI@Z 0040e390 f i Psydb3AdvancedEnemyTank.obj
@@ -356,16 +362,16 @@
  0001:0000e490       ??0Psydb3BasicEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBDPAVPsydb3TileManager@@@Z 0040f490 f   Psydb3BasicEnemyTank.obj
  0001:0000e580       ??1Psydb3BasicEnemyTank@@UAE@XZ 0040f580 f   Psydb3BasicEnemyTank.obj
  0001:0000e620       ?InitialiseSpriteImages@Psydb3BasicEnemyTank@@UAEXXZ 0040f620 f   Psydb3BasicEnemyTank.obj
- 0001:0000e740       ??_GPsydb3BasicEnemyTank@@UAEPAXI@Z 0040f740 f i Psydb3BasicEnemyTank.obj
  0001:0000e740       ??_EPsydb3BasicEnemyTank@@UAEPAXI@Z 0040f740 f i Psydb3BasicEnemyTank.obj
+ 0001:0000e740       ??_GPsydb3BasicEnemyTank@@UAEPAXI@Z 0040f740 f i Psydb3BasicEnemyTank.obj
  0001:0000e780       ?GetDirection@Psydb3BasicEnemyTank@@UAEXXZ 0040f780 f i Psydb3BasicEnemyTank.obj
  0001:0000e7a0       ??0Psydb3Bomb@@QAE@PAVBaseEngine@@HHH@Z 0040f7a0 f   Psydb3Bomb.obj
  0001:0000e840       ??1Psydb3Bomb@@UAE@XZ      0040f840 f   Psydb3Bomb.obj
  0001:0000e860       ?Draw@Psydb3Bomb@@UAEXXZ   0040f860 f   Psydb3Bomb.obj
  0001:0000e9e0       ?DoUpdate@Psydb3Bomb@@UAEXH@Z 0040f9e0 f   Psydb3Bomb.obj
  0001:0000ea60       ?Explode@Psydb3Bomb@@QAEXXZ 0040fa60 f   Psydb3Bomb.obj
- 0001:0000eb30       ??_GPsydb3Bomb@@UAEPAXI@Z  0040fb30 f i Psydb3Bomb.obj
  0001:0000eb30       ??_EPsydb3Bomb@@UAEPAXI@Z  0040fb30 f i Psydb3Bomb.obj
+ 0001:0000eb30       ??_GPsydb3Bomb@@UAEPAXI@Z  0040fb30 f i Psydb3Bomb.obj
  0001:0000eb70       ?GetEngine@DisplayableObject@@QBEPAVBaseEngine@@XZ 0040fb70 f i Psydb3Bomb.obj
  0001:0000eb90       ?IsVisible@DisplayableObject@@QBE_NXZ 0040fb90 f i Psydb3Bomb.obj
  0001:0000ebb0       ?Redraw@BaseEngine@@QAEX_N@Z 0040fbb0 f i Psydb3Bomb.obj
@@ -498,12 +504,8 @@
  0001:00012470       ?SetState@Psydb3Engine@@QAEXH@Z 00413470 f i Psydb3EndState.obj
  0001:000124a0       ?UnDrawStrings@Psydb3EndState@@UAEXXZ 004134a0 f i Psydb3EndState.obj
  0001:000124b0       ?Update@Psydb3EndState@@UAEXXZ 004134b0 f i Psydb3EndState.obj
- 0001:000124c0       ??0Psydb3EnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBDPAVPsydb3TileManager@@@Z 004134c0 f   Psydb3EnemyTank.obj
- 0001:00012530       ??1Psydb3EnemyTank@@UAE@XZ 00413530 f   Psydb3EnemyTank.obj
- 0001:00012560       ?GetDirection@Psydb3EnemyTank@@UAEXXZ 00413560 f   Psydb3EnemyTank.obj
- 0001:00012580       ?DoUpdate@Psydb3EnemyTank@@UAEXH@Z 00413580 f   Psydb3EnemyTank.obj
- 0001:000125b0       ??_EPsydb3EnemyTank@@UAEPAXI@Z 004135b0 f i Psydb3EnemyTank.obj
  0001:000125b0       ??_GPsydb3EnemyTank@@UAEPAXI@Z 004135b0 f i Psydb3EnemyTank.obj
+ 0001:000125b0       ??_EPsydb3EnemyTank@@UAEPAXI@Z 004135b0 f i Psydb3EnemyTank.obj
  0001:000125f0       ??0Psydb3Engine@@QAE@XZ    004135f0 f   Psydb3Engine.obj
  0001:00012660       ??1Psydb3Engine@@UAE@XZ    00413660 f   Psydb3Engine.obj
  0001:00012700       ?SetupBackgroundBuffer@Psydb3Engine@@UAEXXZ 00413700 f   Psydb3Engine.obj
@@ -591,10 +593,10 @@
  0001:00014770       ??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z 00415770 f i Psydb3FileIO.obj
  0001:000147a0       ??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ 004157a0 f i Psydb3FileIO.obj
  0001:000147ca       ??_E?$basic_ifstream@DU?$char_traits@D@std@@@std@@$4PPPPPPPM@A@AEPAXI@Z 004157ca f i Psydb3FileIO.obj
- 0001:000147e0       ??_E?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 004157e0 f i Psydb3FileIO.obj
  0001:000147e0       ??_G?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 004157e0 f i Psydb3FileIO.obj
- 0001:00014820       ??_G?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00415820 f i Psydb3FileIO.obj
+ 0001:000147e0       ??_E?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 004157e0 f i Psydb3FileIO.obj
  0001:00014820       ??_E?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00415820 f i Psydb3FileIO.obj
+ 0001:00014820       ??_G?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00415820 f i Psydb3FileIO.obj
  0001:00014870       ??_G?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEPAXI@Z 00415870 f i Psydb3FileIO.obj
  0001:000148b0       ?_Assign_rv@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEX$$QAV12@@Z 004158b0 f i Psydb3FileIO.obj
  0001:00014950       ?_Chassign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXIID@Z 00415950 f i Psydb3FileIO.obj
@@ -660,11 +662,9 @@
  0001:00016a10       ??1Psydb3InvisibleEnemyTank@@UAE@XZ 00417a10 f   Psydb3InvisibleEnemyTank.obj
  0001:00016a40       ?Draw@Psydb3InvisibleEnemyTank@@UAEXXZ 00417a40 f   Psydb3InvisibleEnemyTank.obj
  0001:00016c30       ??$atan2@HH@@YANHH@Z       00417c30 f i Psydb3InvisibleEnemyTank.obj
- 0001:00016c60       ??_GPsydb3InvisibleEnemyTank@@UAEPAXI@Z 00417c60 f i Psydb3InvisibleEnemyTank.obj
  0001:00016c60       ??_EPsydb3InvisibleEnemyTank@@UAEPAXI@Z 00417c60 f i Psydb3InvisibleEnemyTank.obj
- 0001:00016ca0       ?GetTankCentreOffsetX@Psydb3TankDirectionState@@QBEHXZ 00417ca0 f i Psydb3InvisibleEnemyTank.obj
- 0001:00016cc0       ?GetTankCentreOffsetY@Psydb3TankDirectionState@@QBEHXZ 00417cc0 f i Psydb3InvisibleEnemyTank.obj
- 0001:00016ce0       ?InitialiseSpriteImages@Psydb3InvisibleEnemyTank@@UAEXXZ 00417ce0 f i Psydb3InvisibleEnemyTank.obj
+ 0001:00016c60       ??_GPsydb3InvisibleEnemyTank@@UAEPAXI@Z 00417c60 f i Psydb3InvisibleEnemyTank.obj
+ 0001:00016ca0       ?InitialiseSpriteImages@Psydb3InvisibleEnemyTank@@UAEXXZ 00417ca0 f i Psydb3InvisibleEnemyTank.obj
  0001:00016cf0       ??0Psydb3PauseState@@QAE@PAVPsydb3Engine@@@Z 00417cf0 f   Psydb3PauseState.obj
  0001:00016d20       ??1Psydb3PauseState@@QAE@XZ 00417d20 f   Psydb3PauseState.obj
  0001:00016d40       ?Update@Psydb3PauseState@@UAEXXZ 00417d40 f   Psydb3PauseState.obj
@@ -679,8 +679,8 @@
  0001:000170b0       ?InitialiseSpriteImages@Psydb3PlayerTank@@UAEXXZ 004180b0 f   Psydb3PlayerTank.obj
  0001:00017420       ?GetDirection@Psydb3PlayerTank@@UAEXXZ 00418420 f   Psydb3PlayerTank.obj
  0001:000175e0       ?DoUpdate@Psydb3PlayerTank@@UAEXH@Z 004185e0 f   Psydb3PlayerTank.obj
- 0001:000177b0       ??_GPsydb3PlayerTank@@UAEPAXI@Z 004187b0 f i Psydb3PlayerTank.obj
  0001:000177b0       ??_EPsydb3PlayerTank@@UAEPAXI@Z 004187b0 f i Psydb3PlayerTank.obj
+ 0001:000177b0       ??_GPsydb3PlayerTank@@UAEPAXI@Z 004187b0 f i Psydb3PlayerTank.obj
  0001:000177f0       ?GetTargetX@Psydb3PlayerTank@@UBEHXZ 004187f0 f i Psydb3PlayerTank.obj
  0001:00017810       ?GetTargetY@Psydb3PlayerTank@@UBEHXZ 00418810 f i Psydb3PlayerTank.obj
  0001:00017830       ??0Psydb3PlayState@@QAE@PAVPsydb3Engine@@@Z 00418830 f   Psydb3PlayState.obj
@@ -929,8 +929,8 @@
  0001:0001ced0       ??0Psydb3StandardEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBDPAVPsydb3TileManager@@@Z 0041ded0 f   Psydb3StandardEnemyTank.obj
  0001:0001cfb0       ??1Psydb3StandardEnemyTank@@UAE@XZ 0041dfb0 f   Psydb3StandardEnemyTank.obj
  0001:0001d060       ?InitialiseSpriteImages@Psydb3StandardEnemyTank@@UAEXXZ 0041e060 f   Psydb3StandardEnemyTank.obj
- 0001:0001d510       ??_GPsydb3StandardEnemyTank@@UAEPAXI@Z 0041e510 f i Psydb3StandardEnemyTank.obj
  0001:0001d510       ??_EPsydb3StandardEnemyTank@@UAEPAXI@Z 0041e510 f i Psydb3StandardEnemyTank.obj
+ 0001:0001d510       ??_GPsydb3StandardEnemyTank@@UAEPAXI@Z 0041e510 f i Psydb3StandardEnemyTank.obj
  0001:0001d550       ??0Psydb3StartState@@QAE@PAVPsydb3Engine@@@Z 0041e550 f   Psydb3StartState.obj
  0001:0001d580       ??1Psydb3StartState@@QAE@XZ 0041e580 f   Psydb3StartState.obj
  0001:0001d5a0       ?DrawBackground@Psydb3StartState@@UAEXXZ 0041e5a0 f   Psydb3StartState.obj
@@ -956,8 +956,8 @@
  0001:0001f2d0       ?ImageSizeCompensation@Psydb3Tank@@QAEXHH@Z 004202d0 f   Psydb3Tank.obj
  0001:0001f440       ?BackgroundCollideBehaviour@Psydb3Tank@@UAEXDH@Z 00420440 f   Psydb3Tank.obj
  0001:0001fbc0       ??$_Pow_int@N@@YANNH@Z     00420bc0 f i Psydb3Tank.obj
- 0001:0001fc70       ??_GPsydb3Tank@@UAEPAXI@Z  00420c70 f i Psydb3Tank.obj
  0001:0001fc70       ??_EPsydb3Tank@@UAEPAXI@Z  00420c70 f i Psydb3Tank.obj
+ 0001:0001fc70       ??_GPsydb3Tank@@UAEPAXI@Z  00420c70 f i Psydb3Tank.obj
  0001:0001fcb0       ??_GPsydb3TankDirectionState@@QAEPAXI@Z 00420cb0 f i Psydb3Tank.obj
  0001:0001fcf0       ?DrawBackgroundPolygon@BaseEngine@@QAEXHPAN0I@Z 00420cf0 f i Psydb3Tank.obj
  0001:0001fd30       ?GetHeight@ImageData@@QBEHXZ 00420d30 f i Psydb3Tank.obj
@@ -998,8 +998,8 @@
  0001:00021390       ?KeyDown@SimpleDemo@@UAEXH@Z 00422390 f   SimpleDemo.obj
  0001:000214b0       ??0SimpleShape@@QAE@PAVSimpleDemo@@@Z 004224b0 f i SimpleDemo.obj
  0001:000215f0       ??1SimpleShape@@UAE@XZ     004225f0 f i SimpleDemo.obj
- 0001:00021610       ??_ESimpleShape@@UAEPAXI@Z 00422610 f i SimpleDemo.obj
  0001:00021610       ??_GSimpleShape@@UAEPAXI@Z 00422610 f i SimpleDemo.obj
+ 0001:00021610       ??_ESimpleShape@@UAEPAXI@Z 00422610 f i SimpleDemo.obj
  0001:00021650       ?DoUpdate@SimpleShape@@UAEXH@Z 00422650 f i SimpleDemo.obj
  0001:00021ad0       ?Draw@SimpleShape@@UAEXXZ  00422ad0 f i SimpleDemo.obj
  0001:00021b80       ?SetBackgroundPixel@BaseEngine@@QAEXHHI@Z 00422b80 f i SimpleDemo.obj
@@ -1050,8 +1050,8 @@
  0001:00024220       ??0Demo1Main@@QAE@XZ       00425220 f   Demo1Main.obj
  0001:00024250       ??1Demo1Main@@UAE@XZ       00425250 f   Demo1Main.obj
  0001:00024270       ?SetupBackgroundBuffer@Demo1Main@@UAEXXZ 00425270 f   Demo1Main.obj
- 0001:000242b0       ??_GDemo1Main@@UAEPAXI@Z   004252b0 f i Demo1Main.obj
  0001:000242b0       ??_EDemo1Main@@UAEPAXI@Z   004252b0 f i Demo1Main.obj
+ 0001:000242b0       ??_GDemo1Main@@UAEPAXI@Z   004252b0 f i Demo1Main.obj
  0001:000242f0       ??0Demo2Main@@QAE@XZ       004252f0 f   Demo2Main.obj
  0001:00024360       ??1Demo2Main@@UAE@XZ       00425360 f   Demo2Main.obj
  0001:000243c0       ?SetupBackgroundBuffer@Demo2Main@@UAEXXZ 004253c0 f   Demo2Main.obj
@@ -1060,8 +1060,8 @@
  0001:00024580       ?GameAction@Demo2Main@@UAEXXZ 00425580 f   Demo2Main.obj
  0001:000245c0       ?MouseDown@Demo2Main@@UAEXHHH@Z 004255c0 f   Demo2Main.obj
  0001:000245d0       ?KeyDown@Demo2Main@@UAEXH@Z 004255d0 f   Demo2Main.obj
- 0001:000246c0       ??_GDemo2Main@@UAEPAXI@Z   004256c0 f i Demo2Main.obj
  0001:000246c0       ??_EDemo2Main@@UAEPAXI@Z   004256c0 f i Demo2Main.obj
+ 0001:000246c0       ??_GDemo2Main@@UAEPAXI@Z   004256c0 f i Demo2Main.obj
  0001:00024700       ??0Demo2Object@@QAE@PAVDemo2Main@@@Z 00425700 f   Demo2Object.obj
  0001:00024810       ??1Demo2Object@@UAE@XZ     00425810 f   Demo2Object.obj
  0001:00024830       ?Draw@Demo2Object@@UAEXXZ  00425830 f   Demo2Object.obj
@@ -1079,8 +1079,8 @@
  0001:00024fb0       ?GameAction@Demo3Main@@UAEXXZ 00425fb0 f   Demo3Main.obj
  0001:00024ff0       ?MouseDown@Demo3Main@@UAEXHHH@Z 00425ff0 f   Demo3Main.obj
  0001:00025000       ?KeyDown@Demo3Main@@UAEXH@Z 00426000 f   Demo3Main.obj
- 0001:00025170       ??_EDemo3Main@@UAEPAXI@Z   00426170 f i Demo3Main.obj
  0001:00025170       ??_GDemo3Main@@UAEPAXI@Z   00426170 f i Demo3Main.obj
+ 0001:00025170       ??_EDemo3Main@@UAEPAXI@Z   00426170 f i Demo3Main.obj
  0001:000251b0       ??0Demo3Object@@QAE@PAVDemo3Main@@HH@Z 004261b0 f   Demo3Object.obj
  0001:000252b0       ??1Demo3Object@@UAE@XZ     004262b0 f   Demo3Object.obj
  0001:000252d0       ?Draw@Demo3Object@@UAEXXZ  004262d0 f   Demo3Object.obj
@@ -1111,15 +1111,15 @@
  0001:000266f0       ?KeyDown@Demo4Main@@UAEXH@Z 004276f0 f   Demo4Main.obj
  0001:000267f0       ?UndrawObjects@Demo4Main@@UAEXXZ 004277f0 f   Demo4Main.obj
  0001:00026810       ?DrawObjects@Demo4Main@@UAEXXZ 00427810 f   Demo4Main.obj
- 0001:00026a10       ??_GDemo4Main@@UAEPAXI@Z   00427a10 f i Demo4Main.obj
  0001:00026a10       ??_EDemo4Main@@UAEPAXI@Z   00427a10 f i Demo4Main.obj
+ 0001:00026a10       ??_GDemo4Main@@UAEPAXI@Z   00427a10 f i Demo4Main.obj
  0001:00026a50       ?IncreaseTimeOffset@BaseEngine@@QAEXH@Z 00427a50 f i Demo4Main.obj
  0001:00026a80       ??0Demo4Object@@QAE@PAVDemo4Main@@HH@Z 00427a80 f   Demo4Object.obj
  0001:00026b80       ??1Demo4Object@@UAE@XZ     00427b80 f   Demo4Object.obj
  0001:00026ba0       ?Draw@Demo4Object@@UAEXXZ  00427ba0 f   Demo4Object.obj
  0001:00026c60       ?DoUpdate@Demo4Object@@UAEXH@Z 00427c60 f   Demo4Object.obj
- 0001:000272a0       ??_GDemo4Object@@UAEPAXI@Z 004282a0 f i Demo4Object.obj
  0001:000272a0       ??_EDemo4Object@@UAEPAXI@Z 004282a0 f i Demo4Object.obj
+ 0001:000272a0       ??_GDemo4Object@@UAEPAXI@Z 004282a0 f i Demo4Object.obj
  0001:000272e0       ?GetTileManager@Demo4Main@@QAEAAVDemo4TileManager@@XZ 004282e0 f i Demo4Object.obj
  0001:00027300       ?GetXDiffForDirection@Demo4Object@@QAEHH@Z 00428300 f i Demo4Object.obj
  0001:00027370       ?GetYDiffForDirection@Demo4Object@@QAEHH@Z 00428370 f i Demo4Object.obj
@@ -1466,6 +1466,7 @@
  0002:00000e90       __real@bff0000000000000    0042fe90     Psydb3AdvancedEnemyTank.obj
  0002:00000ea0       ??_7BaseEngine@@6B@        0042fea0     BaseEngine.obj
  0002:00000ef8       __real@bff3333333333333    0042fef8     Psydb3AdvancedEnemyTank.obj
+ 0002:00000f00       __real@4095180000000000    0042ff00     Psydb3PlayState.obj
  0002:00000f0c       ??_C@_0BM@NMJKDPPO@invalid?5vector?$DMT?$DO?5subscript?$AA@ 0042ff0c     BaseEngine.obj
  0002:00000f30       ??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@ 0042ff30     BaseEngine.obj
  0002:00000f48       __real@0000000000000000    0042ff48     BaseEngine.obj
@@ -1576,7 +1577,6 @@
  0002:00001ab8       __real@407f400000000000    00430ab8     Psydb3PlayState.obj
  0002:00001ac8       __real@4091300000000000    00430ac8     Psydb3PlayState.obj
  0002:00001ad8       __real@4092c00000000000    00430ad8     Psydb3PlayState.obj
- 0002:00001ae8       __real@4095180000000000    00430ae8     Psydb3PlayState.obj
  0002:00001c50       ??_7Psydb3StandardEnemyTank@@6BDisplayableObject@@@ 00430c50     Psydb3StandardEnemyTank.obj
  0002:00001c8c       ??_7Psydb3StandardEnemyTank@@6BCollideable@@@ 00430c8c     Psydb3StandardEnemyTank.obj
  0002:00001d2c       ??_7Psydb3StartState@@6B@  00430d2c     Psydb3StartState.obj

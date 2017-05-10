@@ -8,6 +8,6 @@ public:
 		Psydb3BulletManager* bulletManager, const char* name, Psydb3TileManager* map);
 	~Psydb3BasicEnemyTank();
 	virtual void InitialiseSpriteImages();
-	virtual void GetDirection() { m_firing = true; };
+	virtual void GetDirection() { };
 };
 
