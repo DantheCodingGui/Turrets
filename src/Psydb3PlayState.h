@@ -27,7 +27,7 @@ public:
 	void GetTankSpawns();
 	void LoadLevel();
 	void GetTankNames();
-	Psydb3Tank* GetPlayerTank() const { return dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 2 - m_numberOfTanks * 3)); };
+	Psydb3Tank* GetPlayerTank() const { return dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 2 - (m_numberOfTanks * 3))); };
 	int GetNumberOfTanks() const { return m_numberOfTanks; };
 	void NextLevel() {
 		if (m_level != m_maps.size() - 1) 

@@ -9,12 +9,6 @@ Psydb3EndState::Psydb3EndState(Psydb3Engine* pEngine)
 Psydb3EndState::~Psydb3EndState() {
 }
 
-
-void Psydb3EndState::DrawBackground() {
-	m_pEngine->DrawBackgroundString(600, 350, "MISSION FAILED", 0x990000, m_pEngine->GetFont("Blockletter.otf", 70));
-	m_pEngine->DrawBackgroundString(600, 400, "press space to return to main menu", 0x990000, m_pEngine->GetFont("Blockletter.otf", 50));
-}
-
 void Psydb3EndState::HandleKeys(int iKeyCode) {
 	switch (iKeyCode) {
 		case SDLK_SPACE:
@@ -24,4 +18,9 @@ void Psydb3EndState::HandleKeys(int iKeyCode) {
 			m_pEngine->SetAllVisibility(false);
 			break;
 	}
+}
+
+void Psydb3EndState::DrawOntop() {
+	m_pEngine->DrawScreenString(550, 250, "MISSION FAILED", 0x990000, m_pEngine->GetFont("Blockletter.otf", 110));
+	m_pEngine->DrawScreenString(500, 450, "press space to return to main menu", 0x990000, m_pEngine->GetFont("Blockletter.otf", 50));
 }

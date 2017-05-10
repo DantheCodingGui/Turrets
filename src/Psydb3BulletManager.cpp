@@ -14,7 +14,7 @@ Psydb3BulletManager::~Psydb3BulletManager() {
 }
 
 int Psydb3BulletManager::RequestToFire() {
-	int numberOfTanks = dynamic_cast<Psydb3PlayState*>(m_pEngine->GetActiveState())->GetNumberOfTanks();
+	int numberOfTanks = dynamic_cast<Psydb3PlayState*>(m_pEngine->GetPlayState())->GetNumberOfTanks();
 	for (int i = 0; i < m_numberOfBullets; ++i) {
 		if (!dynamic_cast<Psydb3Bullet*>(m_pEngine->GetDisplayableObject(i + numberOfTanks))->GetBeenFired()) {
 			return i + numberOfTanks;

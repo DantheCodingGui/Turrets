@@ -8,8 +8,8 @@ public:
 	Psydb3EnemyTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name);
 	~Psydb3EnemyTank();
 	virtual void GetDirection();
-	virtual int GetTargetX() const { return dynamic_cast<Psydb3PlayState*>(dynamic_cast<Psydb3Engine*>(m_pEngine)->GetActiveState())->GetPlayerTank()->GetXCentre(); };
-	virtual int GetTargetY() const { return dynamic_cast<Psydb3PlayState*>(dynamic_cast<Psydb3Engine*>(m_pEngine)->GetActiveState())->GetPlayerTank()->GetYCentre(); };
+	virtual int GetTargetX() const { return dynamic_cast<Psydb3PlayState*>(dynamic_cast<Psydb3Engine*>(m_pEngine)->GetPlayState())->GetPlayerTank()->GetXCentre(); };
+	virtual int GetTargetY() const { return dynamic_cast<Psydb3PlayState*>(dynamic_cast<Psydb3Engine*>(m_pEngine)->GetPlayState())->GetPlayerTank()->GetYCentre(); };
 	virtual void InitialiseSpriteImages() = 0;
 	virtual void DoUpdate(int iCurrentTime);
 };

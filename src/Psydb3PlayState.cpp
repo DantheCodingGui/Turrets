@@ -109,16 +109,6 @@ void Psydb3PlayState::LoadLevel() {
 
 	m_pEngine->StoreObjectInArray(i + m_numberOfTanks, new Psydb3Cursor(m_pEngine));
 
-
-	//get length of spawns for level number, plug into function below
-
-	//m_pEngine->CreateObjectArray(5);
-	//for loop for bullets
-	//for loop for tanks, switch statement to decide what object to display there
-	//at index i, player tank
-	//at index i + 1, cursor
-	//m_backgroundInitialised = false;
-	//DrawBackground();
 }
 
 void Psydb3PlayState::GetTankNames() {
@@ -131,8 +121,9 @@ void Psydb3PlayState::Update() {
 		if (!GetPlayerTank()->IsAlive()) {
 			m_startCountdown = 300;
 			m_pEngine->SetState(END_STATE);
+			m_backgroundInitialised = false; 
 			m_pEngine->SetupBackgroundBuffer();
-			//m_pEngine->Redraw(true);
+			m_pEngine->Redraw(true);
 		}
 	}
 	else
