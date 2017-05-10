@@ -18,6 +18,7 @@ public:
 	virtual void DrawStringsOnTop();
 	virtual void UnDrawStrings();
 	void SetState(int newStateIndex) { m_activeGameState = m_gameStates[newStateIndex]; };
+	Psydb3State* GetActiveState() const { return m_activeGameState; };
 private: 
 	Psydb3State* m_gameStates[6];
 

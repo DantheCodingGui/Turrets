@@ -1,11 +1,10 @@
 #pragma once
 #include "Psydb3Engine.h"
 
-#define START_STATE		0
-#define PLAY_STATE		1
-#define PAUSE_STATE		2
-#define END_WIN_STATE	3
-#define END_LOSE_STATE	4
+#define START_STATE	0
+#define PLAY_STATE	1
+#define PAUSE_STATE	2
+#define END_STATE	3
 
 class Psydb3State
 {

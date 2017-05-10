@@ -19,11 +19,29 @@
     <Filter Include="Source Files\Shared">
       <UniqueIdentifier>{82649680-6f01-4f4b-9016-33d2f9930b72}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Demos">
-      <UniqueIdentifier>{4af3086a-f0ad-4421-8647-84b711bdf81f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Demos">
       <UniqueIdentifier>{43825ca5-b5e1-402d-a57a-be1b7f41d1ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Tanks">
+      <UniqueIdentifier>{9c2bb5c8-ac1d-4678-9559-b912b332c7ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tanks">
+      <UniqueIdentifier>{9d4b5c82-9926-459e-8774-1f28d2038694}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States">
+      <UniqueIdentifier>{de643d06-ba97-4fa4-b742-397e35252192}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{65bd90eb-ec5f-40b5-b01e-ae09ce0735bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{45cc053a-4c3c-447a-a225-bd6cd6ded515}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{5ddfc42e-6374-4cf0-96e3-89d40a290d19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Demos">
+      <UniqueIdentifier>{4af3086a-f0ad-4421-8647-84b711bdf81f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -93,15 +111,6 @@
     <ClInclude Include="Psydb3Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Psydb3TileManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Psydb3Tank.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Psydb3PlayerTank.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Psydb3RotationPosition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -120,44 +129,56 @@
     <ClInclude Include="Psydb3FileIO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Psydb3State.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Psydb3PlayState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Psydb3StartState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Psydb3PauseState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Psydb3CollisionHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Collideable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Psydb3Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Psydb3BulletManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Psydb3EnemyTank.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Psydb3AdvancedEnemyTank.h">
+      <Filter>Header Files\Tanks</Filter>
     </ClInclude>
     <ClInclude Include="Psydb3BasicEnemyTank.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Tanks</Filter>
     </ClInclude>
-    <ClInclude Include="Psydb3StandardEnemyTank.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Psydb3AdvancedEnemyTank.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Psydb3EnemyTank.h">
+      <Filter>Header Files\Tanks</Filter>
     </ClInclude>
     <ClInclude Include="Psydb3InvisibleEnemyTank.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3PlayerTank.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3StandardEnemyTank.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3Tank.h">
+      <Filter>Header Files\Tanks</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3PauseState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3PlayState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3StartState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3State.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3BulletManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3CollisionHandler.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3TileManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Psydb3EndState.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -224,15 +245,6 @@
     <ClCompile Include="Psydb3Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Psydb3TileManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Psydb3Tank.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Psydb3PlayerTank.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Psydb3Cursor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -245,44 +257,56 @@
     <ClCompile Include="Psydb3FileIO.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Psydb3State.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Psydb3PlayState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Psydb3StartState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Psydb3PauseState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Psydb3CollisionHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Collideable.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Psydb3Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Psydb3BulletManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Psydb3EnemyTank.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Psydb3AdvancedEnemyTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
     </ClCompile>
     <ClCompile Include="Psydb3BasicEnemyTank.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Tanks</Filter>
     </ClCompile>
-    <ClCompile Include="Psydb3StandardEnemyTank.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Psydb3AdvancedEnemyTank.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Psydb3EnemyTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
     </ClCompile>
     <ClCompile Include="Psydb3InvisibleEnemyTank.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3PlayerTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3Tank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3StandardEnemyTank.cpp">
+      <Filter>Source Files\Tanks</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3PauseState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3PlayState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3StartState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3State.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3BulletManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3CollisionHandler.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3TileManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Psydb3EndState.cpp">
+      <Filter>Source Files\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

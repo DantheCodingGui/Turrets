@@ -15,6 +15,8 @@ Psydb3Bullet::Psydb3Bullet(BaseEngine* pEngine, Psydb3CollisionHandler* collisio
 	, m_removeNextFrame(false)
 	, m_pEngine(pEngine) {
 
+	m_isCurrentlyCollideable = false;
+
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)m_x;
 	m_iCurrentScreenY = m_iPreviousScreenY = (int)m_y;
 
@@ -29,23 +31,23 @@ Psydb3Bullet::~Psydb3Bullet() {
 }
 
 void Psydb3Bullet::StartMoving(double x, double y, double vectorX, double vectorY) {
-	if (m_hasBeenFired)
-		return;
-	m_x = m_iCurrentScreenX = (x - m_iDrawWidth/2) + (vectorX * 50);
-	m_y = m_iCurrentScreenY = (y - m_iDrawHeight/2) + (vectorY * 50);
+	m_x = m_iCurrentScreenX = (x - m_iDrawWidth/2) + (vectorX * 40);
+	m_y = m_iCurrentScreenY = (y - m_iDrawHeight/2) + (vectorY * 40);
 	m_dx = vectorX * 4;
 	m_dy = vectorY * 4;
 	m_hasBeenFired = true;
-	m_bouncesLeft = 1;
 }
 
 void Psydb3Bullet::Reset() {
 	m_hasBeenFired = false;
 	m_awayFromSourceTank = false;
+	m_isCurrentlyCollideable = false;
+	m_removeNextFrame = false;
 	m_x = 0;
 	m_y = 0;
 	m_dx = 0;
 	m_dy = 0;
+	m_bouncesLeft = 1;
 }
 
 void Psydb3Bullet::BackgroundCollideBehaviour(char Direction, int tileEdge) {}
@@ -81,7 +83,6 @@ void Psydb3Bullet::DoUpdate(int iCurrentTime) {
 
 	if (!m_hasBeenFired)
 		return;
-
 	bool xBackgroundCollision = false;
 
 	m_x += m_dx;
@@ -102,14 +103,10 @@ void Psydb3Bullet::DoUpdate(int iCurrentTime) {
 
 	if (!m_awayFromSourceTank && !m_collisionHandler->CheckObjectsCollision(this)) {
 		m_awayFromSourceTank = true;
-		//printf("bullet now collideable\n");
+		m_isCurrentlyCollideable = true;
 	}
-
-	if (m_collisionHandler->CheckObjectsCollision(this))
-		printf("detected a collision\n");
-
-	if (m_awayFromSourceTank && !m_removeNextFrame && m_collisionHandler->CheckObjectsCollision(this))
-		;// printf("bullet collision\n");
+	else if (m_awayFromSourceTank && !m_removeNextFrame && m_collisionHandler->CheckObjectsCollision(this))
+		m_removeNextFrame = true;
 	else if (m_removeNextFrame) {
 		Reset();
 		m_removeNextFrame = false;

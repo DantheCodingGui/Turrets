@@ -50,6 +50,7 @@ public:
 	void SetCollidingX(bool isColliding) { m_collidingX = isColliding; };
 	void SetCollidingY(bool isColliding) { m_collidingY = isColliding; };
 	void SetFiring(bool isFiring) { m_firing = isFiring; };
+	bool IsAlive() const { return m_alive; };
 protected:
 	double m_x;
 	double m_y;

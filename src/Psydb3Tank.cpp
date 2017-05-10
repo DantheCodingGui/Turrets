@@ -228,7 +228,7 @@ void Psydb3Tank::Die() {
 	m_alive = false;
 	m_isCurrentlyCollideable = false;
 	m_pEngine->DrawBackgroundString(m_x, m_y, "RIP.", 0x000000, m_pEngine->GetFont("BLockletter.otf", 30));
-	printf("Tank Has Died\n");
+	//printf("Tank Has Died\n");
 }
 
 void Psydb3Tank::DoUpdate(int iCurrentTime) {

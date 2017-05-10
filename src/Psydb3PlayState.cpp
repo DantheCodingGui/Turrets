@@ -14,9 +14,9 @@
 Psydb3PlayState::Psydb3PlayState(Psydb3Engine* pEngine)
 	: Psydb3State(pEngine)
 	, m_level(0)
-	, m_numberOfTanks(3)
+	, m_numberOfTanks(0)
+	, m_startCountdown(300)
 	, m_backgroundInitialised(false) {
-	m_startTime = pEngine->GetTime();
 	GetMaps();
 	GetTankNames();
 	m_collisionHandler = new Psydb3CollisionHandler(m_pEngine, &m_oTiles);
@@ -97,14 +97,17 @@ void Psydb3PlayState::LoadLevel() {
 	m_bulletManager = new Psydb3BulletManager(m_pEngine, m_numberOfTanks * 3);
 	int i;
 	m_pEngine->CreateObjectArray(m_numberOfTanks * 4 + 1);
+
+	m_pEngine->StoreObjectInArray(0, new Psydb3InvisibleEnemyTank(m_pEngine, 1350.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(1, new Psydb3AdvancedEnemyTank(m_pEngine, 1100.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(2, new Psydb3StandardEnemyTank(m_pEngine, 1200.0, 300.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(3, new Psydb3BasicEnemyTank(m_pEngine, 1200.0, 500.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
+	m_pEngine->StoreObjectInArray(4, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "Challenger"));
+	
 	for (i = 0; i < m_numberOfTanks * 3; ++i)
-		m_pEngine->StoreObjectInArray(i, new Psydb3Bullet(m_pEngine, m_collisionHandler));
-	m_pEngine->StoreObjectInArray(i, new Psydb3InvisibleEnemyTank(m_pEngine, 1350.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
-	m_pEngine->StoreObjectInArray(i + 1, new Psydb3AdvancedEnemyTank(m_pEngine, 1100.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
-	m_pEngine->StoreObjectInArray(i + 2, new Psydb3StandardEnemyTank(m_pEngine, 1200.0, 300.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
-	m_pEngine->StoreObjectInArray(i + 3, new Psydb3BasicEnemyTank(m_pEngine, 1200.0, 500.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str()));
-	m_pEngine->StoreObjectInArray(i + 4, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "Challenger"));
-	m_pEngine->StoreObjectInArray(i + 5, new Psydb3Cursor(m_pEngine));
+		m_pEngine->StoreObjectInArray(i + m_numberOfTanks, new Psydb3Bullet(m_pEngine, m_collisionHandler));
+
+	m_pEngine->StoreObjectInArray(i + m_numberOfTanks, new Psydb3Cursor(m_pEngine));
 
 
 	//get length of spawns for level number, plug into function below
@@ -123,8 +126,17 @@ void Psydb3PlayState::GetTankNames() {
 }
 
 void Psydb3PlayState::Update() {
-	if (HasLevelStarted())
+	if (m_startCountdown == 0) {
 		m_pEngine->UpdateAllObjects(m_pEngine->GetModifiedTime());
+		if (!GetPlayerTank()->IsAlive()) {
+			m_startCountdown = 300;
+			m_pEngine->SetState(END_STATE);
+			m_pEngine->SetupBackgroundBuffer();
+			//m_pEngine->Redraw(true);
+		}
+	}
+	else
+		--m_startCountdown;
 }
 
 void Psydb3PlayState::SaveBackground() {
@@ -170,12 +182,12 @@ void Psydb3PlayState::HandleKeys(int iKeyCode) {
 }
 
 void Psydb3PlayState::HandleMouse() {
-	dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 2))->SetFiring(true);
+	GetPlayerTank()->SetFiring(true);
 }
 
 void Psydb3PlayState::DrawOntop() {
 	
-	if (!HasLevelStarted()) {
+	if (m_startCountdown > 0) {
 		m_pEngine->DrawScreenString(600, 350, "Are You Ready??", 0xffffff, m_pEngine->GetFont("Blockletter.otf", 70));
 		return;
 	}
@@ -196,6 +208,20 @@ void Psydb3PlayState::DrawOntop() {
 	}
 	m_oTiles.m_tilesToRedrawX.clear();
 	m_oTiles.m_tilesToRedrawY.clear();
+
+	//removes bug of foreground tile drawing incorrectly at bottom of screen
+	m_pEngine->DrawBackgroundRectangle(
+		m_oTiles.GetTileWidth(),
+		m_pEngine->GetScreenHeight() - m_oTiles.GetTileHeight() + 10,
+		m_pEngine->GetScreenWidth() - m_oTiles.GetTileWidth(),
+		m_pEngine->GetScreenHeight(),
+		0x8C7640
+		);
+	m_pEngine->CopyBackgroundPixels(
+		m_oTiles.GetTileWidth(),
+		m_pEngine->GetScreenHeight() - m_oTiles.GetTileHeight() + 10,
+		m_pEngine->GetScreenWidth() - 2 * m_oTiles.GetTileWidth(),
+		m_oTiles.GetTileHeight() - 10);
 
 	//update the cursor again so it redraws over any now foreground tile
 	m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 1)->Draw();

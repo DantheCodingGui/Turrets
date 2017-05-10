@@ -101,6 +101,7 @@
     <ClInclude Include="Psydb3BulletManager.h" />
     <ClInclude Include="Psydb3CollisionHandler.h" />
     <ClInclude Include="Psydb3Cursor.h" />
+    <ClInclude Include="Psydb3EndState.h" />
     <ClInclude Include="Psydb3EnemyTank.h" />
     <ClInclude Include="Psydb3Engine.h" />
     <ClInclude Include="Psydb3FileIO.h" />
@@ -147,6 +148,7 @@
     <ClCompile Include="Psydb3BulletManager.cpp" />
     <ClCompile Include="Psydb3CollisionHandler.cpp" />
     <ClCompile Include="Psydb3Cursor.cpp" />
+    <ClCompile Include="Psydb3EndState.cpp" />
     <ClCompile Include="Psydb3EnemyTank.cpp" />
     <ClCompile Include="Psydb3Engine.cpp" />
     <ClCompile Include="Psydb3FileIO.cpp" />

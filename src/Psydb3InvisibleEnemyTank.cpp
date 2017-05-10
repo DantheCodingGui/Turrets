@@ -16,8 +16,6 @@ void Psydb3InvisibleEnemyTank::Draw() {
 	if (!IsVisible() || !m_alive)
 		return;
 
-	printf("visible\n");
-
 	int targetX = GetTargetX();
 	int targetY = GetTargetY();
 	int centreX = m_x + m_tankStates[m_direction]->GetTankCentreOffsetX();

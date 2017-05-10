@@ -4,12 +4,12 @@
 #include "Psydb3StartState.h"
 #include "Psydb3PlayState.h"
 #include "Psydb3PauseState.h"
+#include "Psydb3EndState.h"
 
-#define START_STATE		0
-#define PLAY_STATE		1
-#define PAUSE_STATE		2
-#define END_WIN_STATE	3
-#define END_LOSE_STATE	4
+#define START_STATE	0
+#define PLAY_STATE	1
+#define PAUSE_STATE	2
+#define END_STATE	3
 
 Psydb3Engine::Psydb3Engine()  {
 	InitialiseGameStates();
@@ -17,7 +17,7 @@ Psydb3Engine::Psydb3Engine()  {
 }
 
 Psydb3Engine::~Psydb3Engine() {
-	for (int i = 0; i < 3; ++i)
+	for (int i = 0; i < 4; ++i)
 		delete m_gameStates[i];
 }
 
@@ -41,6 +41,7 @@ void Psydb3Engine::InitialiseGameStates() {
 	m_gameStates[START_STATE] = new Psydb3StartState(this);
 	m_gameStates[PLAY_STATE] = new Psydb3PlayState(this);
 	m_gameStates[PAUSE_STATE] = new Psydb3PauseState(this);
+	m_gameStates[END_STATE] = new Psydb3EndState(this);
 }
 
 void Psydb3Engine::GameAction() {

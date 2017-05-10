@@ -111,8 +111,8 @@ bool Psydb3CollisionHandler::CheckObjectsCollision(Collideable* object) {
 
 	for (int i = 0; i < m_pEngine->GetArraySize(); ++i) {
 		if ((temp = dynamic_cast<Collideable*>(m_pEngine->GetDisplayableObject(i))) != NULL && temp != object) {
-			//if (temp->GetIsCollideable())
-			otherObjects.push_back(temp);
+			if (temp->GetIsCollideable())
+				otherObjects.push_back(temp);
 		}
 	}
 
@@ -121,8 +121,10 @@ bool Psydb3CollisionHandler::CheckObjectsCollision(Collideable* object) {
 		if (IsInBounds(objectEdges[LEFT], objectEdges[TOP], tempObjectEdges) ||
 			IsInBounds(objectEdges[RIGHT], objectEdges[TOP], tempObjectEdges) ||
 			IsInBounds(objectEdges[LEFT], objectEdges[BOTTOM], tempObjectEdges) ||
-			IsInBounds(objectEdges[LEFT], objectEdges[BOTTOM], tempObjectEdges))
+			IsInBounds(objectEdges[RIGHT], objectEdges[BOTTOM], tempObjectEdges)) {
+			printf("COLLIDEABLE OBJECT HAS COLLIDED\n");
 			return true;
+		}
 	}
 
 	return false;

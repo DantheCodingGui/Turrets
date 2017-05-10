@@ -79,5 +79,4 @@ void Psydb3PlayerTank::GetDirection() {
 
 void Psydb3PlayerTank::DoUpdate(int iCurrentTime) {
 	Psydb3Tank::DoUpdate(iCurrentTime);
-
 }

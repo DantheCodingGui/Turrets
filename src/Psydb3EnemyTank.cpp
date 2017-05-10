@@ -11,8 +11,8 @@ Psydb3EnemyTank::~Psydb3EnemyTank() {
 }
 
 void Psydb3EnemyTank::GetDirection() {
-	m_direction = 0;
-	m_moving = true;
+	//m_direction = 0;
+	//m_moving = true;
 }
 
 void Psydb3EnemyTank::DoUpdate(int iCurrentTime) {

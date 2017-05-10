@@ -1,5 +1,8 @@
 #pragma once
 #include "DisplayableObject.h"
+
+class Psydb3Engine;
+
 class Psydb3Cursor :
 	public DisplayableObject
 {

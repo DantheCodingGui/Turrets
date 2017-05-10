@@ -27,11 +27,12 @@ public:
 	void GetTankSpawns();
 	void LoadLevel();
 	void GetTankNames();
+	Psydb3Tank* GetPlayerTank() const { return dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(m_pEngine->GetArraySize() - 2 - m_numberOfTanks * 3)); };
+	int GetNumberOfTanks() const { return m_numberOfTanks; };
 	void NextLevel() {
 		if (m_level != m_maps.size() - 1) 
 			++m_level; 
 	};
-	bool HasLevelStarted() { return ((m_pEngine->GetTime() >= m_startTime + 4500)) ? true : false; };
 private:
 	Psydb3TileManager m_oTiles;
 
@@ -40,7 +41,7 @@ private:
 	vector<vector<string>> m_maps;
 	vector<vector<string>> m_tankSpawns;
 
-	int m_startTime;
+	int m_startCountdown;
 
 	int m_level;
 	int m_numberOfTanks;
