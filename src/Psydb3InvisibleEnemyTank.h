@@ -4,7 +4,8 @@ class Psydb3InvisibleEnemyTank :
 	public Psydb3EnemyTank
 {
 public:
-	Psydb3InvisibleEnemyTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name);
+	Psydb3InvisibleEnemyTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, 
+		Psydb3BulletManager* bulletManager, const char* name, Psydb3TileManager* map);
 	~Psydb3InvisibleEnemyTank();
 	virtual void InitialiseSpriteImages() {};
 	virtual void Draw();

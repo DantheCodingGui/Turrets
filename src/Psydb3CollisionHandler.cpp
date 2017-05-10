@@ -18,8 +18,7 @@
 
 Psydb3CollisionHandler::Psydb3CollisionHandler(Psydb3Engine* pEngine, Psydb3TileManager* tileManager) 
 	: m_pEngine(pEngine)
-	, m_map(tileManager)
-	, m_foregroundEmptyColour(0xE9C977) {
+	, m_map(tileManager) {
 }
 
 Psydb3CollisionHandler::~Psydb3CollisionHandler() {
@@ -70,12 +69,7 @@ bool Psydb3CollisionHandler::CheckBackgroundCollision(Collideable* object) {
 	return collision;
 }
 
-bool Psydb3CollisionHandler::PixelPerfectCollision(Collideable* object, Collideable* otherObject) {
-	return true;
-
-}
-
-bool Psydb3CollisionHandler::CheckObjectsCollision(Collideable* object) {
+int Psydb3CollisionHandler::CheckObjectsCollision(Collideable* object) {
 	int objectEdges[4];
 	int tempObjectEdges[4];
 	object->GetEdges(objectEdges);
@@ -95,11 +89,15 @@ bool Psydb3CollisionHandler::CheckObjectsCollision(Collideable* object) {
 		if (objectEdges[LEFT] <= tempObjectEdges[RIGHT] &&
 			objectEdges[RIGHT] >= tempObjectEdges[LEFT] &&
 			objectEdges[TOP] <= tempObjectEdges[BOTTOM] &&
-			objectEdges[BOTTOM] >= tempObjectEdges[TOP])
-			return true;
+			objectEdges[BOTTOM] >= tempObjectEdges[TOP]) {
+			if (dynamic_cast<Psydb3Tank*>(*it) != NULL)
+				return 1;
+			else if (dynamic_cast<Psydb3Bullet*>(*it) != NULL)
+				return 2;
+		}
 	}
 
-	return false;
+	return -1;
 }
 
 void Psydb3CollisionHandler::GetTileEdges(int tileMapX, int tileMapY, int edges[4]) {

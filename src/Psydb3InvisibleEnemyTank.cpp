@@ -1,10 +1,12 @@
 #include "Psydb3InvisibleEnemyTank.h"
 
 
-Psydb3InvisibleEnemyTank::Psydb3InvisibleEnemyTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name)
-	: Psydb3EnemyTank(pEngine, x, y, collisionHandler, bulletManager, name) {
+Psydb3InvisibleEnemyTank::Psydb3InvisibleEnemyTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, 
+												Psydb3BulletManager* bulletManager, const char* name, Psydb3TileManager* map)
+	: Psydb3EnemyTank(pEngine, x, y, collisionHandler, bulletManager, name, map) {
 	InitialiseTankStates();
 	m_iDrawWidth = m_iDrawHeight = 100;
+	m_iDrawTankBaseWidth = m_iDrawTankBaseHeight = 60;
 }
 
 

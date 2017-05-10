@@ -1,6 +1,6 @@
  CourseworkBase
 
- Timestamp is 59135ba5 (Wed May 10 19:27:49 2017)
+ Timestamp is 591368b3 (Wed May 10 20:23:31 2017)
 
  Preferred load address is 00400000
 
@@ -43,19 +43,20 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
- 0000:00000000       ___guard_fids_table        00000000     <absolute>
- 0000:00000000       __except_list              00000000     <absolute>
  0000:00000000       ___guard_fids_count        00000000     <absolute>
  0000:00000000       ___guard_flags             00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       __except_list              00000000     <absolute>
  0000:0000005f       ___safe_se_handler_count   0000005f     <absolute>
- 0000:00009876       __fltused                  00009876     <absolute>
  0000:00009876       __ldused                   00009876     <absolute>
+ 0000:00009876       __fltused                  00009876     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
  0001:00002a80       _main                      00403a80 f   SDL2main:SDL_windows_main.obj
  0001:00002ab0       _WinMain@16                00403ab0 f   SDL2main:SDL_windows_main.obj
  0001:00004b50       ??0Collideable@@QAE@PAVPsydb3CollisionHandler@@@Z 00405b50 f   Collideable.obj
  0001:00004b90       ??1Collideable@@QAE@XZ     00405b90 f   Collideable.obj
  0001:00004bc0       _SDL_main                  00405bc0 f   mainfunction.obj
+ 0001:00004ca0       ??$construct@HAAH@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAEXPAHAAH@Z 00405ca0 f i Psydb3CollisionHandler.obj
  0001:00004cd0       _hypot                     00405cd0 f i mainfunction.obj
  0001:00004d10       ??0BaseEngine@@QAE@H@Z     00405d10 f   BaseEngine.obj
  0001:00004df0       ??1BaseEngine@@UAE@XZ      00405df0 f   BaseEngine.obj
@@ -106,6 +107,37 @@
  0001:00007840       ?DrawString@BaseEngine@@QAEXHHPBDIPAVFont@@PAUSDL_Surface@@@Z 00408840 f   BaseEngine.obj
  0001:00007970       ?DrawShortenedArrow@BaseEngine@@QAEXHHHHHHIHHPAUSDL_Surface@@@Z 00408970 f   BaseEngine.obj
  0001:00007e70       ?DrawShortenedLine@BaseEngine@@QAEXHHHHHHIHPAUSDL_Surface@@@Z 00408e70 f   BaseEngine.obj
+ 0001:00008250       ??$_Umove@PAH@?$vector@HV?$allocator@H@std@@@std@@IAEPAHPAH00@Z 00409250 f i Psydb3CollisionHandler.obj
+ 0001:00008290       ??$_Umove@PAPAVCollideable@@@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IAEPAPAVCollideable@@PAPAV2@00@Z 00409290 f i Psydb3CollisionHandler.obj
+ 0001:000082d0       ??$_Uninit_move@PAHPAHU?$_Wrap_alloc@V?$allocator@H@std@@@std@@@std@@YAPAHPAH00AAU?$_Wrap_alloc@V?$allocator@H@std@@@0@@Z 004092d0 f i Psydb3CollisionHandler.obj
+ 0001:00008320       ??$_Uninit_move@PAPAVCollideable@@PAPAV1@U?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@@std@@YAPAPAVCollideable@@PAPAV1@00AAU?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@0@@Z 00409320 f i Psydb3CollisionHandler.obj
+ 0001:00008370       ??$construct@HAAH@?$allocator@H@std@@QAEXPAHAAH@Z 00409370 f i Psydb3CollisionHandler.obj
+ 0001:00008400       ??$construct@HAAH@?$allocator_traits@V?$allocator@H@std@@@std@@SAXAAV?$allocator@H@1@PAHAAH@Z 00409400 f i Psydb3CollisionHandler.obj
+ 0001:00008420       ??$construct@HH@?$allocator@H@std@@QAEXPAH$$QAH@Z 00409420 f i Psydb3CollisionHandler.obj
+ 0001:000084b0       ??0?$_Vector_alloc@$0A@U?$_Vec_base_types@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@@std@@QAE@ABV?$allocator@PAVCollideable@@@1@@Z 004094b0 f i Psydb3CollisionHandler.obj
+ 0001:000084d0       ??0?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QAE@PAPAVCollideable@@PBU_Container_base0@1@@Z 004094d0 f i Psydb3CollisionHandler.obj
+ 0001:00008500       ??0?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QAE@PAPAVCollideable@@PBU_Container_base0@1@@Z 00409500 f i Psydb3CollisionHandler.obj
+ 0001:00008520       ??0?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@QAE@XZ 00409520 f i Psydb3CollisionHandler.obj
+ 0001:00008550       ??8?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QBE_NABV01@@Z 00409550 f i Psydb3CollisionHandler.obj
+ 0001:00008590       ??9?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QBE_NABV01@@Z 00409590 f i Psydb3CollisionHandler.obj
+ 0001:000085d0       ?IsTileBehindWall@Psydb3TileManager@@QAEHHH@Z 004095d0 f i Psydb3CollisionHandler.obj
+ 0001:00008640       ?IsTileBreakable@Psydb3TileManager@@QAE_NHH@Z 00409640 f i Psydb3CollisionHandler.obj
+ 0001:00008690       ?IsTileCollideable@Psydb3TileManager@@QAE_NHH@Z 00409690 f i Psydb3CollisionHandler.obj
+ 0001:000086c0       ?_Destroy@?$vector@HV?$allocator@H@std@@@std@@IAEXPAH0@Z 004096c0 f i Psydb3CollisionHandler.obj
+ 0001:000086f0       ?_Destroy@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IAEXPAPAVCollideable@@0@Z 004096f0 f i Psydb3CollisionHandler.obj
+ 0001:00008720       ?_Grow_to@?$vector@HV?$allocator@H@std@@@std@@IBEII@Z 00409720 f i Psydb3CollisionHandler.obj
+ 0001:00008780       ?_Reallocate@?$vector@HV?$allocator@H@std@@@std@@IAEXI@Z 00409780 f i Psydb3CollisionHandler.obj
+ 0001:000088c0       ?_Reallocate@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IAEXI@Z 004098c0 f i Psydb3CollisionHandler.obj
+ 0001:00008a00       ?_Reserve@?$vector@HV?$allocator@H@std@@@std@@IAEXI@Z 00409a00 f i Psydb3CollisionHandler.obj
+ 0001:00008a60       ?_Reserve@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IAEXI@Z 00409a60 f i Psydb3CollisionHandler.obj
+ 0001:00008ac0       ?_Tidy@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IAEXXZ 00409ac0 f i Psydb3CollisionHandler.obj
+ 0001:00008b40       ?allocate@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAEPAHI@Z 00409b40 f i Psydb3CollisionHandler.obj
+ 0001:00008b60       ?allocate@?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QAEPAPAVCollideable@@I@Z 00409b60 f i Psydb3CollisionHandler.obj
+ 0001:00008b80       ?construct@?$allocator@PAVCollideable@@@std@@QAEXPAPAVCollideable@@ABQAV3@@Z 00409b80 f i Psydb3CollisionHandler.obj
+ 0001:00008bc0       ?end@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@2@XZ 00409bc0 f i Psydb3CollisionHandler.obj
+ 0001:00008bf0       ?push_back@?$vector@HV?$allocator@H@std@@@std@@QAEX$$QAH@Z 00409bf0 f i Psydb3CollisionHandler.obj
+ 0001:00008d10       ?push_back@?$vector@HV?$allocator@H@std@@@std@@QAEXABH@Z 00409d10 f i Psydb3CollisionHandler.obj
+ 0001:00008e20       ?push_back@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAEXABQAVCollideable@@@Z 00409e20 f i Psydb3CollisionHandler.obj
  0001:00008fa0       ??$GetAngle@H@@YANHHHH@Z   00409fa0 f i BaseEngine.obj
  0001:00009050       ??$GetAngle@N@@YANNNNN@Z   0040a050 f i BaseEngine.obj
  0001:00009110       ??$Swap@H@@YAXAAH0@Z       0040a110 f i BaseEngine.obj
@@ -152,8 +184,8 @@
  0001:000099f0       ??E?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVDisplayableObject@@@std@@@std@@@std@@QAEAAV01@XZ 0040a9f0 f i BaseEngine.obj
  0001:00009a20       ??E?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVDisplayableObject@@@std@@@std@@@std@@QAEAAV01@XZ 0040aa20 f i BaseEngine.obj
  0001:00009a40       ??_G?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@QAEPAXI@Z 0040aa40 f i BaseEngine.obj
- 0001:00009a80       ??_EBaseEngine@@UAEPAXI@Z  0040aa80 f i BaseEngine.obj
  0001:00009a80       ??_GBaseEngine@@UAEPAXI@Z  0040aa80 f i BaseEngine.obj
+ 0001:00009a80       ??_EBaseEngine@@UAEPAXI@Z  0040aa80 f i BaseEngine.obj
  0001:00009ac0       ?GetFont@Font@@QAEPAU_TTF_Font@@XZ 0040aac0 f i BaseEngine.obj
  0001:00009ae0       ?GetIntsPerScreenRow@BaseEngine@@IBEHPAUSDL_Surface@@@Z 0040aae0 f i BaseEngine.obj
  0001:00009b00       ?GetModifiedTime@BaseEngine@@UBEHXZ 0040ab00 f i BaseEngine.obj
@@ -201,8 +233,8 @@
  0001:0000aad0       ?RedrawBackground@DisplayableObject@@UAEXXZ 0040bad0 f   DisplayableObject.obj
  0001:0000ab10       ?DoUpdate@DisplayableObject@@UAEXH@Z 0040bb10 f   DisplayableObject.obj
  0001:0000ab20       ?StoreLastScreenPositionForUndraw@DisplayableObject@@QAEXXZ 0040bb20 f   DisplayableObject.obj
- 0001:0000abb0       ??_EDisplayableObject@@UAEPAXI@Z 0040bbb0 f i DisplayableObject.obj
  0001:0000abb0       ??_GDisplayableObject@@UAEPAXI@Z 0040bbb0 f i DisplayableObject.obj
+ 0001:0000abb0       ??_EDisplayableObject@@UAEPAXI@Z 0040bbb0 f i DisplayableObject.obj
  0001:0000abf0       ?Notify@DisplayableObject@@UAEJH@Z 0040bbf0 f i DisplayableObject.obj
  0001:0000ac10       ?SafeSetScreenPixel@BaseEngine@@QAEXHHI@Z 0040bc10 f i DisplayableObject.obj
  0001:0000ac50       ??0FontManager@@QAE@XZ     0040bc50 f   FontManager.obj
@@ -225,9 +257,10 @@
  0001:0000c1e0       ?DeinitImage@@YAXXZ        0040d1e0 f   JPGImage.obj
  0001:0000c5d0       ?GetXForRotationAndCrop@@YAHHHHHHH@Z 0040d5d0 f i JPGImage.obj
  0001:0000c640       ?GetYForRotationAndCrop@@YAHHHHHHH@Z 0040d640 f i JPGImage.obj
- 0001:0000c6b0       ??0Psydb3AdvancedEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBD@Z 0040d6b0 f   Psydb3AdvancedEnemyTank.obj
- 0001:0000c790       ??1Psydb3AdvancedEnemyTank@@UAE@XZ 0040d790 f   Psydb3AdvancedEnemyTank.obj
- 0001:0000c840       ?InitialiseSpriteImages@Psydb3AdvancedEnemyTank@@UAEXXZ 0040d840 f   Psydb3AdvancedEnemyTank.obj
+ 0001:0000c6b0       ??0Psydb3AdvancedEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBDPAVPsydb3TileManager@@@Z 0040d6b0 f   Psydb3AdvancedEnemyTank.obj
+ 0001:0000c7a0       ??1Psydb3AdvancedEnemyTank@@UAE@XZ 0040d7a0 f   Psydb3AdvancedEnemyTank.obj
+ 0001:0000c850       ?InitialiseSpriteImages@Psydb3AdvancedEnemyTank@@UAEXXZ 0040d850 f   Psydb3AdvancedEnemyTank.obj
+ 0001:0000cbc0       ?InitialiseTankVelocities@Psydb3AdvancedEnemyTank@@UAEXQAY01N@Z 0040dbc0 f   Psydb3AdvancedEnemyTank.obj
  0001:0000ccf0       ??$_Allocate@D@std@@YAPADIPAD@Z 0040dcf0 f i Psydb3AdvancedEnemyTank.obj
  0001:0000cd40       ??$addressof@D@std@@YAPADAAD@Z 0040dd40 f i Psydb3AdvancedEnemyTank.obj
  0001:0000cd50       ??$construct@PADAAPAD@?$_Wrap_alloc@V?$allocator@D@std@@@std@@QAEXPAPADAAPAD@Z 0040dd50 f i Psydb3AdvancedEnemyTank.obj
@@ -256,8 +289,8 @@
  0001:0000d1a0       ??8error_category@std@@QBE_NABV01@@Z 0040e1a0 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d1e0       ??8error_condition@std@@QBE_NABV01@@Z 0040e1e0 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d250       ??_GImageData@@QAEPAXI@Z   0040e250 f i Psydb3AdvancedEnemyTank.obj
- 0001:0000d290       ??_GPsydb3AdvancedEnemyTank@@UAEPAXI@Z 0040e290 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d290       ??_EPsydb3AdvancedEnemyTank@@UAEPAXI@Z 0040e290 f i Psydb3AdvancedEnemyTank.obj
+ 0001:0000d290       ??_GPsydb3AdvancedEnemyTank@@UAEPAXI@Z 0040e290 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d2d0       ??_G_Generic_error_category@std@@UAEPAXI@Z 0040e2d0 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d2d0       ??_E_Generic_error_category@std@@UAEPAXI@Z 0040e2d0 f i Psydb3AdvancedEnemyTank.obj
  0001:0000d310       ??_G_Iostream_error_category@std@@UAEPAXI@Z 0040e310 f i Psydb3AdvancedEnemyTank.obj
@@ -320,9 +353,9 @@
  0001:0000e440       ?system_category@std@@YAABVerror_category@1@XZ 0040f440 f i Psydb3AdvancedEnemyTank.obj
  0001:0000e450       ?value@error_code@std@@QBEHXZ 0040f450 f i Psydb3AdvancedEnemyTank.obj
  0001:0000e470       ?value@error_condition@std@@QBEHXZ 0040f470 f i Psydb3AdvancedEnemyTank.obj
- 0001:0000e490       ??0Psydb3BasicEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBD@Z 0040f490 f   Psydb3BasicEnemyTank.obj
- 0001:0000e570       ??1Psydb3BasicEnemyTank@@UAE@XZ 0040f570 f   Psydb3BasicEnemyTank.obj
- 0001:0000e610       ?InitialiseSpriteImages@Psydb3BasicEnemyTank@@UAEXXZ 0040f610 f   Psydb3BasicEnemyTank.obj
+ 0001:0000e490       ??0Psydb3BasicEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBDPAVPsydb3TileManager@@@Z 0040f490 f   Psydb3BasicEnemyTank.obj
+ 0001:0000e580       ??1Psydb3BasicEnemyTank@@UAE@XZ 0040f580 f   Psydb3BasicEnemyTank.obj
+ 0001:0000e620       ?InitialiseSpriteImages@Psydb3BasicEnemyTank@@UAEXXZ 0040f620 f   Psydb3BasicEnemyTank.obj
  0001:0000e740       ??_GPsydb3BasicEnemyTank@@UAEPAXI@Z 0040f740 f i Psydb3BasicEnemyTank.obj
  0001:0000e740       ??_EPsydb3BasicEnemyTank@@UAEPAXI@Z 0040f740 f i Psydb3BasicEnemyTank.obj
  0001:0000e780       ?GetDirection@Psydb3BasicEnemyTank@@UAEXXZ 0040f780 f i Psydb3BasicEnemyTank.obj
@@ -331,8 +364,8 @@
  0001:0000e860       ?Draw@Psydb3Bomb@@UAEXXZ   0040f860 f   Psydb3Bomb.obj
  0001:0000e9e0       ?DoUpdate@Psydb3Bomb@@UAEXH@Z 0040f9e0 f   Psydb3Bomb.obj
  0001:0000ea60       ?Explode@Psydb3Bomb@@QAEXXZ 0040fa60 f   Psydb3Bomb.obj
- 0001:0000eb30       ??_EPsydb3Bomb@@UAEPAXI@Z  0040fb30 f i Psydb3Bomb.obj
  0001:0000eb30       ??_GPsydb3Bomb@@UAEPAXI@Z  0040fb30 f i Psydb3Bomb.obj
+ 0001:0000eb30       ??_EPsydb3Bomb@@UAEPAXI@Z  0040fb30 f i Psydb3Bomb.obj
  0001:0000eb70       ?GetEngine@DisplayableObject@@QBEPAVBaseEngine@@XZ 0040fb70 f i Psydb3Bomb.obj
  0001:0000eb90       ?IsVisible@DisplayableObject@@QBE_NXZ 0040fb90 f i Psydb3Bomb.obj
  0001:0000ebb0       ?Redraw@BaseEngine@@QAEX_N@Z 0040fbb0 f i Psydb3Bomb.obj
@@ -344,8 +377,8 @@
  0001:0000f0a0       ?BackgroundCollideBehaviour@Psydb3Bullet@@UAEXDH@Z 004100a0 f   Psydb3Bullet.obj
  0001:0000f0b0       ?StartMoving@Psydb3Bullet@@QAEXNNNN@Z 004100b0 f   Psydb3Bullet.obj
  0001:0000f180       ?Reset@Psydb3Bullet@@QAEXXZ 00410180 f   Psydb3Bullet.obj
- 0001:0000f370       ??_GPsydb3Bullet@@UAEPAXI@Z 00410370 f i Psydb3Bullet.obj
  0001:0000f370       ??_EPsydb3Bullet@@UAEPAXI@Z 00410370 f i Psydb3Bullet.obj
+ 0001:0000f370       ??_GPsydb3Bullet@@UAEPAXI@Z 00410370 f i Psydb3Bullet.obj
  0001:0000f3b0       ?DrawScreenOval@BaseEngine@@QAEXHHHHI@Z 004103b0 f i Psydb3Bullet.obj
  0001:0000f3f0       ?GetCollisionCentreX@Psydb3Bullet@@UAEHXZ 004103f0 f i Psydb3Bullet.obj
  0001:0000f420       ?GetCollisionCentreY@Psydb3Bullet@@UAEHXZ 00410420 f i Psydb3Bullet.obj
@@ -356,139 +389,92 @@
  0001:0000f600       ?GetBeenFired@Psydb3Bullet@@QBE_NXZ 00410600 f i Psydb3BulletManager.obj
  0001:0000f620       ?GetNumberOfTanks@Psydb3PlayState@@QBEHXZ 00410620 f i Psydb3BulletManager.obj
  0001:0000f640       ??0Psydb3CollisionHandler@@QAE@PAVPsydb3Engine@@PAVPsydb3TileManager@@@Z 00410640 f   Psydb3CollisionHandler.obj
- 0001:0000f680       ??1Psydb3CollisionHandler@@QAE@XZ 00410680 f   Psydb3CollisionHandler.obj
- 0001:0000f6a0       ?CheckBackgroundCollision@Psydb3CollisionHandler@@QAE_NPAVCollideable@@@Z 004106a0 f   Psydb3CollisionHandler.obj
- 0001:0000f890       ?CheckObjectsCollision@Psydb3CollisionHandler@@QAE_NPAVCollideable@@@Z 00410890 f   Psydb3CollisionHandler.obj
- 0001:0000fa60       ?PixelPerfectCollision@Psydb3CollisionHandler@@QAE_NPAVCollideable@@0@Z 00410a60 f   Psydb3CollisionHandler.obj
- 0001:0000fa70       ?GetTileEdges@Psydb3CollisionHandler@@QAEXHHQAH@Z 00410a70 f   Psydb3CollisionHandler.obj
- 0001:0000fb10       ?IsInBounds@Psydb3CollisionHandler@@QAE_NHHQAH@Z 00410b10 f   Psydb3CollisionHandler.obj
+ 0001:0000f670       ??1Psydb3CollisionHandler@@QAE@XZ 00410670 f   Psydb3CollisionHandler.obj
+ 0001:0000f680       ?CheckBackgroundCollision@Psydb3CollisionHandler@@QAE_NPAVCollideable@@@Z 00410680 f   Psydb3CollisionHandler.obj
+ 0001:0000f860       ?CheckObjectsCollision@Psydb3CollisionHandler@@QAEHPAVCollideable@@@Z 00410860 f   Psydb3CollisionHandler.obj
+ 0001:0000fab0       ?GetTileEdges@Psydb3CollisionHandler@@QAEXHHQAH@Z 00410ab0 f   Psydb3CollisionHandler.obj
+ 0001:0000fb50       ?IsInBounds@Psydb3CollisionHandler@@QAE_NHHQAH@Z 00410b50 f   Psydb3CollisionHandler.obj
  0001:0000fd50       ??$_Allocate@H@std@@YAPAHIPAH@Z 00410d50 f i Psydb3CollisionHandler.obj
  0001:0000fdb0       ??$_Allocate@PAVCollideable@@@std@@YAPAPAVCollideable@@IPAPAV1@@Z 00410db0 f i Psydb3CollisionHandler.obj
  0001:0000fe10       ??$_Destroy_range@U?$_Wrap_alloc@V?$allocator@H@std@@@std@@@std@@YAXPAH0AAU?$_Wrap_alloc@V?$allocator@H@std@@@0@@Z 00410e10 f i Psydb3CollisionHandler.obj
  0001:0000fe60       ??$_Destroy_range@U?$_Wrap_alloc@V?$allocator@H@std@@@std@@@std@@YAXPAH0AAU?$_Wrap_alloc@V?$allocator@H@std@@@0@U_Scalar_ptr_iterator_tag@0@@Z 00410e60 f i Psydb3CollisionHandler.obj
  0001:0000fe70       ??$_Destroy_range@U?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@@std@@YAXPAPAVCollideable@@0AAU?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@0@@Z 00410e70 f i Psydb3CollisionHandler.obj
  0001:0000fec0       ??$_Destroy_range@U?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@@std@@YAXPAPAVCollideable@@0AAU?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@0@U_Scalar_ptr_iterator_tag@0@@Z 00410ec0 f i Psydb3CollisionHandler.obj
- 0001:0000fed0       ??$_Destroy_range@U?$_Wrap_alloc@V?$allocator@PAVPsydb3Tank@@@std@@@std@@@std@@YAXPAPAVPsydb3Tank@@0AAU?$_Wrap_alloc@V?$allocator@PAVPsydb3Tank@@@std@@@0@@Z 00410ed0 f i Psydb3CollisionHandler.obj
- 0001:0000ff20       ??$_Destroy_range@U?$_Wrap_alloc@V?$allocator@PAVPsydb3Tank@@@std@@@std@@@std@@YAXPAPAVPsydb3Tank@@0AAU?$_Wrap_alloc@V?$allocator@PAVPsydb3Tank@@@std@@@0@U_Scalar_ptr_iterator_tag@0@@Z 00410f20 f i Psydb3CollisionHandler.obj
- 0001:0000ff30       ??$_Ptr_cat@HH@std@@YA?AU_Scalar_ptr_iterator_tag@0@PAH0@Z 00410f30 f i Psydb3CollisionHandler.obj
- 0001:0000ff40       ??$_Ptr_cat@PAVCollideable@@PAV1@@std@@YA?AU_Scalar_ptr_iterator_tag@0@PAPAVCollideable@@0@Z 00410f40 f i Psydb3CollisionHandler.obj
- 0001:0000ff50       ??$_Ptr_cat@PAVPsydb3Tank@@PAV1@@std@@YA?AU_Scalar_ptr_iterator_tag@0@PAPAVPsydb3Tank@@0@Z 00410f50 f i Psydb3CollisionHandler.obj
- 0001:0000ff60       ??$_Rechecked@PAHPAH@std@@YAAAPAHAAPAHPAH@Z 00410f60 f i Psydb3CollisionHandler.obj
- 0001:0000ff80       ??$_Rechecked@PAPAVCollideable@@PAPAV1@@std@@YAAAPAPAVCollideable@@AAPAPAV1@PAPAV1@@Z 00410f80 f i Psydb3CollisionHandler.obj
- 0001:0000ffa0       ??$_Umove@PAH@?$vector@HV?$allocator@H@std@@@std@@IAEPAHPAH00@Z 00410fa0 f i Psydb3CollisionHandler.obj
- 0001:0000ffe0       ??$_Umove@PAPAVCollideable@@@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IAEPAPAVCollideable@@PAPAV2@00@Z 00410fe0 f i Psydb3CollisionHandler.obj
- 0001:00010020       ??$_Unchecked@PAH@std@@YAPAHPAH@Z 00411020 f i Psydb3CollisionHandler.obj
- 0001:00010030       ??$_Unchecked@PAPAVCollideable@@@std@@YAPAPAVCollideable@@PAPAV1@@Z 00411030 f i Psydb3CollisionHandler.obj
- 0001:00010040       ??$_Uninit_move@HHH@std@@YAPAHPAH00AAU?$_Wrap_alloc@V?$allocator@H@std@@@0@0U_Scalar_ptr_iterator_tag@0@@Z 00411040 f i Psydb3CollisionHandler.obj
- 0001:00010080       ??$_Uninit_move@PAHPAHU?$_Wrap_alloc@V?$allocator@H@std@@@std@@@std@@YAPAHPAH00AAU?$_Wrap_alloc@V?$allocator@H@std@@@0@@Z 00411080 f i Psydb3CollisionHandler.obj
- 0001:000100e0       ??$_Uninit_move@PAPAVCollideable@@PAPAV1@U?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@@std@@YAPAPAVCollideable@@PAPAV1@00AAU?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@0@@Z 004110e0 f i Psydb3CollisionHandler.obj
- 0001:00010140       ??$_Uninit_move@PAVCollideable@@PAV1@PAV1@@std@@YAPAPAVCollideable@@PAPAV1@00AAU?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@0@0U_Scalar_ptr_iterator_tag@0@@Z 00411140 f i Psydb3CollisionHandler.obj
- 0001:00010180       ??$_Uninitialized_move@PAHPAHU?$_Wrap_alloc@V?$allocator@H@std@@@std@@@std@@YAPAHPAH00AAU?$_Wrap_alloc@V?$allocator@H@std@@@0@@Z 00411180 f i Psydb3CollisionHandler.obj
- 0001:000101e0       ??$_Uninitialized_move@PAPAVCollideable@@PAPAV1@U?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@@std@@YAPAPAVCollideable@@PAPAV1@00AAU?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@0@@Z 004111e0 f i Psydb3CollisionHandler.obj
- 0001:00010240       ??$_Val_type@PAH@std@@YAPAHPAH@Z 00411240 f i Psydb3CollisionHandler.obj
- 0001:00010250       ??$_Val_type@PAPAVCollideable@@@std@@YAPAPAVCollideable@@PAPAV1@@Z 00411250 f i Psydb3CollisionHandler.obj
- 0001:00010260       ??$addressof@$$CBH@std@@YAPBHABH@Z 00411260 f i Psydb3CollisionHandler.obj
- 0001:00010270       ??$addressof@H@std@@YAPAHAAH@Z 00411270 f i Psydb3CollisionHandler.obj
- 0001:00010280       ??$addressof@QAVCollideable@@@std@@YAPBQAVCollideable@@ABQAV1@@Z 00411280 f i Psydb3CollisionHandler.obj
- 0001:00010290       ??$construct@HAAH@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAEXPAHAAH@Z 00411290 f i Psydb3CollisionHandler.obj
- 0001:000102d0       ??$construct@HAAH@?$allocator@H@std@@QAEXPAHAAH@Z 004112d0 f i Psydb3CollisionHandler.obj
- 0001:00010380       ??$construct@HAAH@?$allocator_traits@V?$allocator@H@std@@@std@@SAXAAV?$allocator@H@1@PAHAAH@Z 00411380 f i Psydb3CollisionHandler.obj
- 0001:000103b0       ??$construct@HABH@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAEXPAHABH@Z 004113b0 f i Psydb3CollisionHandler.obj
- 0001:000103f0       ??$construct@HABH@?$allocator_traits@V?$allocator@H@std@@@std@@SAXAAV?$allocator@H@1@PAHABH@Z 004113f0 f i Psydb3CollisionHandler.obj
- 0001:00010420       ??$construct@HH@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAEXPAH$$QAH@Z 00411420 f i Psydb3CollisionHandler.obj
- 0001:00010460       ??$construct@HH@?$allocator@H@std@@QAEXPAH$$QAH@Z 00411460 f i Psydb3CollisionHandler.obj
- 0001:00010510       ??$construct@HH@?$allocator_traits@V?$allocator@H@std@@@std@@SAXAAV?$allocator@H@1@PAH$$QAH@Z 00411510 f i Psydb3CollisionHandler.obj
- 0001:00010540       ??$construct@PAVCollideable@@AAPAV1@@?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QAEXPAPAVCollideable@@AAPAV2@@Z 00411540 f i Psydb3CollisionHandler.obj
- 0001:00010580       ??$construct@PAVCollideable@@AAPAV1@@?$allocator@PAVCollideable@@@std@@QAEXPAPAVCollideable@@AAPAV2@@Z 00411580 f i Psydb3CollisionHandler.obj
- 0001:00010630       ??$construct@PAVCollideable@@AAPAV1@@?$allocator_traits@V?$allocator@PAVCollideable@@@std@@@std@@SAXAAV?$allocator@PAVCollideable@@@1@PAPAVCollideable@@AAPAV3@@Z 00411630 f i Psydb3CollisionHandler.obj
- 0001:00010660       ??$construct@PAVCollideable@@ABQAV1@@?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QAEXPAPAVCollideable@@ABQAV2@@Z 00411660 f i Psydb3CollisionHandler.obj
- 0001:000106a0       ??$construct@PAVCollideable@@ABQAV1@@?$allocator_traits@V?$allocator@PAVCollideable@@@std@@@std@@SAXAAV?$allocator@PAVCollideable@@@1@PAPAVCollideable@@ABQAV3@@Z 004116a0 f i Psydb3CollisionHandler.obj
- 0001:000106d0       ??$forward@AAH@std@@YAAAHAAH@Z 004116d0 f i Psydb3CollisionHandler.obj
- 0001:000106e0       ??$forward@AAPAVCollideable@@@std@@YAAAPAVCollideable@@AAPAV1@@Z 004116e0 f i Psydb3CollisionHandler.obj
- 0001:000106f0       ??$forward@ABH@std@@YAABHABH@Z 004116f0 f i Psydb3CollisionHandler.obj
- 0001:00010700       ??$forward@ABQAVCollideable@@@std@@YAABQAVCollideable@@ABQAV1@@Z 00411700 f i Psydb3CollisionHandler.obj
- 0001:00010710       ??$forward@H@std@@YA$$QAHAAH@Z 00411710 f i Psydb3CollisionHandler.obj
- 0001:00010720       ??0?$_Vector_alloc@$0A@U?$_Vec_base_types@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@@std@@QAE@ABV?$allocator@PAVCollideable@@@1@@Z 00411720 f i Psydb3CollisionHandler.obj
- 0001:00010740       ??0?$_Vector_alloc@$0A@U?$_Vec_base_types@PAVPsydb3Tank@@V?$allocator@PAVPsydb3Tank@@@std@@@std@@@std@@QAE@ABV?$allocator@PAVPsydb3Tank@@@1@@Z 00411740 f i Psydb3CollisionHandler.obj
- 0001:00010760       ??0?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QAE@PAPAVCollideable@@PBU_Container_base0@1@@Z 00411760 f i Psydb3CollisionHandler.obj
- 0001:00010790       ??0?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QAE@PAPAVCollideable@@PBU_Container_base0@1@@Z 00411790 f i Psydb3CollisionHandler.obj
- 0001:000107c0       ??0?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@QAE@XZ 004117c0 f i Psydb3CollisionHandler.obj
- 0001:00010800       ??0?$_Vector_val@U?$_Simple_types@PAVPsydb3Tank@@@std@@@std@@QAE@XZ 00411800 f i Psydb3CollisionHandler.obj
- 0001:00010840       ??0?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAE@XZ 00411840 f i Psydb3CollisionHandler.obj
- 0001:00010860       ??0?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QAE@XZ 00411860 f i Psydb3CollisionHandler.obj
- 0001:00010880       ??0?$_Wrap_alloc@V?$allocator@PAVPsydb3Tank@@@std@@@std@@QAE@XZ 00411880 f i Psydb3CollisionHandler.obj
- 0001:000108a0       ??0?$allocator@H@std@@QAE@XZ 004118a0 f i Psydb3CollisionHandler.obj
- 0001:000108c0       ??0?$allocator@PAVCollideable@@@std@@QAE@XZ 004118c0 f i Psydb3CollisionHandler.obj
- 0001:000108e0       ??0?$allocator@PAVPsydb3Tank@@@std@@QAE@XZ 004118e0 f i Psydb3CollisionHandler.obj
- 0001:00010900       ??0?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAE@XZ 00411900 f i Psydb3CollisionHandler.obj
- 0001:00010930       ??0?$vector@PAVPsydb3Tank@@V?$allocator@PAVPsydb3Tank@@@std@@@std@@QAE@XZ 00411930 f i Psydb3CollisionHandler.obj
- 0001:00010960       ??1?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAE@XZ 00411960 f i Psydb3CollisionHandler.obj
- 0001:00010980       ??1?$vector@PAVPsydb3Tank@@V?$allocator@PAVPsydb3Tank@@@std@@@std@@QAE@XZ 00411980 f i Psydb3CollisionHandler.obj
- 0001:000109a0       ??8?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QBE_NABV01@@Z 004119a0 f i Psydb3CollisionHandler.obj
- 0001:000109f0       ??9?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QBE_NABV01@@Z 004119f0 f i Psydb3CollisionHandler.obj
- 0001:00010a40       ??D?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QBEABQAVCollideable@@XZ 00411a40 f i Psydb3CollisionHandler.obj
- 0001:00010a60       ??D?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QBEAAPAVCollideable@@XZ 00411a60 f i Psydb3CollisionHandler.obj
- 0001:00010a80       ??E?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QAEAAV01@XZ 00411a80 f i Psydb3CollisionHandler.obj
- 0001:00010ab0       ??E?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QAEAAV01@XZ 00411ab0 f i Psydb3CollisionHandler.obj
- 0001:00010ad0       ?GetIsCollideable@Collideable@@QBEHXZ 00411ad0 f i Psydb3CollisionHandler.obj
- 0001:00010af0       ?GetTileHeight@TileManager@@QBEHXZ 00411af0 f i Psydb3CollisionHandler.obj
- 0001:00010b10       ?GetTileWidth@TileManager@@QBEHXZ 00411b10 f i Psydb3CollisionHandler.obj
- 0001:00010b30       ?GetValue@TileManager@@QBEHHH@Z 00411b30 f i Psydb3CollisionHandler.obj
- 0001:00010b60       ?IsTileBehindWall@Psydb3TileManager@@QAEHHH@Z 00411b60 f i Psydb3CollisionHandler.obj
- 0001:00010be0       ?IsTileBreakable@Psydb3TileManager@@QAE_NHH@Z 00411be0 f i Psydb3CollisionHandler.obj
- 0001:00010c40       ?IsTileCollideable@Psydb3TileManager@@QAE_NHH@Z 00411c40 f i Psydb3CollisionHandler.obj
- 0001:00010c80       ?_Compat@?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QBEXABV12@@Z 00411c80 f i Psydb3CollisionHandler.obj
- 0001:00010c90       ?_Destroy@?$vector@HV?$allocator@H@std@@@std@@IAEXPAH0@Z 00411c90 f i Psydb3CollisionHandler.obj
- 0001:00010cd0       ?_Destroy@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IAEXPAPAVCollideable@@0@Z 00411cd0 f i Psydb3CollisionHandler.obj
- 0001:00010d10       ?_Destroy@?$vector@PAVPsydb3Tank@@V?$allocator@PAVPsydb3Tank@@@std@@@std@@IAEXPAPAVPsydb3Tank@@0@Z 00411d10 f i Psydb3CollisionHandler.obj
- 0001:00010d50       ?_Getal@?$_Vector_alloc@$0A@U?$_Vec_base_types@HV?$allocator@H@std@@@std@@@std@@QBE?AU?$_Wrap_alloc@V?$allocator@H@std@@@2@XZ 00411d50 f i Psydb3CollisionHandler.obj
- 0001:00010d70       ?_Getal@?$_Vector_alloc@$0A@U?$_Vec_base_types@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@@std@@QBE?AU?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@2@XZ 00411d70 f i Psydb3CollisionHandler.obj
- 0001:00010d90       ?_Getal@?$_Vector_alloc@$0A@U?$_Vec_base_types@PAVPsydb3Tank@@V?$allocator@PAVPsydb3Tank@@@std@@@std@@@std@@QBE?AU?$_Wrap_alloc@V?$allocator@PAVPsydb3Tank@@@std@@@2@XZ 00411d90 f i Psydb3CollisionHandler.obj
- 0001:00010db0       ?_Grow_to@?$vector@HV?$allocator@H@std@@@std@@IBEII@Z 00411db0 f i Psydb3CollisionHandler.obj
- 0001:00010e20       ?_Grow_to@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IBEII@Z 00411e20 f i Psydb3CollisionHandler.obj
- 0001:00010e90       ?_Inside@?$vector@HV?$allocator@H@std@@@std@@IBE_NPBH@Z 00411e90 f i Psydb3CollisionHandler.obj
- 0001:00010ee0       ?_Inside@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IBE_NPBQAVCollideable@@@Z 00411ee0 f i Psydb3CollisionHandler.obj
- 0001:00010f30       ?_Orphan_range@?$vector@HV?$allocator@H@std@@@std@@IBEXPAH0@Z 00411f30 f i Psydb3CollisionHandler.obj
- 0001:00010f40       ?_Orphan_range@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IBEXPAPAVCollideable@@0@Z 00411f40 f i Psydb3CollisionHandler.obj
- 0001:00010f50       ?_Reallocate@?$vector@HV?$allocator@H@std@@@std@@IAEXI@Z 00411f50 f i Psydb3CollisionHandler.obj
- 0001:000110e0       ?_Reallocate@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IAEXI@Z 004120e0 f i Psydb3CollisionHandler.obj
- 0001:00011270       ?_Reserve@?$vector@HV?$allocator@H@std@@@std@@IAEXI@Z 00412270 f i Psydb3CollisionHandler.obj
- 0001:000112e0       ?_Reserve@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IAEXI@Z 004122e0 f i Psydb3CollisionHandler.obj
- 0001:00011350       ?_Tidy@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IAEXXZ 00412350 f i Psydb3CollisionHandler.obj
- 0001:000113f0       ?_Tidy@?$vector@PAVPsydb3Tank@@V?$allocator@PAVPsydb3Tank@@@std@@@std@@IAEXXZ 004123f0 f i Psydb3CollisionHandler.obj
- 0001:00011490       ?_Unused_capacity@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 00412490 f i Psydb3CollisionHandler.obj
- 0001:000114b0       ?_Unused_capacity@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QBEIXZ 004124b0 f i Psydb3CollisionHandler.obj
- 0001:000114d0       ?_Xlen@?$vector@HV?$allocator@H@std@@@std@@IBEXXZ 004124d0 f i Psydb3CollisionHandler.obj
- 0001:000114f0       ?_Xlen@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IBEXXZ 004124f0 f i Psydb3CollisionHandler.obj
- 0001:00011510       ?allocate@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAEPAHI@Z 00412510 f i Psydb3CollisionHandler.obj
- 0001:00011530       ?allocate@?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QAEPAPAVCollideable@@I@Z 00412530 f i Psydb3CollisionHandler.obj
- 0001:00011550       ?allocate@?$allocator@H@std@@QAEPAHI@Z 00412550 f i Psydb3CollisionHandler.obj
- 0001:00011580       ?allocate@?$allocator@PAVCollideable@@@std@@QAEPAPAVCollideable@@I@Z 00412580 f i Psydb3CollisionHandler.obj
- 0001:000115b0       ?begin@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@2@XZ 004125b0 f i Psydb3CollisionHandler.obj
- 0001:000115e0       ?capacity@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 004125e0 f i Psydb3CollisionHandler.obj
- 0001:00011600       ?capacity@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QBEIXZ 00412600 f i Psydb3CollisionHandler.obj
- 0001:00011620       ?construct@?$allocator@H@std@@QAEXPAHABH@Z 00412620 f i Psydb3CollisionHandler.obj
- 0001:00011670       ?construct@?$allocator@PAVCollideable@@@std@@QAEXPAPAVCollideable@@ABQAV3@@Z 00412670 f i Psydb3CollisionHandler.obj
- 0001:000116c0       ?deallocate@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAEXPAHI@Z 004126c0 f i Psydb3CollisionHandler.obj
- 0001:000116f0       ?deallocate@?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QAEXPAPAVCollideable@@I@Z 004126f0 f i Psydb3CollisionHandler.obj
- 0001:00011720       ?deallocate@?$_Wrap_alloc@V?$allocator@PAVPsydb3Tank@@@std@@@std@@QAEXPAPAVPsydb3Tank@@I@Z 00412720 f i Psydb3CollisionHandler.obj
- 0001:00011750       ?deallocate@?$allocator@H@std@@QAEXPAHI@Z 00412750 f i Psydb3CollisionHandler.obj
- 0001:00011770       ?deallocate@?$allocator@PAVCollideable@@@std@@QAEXPAPAVCollideable@@I@Z 00412770 f i Psydb3CollisionHandler.obj
- 0001:00011790       ?deallocate@?$allocator@PAVPsydb3Tank@@@std@@QAEXPAPAVPsydb3Tank@@I@Z 00412790 f i Psydb3CollisionHandler.obj
- 0001:000117b0       ?end@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@2@XZ 004127b0 f i Psydb3CollisionHandler.obj
- 0001:000117e0       ?max_size@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QBEIXZ 004127e0 f i Psydb3CollisionHandler.obj
- 0001:00011800       ?max_size@?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QBEIXZ 00412800 f i Psydb3CollisionHandler.obj
- 0001:00011820       ?max_size@?$allocator@H@std@@QBEIXZ 00412820 f i Psydb3CollisionHandler.obj
- 0001:00011840       ?max_size@?$allocator@PAVCollideable@@@std@@QBEIXZ 00412840 f i Psydb3CollisionHandler.obj
- 0001:00011860       ?max_size@?$allocator_traits@V?$allocator@H@std@@@std@@SAIABV?$allocator@H@2@@Z 00412860 f i Psydb3CollisionHandler.obj
- 0001:00011870       ?max_size@?$allocator_traits@V?$allocator@PAVCollideable@@@std@@@std@@SAIABV?$allocator@PAVCollideable@@@2@@Z 00412870 f i Psydb3CollisionHandler.obj
- 0001:00011880       ?max_size@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 00412880 f i Psydb3CollisionHandler.obj
- 0001:000118b0       ?max_size@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QBEIXZ 004128b0 f i Psydb3CollisionHandler.obj
- 0001:000118e0       ?push_back@?$vector@HV?$allocator@H@std@@@std@@QAEX$$QAH@Z 004128e0 f i Psydb3CollisionHandler.obj
- 0001:00011a40       ?push_back@?$vector@HV?$allocator@H@std@@@std@@QAEXABH@Z 00412a40 f i Psydb3CollisionHandler.obj
- 0001:00011b90       ?push_back@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAEXABQAVCollideable@@@Z 00412b90 f i Psydb3CollisionHandler.obj
- 0001:00011ce0       ?size@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 00412ce0 f i Psydb3CollisionHandler.obj
- 0001:00011d00       ?size@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QBEIXZ 00412d00 f i Psydb3CollisionHandler.obj
+ 0001:0000fed0       ??$_Ptr_cat@HH@std@@YA?AU_Scalar_ptr_iterator_tag@0@PAH0@Z 00410ed0 f i Psydb3CollisionHandler.obj
+ 0001:0000ff20       ??$_Ptr_cat@PAVCollideable@@PAV1@@std@@YA?AU_Scalar_ptr_iterator_tag@0@PAPAVCollideable@@0@Z 00410f20 f i Psydb3CollisionHandler.obj
+ 0001:0000ff30       ??$_Rechecked@PAHPAH@std@@YAAAPAHAAPAHPAH@Z 00410f30 f i Psydb3CollisionHandler.obj
+ 0001:0000ff40       ??$_Rechecked@PAPAVCollideable@@PAPAV1@@std@@YAAAPAPAVCollideable@@AAPAPAV1@PAPAV1@@Z 00410f40 f i Psydb3CollisionHandler.obj
+ 0001:0000ff80       ??$_Unchecked@PAH@std@@YAPAHPAH@Z 00410f80 f i Psydb3CollisionHandler.obj
+ 0001:0000ffa0       ??$_Unchecked@PAPAVCollideable@@@std@@YAPAPAVCollideable@@PAPAV1@@Z 00410fa0 f i Psydb3CollisionHandler.obj
+ 0001:0000ffe0       ??$_Uninit_move@HHH@std@@YAPAHPAH00AAU?$_Wrap_alloc@V?$allocator@H@std@@@0@0U_Scalar_ptr_iterator_tag@0@@Z 00410fe0 f i Psydb3CollisionHandler.obj
+ 0001:00010040       ??$_Uninit_move@PAVCollideable@@PAV1@PAV1@@std@@YAPAPAVCollideable@@PAPAV1@00AAU?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@0@0U_Scalar_ptr_iterator_tag@0@@Z 00411040 f i Psydb3CollisionHandler.obj
+ 0001:00010080       ??$_Uninitialized_move@PAHPAHU?$_Wrap_alloc@V?$allocator@H@std@@@std@@@std@@YAPAHPAH00AAU?$_Wrap_alloc@V?$allocator@H@std@@@0@@Z 00411080 f i Psydb3CollisionHandler.obj
+ 0001:000100e0       ??$_Uninitialized_move@PAPAVCollideable@@PAPAV1@U?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@@std@@YAPAPAVCollideable@@PAPAV1@00AAU?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@0@@Z 004110e0 f i Psydb3CollisionHandler.obj
+ 0001:00010140       ??$_Val_type@PAH@std@@YAPAHPAH@Z 00411140 f i Psydb3CollisionHandler.obj
+ 0001:00010180       ??$_Val_type@PAPAVCollideable@@@std@@YAPAPAVCollideable@@PAPAV1@@Z 00411180 f i Psydb3CollisionHandler.obj
+ 0001:000101e0       ??$addressof@$$CBH@std@@YAPBHABH@Z 004111e0 f i Psydb3CollisionHandler.obj
+ 0001:00010240       ??$addressof@H@std@@YAPAHAAH@Z 00411240 f i Psydb3CollisionHandler.obj
+ 0001:00010250       ??$addressof@QAVCollideable@@@std@@YAPBQAVCollideable@@ABQAV1@@Z 00411250 f i Psydb3CollisionHandler.obj
+ 0001:00010290       ??$construct@HABH@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAEXPAHABH@Z 00411290 f i Psydb3CollisionHandler.obj
+ 0001:000102d0       ??$construct@HABH@?$allocator_traits@V?$allocator@H@std@@@std@@SAXAAV?$allocator@H@1@PAHABH@Z 004112d0 f i Psydb3CollisionHandler.obj
+ 0001:00010380       ??$construct@HH@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAEXPAH$$QAH@Z 00411380 f i Psydb3CollisionHandler.obj
+ 0001:000103f0       ??$construct@HH@?$allocator_traits@V?$allocator@H@std@@@std@@SAXAAV?$allocator@H@1@PAH$$QAH@Z 004113f0 f i Psydb3CollisionHandler.obj
+ 0001:00010420       ??$construct@PAVCollideable@@AAPAV1@@?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QAEXPAPAVCollideable@@AAPAV2@@Z 00411420 f i Psydb3CollisionHandler.obj
+ 0001:00010460       ??$construct@PAVCollideable@@AAPAV1@@?$allocator@PAVCollideable@@@std@@QAEXPAPAVCollideable@@AAPAV2@@Z 00411460 f i Psydb3CollisionHandler.obj
+ 0001:00010510       ??$construct@PAVCollideable@@AAPAV1@@?$allocator_traits@V?$allocator@PAVCollideable@@@std@@@std@@SAXAAV?$allocator@PAVCollideable@@@1@PAPAVCollideable@@AAPAV3@@Z 00411510 f i Psydb3CollisionHandler.obj
+ 0001:00010540       ??$construct@PAVCollideable@@ABQAV1@@?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QAEXPAPAVCollideable@@ABQAV2@@Z 00411540 f i Psydb3CollisionHandler.obj
+ 0001:00010580       ??$construct@PAVCollideable@@ABQAV1@@?$allocator_traits@V?$allocator@PAVCollideable@@@std@@@std@@SAXAAV?$allocator@PAVCollideable@@@1@PAPAVCollideable@@ABQAV3@@Z 00411580 f i Psydb3CollisionHandler.obj
+ 0001:00010630       ??$forward@AAH@std@@YAAAHAAH@Z 00411630 f i Psydb3CollisionHandler.obj
+ 0001:00010660       ??$forward@AAPAVCollideable@@@std@@YAAAPAVCollideable@@AAPAV1@@Z 00411660 f i Psydb3CollisionHandler.obj
+ 0001:000106a0       ??$forward@ABH@std@@YAABHABH@Z 004116a0 f i Psydb3CollisionHandler.obj
+ 0001:000106d0       ??$forward@ABQAVCollideable@@@std@@YAABQAVCollideable@@ABQAV1@@Z 004116d0 f i Psydb3CollisionHandler.obj
+ 0001:000106e0       ??$forward@H@std@@YA$$QAHAAH@Z 004116e0 f i Psydb3CollisionHandler.obj
+ 0001:00010740       ??0?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAE@XZ 00411740 f i Psydb3CollisionHandler.obj
+ 0001:00010760       ??0?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QAE@XZ 00411760 f i Psydb3CollisionHandler.obj
+ 0001:00010790       ??0?$allocator@H@std@@QAE@XZ 00411790 f i Psydb3CollisionHandler.obj
+ 0001:000107c0       ??0?$allocator@PAVCollideable@@@std@@QAE@XZ 004117c0 f i Psydb3CollisionHandler.obj
+ 0001:00010800       ??0?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAE@XZ 00411800 f i Psydb3CollisionHandler.obj
+ 0001:00010840       ??1?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAE@XZ 00411840 f i Psydb3CollisionHandler.obj
+ 0001:000108a0       ??D?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QBEABQAVCollideable@@XZ 004118a0 f i Psydb3CollisionHandler.obj
+ 0001:000108c0       ??D?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QBEAAPAVCollideable@@XZ 004118c0 f i Psydb3CollisionHandler.obj
+ 0001:000108e0       ??E?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QAEAAV01@XZ 004118e0 f i Psydb3CollisionHandler.obj
+ 0001:00010900       ??E?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QAEAAV01@XZ 00411900 f i Psydb3CollisionHandler.obj
+ 0001:00010930       ?GetIsCollideable@Collideable@@QBEHXZ 00411930 f i Psydb3CollisionHandler.obj
+ 0001:00010960       ?GetTileHeight@TileManager@@QBEHXZ 00411960 f i Psydb3CollisionHandler.obj
+ 0001:00010980       ?GetTileWidth@TileManager@@QBEHXZ 00411980 f i Psydb3CollisionHandler.obj
+ 0001:000109a0       ?GetValue@TileManager@@QBEHHH@Z 004119a0 f i Psydb3CollisionHandler.obj
+ 0001:00010a80       ?_Compat@?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@std@@QBEXABV12@@Z 00411a80 f i Psydb3CollisionHandler.obj
+ 0001:00010af0       ?_Getal@?$_Vector_alloc@$0A@U?$_Vec_base_types@HV?$allocator@H@std@@@std@@@std@@QBE?AU?$_Wrap_alloc@V?$allocator@H@std@@@2@XZ 00411af0 f i Psydb3CollisionHandler.obj
+ 0001:00010b10       ?_Getal@?$_Vector_alloc@$0A@U?$_Vec_base_types@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@@std@@QBE?AU?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@2@XZ 00411b10 f i Psydb3CollisionHandler.obj
+ 0001:00010b60       ?_Grow_to@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IBEII@Z 00411b60 f i Psydb3CollisionHandler.obj
+ 0001:00010be0       ?_Inside@?$vector@HV?$allocator@H@std@@@std@@IBE_NPBH@Z 00411be0 f i Psydb3CollisionHandler.obj
+ 0001:00010c40       ?_Inside@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IBE_NPBQAVCollideable@@@Z 00411c40 f i Psydb3CollisionHandler.obj
+ 0001:00010c80       ?_Orphan_range@?$vector@HV?$allocator@H@std@@@std@@IBEXPAH0@Z 00411c80 f i Psydb3CollisionHandler.obj
+ 0001:00010c90       ?_Orphan_range@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IBEXPAPAVCollideable@@0@Z 00411c90 f i Psydb3CollisionHandler.obj
+ 0001:00010db0       ?_Unused_capacity@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 00411db0 f i Psydb3CollisionHandler.obj
+ 0001:00010e20       ?_Unused_capacity@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QBEIXZ 00411e20 f i Psydb3CollisionHandler.obj
+ 0001:00010e90       ?_Xlen@?$vector@HV?$allocator@H@std@@@std@@IBEXXZ 00411e90 f i Psydb3CollisionHandler.obj
+ 0001:00010ee0       ?_Xlen@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@IBEXXZ 00411ee0 f i Psydb3CollisionHandler.obj
+ 0001:00010f50       ?allocate@?$allocator@H@std@@QAEPAHI@Z 00411f50 f i Psydb3CollisionHandler.obj
+ 0001:000110e0       ?allocate@?$allocator@PAVCollideable@@@std@@QAEPAPAVCollideable@@I@Z 004120e0 f i Psydb3CollisionHandler.obj
+ 0001:00011270       ?begin@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVCollideable@@@std@@@std@@@2@XZ 00412270 f i Psydb3CollisionHandler.obj
+ 0001:000112e0       ?capacity@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 004122e0 f i Psydb3CollisionHandler.obj
+ 0001:00011350       ?capacity@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QBEIXZ 00412350 f i Psydb3CollisionHandler.obj
+ 0001:000113f0       ?construct@?$allocator@H@std@@QAEXPAHABH@Z 004123f0 f i Psydb3CollisionHandler.obj
+ 0001:000114b0       ?deallocate@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QAEXPAHI@Z 004124b0 f i Psydb3CollisionHandler.obj
+ 0001:000114d0       ?deallocate@?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QAEXPAPAVCollideable@@I@Z 004124d0 f i Psydb3CollisionHandler.obj
+ 0001:000114f0       ?deallocate@?$allocator@H@std@@QAEXPAHI@Z 004124f0 f i Psydb3CollisionHandler.obj
+ 0001:00011510       ?deallocate@?$allocator@PAVCollideable@@@std@@QAEXPAPAVCollideable@@I@Z 00412510 f i Psydb3CollisionHandler.obj
+ 0001:00011550       ?max_size@?$_Wrap_alloc@V?$allocator@H@std@@@std@@QBEIXZ 00412550 f i Psydb3CollisionHandler.obj
+ 0001:00011580       ?max_size@?$_Wrap_alloc@V?$allocator@PAVCollideable@@@std@@@std@@QBEIXZ 00412580 f i Psydb3CollisionHandler.obj
+ 0001:000115b0       ?max_size@?$allocator@H@std@@QBEIXZ 004125b0 f i Psydb3CollisionHandler.obj
+ 0001:000115e0       ?max_size@?$allocator@PAVCollideable@@@std@@QBEIXZ 004125e0 f i Psydb3CollisionHandler.obj
+ 0001:00011600       ?max_size@?$allocator_traits@V?$allocator@H@std@@@std@@SAIABV?$allocator@H@2@@Z 00412600 f i Psydb3CollisionHandler.obj
+ 0001:00011620       ?max_size@?$allocator_traits@V?$allocator@PAVCollideable@@@std@@@std@@SAIABV?$allocator@PAVCollideable@@@2@@Z 00412620 f i Psydb3CollisionHandler.obj
+ 0001:00011670       ?max_size@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 00412670 f i Psydb3CollisionHandler.obj
+ 0001:000116c0       ?max_size@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QBEIXZ 004126c0 f i Psydb3CollisionHandler.obj
+ 0001:00011770       ?size@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 00412770 f i Psydb3CollisionHandler.obj
+ 0001:00011790       ?size@?$vector@PAVCollideable@@V?$allocator@PAVCollideable@@@std@@@std@@QBEIXZ 00412790 f i Psydb3CollisionHandler.obj
  0001:00011d20       ??0Psydb3Cursor@@QAE@PAVBaseEngine@@@Z 00412d20 f   Psydb3Cursor.obj
  0001:00011dc0       ??1Psydb3Cursor@@UAE@XZ    00412dc0 f   Psydb3Cursor.obj
  0001:00011de0       ?BoundaryDetection@Psydb3Cursor@@QAEXXZ 00412de0 f   Psydb3Cursor.obj
@@ -512,12 +498,12 @@
  0001:00012470       ?SetState@Psydb3Engine@@QAEXH@Z 00413470 f i Psydb3EndState.obj
  0001:000124a0       ?UnDrawStrings@Psydb3EndState@@UAEXXZ 004134a0 f i Psydb3EndState.obj
  0001:000124b0       ?Update@Psydb3EndState@@UAEXXZ 004134b0 f i Psydb3EndState.obj
- 0001:000124c0       ??0Psydb3EnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBD@Z 004134c0 f   Psydb3EnemyTank.obj
- 0001:00012520       ??1Psydb3EnemyTank@@UAE@XZ 00413520 f   Psydb3EnemyTank.obj
- 0001:00012550       ?GetDirection@Psydb3EnemyTank@@UAEXXZ 00413550 f   Psydb3EnemyTank.obj
- 0001:00012560       ?DoUpdate@Psydb3EnemyTank@@UAEXH@Z 00413560 f   Psydb3EnemyTank.obj
- 0001:000125b0       ??_GPsydb3EnemyTank@@UAEPAXI@Z 004135b0 f i Psydb3EnemyTank.obj
+ 0001:000124c0       ??0Psydb3EnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBDPAVPsydb3TileManager@@@Z 004134c0 f   Psydb3EnemyTank.obj
+ 0001:00012530       ??1Psydb3EnemyTank@@UAE@XZ 00413530 f   Psydb3EnemyTank.obj
+ 0001:00012560       ?GetDirection@Psydb3EnemyTank@@UAEXXZ 00413560 f   Psydb3EnemyTank.obj
+ 0001:00012580       ?DoUpdate@Psydb3EnemyTank@@UAEXH@Z 00413580 f   Psydb3EnemyTank.obj
  0001:000125b0       ??_EPsydb3EnemyTank@@UAEPAXI@Z 004135b0 f i Psydb3EnemyTank.obj
+ 0001:000125b0       ??_GPsydb3EnemyTank@@UAEPAXI@Z 004135b0 f i Psydb3EnemyTank.obj
  0001:000125f0       ??0Psydb3Engine@@QAE@XZ    004135f0 f   Psydb3Engine.obj
  0001:00012660       ??1Psydb3Engine@@UAE@XZ    00413660 f   Psydb3Engine.obj
  0001:00012700       ?SetupBackgroundBuffer@Psydb3Engine@@UAEXXZ 00413700 f   Psydb3Engine.obj
@@ -528,8 +514,8 @@
  0001:00012970       ?MouseUp@Psydb3Engine@@UAEXHHH@Z 00413970 f   Psydb3Engine.obj
  0001:000129a0       ?DrawStringsOnTop@Psydb3Engine@@UAEXXZ 004139a0 f   Psydb3Engine.obj
  0001:000129d0       ?UnDrawStrings@Psydb3Engine@@UAEXXZ 004139d0 f   Psydb3Engine.obj
- 0001:00012b00       ??_GPsydb3Engine@@UAEPAXI@Z 00413b00 f i Psydb3Engine.obj
  0001:00012b00       ??_EPsydb3Engine@@UAEPAXI@Z 00413b00 f i Psydb3Engine.obj
+ 0001:00012b00       ??_GPsydb3Engine@@UAEPAXI@Z 00413b00 f i Psydb3Engine.obj
  0001:00012b40       ??_GPsydb3State@@QAEPAXI@Z 00413b40 f i Psydb3Engine.obj
  0001:00012b80       ?DrawableObjectsChanged@BaseEngine@@QAEXXZ 00413b80 f i Psydb3Engine.obj
  0001:00012ba0       ?IsTimeToAct@BaseEngine@@QBE_NXZ 00413ba0 f i Psydb3Engine.obj
@@ -605,8 +591,8 @@
  0001:00014770       ??Y?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV01@D@Z 00415770 f i Psydb3FileIO.obj
  0001:000147a0       ??_D?$basic_ifstream@DU?$char_traits@D@std@@@std@@QAEXXZ 004157a0 f i Psydb3FileIO.obj
  0001:000147ca       ??_E?$basic_ifstream@DU?$char_traits@D@std@@@std@@$4PPPPPPPM@A@AEPAXI@Z 004157ca f i Psydb3FileIO.obj
- 0001:000147e0       ??_G?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 004157e0 f i Psydb3FileIO.obj
  0001:000147e0       ??_E?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 004157e0 f i Psydb3FileIO.obj
+ 0001:000147e0       ??_G?$basic_filebuf@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 004157e0 f i Psydb3FileIO.obj
  0001:00014820       ??_G?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00415820 f i Psydb3FileIO.obj
  0001:00014820       ??_E?$basic_ifstream@DU?$char_traits@D@std@@@std@@UAEPAXI@Z 00415820 f i Psydb3FileIO.obj
  0001:00014870       ??_G?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEPAXI@Z 00415870 f i Psydb3FileIO.obj
@@ -670,9 +656,9 @@
  0001:000164d0       ?to_int_type@?$char_traits@D@std@@SAHABD@Z 004174d0 f i Psydb3FileIO.obj
  0001:000164e0       ?uflow@?$basic_filebuf@DU?$char_traits@D@std@@@std@@MAEHXZ 004174e0 f i Psydb3FileIO.obj
  0001:00016880       ?underflow@?$basic_filebuf@DU?$char_traits@D@std@@@std@@MAEHXZ 00417880 f i Psydb3FileIO.obj
- 0001:00016940       ??0Psydb3InvisibleEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBD@Z 00417940 f   Psydb3InvisibleEnemyTank.obj
- 0001:000169f0       ??1Psydb3InvisibleEnemyTank@@UAE@XZ 004179f0 f   Psydb3InvisibleEnemyTank.obj
- 0001:00016a20       ?Draw@Psydb3InvisibleEnemyTank@@UAEXXZ 00417a20 f   Psydb3InvisibleEnemyTank.obj
+ 0001:00016940       ??0Psydb3InvisibleEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBDPAVPsydb3TileManager@@@Z 00417940 f   Psydb3InvisibleEnemyTank.obj
+ 0001:00016a10       ??1Psydb3InvisibleEnemyTank@@UAE@XZ 00417a10 f   Psydb3InvisibleEnemyTank.obj
+ 0001:00016a40       ?Draw@Psydb3InvisibleEnemyTank@@UAEXXZ 00417a40 f   Psydb3InvisibleEnemyTank.obj
  0001:00016c30       ??$atan2@HH@@YANHH@Z       00417c30 f i Psydb3InvisibleEnemyTank.obj
  0001:00016c60       ??_GPsydb3InvisibleEnemyTank@@UAEPAXI@Z 00417c60 f i Psydb3InvisibleEnemyTank.obj
  0001:00016c60       ??_EPsydb3InvisibleEnemyTank@@UAEPAXI@Z 00417c60 f i Psydb3InvisibleEnemyTank.obj
@@ -710,7 +696,7 @@
  0001:00018250       ?GetMaps@Psydb3PlayState@@QAEXXZ 00419250 f   Psydb3PlayState.obj
  0001:000183c0       ?GetTankSpawns@Psydb3PlayState@@QAEXXZ 004193c0 f   Psydb3PlayState.obj
  0001:00018510       ?LoadLevel@Psydb3PlayState@@QAEXXZ 00419510 f   Psydb3PlayState.obj
- 0001:00018a40       ?GetTankNames@Psydb3PlayState@@QAEXXZ 00419a40 f   Psydb3PlayState.obj
+ 0001:00018a70       ?GetTankNames@Psydb3PlayState@@QAEXXZ 00419a70 f   Psydb3PlayState.obj
  0001:00018f20       ??$?8DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z 00419f20 f i Psydb3PlayState.obj
  0001:00018f60       ??$?9DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@PBD@Z 00419f60 f i Psydb3PlayState.obj
  0001:00018fa0       ??$_Allocate@I@std@@YAPAIIPAI@Z 00419fa0 f i Psydb3PlayState.obj
@@ -940,7 +926,7 @@
  0001:0001cd90       ?size@?$vector@V?$vector@IV?$allocator@I@std@@@std@@V?$allocator@V?$vector@IV?$allocator@I@std@@@std@@@2@@std@@QBEIXZ 0041dd90 f i Psydb3PlayState.obj
  0001:0001cdc0       ?size@?$vector@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@V?$allocator@V?$vector@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$allocator@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@@std@@@2@@std@@QBEIXZ 0041ddc0 f i Psydb3PlayState.obj
  0001:0001cdf0       ?stoi@std@@YAHABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@PAIH@Z 0041ddf0 f i Psydb3PlayState.obj
- 0001:0001ced0       ??0Psydb3StandardEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBD@Z 0041ded0 f   Psydb3StandardEnemyTank.obj
+ 0001:0001ced0       ??0Psydb3StandardEnemyTank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBDPAVPsydb3TileManager@@@Z 0041ded0 f   Psydb3StandardEnemyTank.obj
  0001:0001cfb0       ??1Psydb3StandardEnemyTank@@UAE@XZ 0041dfb0 f   Psydb3StandardEnemyTank.obj
  0001:0001d060       ?InitialiseSpriteImages@Psydb3StandardEnemyTank@@UAEXXZ 0041e060 f   Psydb3StandardEnemyTank.obj
  0001:0001d510       ??_GPsydb3StandardEnemyTank@@UAEPAXI@Z 0041e510 f i Psydb3StandardEnemyTank.obj
@@ -957,18 +943,18 @@
  0001:0001d810       ??0Psydb3State@@QAE@PAVPsydb3Engine@@@Z 0041e810 f   Psydb3State.obj
  0001:0001d840       ??1Psydb3State@@QAE@XZ     0041e840 f   Psydb3State.obj
  0001:0001d870       ??0Psydb3Tank@@QAE@PAVBaseEngine@@NNPAVPsydb3CollisionHandler@@PAVPsydb3BulletManager@@PBD@Z 0041e870 f   Psydb3Tank.obj
- 0001:0001d9d0       ??1Psydb3Tank@@UAE@XZ      0041e9d0 f   Psydb3Tank.obj
- 0001:0001da90       ?Draw@Psydb3Tank@@UAEXXZ   0041ea90 f   Psydb3Tank.obj
- 0001:0001ded0       ?DrawBarrel@Psydb3Tank@@QAEXXZ 0041eed0 f   Psydb3Tank.obj
- 0001:0001e580       ?FireBullet@Psydb3Tank@@QAEXNNNNH@Z 0041f580 f   Psydb3Tank.obj
- 0001:0001e600       ?Die@Psydb3Tank@@QAEXXZ    0041f600 f   Psydb3Tank.obj
- 0001:0001e660       ?DoUpdate@Psydb3Tank@@UAEXH@Z 0041f660 f   Psydb3Tank.obj
- 0001:0001e920       ?InitialiseTankStates@Psydb3Tank@@UAEXXZ 0041f920 f   Psydb3Tank.obj
- 0001:0001ee40       ?InitialiseTankVelocities@Psydb3Tank@@UAEXQAY01N@Z 0041fe40 f   Psydb3Tank.obj
- 0001:0001ef50       ?UpdateAnimation@Psydb3Tank@@QAEXXZ 0041ff50 f   Psydb3Tank.obj
- 0001:0001f120       ?DrawBackgroundTracks@Psydb3Tank@@QAEXXZ 00420120 f   Psydb3Tank.obj
- 0001:0001f2b0       ?ImageSizeCompensation@Psydb3Tank@@QAEXHH@Z 004202b0 f   Psydb3Tank.obj
- 0001:0001f420       ?BackgroundCollideBehaviour@Psydb3Tank@@UAEXDH@Z 00420420 f   Psydb3Tank.obj
+ 0001:0001d9e0       ??1Psydb3Tank@@UAE@XZ      0041e9e0 f   Psydb3Tank.obj
+ 0001:0001daa0       ?Draw@Psydb3Tank@@UAEXXZ   0041eaa0 f   Psydb3Tank.obj
+ 0001:0001dee0       ?DrawBarrel@Psydb3Tank@@QAEXXZ 0041eee0 f   Psydb3Tank.obj
+ 0001:0001e590       ?FireBullet@Psydb3Tank@@QAEXNNNNH@Z 0041f590 f   Psydb3Tank.obj
+ 0001:0001e610       ?Die@Psydb3Tank@@QAEXXZ    0041f610 f   Psydb3Tank.obj
+ 0001:0001e670       ?DoUpdate@Psydb3Tank@@UAEXH@Z 0041f670 f   Psydb3Tank.obj
+ 0001:0001e930       ?InitialiseTankStates@Psydb3Tank@@UAEXXZ 0041f930 f   Psydb3Tank.obj
+ 0001:0001ee50       ?InitialiseTankVelocities@Psydb3Tank@@UAEXQAY01N@Z 0041fe50 f   Psydb3Tank.obj
+ 0001:0001ef60       ?UpdateAnimation@Psydb3Tank@@QAEXXZ 0041ff60 f   Psydb3Tank.obj
+ 0001:0001f140       ?DrawBackgroundTracks@Psydb3Tank@@QAEXXZ 00420140 f   Psydb3Tank.obj
+ 0001:0001f2d0       ?ImageSizeCompensation@Psydb3Tank@@QAEXHH@Z 004202d0 f   Psydb3Tank.obj
+ 0001:0001f440       ?BackgroundCollideBehaviour@Psydb3Tank@@UAEXDH@Z 00420440 f   Psydb3Tank.obj
  0001:0001fbc0       ??$_Pow_int@N@@YANNH@Z     00420bc0 f i Psydb3Tank.obj
  0001:0001fc70       ??_GPsydb3Tank@@UAEPAXI@Z  00420c70 f i Psydb3Tank.obj
  0001:0001fc70       ??_EPsydb3Tank@@UAEPAXI@Z  00420c70 f i Psydb3Tank.obj
@@ -1012,8 +998,8 @@
  0001:00021390       ?KeyDown@SimpleDemo@@UAEXH@Z 00422390 f   SimpleDemo.obj
  0001:000214b0       ??0SimpleShape@@QAE@PAVSimpleDemo@@@Z 004224b0 f i SimpleDemo.obj
  0001:000215f0       ??1SimpleShape@@UAE@XZ     004225f0 f i SimpleDemo.obj
- 0001:00021610       ??_GSimpleShape@@UAEPAXI@Z 00422610 f i SimpleDemo.obj
  0001:00021610       ??_ESimpleShape@@UAEPAXI@Z 00422610 f i SimpleDemo.obj
+ 0001:00021610       ??_GSimpleShape@@UAEPAXI@Z 00422610 f i SimpleDemo.obj
  0001:00021650       ?DoUpdate@SimpleShape@@UAEXH@Z 00422650 f i SimpleDemo.obj
  0001:00021ad0       ?Draw@SimpleShape@@UAEXXZ  00422ad0 f i SimpleDemo.obj
  0001:00021b80       ?SetBackgroundPixel@BaseEngine@@QAEXHHI@Z 00422b80 f i SimpleDemo.obj
@@ -1037,10 +1023,10 @@
  0001:00022cc0       ??1BouncingBall2@@UAE@XZ   00423cc0 f i BouncingBall.obj
  0001:00022ce0       ??_EBouncingBall1@@UAEPAXI@Z 00423ce0 f i BouncingBall.obj
  0001:00022ce0       ??_GBouncingBall1@@UAEPAXI@Z 00423ce0 f i BouncingBall.obj
- 0001:00022d20       ??_GBouncingBall2@@UAEPAXI@Z 00423d20 f i BouncingBall.obj
  0001:00022d20       ??_EBouncingBall2@@UAEPAXI@Z 00423d20 f i BouncingBall.obj
- 0001:00022d60       ??_EBouncingBall@@UAEPAXI@Z 00423d60 f i BouncingBall.obj
+ 0001:00022d20       ??_GBouncingBall2@@UAEPAXI@Z 00423d20 f i BouncingBall.obj
  0001:00022d60       ??_GBouncingBall@@UAEPAXI@Z 00423d60 f i BouncingBall.obj
+ 0001:00022d60       ??_EBouncingBall@@UAEPAXI@Z 00423d60 f i BouncingBall.obj
  0001:00022da0       ?Calculate@MovementPosition@@QAEXH@Z 00423da0 f i BouncingBall.obj
  0001:00022e90       ?GetTileXForPositionOnScreen@TileManager@@QBEHH@Z 00423e90 f i BouncingBall.obj
  0001:00022ec0       ?GetTileYForPositionOnScreen@TileManager@@QBEHH@Z 00423ec0 f i BouncingBall.obj
@@ -1064,8 +1050,8 @@
  0001:00024220       ??0Demo1Main@@QAE@XZ       00425220 f   Demo1Main.obj
  0001:00024250       ??1Demo1Main@@UAE@XZ       00425250 f   Demo1Main.obj
  0001:00024270       ?SetupBackgroundBuffer@Demo1Main@@UAEXXZ 00425270 f   Demo1Main.obj
- 0001:000242b0       ??_EDemo1Main@@UAEPAXI@Z   004252b0 f i Demo1Main.obj
  0001:000242b0       ??_GDemo1Main@@UAEPAXI@Z   004252b0 f i Demo1Main.obj
+ 0001:000242b0       ??_EDemo1Main@@UAEPAXI@Z   004252b0 f i Demo1Main.obj
  0001:000242f0       ??0Demo2Main@@QAE@XZ       004252f0 f   Demo2Main.obj
  0001:00024360       ??1Demo2Main@@UAE@XZ       00425360 f   Demo2Main.obj
  0001:000243c0       ?SetupBackgroundBuffer@Demo2Main@@UAEXXZ 004253c0 f   Demo2Main.obj
@@ -1099,8 +1085,8 @@
  0001:000252b0       ??1Demo3Object@@UAE@XZ     004262b0 f   Demo3Object.obj
  0001:000252d0       ?Draw@Demo3Object@@UAEXXZ  004262d0 f   Demo3Object.obj
  0001:00025340       ?DoUpdate@Demo3Object@@UAEXH@Z 00426340 f   Demo3Object.obj
- 0001:00025630       ??_EDemo3Object@@UAEPAXI@Z 00426630 f i Demo3Object.obj
  0001:00025630       ??_GDemo3Object@@UAEPAXI@Z 00426630 f i Demo3Object.obj
+ 0001:00025630       ??_EDemo3Object@@UAEPAXI@Z 00426630 f i Demo3Object.obj
  0001:00025670       ?GetTileManager@Demo3Main@@QAEAAVDemo3TileManager@@XZ 00426670 f i Demo3Object.obj
  0001:00025690       ?GetXDiffForDirection@Demo3Object@@QAEHH@Z 00426690 f i Demo3Object.obj
  0001:00025700       ?GetYDiffForDirection@Demo3Object@@QAEHH@Z 00426700 f i Demo3Object.obj
@@ -1125,8 +1111,8 @@
  0001:000266f0       ?KeyDown@Demo4Main@@UAEXH@Z 004276f0 f   Demo4Main.obj
  0001:000267f0       ?UndrawObjects@Demo4Main@@UAEXXZ 004277f0 f   Demo4Main.obj
  0001:00026810       ?DrawObjects@Demo4Main@@UAEXXZ 00427810 f   Demo4Main.obj
- 0001:00026a10       ??_EDemo4Main@@UAEPAXI@Z   00427a10 f i Demo4Main.obj
  0001:00026a10       ??_GDemo4Main@@UAEPAXI@Z   00427a10 f i Demo4Main.obj
+ 0001:00026a10       ??_EDemo4Main@@UAEPAXI@Z   00427a10 f i Demo4Main.obj
  0001:00026a50       ?IncreaseTimeOffset@BaseEngine@@QAEXH@Z 00427a50 f i Demo4Main.obj
  0001:00026a80       ??0Demo4Object@@QAE@PAVDemo4Main@@HH@Z 00427a80 f   Demo4Object.obj
  0001:00026b80       ??1Demo4Object@@UAE@XZ     00427b80 f   Demo4Object.obj
@@ -1476,7 +1462,10 @@
  0002:00000e18       ?is_signed@?$numeric_limits@F@std@@2_NB 0042fe18     mainfunction.obj
  0002:00000e1c       ?digits@?$numeric_limits@F@std@@2HB 0042fe1c     mainfunction.obj
  0002:00000e20       ?digits10@?$numeric_limits@F@std@@2HB 0042fe20     mainfunction.obj
+ 0002:00000e88       __real@bfe999999999999a    0042fe88     Psydb3AdvancedEnemyTank.obj
+ 0002:00000e90       __real@bff0000000000000    0042fe90     Psydb3AdvancedEnemyTank.obj
  0002:00000ea0       ??_7BaseEngine@@6B@        0042fea0     BaseEngine.obj
+ 0002:00000ef8       __real@bff3333333333333    0042fef8     Psydb3AdvancedEnemyTank.obj
  0002:00000f0c       ??_C@_0BM@NMJKDPPO@invalid?5vector?$DMT?$DO?5subscript?$AA@ 0042ff0c     BaseEngine.obj
  0002:00000f30       ??_C@_0BD@OLBABOEK@vector?$DMT?$DO?5too?5long?$AA@ 0042ff30     BaseEngine.obj
  0002:00000f48       __real@0000000000000000    0042ff48     BaseEngine.obj

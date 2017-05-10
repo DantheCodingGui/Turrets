@@ -10,7 +10,7 @@ Psydb3Bullet::Psydb3Bullet(BaseEngine* pEngine, Psydb3CollisionHandler* collisio
 	, m_dx(0)
 	, m_dy(0)
 	, m_hasBeenFired(false)
-	, m_bouncesLeft(1)
+	, m_bouncesLeft(2)
 	, m_awayFromSourceTank(false)
 	, m_removeNextFrame(false)
 	, m_pEngine(pEngine) {
@@ -47,7 +47,7 @@ void Psydb3Bullet::Reset() {
 	m_y = 0;
 	m_dx = 0;
 	m_dy = 0;
-	m_bouncesLeft = 1;
+	m_bouncesLeft = 2;
 }
 
 void Psydb3Bullet::BackgroundCollideBehaviour(char Direction, int tileEdge) {}
@@ -100,11 +100,11 @@ void Psydb3Bullet::DoUpdate(int iCurrentTime) {
 		m_dy = -m_dy;
 	}
 
-	if (!m_awayFromSourceTank && !m_collisionHandler->CheckObjectsCollision(this)) {
+	if (!m_awayFromSourceTank && m_collisionHandler->CheckObjectsCollision(this) == -1) {
 		m_awayFromSourceTank = true;
 		m_isCurrentlyCollideable = true;
 	}
-	else if (m_awayFromSourceTank && !m_removeNextFrame && m_collisionHandler->CheckObjectsCollision(this))
+	else if (m_awayFromSourceTank && !m_removeNextFrame && m_collisionHandler->CheckObjectsCollision(this) != -1)
 		m_removeNextFrame = true;
 	else if (m_removeNextFrame) {
 		Reset();

@@ -75,6 +75,7 @@ protected:
 	BaseEngine* m_pEngine; //stores base engine pointer for code clarity going forward
 
 	int m_animationCount; //used to change the sprite image upon count 
+	int m_backgroundTracksDistance; //distance until background tracks drawn
 	unsigned int m_tankColours[3];
 
 	int m_iDrawTankBaseWidth; //second set of values needed for tank barrel undraw

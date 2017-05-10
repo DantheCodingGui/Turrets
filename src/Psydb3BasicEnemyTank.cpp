@@ -1,8 +1,9 @@
 #include "Psydb3BasicEnemyTank.h"
 
 
-Psydb3BasicEnemyTank::Psydb3BasicEnemyTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, Psydb3BulletManager* bulletManager, const char* name)
-	: Psydb3EnemyTank(pEngine, x, y, collisionHandler, bulletManager, name) {
+Psydb3BasicEnemyTank::Psydb3BasicEnemyTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, 
+										Psydb3BulletManager* bulletManager, const char* name, Psydb3TileManager* map)
+	: Psydb3EnemyTank(pEngine, x, y, collisionHandler, bulletManager, name, map) {
 	m_direction = 0;
 	InitialiseTankStates();
 	m_tankColours[0] = 0xB98700;

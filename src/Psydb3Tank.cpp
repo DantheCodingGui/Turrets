@@ -17,6 +17,7 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionH
 	, m_y(y)
 	, m_name(name)
 	, m_animationCount(0)
+	, m_backgroundTracksDistance(20)
 	, m_direction(0)
 	, m_animated(false)
 	, m_moving(false)
@@ -228,7 +229,6 @@ void Psydb3Tank::Die() {
 	m_alive = false;
 	m_isCurrentlyCollideable = false;
 	m_pEngine->DrawBackgroundString(m_x, m_y, "RIP.", 0x000000, m_pEngine->GetFont("BLockletter.otf", 30));
-	//printf("Tank Has Died\n");
 }
 
 void Psydb3Tank::DoUpdate(int iCurrentTime) {
@@ -249,10 +249,10 @@ void Psydb3Tank::DoUpdate(int iCurrentTime) {
 		--m_timeTillCanFire;
 		m_firing = false;
 	}
+	int oldPosX = m_x;
+	int oldPosY = m_y;
 
 	if (m_moving) {
-		int oldPosX = m_x;
-		int oldPosY = m_y;
 		m_x += m_tankStates[m_direction]->GetTankVelocityX();
 		if (m_collisionHandler->CheckBackgroundCollision(this))
 			m_x = oldPosX;
@@ -260,15 +260,20 @@ void Psydb3Tank::DoUpdate(int iCurrentTime) {
 		if (m_collisionHandler->CheckBackgroundCollision(this))
 			m_y = oldPosY;
 
-		m_collisionHandler->CheckBackgroundCollision(this);
-
 		UpdateAnimation();
 	}
 	else
 		m_collisionHandler->CheckBackgroundCollision(this);
 
-	if (m_collisionHandler->CheckObjectsCollision(this))
+	int collision = m_collisionHandler->CheckObjectsCollision(this);
+
+	if (collision == 2)
 		Die();
+	else if (collision == 1) {
+		m_x = oldPosX;
+		m_y = oldPosY;
+	}
+
 
 	m_iCurrentScreenX = (int)m_x - 20;
 	m_iCurrentScreenY = (int)m_y - 20;
@@ -287,15 +292,15 @@ void Psydb3Tank::UpdateAnimation() { //switch tank images for animation
 	//deciding how far tank has to move until image is swapped
 	//simple for horizontal/vertical but more complex with diagonals (pythogoras used)
 	if (animation == 0) {
-		if (m_animationCount > (cycleLength = abs((int)(m_tankStates[m_direction]->GetTankVelocityX() * 20))))
+		if (m_animationCount > (cycleLength = abs((int)(m_tankStates[m_direction]->GetTankVelocityX() * m_backgroundTracksDistance))))
 			m_animationCount = 0;
 	}
 	else if (animation == 2) {
-		if (m_animationCount > (cycleLength = abs((int)(m_tankStates[m_direction]->GetTankVelocityY() * 20))))
+		if (m_animationCount > (cycleLength = abs((int)(m_tankStates[m_direction]->GetTankVelocityY() * m_backgroundTracksDistance))))
 			m_animationCount = 0;
 	}
 	else if (animation == 1 || animation == 3) {
-		if (m_animationCount > (cycleLength = 1.5*abs((int)(sqrt(2 * pow(m_tankStates[m_direction]->GetTankVelocityY() * 20, 2))))))
+		if (m_animationCount > (cycleLength = 1.5*abs((int)(sqrt(2 * pow(m_tankStates[m_direction]->GetTankVelocityY() * m_backgroundTracksDistance, 2))))))
 			m_animationCount = 0;
 	}
 	if (m_animationCount <= cycleLength / 2) 
@@ -372,8 +377,8 @@ void Psydb3Tank::ImageSizeCompensation(int oldDirection, int newDirection) {
 		m_x += 7.5;
 		m_y += 3;
 	}
-	if (m_collisionHandler->CheckBackgroundCollision(this))
+	if (m_collisionHandler->CheckBackgroundCollision(this) != -1)
 		m_x = oldPosX;
-	if (m_collisionHandler->CheckBackgroundCollision(this))
+	if (m_collisionHandler->CheckBackgroundCollision(this) != -1)
 		m_y = oldPosY;
 }
