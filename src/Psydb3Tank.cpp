@@ -377,8 +377,8 @@ void Psydb3Tank::ImageSizeCompensation(int oldDirection, int newDirection) {
 		m_x += 7.5;
 		m_y += 3;
 	}
-	if (m_collisionHandler->CheckBackgroundCollision(this) != -1)
+	if (m_collisionHandler->CheckBackgroundCollision(this))
 		m_x = oldPosX;
-	if (m_collisionHandler->CheckBackgroundCollision(this) != -1)
+	if (m_collisionHandler->CheckBackgroundCollision(this))
 		m_y = oldPosY;
 }

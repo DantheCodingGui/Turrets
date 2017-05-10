@@ -16,7 +16,7 @@ public:
  			delete[] m_aiPixels;
 	}
 
-	// Ask for the wisth of the image
+	// Ask for the width of the image
 	int GetWidth() const { return m_iWidth; }
 
 	// Ask for the height of the image
