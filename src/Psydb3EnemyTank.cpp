@@ -1,11 +1,14 @@
 #include "Psydb3EnemyTank.h"
+#include <ctime>
 
 
 Psydb3EnemyTank::Psydb3EnemyTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, 
 								Psydb3BulletManager* bulletManager, const char* name, Psydb3TileManager* map)
 	: Psydb3Tank(pEngine, x, y, collisionHandler, bulletManager, name)
-	, m_map(map) {
+	, m_map(map) 
+	, m_timeUntilDirectionChange(100) {
 	m_fireRate = 400;
+	m_alive = false;
 }
 
 
@@ -14,16 +17,22 @@ Psydb3EnemyTank::~Psydb3EnemyTank() {
 
 void Psydb3EnemyTank::GetDirection() {
 
-	ResetVectors();
+	m_direction = 0;
+	return;
 
-	AddOpenNode(m_map->GetTileXForPositionOnScreen(m_x + m_tankStates[m_direction]->GetTankCentreOffsetX()), 
-			m_map->GetTileXForPositionOnScreen(m_x + m_tankStates[m_direction]->GetTankCentreOffsetX()));
+	if (m_timeUntilDirectionChange == 0) {
+		m_direction++;
+		if (m_direction == 9)
+			m_direction = 0;
+	}
+	else
+		--m_timeUntilDirectionChange;
 
 }
 
 void Psydb3EnemyTank::DoUpdate(int iCurrentTime) {
-	m_firing = false;
-	m_moving = false;
+	m_firing = true;
+	m_moving = true;
 
 	//bresenham line drawing algorithm
 	//if tile line between player and enemy includes a wall, don't shoot
@@ -90,8 +99,10 @@ void Psydb3EnemyTank::DoUpdate(int iCurrentTime) {
 			error -= dx;
 		}
 	}
-	if (m_firing)
+	if (m_firing) {
 		m_moving = false;
+		m_timeUntilDirectionChange = 0;
+	}
 
 	Psydb3Tank::DoUpdate(iCurrentTime);
 }

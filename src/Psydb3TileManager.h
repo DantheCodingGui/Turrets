@@ -5,10 +5,8 @@
 
 #define FLOOR_TILE							0
 #define WALL_TILE							1
-#define TALL_WALL_TILE						2
 #define BREAKABLE_WALL_TILE					3
 #define WALL_TILE_ONLY_TOP					5
-#define TALL_WALL_TILE_ONLY_TOP				6
 #define BREAKABLE_WALL_TILE_ONLY_TOP		7
 
 class Psydb3TileManager :

@@ -1,4 +1,5 @@
 #include "Psydb3PauseState.h"
+#include "Psydb3PlayState.h"
 
 
 Psydb3PauseState::Psydb3PauseState(Psydb3Engine* pEngine)
@@ -22,6 +23,7 @@ void Psydb3PauseState::HandleKeys(int iKeyCode) {
 	switch (iKeyCode) {
 		case SDLK_ESCAPE:
 			m_pEngine->SetState(START_STATE);
+			dynamic_cast<Psydb3PlayState*>(m_pEngine->GetPlayState())->SetInitialised(false);
 			m_pEngine->SetupBackgroundBuffer();
 			m_pEngine->Redraw(true);
 			m_pEngine->SetAllVisibility(false);

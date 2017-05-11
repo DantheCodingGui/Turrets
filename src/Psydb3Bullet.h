@@ -33,6 +33,7 @@ private:
 	bool m_hasBeenFired;
 	bool m_awayFromSourceTank;
 	bool m_removeNextFrame;
+	int m_collidingTimer;
 
 	int m_bouncesLeft;
 

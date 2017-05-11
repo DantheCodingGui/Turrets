@@ -91,37 +91,6 @@ void Psydb3TileManager::DrawTileAt(
 				m_mapColours[m_currentColourSet][2], pSurface);
 			
 			break;
-		case TALL_WALL_TILE: 
-		case TALL_WALL_TILE_ONLY_TOP:
-			if (tileType == TALL_WALL_TILE) {
-				pEngine->DrawRectangle(
-					iStartPositionScreenX,
-					iStartPositionScreenY - 20,
-					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY + GetTileHeight() - 1,
-					m_mapColours[m_currentColourSet][1], pSurface);
-				pEngine->DrawRectangle(
-					iStartPositionScreenX,
-					iStartPositionScreenY - 20 - GetTileHeight(),
-					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY - 20,
-					m_mapColours[m_currentColourSet][2], pSurface);
-			}
-			else {
-				pEngine->DrawRectangle(
-					iStartPositionScreenX,
-					iStartPositionScreenY - 20,
-					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY + 10,
-					m_mapColours[m_currentColourSet][1], pSurface);
-				pEngine->DrawRectangle(
-					iStartPositionScreenX,
-					iStartPositionScreenY - 20 - GetTileHeight(),
-					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY - 20,
-					m_mapColours[m_currentColourSet][2], pSurface);
-			}
-			break;
 		case BREAKABLE_WALL_TILE: 
 		case BREAKABLE_WALL_TILE_ONLY_TOP:
 			if (tileType == BREAKABLE_WALL_TILE) 

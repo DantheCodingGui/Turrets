@@ -33,6 +33,7 @@ public:
 		if (m_level != m_maps.size() - 1) 
 			++m_level; 
 	};
+	void SetInitialised(bool init) { m_levelInitialised = init; };
 private:
 	Psydb3TileManager m_oTiles;
 
@@ -48,6 +49,7 @@ private:
 
 	//used to decide whether to redraw background or reload saved version
 	bool m_backgroundInitialised;
+	bool m_levelInitialised;
 	//holds the background while pausing, needed to preserve background tracks
 	vector<vector<unsigned int>> m_map;
 

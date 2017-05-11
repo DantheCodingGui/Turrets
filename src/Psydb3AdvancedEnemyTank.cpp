@@ -11,7 +11,10 @@ Psydb3AdvancedEnemyTank::Psydb3AdvancedEnemyTank(BaseEngine* pEngine, double x, 
 	m_tankColours[2] = 0X171717;
 
 	m_backgroundTracksDistance = 12;
-	//m_alive = true;
+	
+	m_timeUntilDirectionChange = 500;
+
+	m_alive = true;
 }
 
 

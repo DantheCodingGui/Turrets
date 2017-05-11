@@ -7,6 +7,7 @@ Psydb3InvisibleEnemyTank::Psydb3InvisibleEnemyTank(BaseEngine* pEngine, double x
 	InitialiseTankStates();
 	m_iDrawWidth = m_iDrawHeight = 100;
 	m_iDrawTankBaseWidth = m_iDrawTankBaseHeight = 60;
+	m_timeUntilDirectionChange = 200;
 }
 
 

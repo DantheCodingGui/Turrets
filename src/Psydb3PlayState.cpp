@@ -16,7 +16,8 @@ Psydb3PlayState::Psydb3PlayState(Psydb3Engine* pEngine)
 	, m_level(1)
 	, m_numberOfTanks(0)
 	, m_startCountdown(300)
-	, m_backgroundInitialised(false) {
+	, m_backgroundInitialised(false)
+	, m_levelInitialised(false) {
 	GetMaps();
 	GetTankNames();
 	m_collisionHandler = new Psydb3CollisionHandler(m_pEngine, &m_oTiles);
@@ -112,6 +113,13 @@ void Psydb3PlayState::LoadLevel() {
 	for (i = 0; i < m_numberOfTanks; ++i)
 		dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(i))->SetTracksColour(m_oTiles.GetMapColour(4));
 
+	m_level = rand() % 6;
+	m_startCountdown = 300;
+	m_backgroundInitialised = false;
+	m_levelInitialised = true;
+	m_pEngine->SetupBackgroundBuffer();
+	m_pEngine->Redraw(true);
+
 }
 
 void Psydb3PlayState::GetTankNames() {
@@ -119,15 +127,30 @@ void Psydb3PlayState::GetTankNames() {
 }
 
 void Psydb3PlayState::Update() {
+	if (!m_levelInitialised)
+		LoadLevel();
 	if (m_startCountdown == 0) {
 		m_pEngine->UpdateAllObjects(m_pEngine->GetModifiedTime());
 		if (!GetPlayerTank()->IsAlive()) {
 			m_startCountdown = 300;
 			m_pEngine->SetState(END_STATE);
+			m_levelInitialised = false;
 			m_backgroundInitialised = false; 
 			m_pEngine->SetupBackgroundBuffer();
 			m_pEngine->Redraw(true);
 		}
+		Psydb3EnemyTank* temp;
+		bool nextLevel = true;
+		for (int i = 0; i < m_numberOfTanks; ++i) {
+			if ((temp = dynamic_cast<Psydb3EnemyTank*>(m_pEngine->GetDisplayableObject(i))) != NULL) {
+				if (temp->IsAlive()) {
+					nextLevel = false;
+					break;
+				}
+			}
+		}
+		if (nextLevel)
+			LoadLevel();
 	}
 	else
 		--m_startCountdown;
@@ -155,22 +178,6 @@ void Psydb3PlayState::HandleKeys(int iKeyCode) {
 			m_pEngine->SetupBackgroundBuffer();
 			m_pEngine->Redraw(true);
 			m_pEngine->SetAllVisibility(false);
-			break;
-		case SDLK_1:
-			m_level = 0;
-			LoadLevel();
-			break;
-		case SDLK_2:
-			m_level = 1;
-			LoadLevel();
-			break;
-		case SDLK_3:
-			m_level = 2;
-			LoadLevel();
-			break;
-		case SDLK_4:
-			m_level = 3;
-			LoadLevel();
 			break;
 	}
 }
