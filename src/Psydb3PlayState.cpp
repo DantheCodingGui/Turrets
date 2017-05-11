@@ -109,6 +109,9 @@ void Psydb3PlayState::LoadLevel() {
 
 	m_pEngine->StoreObjectInArray(i + m_numberOfTanks, new Psydb3Cursor(m_pEngine));
 
+	for (i = 0; i < m_numberOfTanks; ++i)
+		dynamic_cast<Psydb3Tank*>(m_pEngine->GetDisplayableObject(i))->SetTracksColour(m_oTiles.GetMapColour(4));
+
 }
 
 void Psydb3PlayState::GetTankNames() {
@@ -179,7 +182,7 @@ void Psydb3PlayState::HandleMouse() {
 void Psydb3PlayState::DrawOntop() {
 	
 	if (m_startCountdown > 0) {
-		m_pEngine->DrawScreenString(600, 350, "Are You Ready??", 0xffffff, m_pEngine->GetFont("Blockletter.otf", 70));
+		m_pEngine->DrawScreenString(600, 350, "Are You Ready??", 0x999999, m_pEngine->GetFont("Blockletter.otf", 70));
 		return;
 	}
 
@@ -206,8 +209,7 @@ void Psydb3PlayState::DrawOntop() {
 		m_pEngine->GetScreenHeight() - m_oTiles.GetTileHeight() + 10,
 		m_pEngine->GetScreenWidth() - m_oTiles.GetTileWidth(),
 		m_pEngine->GetScreenHeight(),
-		0x8C7640
-		);
+		m_oTiles.GetMapColour(1));
 	m_pEngine->CopyBackgroundPixels(
 		m_oTiles.GetTileWidth(),
 		m_pEngine->GetScreenHeight() - m_oTiles.GetTileHeight() + 10,

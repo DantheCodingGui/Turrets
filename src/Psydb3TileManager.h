@@ -1,5 +1,7 @@
 #pragma once
 #include "TileManager.h"
+#include <cmath>
+#include <ctime>
 
 #define FLOOR_TILE							0
 #define WALL_TILE							1
@@ -36,10 +38,16 @@ public:
 			return 2;
 		return -1;
 	};
+	void RandomiseMapColour() { srand(time(NULL)); m_currentColourSet = rand() % (m_mapColours.size() - 1); };
+	unsigned int GetMapColour(int index) const { return m_mapColours[m_currentColourSet][index]; };
 	std::vector<int> m_tilesToRedrawX;
 	std::vector<int> m_tilesToRedrawY;
 private:
 	int m_collidableWallOffset;
+
+	int m_currentColourSet;
+
+	std::vector<std::vector<unsigned int>> m_mapColours;
 };
 
 

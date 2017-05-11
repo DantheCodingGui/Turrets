@@ -27,6 +27,7 @@ Psydb3Tank::Psydb3Tank(BaseEngine* pEngine, double x, double y, Psydb3CollisionH
 	, m_fireRate(100)
 	, m_iDrawTankBaseWidth(0)
 	, m_iDrawTankBaseHeight(0)
+	, m_tracksColour(0x000000)
 	, m_pEngine(pEngine) {
 
 	m_iCurrentScreenX = m_iPreviousScreenX = (int)x;
@@ -328,7 +329,7 @@ void Psydb3Tank::DrawBackgroundTracks() {
 		4,
 		xPoints,
 		yPoints,
-		0xd3aa5f);
+		m_tracksColour);
 
 
 	for (int i = 0; i < 4; ++i) {
@@ -340,7 +341,7 @@ void Psydb3Tank::DrawBackgroundTracks() {
 		4,
 		xPoints,
 		yPoints,
-		0xd3aa5f);
+		m_tracksColour);
 }
 
 void Psydb3Tank::BackgroundCollideBehaviour(char Direction, int tileEdge) {

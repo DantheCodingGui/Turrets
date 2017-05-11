@@ -50,6 +50,7 @@ public:
 	void SetCollidingX(bool isColliding) { m_collidingX = isColliding; };
 	void SetCollidingY(bool isColliding) { m_collidingY = isColliding; };
 	void SetFiring(bool isFiring) { m_firing = isFiring; };
+	void SetTracksColour(unsigned int colour) { m_tracksColour = colour; };
 	bool IsAlive() const { return m_alive; };
 protected:
 	double m_x;
@@ -61,6 +62,8 @@ protected:
 	bool m_rotating; //is the tank BASE rotating
 	bool m_firing;
 	bool m_alive;
+
+	unsigned int m_tracksColour;
 
 	int m_timeTillCanFire;
 	int m_fireRate; //how often a tank can fire
