@@ -111,9 +111,6 @@
     <ClInclude Include="Psydb3Engine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Psydb3RotationPosition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Psydb3Cursor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -121,9 +118,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Psydb3Bomb.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Psydb3FileIO.h">
@@ -249,9 +243,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Psydb3TankDirectionState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Psydb3Bomb.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Psydb3FileIO.cpp">

@@ -1,57 +1,11 @@
-﻿Build started 11/05/2017 04:23:07.
+﻿Build started 11/05/2017 11:57:02.
      1>Project "C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\src\CourseworkBase.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I..\SDL\include /Zi /nologo /W1 /WX- /Od /Oy- /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\\" /Fd"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\vc120.pdb" /FR"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\\" /Gd /TP /analyze- /errorReport:prompt Psydb3PlayState.cpp
-         Psydb3PlayState.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\CourseworkBase.exe" /NOLOGO /LIBPATH:..\SDL\libx86 SDL2.lib SDL2main.lib SDL2_image.lib SDL2_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\CourseworkBase.pdb" /MAP:"map" /SUBSYSTEM:CONSOLE /TLBID:1 /ENTRY:"mainCRTStartup" /DYNAMICBASE:NO /IMPLIB:"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\CourseworkBase.lib" /MACHINE:X86 /SAFESEH C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\CourseworkBase.res
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Collideable.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\mainfunction.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BaseEngine.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\DisplayableObject.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\FontManager.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\JPGImage.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3AdvancedEnemyTank.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3BasicEnemyTank.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Bomb.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Bullet.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3BulletManager.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3CollisionHandler.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Cursor.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3EndState.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3EnemyTank.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Engine.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3FileIO.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3InvisibleEnemyTank.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3PauseState.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3PlayerTank.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3PlayState.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3StandardEnemyTank.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3StartState.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3State.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Tank.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3TankDirectionState.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3TileManager.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\SimpleDemo.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\TileManager.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BouncingBall.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BouncingBallMain.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo1Main.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2Main.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2Object.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2TileManager.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3Main.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3Object.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3ObjectFinished.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3TileManager.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4Main.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4Object.obj
-         C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4TileManager.obj
+     1>Link:
          CourseworkBase.vcxproj -> C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\CourseworkBase.exe
        BscMake:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\CourseworkBase.bsc" C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Collideable.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\mainfunction.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BaseEngine.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\DisplayableObject.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\FontManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\JPGImage.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3AdvancedEnemyTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3BasicEnemyTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Bomb.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Bullet.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3BulletManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3CollisionHandler.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Cursor.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3EndState.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3EnemyTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Engine.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3FileIO.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3InvisibleEnemyTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3PauseState.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3PlayerTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3PlayState.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3StandardEnemyTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3StartState.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3State.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Tank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3TankDirectionState.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\SimpleDemo.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BouncingBall.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BouncingBallMain.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo1Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2Object.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3Object.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3ObjectFinished.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4Object.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4TileManager.sbr
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\bscmake.exe /nologo /o"C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\CourseworkBase.bsc" C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Collideable.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\mainfunction.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BaseEngine.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\DisplayableObject.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\FontManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\JPGImage.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3AdvancedEnemyTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3BasicEnemyTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Bullet.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3BulletManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3CollisionHandler.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Cursor.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3EndState.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3EnemyTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Engine.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3FileIO.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3InvisibleEnemyTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3PauseState.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3PlayerTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3PlayState.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3StandardEnemyTank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3StartState.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3State.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3Tank.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3TankDirectionState.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Psydb3TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\SimpleDemo.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BouncingBall.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\BouncingBallMain.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo1Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2Object.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo2TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3Object.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3ObjectFinished.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo3TileManager.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4Main.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4Object.sbr C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\/Debug\Demo4TileManager.sbr
      1>Done Building Project "C:\Users\Dan\Documents\Uni\G52CPP\CW2\Turrets\src\CourseworkBase.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.25
+Time Elapsed 00:00:00.42

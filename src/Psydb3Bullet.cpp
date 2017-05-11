@@ -12,7 +12,7 @@ Psydb3Bullet::Psydb3Bullet(BaseEngine* pEngine, Psydb3CollisionHandler* collisio
 	, m_hasBeenFired(false)
 	, m_bouncesLeft(2)
 	, m_awayFromSourceTank(false)
-	, m_collidingTimer(200)
+	, m_collidingTimer(25)
 	, m_removeNextFrame(false)
 	, m_pEngine(pEngine) {
 
@@ -37,7 +37,6 @@ void Psydb3Bullet::StartMoving(double x, double y, double vectorX, double vector
 	m_dx = vectorX * 3;
 	m_dy = vectorY * 3;
 	m_hasBeenFired = true;
-	m_collidingTimer = 200;
 }
 
 void Psydb3Bullet::Reset() {
@@ -102,7 +101,7 @@ void Psydb3Bullet::DoUpdate(int iCurrentTime) {
 		m_dy = -m_dy;
 	}
 
-	if (m_collidingTimer == 0) {
+	if (!m_awayFromSourceTank && m_collisionHandler->CheckObjectsCollision(this) == -1) {
 		m_awayFromSourceTank = true;
 		m_isCurrentlyCollideable = true;
 	}

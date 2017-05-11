@@ -15,7 +15,5 @@ public:
 	virtual void DoUpdate(int iCurrentTime);
 protected:
 	Psydb3TileManager* m_map;
-
-	int m_timeUntilDirectionChange;
 };
 

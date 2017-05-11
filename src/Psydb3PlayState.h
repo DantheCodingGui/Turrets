@@ -40,7 +40,6 @@ private:
 	Psydb3FileIO m_fileHandler;
 
 	vector<vector<string>> m_maps;
-	vector<vector<string>> m_tankSpawns;
 
 	int m_startCountdown;
 

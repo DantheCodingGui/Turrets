@@ -96,7 +96,6 @@
     <ClInclude Include="MovementPosition.h" />
     <ClInclude Include="Psydb3AdvancedEnemyTank.h" />
     <ClInclude Include="Psydb3BasicEnemyTank.h" />
-    <ClInclude Include="Psydb3Bomb.h" />
     <ClInclude Include="Psydb3Bullet.h" />
     <ClInclude Include="Psydb3BulletManager.h" />
     <ClInclude Include="Psydb3CollisionHandler.h" />
@@ -109,7 +108,6 @@
     <ClInclude Include="Psydb3PauseState.h" />
     <ClInclude Include="Psydb3PlayerTank.h" />
     <ClInclude Include="Psydb3PlayState.h" />
-    <ClInclude Include="Psydb3RotationPosition.h" />
     <ClInclude Include="Psydb3StandardEnemyTank.h" />
     <ClInclude Include="Psydb3StartState.h" />
     <ClInclude Include="Psydb3State.h" />
@@ -143,7 +141,6 @@
     <ClCompile Include="JPGImage.cpp" />
     <ClCompile Include="Psydb3AdvancedEnemyTank.cpp" />
     <ClCompile Include="Psydb3BasicEnemyTank.cpp" />
-    <ClCompile Include="Psydb3Bomb.cpp" />
     <ClCompile Include="Psydb3Bullet.cpp" />
     <ClCompile Include="Psydb3BulletManager.cpp" />
     <ClCompile Include="Psydb3CollisionHandler.cpp" />

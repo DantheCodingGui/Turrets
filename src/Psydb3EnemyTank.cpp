@@ -5,10 +5,8 @@
 Psydb3EnemyTank::Psydb3EnemyTank(BaseEngine* pEngine, double x, double y, Psydb3CollisionHandler* collisionHandler, 
 								Psydb3BulletManager* bulletManager, const char* name, Psydb3TileManager* map)
 	: Psydb3Tank(pEngine, x, y, collisionHandler, bulletManager, name)
-	, m_map(map) 
-	, m_timeUntilDirectionChange(100) {
-	m_fireRate = 400;
-	m_alive = false;
+	, m_map(map) {
+	m_fireRate = 200;
 }
 
 
@@ -17,17 +15,27 @@ Psydb3EnemyTank::~Psydb3EnemyTank() {
 
 void Psydb3EnemyTank::GetDirection() {
 
-	m_direction = 0;
-	return;
+	int targetTileX = m_map->GetTileXForPositionOnScreen(GetTargetX());
+	int targetTileY = m_map->GetTileYForPositionOnScreen(GetTargetY());
+	int sourceTileX = m_map->GetTileXForPositionOnScreen(m_x + m_tankStates[m_direction]->GetTankCentreOffsetX());
+	int sourceTileY = m_map->GetTileYForPositionOnScreen(m_y + m_tankStates[m_direction]->GetTankCentreOffsetY());
 
-	if (m_timeUntilDirectionChange == 0) {
-		m_direction++;
-		if (m_direction == 9)
-			m_direction = 0;
-	}
-	else
-		--m_timeUntilDirectionChange;
-
+	if (targetTileX > sourceTileX && targetTileY > sourceTileY)
+		m_direction = 3;
+	else if (targetTileX > sourceTileX && targetTileY < sourceTileY)
+		m_direction = 5;
+	else if (targetTileX < sourceTileX && targetTileY > sourceTileY)
+		m_direction = 7;
+	else if (targetTileX < sourceTileX && targetTileY < sourceTileY)
+		m_direction = 1;
+	else if (targetTileX > sourceTileX)
+		m_direction = 4;
+	else if (targetTileX < sourceTileX)
+		m_direction = 0;
+	else if (targetTileY < sourceTileY)
+		m_direction = 2;
+	else if (targetTileY < sourceTileY)
+		m_direction = 6;
 }
 
 void Psydb3EnemyTank::DoUpdate(int iCurrentTime) {
@@ -99,10 +107,8 @@ void Psydb3EnemyTank::DoUpdate(int iCurrentTime) {
 			error -= dx;
 		}
 	}
-	if (m_firing) {
+	if (m_firing)
 		m_moving = false;
-		m_timeUntilDirectionChange = 0;
-	}
 
 	Psydb3Tank::DoUpdate(iCurrentTime);
 }

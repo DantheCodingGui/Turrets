@@ -66,7 +66,7 @@ void Psydb3TileManager::DrawTileAt(
 
 	int tileType = GetValue(iMapX, iMapY);
 	switch (tileType) {
-		case FLOOR_TILE: 
+		case FLOOR_TILE:
 			pEngine->DrawRectangle(
 				iStartPositionScreenX,
 				iStartPositionScreenY,
@@ -89,24 +89,24 @@ void Psydb3TileManager::DrawTileAt(
 				iStartPositionScreenX + GetTileWidth() - 1,
 				iStartPositionScreenY + 10 - 1,
 				m_mapColours[m_currentColourSet][2], pSurface);
-			
+
 			break;
-		case BREAKABLE_WALL_TILE: 
+		case BREAKABLE_WALL_TILE:
 		case BREAKABLE_WALL_TILE_ONLY_TOP:
-			if (tileType == BREAKABLE_WALL_TILE) 
+			if (tileType == BREAKABLE_WALL_TILE)
 				pEngine->DrawRectangle(
-					iStartPositionScreenX,
-					iStartPositionScreenY + 10,
-					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY + GetTileHeight() - 1,
-					m_mapColours[m_currentColourSet][1], pSurface);
+				iStartPositionScreenX,
+				iStartPositionScreenY + 10,
+				iStartPositionScreenX + GetTileWidth() - 1,
+				iStartPositionScreenY + GetTileHeight() - 1,
+				m_mapColours[m_currentColourSet][1], pSurface);
 			pEngine->DrawRectangle(
 				iStartPositionScreenX,
 				iStartPositionScreenY + 10 - GetTileHeight(),
 				iStartPositionScreenX + GetTileWidth() - 1,
 				iStartPositionScreenY + 10 - 1,
 				m_mapColours[m_currentColourSet][2], pSurface);
-			
+
 			if (tileType == BREAKABLE_WALL_TILE) {
 				pEngine->DrawLine(
 					iStartPositionScreenX + GetTileWidth() / 2,
@@ -159,87 +159,88 @@ void Psydb3TileManager::DrawTileAt(
 				pEngine->DrawLine(
 					iStartPositionScreenX + GetTileWidth() - 20,
 					iStartPositionScreenY + 15,
-					iStartPositionScreenX + GetTileWidth()/2 ,
-					iStartPositionScreenY + 10,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
 					iStartPositionScreenX + GetTileWidth() / 2,
 					iStartPositionScreenY + 10,
-					iStartPositionScreenX + 15,
-					iStartPositionScreenY - 5,
 					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
-					iStartPositionScreenX + 15,
-					iStartPositionScreenY - 5,
-					iStartPositionScreenX + 20,
-					iStartPositionScreenY - 20,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
-					iStartPositionScreenX + 15,
-					iStartPositionScreenY - 5,
-					iStartPositionScreenX + GetTileWidth() - 20,
-					iStartPositionScreenY - 10,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
-					iStartPositionScreenX + GetTileWidth() - 20,
-					iStartPositionScreenY - 10,
-					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY - 5,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
-					iStartPositionScreenX + GetTileWidth() - 5,
-					iStartPositionScreenY + 10,
-					iStartPositionScreenX + GetTileWidth() - 10,
-					iStartPositionScreenY,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
-					iStartPositionScreenX + GetTileWidth()/2,
-					iStartPositionScreenY + 10,
-					iStartPositionScreenX + GetTileWidth() - 15,
-					iStartPositionScreenY - 2,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
-					iStartPositionScreenX + GetTileWidth() / 2,
-					iStartPositionScreenY - 9,
-					iStartPositionScreenX + GetTileWidth() - 15,
-					iStartPositionScreenY - 20,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
-					iStartPositionScreenX + GetTileWidth() - 15,
-					iStartPositionScreenY - 20,
-					iStartPositionScreenX + GetTileWidth() -5,
-					iStartPositionScreenY - 29,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
-					iStartPositionScreenX + GetTileWidth() - 15,
-					iStartPositionScreenY - 20,
-					iStartPositionScreenX + GetTileWidth() / 2,
-					iStartPositionScreenY - 30,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
-					iStartPositionScreenX,
-					iStartPositionScreenY - 12,
-					iStartPositionScreenX + 15,
-					iStartPositionScreenY - 5,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				pEngine->DrawLine(
-					iStartPositionScreenX + 15,
-					iStartPositionScreenY - 5,
-					iStartPositionScreenX + 3,
-					iStartPositionScreenY - 30,
-					m_mapColours[m_currentColourSet][3], pSurface);
-				
 			}
+			pEngine->DrawLine(
+				iStartPositionScreenX + GetTileWidth() / 2,
+				iStartPositionScreenY + 10,
+				iStartPositionScreenX + 15,
+				iStartPositionScreenY - 5,
+				m_mapColours[m_currentColourSet][3], pSurface);
+			pEngine->DrawLine(
+				iStartPositionScreenX + 15,
+				iStartPositionScreenY - 5,
+				iStartPositionScreenX + 20,
+				iStartPositionScreenY - 20,
+				m_mapColours[m_currentColourSet][3], pSurface);
+			pEngine->DrawLine(
+				iStartPositionScreenX + 15,
+				iStartPositionScreenY - 5,
+				iStartPositionScreenX + GetTileWidth() - 20,
+				iStartPositionScreenY - 10,
+				m_mapColours[m_currentColourSet][3], pSurface);
+			pEngine->DrawLine(
+				iStartPositionScreenX + GetTileWidth() - 20,
+				iStartPositionScreenY - 10,
+				iStartPositionScreenX + GetTileWidth() - 1,
+				iStartPositionScreenY - 5,
+				m_mapColours[m_currentColourSet][3], pSurface);
+			pEngine->DrawLine(
+				iStartPositionScreenX + GetTileWidth() - 5,
+				iStartPositionScreenY + 10,
+				iStartPositionScreenX + GetTileWidth() - 10,
+				iStartPositionScreenY,
+				m_mapColours[m_currentColourSet][3], pSurface);
+			pEngine->DrawLine(
+				iStartPositionScreenX + GetTileWidth()/2,
+				iStartPositionScreenY + 10,
+				iStartPositionScreenX + GetTileWidth() - 15,
+				iStartPositionScreenY - 2,
+				m_mapColours[m_currentColourSet][3], pSurface);
+			pEngine->DrawLine(
+				iStartPositionScreenX + GetTileWidth() / 2,
+				iStartPositionScreenY - 9,
+				iStartPositionScreenX + GetTileWidth() - 15,
+				iStartPositionScreenY - 20,
+				m_mapColours[m_currentColourSet][3], pSurface);
+			pEngine->DrawLine(
+				iStartPositionScreenX + GetTileWidth() - 15,
+				iStartPositionScreenY - 20,
+				iStartPositionScreenX + GetTileWidth() -5,
+				iStartPositionScreenY - 29,
+				m_mapColours[m_currentColourSet][3], pSurface);
+			pEngine->DrawLine(
+				iStartPositionScreenX + GetTileWidth() - 15,
+				iStartPositionScreenY - 20,
+				iStartPositionScreenX + GetTileWidth() / 2,
+				iStartPositionScreenY - 30,
+				m_mapColours[m_currentColourSet][3], pSurface);
+			pEngine->DrawLine(
+				iStartPositionScreenX,
+				iStartPositionScreenY - 12,
+				iStartPositionScreenX + 15,
+				iStartPositionScreenY - 5,
+				m_mapColours[m_currentColourSet][3], pSurface);
+			pEngine->DrawLine(
+				iStartPositionScreenX + 15,
+				iStartPositionScreenY - 5,
+				iStartPositionScreenX + 3,
+				iStartPositionScreenY - 30,
+				m_mapColours[m_currentColourSet][3], pSurface);
+				
 			break;
 	}
 }
 
 void Psydb3TileManager::RemoveTile(BaseEngine* pEngine, int x, int y) {
 	UpdateTile(pEngine, x, y, FLOOR_TILE);
-	pEngine->DrawScreenRectangle(x*m_iTileWidth, y*m_iTileHeight + 10 - m_iTileHeight, x*m_iTileWidth + m_iTileWidth, y*m_iTileHeight + 10, m_mapColours[m_currentColourSet][0]);
+	//pEngine->DrawScreenRectangle(x*m_iTileWidth, y*m_iTileHeight + 10 - m_iTileHeight, x*m_iTileWidth + m_iTileWidth, y*m_iTileHeight + 10, m_mapColours[m_currentColourSet][0]);
 	pEngine->DrawBackgroundRectangle(x*m_iTileWidth, y*m_iTileHeight + 10 - m_iTileHeight, x*m_iTileWidth + m_iTileWidth, y*m_iTileHeight + 10, m_mapColours[m_currentColourSet][0]);
+	pEngine->CopyBackgroundPixels(x*m_iTileWidth, y*m_iTileHeight + 10 - m_iTileHeight, m_iTileWidth, m_iTileHeight);
 	int tileBehindValue = GetValue(x, y - 1);
 	if (tileBehindValue > BREAKABLE_WALL_TILE) {
-		UpdateTile(pEngine, x, y - 1, tileBehindValue - 3);
+		UpdateTile(pEngine, x, y - 1, tileBehindValue - 4);
 	}
 }
