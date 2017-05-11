@@ -9,10 +9,6 @@
 #define TOP				1
 #define RIGHT			2
 #define BOTTOM			3
-#define LEFT_TOP		4
-#define RIGHT_TOP		5
-#define LEFT_BOTTOM		6
-#define RIGHT_BOTTOM	7
 
 #define FLOOR_TILE		0
 

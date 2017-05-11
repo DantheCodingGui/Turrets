@@ -72,7 +72,7 @@ void Psydb3TileManager::DrawTileAt(
 					iStartPositionScreenX,
 					iStartPositionScreenY - 20 - GetTileHeight(),
 					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY - 20 - 1,
+					iStartPositionScreenY - 20,
 					0xE9C977, pSurface);
 			}
 			break;
@@ -141,66 +141,90 @@ void Psydb3TileManager::DrawTileAt(
 					iStartPositionScreenX + GetTileWidth() - 5,
 					iStartPositionScreenY + GetTileHeight() - 1,
 					0x6F5744, pSurface);
-				//DO CRACKS LATER
-			}
-			break;
-		case BREAKABLE_TALL_WALL_TILE:
-		case BREAKABLE_TALL_WALL_TILE_ONLY_TOP:
-			if (tileType == BREAKABLE_TALL_WALL_TILE)
-				pEngine->DrawRectangle(
-					iStartPositionScreenX,
+				pEngine->DrawLine(
+					iStartPositionScreenX + GetTileWidth() - 20,
+					iStartPositionScreenY + 15,
+					iStartPositionScreenX + GetTileWidth()/2 ,
 					iStartPositionScreenY + 10,
-					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY + GetTileHeight() - 1,
-					0x8C7640, pSurface);
-			pEngine->DrawRectangle(
-				iStartPositionScreenX,
-				iStartPositionScreenY + 10 - GetTileHeight(),
-				iStartPositionScreenX + GetTileWidth() - 1,
-				iStartPositionScreenY + 10 - 1,
-				0xE9C977, pSurface);
-			break;
-			if (tileType == BREAKABLE_TALL_WALL_TILE) {
-				pEngine->DrawRectangle(
-					iStartPositionScreenX,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
+					iStartPositionScreenX + GetTileWidth() / 2,
 					iStartPositionScreenY + 10,
-					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY + GetTileHeight() - 1,
-					0x8C7640, pSurface);
-				pEngine->DrawRectangle(
-					iStartPositionScreenX,
-					iStartPositionScreenY + 10 - GetTileHeight(),
-					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY + 10 - 1,
-					0xE9C977, pSurface);
-			}
-			else {
-				pEngine->DrawRectangle(
-					iStartPositionScreenX,
+					iStartPositionScreenX + 15,
+					iStartPositionScreenY - 5,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
+					iStartPositionScreenX + 15,
+					iStartPositionScreenY - 5,
+					iStartPositionScreenX + 20,
 					iStartPositionScreenY - 20,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
+					iStartPositionScreenX + 15,
+					iStartPositionScreenY - 5,
+					iStartPositionScreenX + GetTileWidth() - 20,
+					iStartPositionScreenY - 10,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
+					iStartPositionScreenX + GetTileWidth() - 20,
+					iStartPositionScreenY - 10,
 					iStartPositionScreenX + GetTileWidth() - 1,
+					iStartPositionScreenY - 5,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
+					iStartPositionScreenX + GetTileWidth() - 5,
 					iStartPositionScreenY + 10,
-					0x8C7640, pSurface);
-				pEngine->DrawRectangle(
+					iStartPositionScreenX + GetTileWidth() - 10,
+					iStartPositionScreenY,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
+					iStartPositionScreenX + GetTileWidth()/2,
+					iStartPositionScreenY + 10,
+					iStartPositionScreenX + GetTileWidth() - 15,
+					iStartPositionScreenY - 2,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
+					iStartPositionScreenX + GetTileWidth() / 2,
+					iStartPositionScreenY - 9,
+					iStartPositionScreenX + GetTileWidth() - 15,
+					iStartPositionScreenY - 20,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
+					iStartPositionScreenX + GetTileWidth() - 15,
+					iStartPositionScreenY - 20,
+					iStartPositionScreenX + GetTileWidth() -5,
+					iStartPositionScreenY - 29,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
+					iStartPositionScreenX + GetTileWidth() - 15,
+					iStartPositionScreenY - 20,
+					iStartPositionScreenX + GetTileWidth() / 2,
+					iStartPositionScreenY - 30,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
 					iStartPositionScreenX,
-					iStartPositionScreenY - 20 - GetTileHeight(),
-					iStartPositionScreenX + GetTileWidth() - 1,
-					iStartPositionScreenY - 20 - 1,
-					0xE9C977, pSurface);
+					iStartPositionScreenY - 12,
+					iStartPositionScreenX + 15,
+					iStartPositionScreenY - 5,
+					0x6F5744, pSurface);
+				pEngine->DrawLine(
+					iStartPositionScreenX + 15,
+					iStartPositionScreenY - 5,
+					iStartPositionScreenX + 3,
+					iStartPositionScreenY - 30,
+					0x6F5744, pSurface);
+				
 			}
+			break;
 	}
 }
 
 void Psydb3TileManager::RemoveTile(BaseEngine* pEngine, int x, int y) {
-	SetValue(x, y, FLOOR_TILE);
-	DrawTileAt(pEngine, pEngine->GetBackground(), x, y, x*m_iTileWidth, y*m_iTileHeight);
-	DrawTileAt(pEngine, pEngine->GetForeground(), x, y, x*m_iTileWidth, y*m_iTileHeight);
+	UpdateTile(pEngine, x, y, FLOOR_TILE);
 	pEngine->DrawScreenRectangle(x*m_iTileWidth, y*m_iTileHeight + 10 - m_iTileHeight, x*m_iTileWidth + m_iTileWidth, y*m_iTileHeight + 10, 0xdcbc7f);
 	pEngine->DrawBackgroundRectangle(x*m_iTileWidth, y*m_iTileHeight + 10 - m_iTileHeight, x*m_iTileWidth + m_iTileWidth, y*m_iTileHeight + 10, 0xdcbc7f);
 	int tileBehindValue = GetValue(x, y - 1);
-	if (tileBehindValue > BREAKABLE_TALL_WALL_TILE) {
-		SetValue(x, y - 1, tileBehindValue - 4);
-		DrawTileAt(pEngine, pEngine->GetBackground(), x, y - 1, x*m_iTileWidth, (y - 1)*m_iTileHeight);
-		DrawTileAt(pEngine, pEngine->GetForeground(), x, y - 1, x*m_iTileWidth, (y - 1)*m_iTileHeight);
+	if (tileBehindValue > BREAKABLE_WALL_TILE) {
+		UpdateTile(pEngine, x, y - 1, tileBehindValue - 3);
 	}
 }

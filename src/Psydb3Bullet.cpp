@@ -33,8 +33,8 @@ Psydb3Bullet::~Psydb3Bullet() {
 void Psydb3Bullet::StartMoving(double x, double y, double vectorX, double vectorY) {
 	m_x = m_iCurrentScreenX = (x - m_iDrawWidth/2) + (vectorX * 40);
 	m_y = m_iCurrentScreenY = (y - m_iDrawHeight/2) + (vectorY * 40);
-	m_dx = vectorX * 4;
-	m_dy = vectorY * 4;
+	m_dx = vectorX * 3;
+	m_dy = vectorY * 3;
 	m_hasBeenFired = true;
 }
 

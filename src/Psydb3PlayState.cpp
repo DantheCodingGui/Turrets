@@ -13,7 +13,7 @@
 
 Psydb3PlayState::Psydb3PlayState(Psydb3Engine* pEngine)
 	: Psydb3State(pEngine)
-	, m_level(0)
+	, m_level(1)
 	, m_numberOfTanks(0)
 	, m_startCountdown(300)
 	, m_backgroundInitialised(false) {
@@ -101,8 +101,8 @@ void Psydb3PlayState::LoadLevel() {
 	m_pEngine->StoreObjectInArray(0, new Psydb3InvisibleEnemyTank(m_pEngine, 1350.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str(), &m_oTiles));
 	m_pEngine->StoreObjectInArray(1, new Psydb3AdvancedEnemyTank(m_pEngine, 1100.0, 400.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str(), &m_oTiles));
 	m_pEngine->StoreObjectInArray(2, new Psydb3StandardEnemyTank(m_pEngine, 1200.0, 300.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str(), &m_oTiles));
-	m_pEngine->StoreObjectInArray(3, new Psydb3BasicEnemyTank(m_pEngine, 1200.0, 500.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str(), &m_oTiles));
-	m_pEngine->StoreObjectInArray(4, new Psydb3PlayerTank(m_pEngine, 500.0, 500.0, m_collisionHandler, m_bulletManager, "Challenger"));
+	m_pEngine->StoreObjectInArray(3, new Psydb3BasicEnemyTank(m_pEngine, 1300.0, 500.0, m_collisionHandler, m_bulletManager, m_tankNames[rand() % (m_tankNames.size() - 1)].c_str(), &m_oTiles));
+	m_pEngine->StoreObjectInArray(4, new Psydb3PlayerTank(m_pEngine, 400.0, 500.0, m_collisionHandler, m_bulletManager, "Challenger"));
 	
 	for (i = 0; i < m_numberOfTanks * 3; ++i)
 		m_pEngine->StoreObjectInArray(i + m_numberOfTanks, new Psydb3Bullet(m_pEngine, m_collisionHandler));

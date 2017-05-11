@@ -14,12 +14,16 @@ Psydb3EnemyTank::~Psydb3EnemyTank() {
 
 void Psydb3EnemyTank::GetDirection() {
 
-	//if on path, return
+	ResetVectors();
+
+	AddOpenNode(m_map->GetTileXForPositionOnScreen(m_x + m_tankStates[m_direction]->GetTankCentreOffsetX()), 
+			m_map->GetTileXForPositionOnScreen(m_x + m_tankStates[m_direction]->GetTankCentreOffsetX()));
+
 }
 
 void Psydb3EnemyTank::DoUpdate(int iCurrentTime) {
-	m_firing = true;
-	m_moving = true;
+	m_firing = false;
+	m_moving = false;
 
 	//bresenham line drawing algorithm
 	//if tile line between player and enemy includes a wall, don't shoot
@@ -64,12 +68,17 @@ void Psydb3EnemyTank::DoUpdate(int iCurrentTime) {
 
 	for (int x = xSourceTile; x <= xTargetTile; ++x) {
 		if (steep) {
-			if (m_map->GetValue(y, x) != 0) {
+			if (m_map->GetValue(y, x) == 3) {
+				m_firing = true;
+				break;
+			}
+			else if (m_map->GetValue(y, x) != 0) {
 				m_firing = false;
 				break;
 			}
 		}
 		else {
+
 			if (m_map->GetValue(x, y) != 0) {
 				m_firing = false;
 				break;
